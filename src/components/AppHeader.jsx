@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import { IoSearch } from "react-icons/io5";
+import { LuGlobe } from "react-icons/lu";
 
 export function AppHeader() {
     return (
@@ -19,6 +20,7 @@ export function AppHeader() {
             </section>
             <section className='right-header-menu'>
                 <button>Switch to hosting</button>
+                <LuGlobe className='global-btn' />
             </section>
 
         </header>
