@@ -1,5 +1,7 @@
 import React from 'react'
+
 import { Link, Outlet, useParams } from 'react-router-dom'
+
 
 export function StayIndex() {
     const params = useParams()
@@ -8,6 +10,7 @@ export function StayIndex() {
 
 
     return (
+
         <>
         {/* ↓ will be mapped with each result */}
         {params.stayId ? 
@@ -20,5 +23,6 @@ export function StayIndex() {
             }
         
         </>
+
     )
 }
