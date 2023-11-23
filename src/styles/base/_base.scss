@@ -48,7 +48,7 @@ h2 {
     font-size: em(16px);
     margin: em(63px) 0;
     grid-area: title;
-    color: $clr1;
+    color: $clr2;
     text-transform: uppercase;
     @include type(boldCondensed);
 }
@@ -92,7 +92,7 @@ p {
 
         @include for-wide-layout {
             grid-column: 3 / 5;
-            font-size: rem(26px);
+            // font-size: rem(26px);
         }
     }
 }
