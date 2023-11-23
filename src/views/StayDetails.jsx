@@ -1,5 +1,6 @@
 import { Link, useOutletContext } from "react-router-dom";
 import { ImageShortGalery } from "../components/ImageShortGalery";
+import { StayDescription } from "../components/StayDescription";
 
 
 // for now
@@ -7,6 +8,7 @@ export const imgUrls = ["https://a0.muscache.com/im/pictures/dc89cf8d-6d45-4db8-
 
 // 
 export function StayDetails() {
+  // TODO: get the stay from the store
   const { stayId } = useOutletContext();
   console.log(stayId);
 
@@ -15,9 +17,11 @@ export function StayDetails() {
       <Link to="/">←back</Link>
       <div className="details-header full">
         <h2>stay name {stayId}</h2>
-        <div>share/save</div>
+      <div>share/save</div>
       </div>
+    
       <ImageShortGalery imgUrls={imgUrls} />
+      <StayDescription/>
       
     </>
   );
