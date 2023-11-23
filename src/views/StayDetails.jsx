@@ -2,6 +2,10 @@ import { Link, useOutletContext } from "react-router-dom";
 import { ImageShortGalery } from "../components/ImageShortGalery";
 import { StayDescription } from "../components/StayDescription";
 import { StayCheckout } from "../components/StayCheckout";
+import { IoIosHeartEmpty as Heart } from "react-icons/io";
+import { MdIosShare as ShareIcon } from "react-icons/md";
+
+import { Button } from "../components/UI/Button";
 
 
 // for now
@@ -18,8 +22,8 @@ export function StayDetails() {
       <Link to="/">←back</Link>
       <div className="details-header">
         <h3>stay name {stayId}</h3>
-        <div className="action-btn"><button>share</button></div>
-        <div className="action-btn"><button>save</button></div>
+        <div className="action-btn"><Button icon={<Heart />} text={"save"} /></div>
+        <div className="action-btn"><Button icon={<ShareIcon />} text={"share"} /></div>
       </div>
     
       <ImageShortGalery imgUrls={imgUrls} />
