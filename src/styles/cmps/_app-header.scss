@@ -83,16 +83,55 @@
 }
 
 .right-header-menu {
-    justify-self: center;
+
+    display: flex;
+    justify-content: end;
 
     button {
-        font-size: 16px;
+        font-size: 14.9px;
         justify-content: center;
-        margin-right: 35px;
+        margin-right: 25px;
     }
 
     .global-btn {
+        font-size: 19px;
+    }
 
-        font-size: 16px;
+    .switchlen-menu {
+        display: flex;
+        margin-left: 10px;
+        padding: 12px;
+    }
+
+    .menu-icon {
+        font-size: 18px;
+        margin: 0px 5px;
+    }
+
+    .menu-bar {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #0d0d0d;
+        border-radius: 54.3px;
+        border: 1px solid #d3d3d3;
+        padding: 10px;
+        height: 50px;
+        min-width: 6.7px;
+        margin-left: 2.9px;
+    }
+
+
+    .circle {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #ffffff;
+        background-color: #0b0b0b;
+        border-radius: 58.1%;
+        border: 1px solid #d3d3d3;
+        padding: 7.2px;
+        height: 35.9px;
+        min-width: 24.8px;
     }
 }
