@@ -17,7 +17,7 @@ export function StayDetails() {
       <Link to="/">←back</Link>
       <div className="details-header full">
         <h2>stay name {stayId}</h2>
-      <div>share/save</div>
+        <div>share/save</div>
       </div>
     
       <ImageShortGalery imgUrls={imgUrls} />

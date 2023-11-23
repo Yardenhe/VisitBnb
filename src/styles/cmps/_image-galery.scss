@@ -1,7 +1,7 @@
 $gallery-columns: 4;
 $gallery-rows: 2;
-$slot-width: 272px;
-$slot-height: 232px;
+$slot-width: 220px;
+$slot-height: $slot-width*0.83163214285;
 
 .Image-galery-small{
     // // in parent grid
@@ -10,15 +10,17 @@ $slot-height: 232px;
     
     display: grid;
     gap:6px;
-    width: 100vw;
+    max-width: 100%;
     grid-template-columns: repeat($gallery-columns,1fr);
     grid-template-rows: repeat($gallery-rows,1fr);
     img{
         object-fit: fill;
+        min-width: 100%;
+        min-height: 100%;
         &:first-child{
             grid-column: span 2;
             grid-row: span 2;
-            width: $slot-width*4;
+            width: $slot-width*2;
             height: $slot-height*2;
         }
         &:not(:first-child){
@@ -30,3 +32,4 @@ $slot-height: 232px;
         
     }
 }
+
