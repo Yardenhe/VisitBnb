@@ -1,19 +1,21 @@
+import { Link } from "react-router-dom";
+
 export function StayDescription() {
   return (
-    <article>
-      <h2>_stayType in Tel-Aviv,israel</h2>
+    <article className="details-short">
+      <h3>_stayType in Tel-Aviv,israel</h3>
       <div className="stay-capacity-details">
         {/* map from data */}
-        <span>4 guests</span>
-        <span>2 bedrooms</span>
-        <span>2 beds</span>
-        <span>1 bath</span>
+        <li>4 guests</li>
+        <li>2 bedrooms</li>
+        <li>2 beds</li>
+        <li>1 bath</li>
       </div>
       <hr />
-      <div className="review-peek">
+      <div className="rating-peek">
         {/* map from data */}
-        <span>4.8</span>
-        <span>4 reviews</span>
+        <span>4.8 </span>
+        <Link>41 reviews</Link>
       </div>
       <hr />
       <div className="stay-facts">
