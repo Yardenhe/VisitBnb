@@ -14,18 +14,19 @@ function App() {
 
       <section className='app'>
         <AppHeader />
-      <section className='main-layout'>
-        <Routes>
-          <Route 
-          path='/' 
-          element={<StayIndex />}
-          >
+        <section className='main-layout'>
+          <Routes>
             <Route
-              path='/details/:stayId'
-              element={<StayDetails />}
-            />
-          </Route>
-        </Routes>
+              path='/'
+              element={<StayIndex />}
+            >
+              <Route
+                path='/details/:stayId'
+                element={<StayDetails />}
+              />
+            </Route>
+          </Routes>
+        </section>
       </section>
     </Router>
   )
