@@ -1,9 +1,36 @@
 .details-header{
-    background: #546;
+    // background: #546;
     display: flex;
     justify-content: space-around;
-    align-items: center;
-    h2{
-        background: #9f8080;
+    max-height: 80px;
+
+}
+.details-short{
+    display: flex;
+    flex-direction: column;
+    .stay-capacity-details{
+        >:first-child{
+            list-style: none;
+        }
+        display: flex;
+        gap: 10px;
+        align-items: center;
     }
+    .rating-peek{
+        background-color: #ff0000;
+    }
+}
+.checkout-container{
+    display: flex;
+    flex-direction: row;
+    .details-short{
+
+    }
+    .checkout-card{
+        border: 1px solid #ff0000;
+        width: 300px;
+        height: 450px;
+    }
+    
+
 }
