@@ -23,19 +23,20 @@ export function StayDetails() {
   console.log(stayId);
 
   return (
-    <>
+    <div className="details-layout">
       <Link to="/">←back</Link>
       <div className="details-header">
         <h3>stay name {stayId}</h3>
-          <Button icon={<Heart />} text={"save"} />
-          <Button icon={<ShareIcon />} text={"share"} />
+        <Button icon={<Heart />} text={"save"} />
+        <Button icon={<ShareIcon />} text={"share"} />
       </div>
 
       <ImageShortGalery imgUrls={imgUrls} />
+
       <div className="checkout-container">
         <StayDescription />
         <StayCheckout />
       </div>
-    </>
+    </div>
   );
 }

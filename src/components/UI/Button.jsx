@@ -10,14 +10,11 @@ import { Link } from "react-router-dom";
 //     </Link>
 //   )
 // }
-export function Button({icon ,classname ='', text }) {
-    return (
-      <button  className={`action-button ${classname}`}>
-        <div className="icon-holder">
-          {icon}
-        </div>
-          {text}
-      </button>
-    )
-  }
-  
+export function Button({ icon, classname = "", text }) {
+  return (
+    <button className={`action-button ${classname}`}>
+      {icon && <div className="icon-holder">{icon}</div>}
+      {text}
+    </button>
+  );
+}

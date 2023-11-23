@@ -3,14 +3,16 @@ $gallery-rows: 2;
 $slot-width: 220px;
 $slot-height: $slot-width * 0.83163214285;
 
+
+
 .Image-galery-small {
-  // // in parent grid
-  // grid-area: 3 / 2 / 4 / 5;
-  // //
+
 
   display: grid;
   gap: 6px;
   max-width: 100%;
+  min-width: 100%;
+  height: 100%;
   grid-template-columns: repeat($gallery-columns, 1fr);
   grid-template-rows: repeat($gallery-rows, 1fr);
   position: relative;
@@ -27,8 +29,6 @@ $slot-height: $slot-width * 0.83163214285;
     &:not(:first-child) {
       width: $slot-width;
       height: $slot-height;
-      // width: calc(100% / $gallery-columns - 10px);
-      // height: calc(100% / $gallery-rows - 10px);
     }
   }
   .button-overlay {

@@ -1,37 +1,96 @@
-.details-header{
-    // background: #546;
-    display: flex;
-    justify-content: space-around;
-    max-height: 80px;
-
-}
-.details-short{
+.details-layout{
     display: flex;
     flex-direction: column;
-    .stay-capacity-details{
-        >:first-child{
-            list-style: none;
-        }
-        display: flex;
-        gap: 10px;
-        align-items: center;
-    }
-    .rating-peek{
-        background-color: #ff0000;
-    }
-}
-.checkout-container{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    .details-short{
+    max-width: 1400px;
+    min-width: 1200px;
+    margin: 0 auto;
+    align-items: center;
+    justify-content: center;
 
+    .details-header{
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        max-height: 80px;
+        
+    
     }
-    .checkout-card{
-        border: 1px solid #ff0000;
-        width: 300px;
-        height: 450px;
+
+    .details-short{
+        display: flex;
+        width: 100%;
+        flex-direction: column;
+        .stay-capacity-details{
+            >:first-child{
+                list-style: none;
+            }
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        .rating-peek{
+            background-color: #ff0000;
+        }
     }
+
+    .checkout-container{
+        display: flex;
+        min-width: 100%;
+        flex-direction: row;
+        justify-content: space-between;
+        .details-short{
+            flex-grow: 1;
+        }
+        .checkout-card{
+            position: relative !important;
+            width: 33.33333333333333% !important;
+            margin-left: 8.333333333333332% !important;
+            margin-right: 0% !important;
+            border: 1px solid #ff0000;
+            // width: 300px;
+            // height: 450px;
+            // margin-left: 50px;
+        }
+        
+    
+    }
+
+}
+
+// .details-short{
+//     display: flex;
+//     flex-direction: column;
+//     .stay-capacity-details{
+//         >:first-child{
+//             list-style: none;
+//         }
+//         display: flex;
+//         gap: 10px;
+//         align-items: center;
+//     }
+//     .rating-peek{
+//         background-color: #ff0000;
+//     }
+// }
+// .checkout-container{
+//     display: flex;
+//     min-width: 100%;
+//     flex-direction: row;
+//     justify-content: space-between;
+//     .details-short{
+//         flex-grow: 1;
+//     }
+//     .checkout-card{
+//         position: relative !important;
+//         width: 33.33333333333333% !important;
+//         margin-left: 8.333333333333332% !important;
+//         margin-right: 0% !important;
+//         border: 1px solid #ff0000;
+//         // width: 300px;
+//         // height: 450px;
+//         // margin-left: 50px;
+//     }
     
 
-}
+// }

@@ -6,7 +6,6 @@ export function ImageShortGalery({ imgUrls }) {
   // const imgUrls
   return (
     <>
-      
       <div className="Image-galery-small">
         {imgUrls.map((url, id) => (
           <img key={id} src={url} alt="" />
