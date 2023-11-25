@@ -1,3 +1,6 @@
+import { Button } from "./UI/Button";
+import { TbGridDots as Dots } from "react-icons/tb";
+
 export function ImageShortGalery({ imgUrls }) {
   // get images from store
   // const imgUrls
@@ -9,7 +12,7 @@ export function ImageShortGalery({ imgUrls }) {
           <img key={id} src={url} alt="" />
         ))}
         <div className="button-overlay">
-          <button>view galery</button>
+          <Button icon={<Dots />} text={"view galery"}/>
         </div>
       </div>
     </>
