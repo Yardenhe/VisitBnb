@@ -47,7 +47,6 @@ export function StayDetails() {
       <ImageShortGalery imgUrls={imgUrls} />
 
       <div className="checkout-container">
-      <hr />
         <StayDescription />
         <StayCheckout />
       </div>

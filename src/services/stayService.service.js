@@ -8,8 +8,8 @@ export const stayService = {
 	save,
 	getEmptyStay,
 	getLoggedUser,
-	getStayFromSearchParams,
-	getSortFromParams,
+	// getStayFromSearchParams,
+	// getSortFromParams,
 	getUnreadCount,
 }
 export const stay1 = {
