@@ -7,6 +7,9 @@ import { MdIosShare as ShareIcon } from "react-icons/md";
 
 import { Button } from "../components/UI/Button";
 
+import { stayService } from "../services/stayService.service";
+import { useEffect } from "react";
+
 // for now
 export const imgUrls = [
   "https://a0.muscache.com/im/pictures/dc89cf8d-6d45-4db8-acb0-e8331150d725.jpg?im_w=960",
@@ -20,7 +23,17 @@ export const imgUrls = [
 export function StayDetails() {
   // TODO: get the stay from the store
   const { stayId } = useOutletContext();
+
   console.log(stayId);
+
+  useEffect(() => {
+    loadStays();
+  }, []);
+
+  async function loadStays(){
+    const stays = await stayService.query()
+    console.log(stays);
+  }
 
   return (
     <div className="details-layout">
@@ -34,6 +47,7 @@ export function StayDetails() {
       <ImageShortGalery imgUrls={imgUrls} />
 
       <div className="checkout-container">
+      <hr />
         <StayDescription />
         <StayCheckout />
       </div>

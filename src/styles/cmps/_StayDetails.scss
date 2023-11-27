@@ -30,7 +30,10 @@
             align-items: center;
         }
         .rating-peek{
-            background-color: #ff0000;
+            display: flex;
+            margin-top: 8px;
+            align-items: center;
+            gap: 6px;
         }
     }
 
