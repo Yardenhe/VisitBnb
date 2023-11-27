@@ -41,8 +41,10 @@ export function StayDetails() {
       {/* HEADER */}
       <section className="details-header ">
         <h3>stay name {stayId}</h3>
-        <Button icon={<Heart />} text={"save"} />
-        <Button icon={<ShareIcon />} text={"share"} />
+        <div className="btn-header-container">
+          <Button icon={<ShareIcon />} text={"share"} />
+          <Button icon={<Heart />} text={"save"} />
+        </div>
       </section>
       {/* GALERY */}
       <ImageShortGalery imgUrls={imgUrls} />
