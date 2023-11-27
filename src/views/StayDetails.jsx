@@ -37,7 +37,7 @@ export function StayDetails() {
 
   return (
     <div className="details-layout">
-      <Link to="/">←back</Link>
+      {/* <Link to="/">←back</Link> */}
       <div className="details-header">
         <h3>stay name {stayId}</h3>
         <Button icon={<Heart />} text={"save"} />
