@@ -38,18 +38,19 @@ export function StayDetails() {
   return (
     <div className="details-layout">
       {/* <Link to="/">←back</Link> */}
-      <div className="details-header">
+      {/* HEADER */}
+      <section className="details-header ">
         <h3>stay name {stayId}</h3>
         <Button icon={<Heart />} text={"save"} />
         <Button icon={<ShareIcon />} text={"share"} />
-      </div>
-
+      </section>
+      {/* GALERY */}
       <ImageShortGalery imgUrls={imgUrls} />
-
-      <div className="checkout-container">
+      {/* DESCRIPTION */}
+      <section className="checkout-container ">
         <StayDescription />
         <StayCheckout />
-      </div>
+      </section>
     </div>
   );
 }

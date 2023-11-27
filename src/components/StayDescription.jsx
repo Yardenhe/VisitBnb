@@ -19,8 +19,8 @@ export function StayDescription() {
         <Link>41 reviews</Link>
       </div>
       <hr />
-      <div className="mini-user">
-        {/* map from data */}
+      {/* <div className="mini-user">
+        map from data
         <img
           className="user-img"
           src=""
@@ -29,7 +29,7 @@ export function StayDescription() {
         <span>hosted by </span>
         <span>Superhost tag?</span>
         <span>-years of experience</span>
-      </div>
+      </div> */}
       <div className="stay-facts">
         <ul>
           {/* map from data */}
