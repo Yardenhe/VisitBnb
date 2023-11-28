@@ -104,8 +104,6 @@ function save(stay) {
 	}
 }
 
-
-
 function getEmptyStay(
 	{_id= "",
   name= "",
