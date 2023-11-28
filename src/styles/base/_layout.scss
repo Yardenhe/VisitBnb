@@ -1,13 +1,13 @@
-$layoutPadding : rem(250px);
+$layoutPadding : rem(45px);
 // .main-layout {
 //     display: grid;
 //     max-width: 100%;
 //     grid-template-columns: $layoutPadding repeat(4,1fr) $layoutPadding;
-    
+
 //     >*.full {
 //         grid-column: 1 / -1;
 //     }
-    
+
 //     >*:not(.full) {
 //         grid-column: 2/3;
 //         display: grid;
@@ -48,7 +48,7 @@ $layoutPadding : rem(250px);
 //     margin-bottom: rem(90px);
 // }
 
-.main-layout{
+.main-layout {
     max-width: 100vw;
     display: flex;
     flex-direction: column;

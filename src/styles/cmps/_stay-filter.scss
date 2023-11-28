@@ -1,7 +1,7 @@
 .stay-filter {
     display: grid;
     grid-auto-flow: column;
-    margin-top: 30px;
+    margin-top: 10px;
     padding: 10px;
 
     .scroll-container {
@@ -32,6 +32,31 @@
         }
     }
 
+    .filter-button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid #717171;
+        border-radius: 20%;
+        align-self: center;
+        padding: 15px;
+        margin-left: 5px;
+        margin-bottom: 15px;
+
+        svg {
+            font-size: 20px;
+            margin-top: 0px;
+            font-weight: bold;
+            padding-right: 5px;
+        }
+
+        p {
+            margin-bottom: 0px;
+            font-weight: bold;
+            font-size: 12px;
+        }
+    }
+
 }
 
 // Navigation arrows
@@ -50,14 +75,21 @@
         outline: none;
         border: 1px solid $clr4;
         border-radius: 50%;
+        height: 28px;
+        width: 28px;
+        padding: 5px;
+        margin: -9.3px 11.8px;
+
 
     }
 
     .arrow-left {
+        position: relative;
         left: 0;
     }
 
     .arrow-right {
+        position: relative;
         right: 0;
     }
 

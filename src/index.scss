@@ -39,12 +39,6 @@ h1 {
 
 button {
   // max-height: 60px;
-  display: flex;
-  justify-content: space-around;
-  padding: 1em;
-  width: 150px;
-  height: 50px;
-  align-items: center;
   max-width: 150px;
   max-height: 50px;
   background: transparent;
@@ -55,37 +49,23 @@ button {
   border-radius: 4px;
   margin: -1px;
   position: relative;
-  .icon-holder{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  //   height: 100%;
-  //   width: 100%;
-  //   svg{
-  //     height: 100%;
-  //     width: 100%;
-  //   }
-  }
-  &:hover {
-    border-color: #646cff;
-  }
-  &:focus,
-  &:focus-visible {
-    outline: 4px auto -webkit-focus-ring-color;
-  }
-  &:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-  }
 }
 
+button:hover {
+  border-color: #646cff;
+}
 
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
 
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
     background-color: #ffffff;
   }
+
 
   a:hover {
     color: #747bff;

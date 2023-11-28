@@ -1,5 +1,6 @@
-import { utilService } from './util.service';
-import { storageService } from './async-storage.service';
+import PropTypes from 'prop-types'
+import { storageService } from './async-storage.service.js'
+import { utilService } from './util.service.js'
 
 export const stayService = {
 	query,

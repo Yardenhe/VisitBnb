@@ -1,5 +1,6 @@
 import React, { useRef } from 'react';
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
+import { BsSliders } from "react-icons/bs";
 
 const iconBasePath = 'img/labels/';
 const iconNames = ['amazingpools', 'amazingviews', 'cabins', 'castles', 'Countryside'
@@ -38,8 +39,13 @@ export function StayFilter({ }) {
                         <p>{iconName}</p>
                     </section>
                 ))}
+
             </div>
             <IoIosArrowForward className='arrow arrow-right' onClick={() => handleScroll('right')} />
+            <div className='filter-button'>
+                <BsSliders />
+                <p>Filters</p>
+            </div>
         </section>
     );
 }

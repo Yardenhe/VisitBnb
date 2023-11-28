@@ -20,13 +20,20 @@
 
 
     button {
+        background: transparent;
+        cursor: pointer;
+        padding: 0;
+        text-align: inherit;
+        border: 1px solid transparent;
+        border-radius: 4px;
+        margin: -1px;
         background-color: #ffffff;
         color: #484848;
         cursor: pointer;
         font-size: 14px;
         border-radius: 0px;
         padding: 5px 16.4px;
-        // /* display: flex; 
+
 
 
 
