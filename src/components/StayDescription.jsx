@@ -19,17 +19,7 @@ export function StayDescription() {
         <Link>41 reviews</Link>
       </div>
       <hr />
-      {/* <div className="mini-user">
-        map from data
-        <img
-          className="user-img"
-          src=""
-          alt="user"
-        />
-        <span>hosted by </span>
-        <span>Superhost tag?</span>
-        <span>-years of experience</span>
-      </div> */}
+      
       <div className="stay-facts">
         <ul>
           {/* map from data */}
@@ -50,3 +40,17 @@ export function StayDescription() {
     </article>
   );
 }
+
+
+
+{/* <div className="mini-user">
+        map from data
+        <img
+          className="user-img"
+          src=""
+          alt="user"
+        />
+        <span>hosted by </span>
+        <span>Superhost tag?</span>
+        <span>-years of experience</span>
+      </div> */}
