@@ -6,6 +6,7 @@ import { useSelector } from 'react-redux';
 import { stayService } from '../services/stayService.service'
 import { showErrorMsg, showSuccessMsg } from "../services/event-bus.service";
 import { loadStays, removeStay, saveStay, setFilterBy } from '../store/actions/stay.actions';
+import { StayList } from '../components/StayList';
 
 
 export function StayIndex() {
@@ -22,6 +23,7 @@ export function StayIndex() {
         //setSearchParams(filterBy)
     }, []) //filterBy
 
+    if (!stays) return <div>Loading..</div>
     return (
 
         <>
@@ -32,8 +34,8 @@ export function StayIndex() {
                 <>
                     <StayFilter />
                     <Link to='/details/e1'>Details</Link>
-
-                    <div>StayIndex</div>
+                    {console.log(stays)}
+                    <StayList stays={stays} />
                 </>
             }
 
