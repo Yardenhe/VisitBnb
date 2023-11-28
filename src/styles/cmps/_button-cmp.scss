@@ -1,4 +1,5 @@
-.action-button {
+.action-btn {
+    border: none;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
@@ -16,8 +17,6 @@
     // padding: 13px 23px;
     margin: -1px;
   
-    border: 1px solid transparent;
-    border-radius: 4px;
   
     .icon-holder{
       display: flex;

@@ -17,8 +17,11 @@ export function StayIndex() {
             <Outlet context={{stayId}}/>
             :
             <>
-            <Link to='/details/e1'>Details</Link>
-            <div>StayIndex</div>
+            {/* <Link to='/details/e1'>Details</Link> */}
+            <section className="index-layout">
+                {/* preview */}
+                {/* list */}
+            </section>
             </>
             }
         
