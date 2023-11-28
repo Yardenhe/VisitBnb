@@ -1,0 +1,44 @@
+.action-btn {
+    border: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    
+    min-width: 100px;
+    min-height: 30px;
+    max-width: 250px;
+    max-height: 50px;
+  
+    cursor: pointer;
+    background: #fff;
+    // padding: 13px 23px;
+    margin: -1px;
+  
+  
+    .icon-holder{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    //   height: 100%;
+    //   width: 100%;
+    //   svg{
+    //     height: 100%;
+    //     width: 100%;
+    //   }
+    }
+    &:hover {
+      border-color: #646cff;
+    }
+    &:focus,
+    &:focus-visible {
+      outline: 4px auto -webkit-focus-ring-color;
+    }
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+  }
+  

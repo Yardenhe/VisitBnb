@@ -1,39 +1,53 @@
 $gallery-columns: 4;
 $gallery-rows: 2;
 $slot-width: 220px;
-$slot-height: $slot-width * 0.83163214285;
+$slot-height: $slot-width*1.03; //* 0.83163214285;
+$img-gap: 8px;
+$img-radius:4%;
+
+
 
 .Image-galery-small {
-  // // in parent grid
-  // grid-area: 3 / 2 / 4 / 5;
-  // //
-
   display: grid;
-  gap: 6px;
+  gap: $img-gap;
   max-width: 100%;
+  min-width: 100%;
+  height: 100%;
   grid-template-columns: repeat($gallery-columns, 1fr);
   grid-template-rows: repeat($gallery-rows, 1fr);
-  position: relative;
+  position: relative;  
   img {
     object-fit: fill;
     min-width: 100%;
     min-height: 100%;
     &:first-child {
+      border-top-left-radius: $img-radius;
+      border-bottom-left-radius: $img-radius;
       grid-column: span 2;
       grid-row: span 2;
       width: $slot-width * 2;
       height: $slot-height * 2;
     }
+    &:nth-child(3){
+      border-top-right-radius: $img-radius;
+    }
+    &:nth-child(5){
+      border-bottom-right-radius: $img-radius;
+    }
     &:not(:first-child) {
       width: $slot-width;
       height: $slot-height;
-      // width: calc(100% / $gallery-columns - 10px);
-      // height: calc(100% / $gallery-rows - 10px);
     }
   }
   .button-overlay {
     position: absolute;
-    bottom: 5px;
-    right: 5px;
+    bottom: 30px;
+    right: 32px;
   }
+}
+
+.galery-btn{
+  max-height: 10px;
+  padding: 7px 15px;
+  min-width: 160px;
 }

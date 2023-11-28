@@ -6,15 +6,14 @@ export function ImageShortGalery({ imgUrls }) {
   // const imgUrls
   return (
     <>
-      
-      <div className="Image-galery-small">
+      <section className="Image-galery-small">
         {imgUrls.map((url, id) => (
           <img key={id} src={url} alt="" />
         ))}
         <div className="button-overlay">
-          <Button icon={<Dots />} text={"view galery"}/>
+          <Button icon={<Dots />} text={"show all photos"} className="galery-btn"/>
         </div>
-      </div>
+      </section>
     </>
   );
 }
