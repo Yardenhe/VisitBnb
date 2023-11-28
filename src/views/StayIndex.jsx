@@ -31,12 +31,11 @@ export function StayIndex() {
             {params.stayId ?
                 <Outlet context={{ stayId }} />
                 :
-                <>
+                <section className='index-layout'>
                     <StayFilter />
                     <Link to='/details/e1'>Details</Link>
-                    {console.log(stays)}
                     <StayList stays={stays} />
-                </>
+                </section>
             }
 
         </>
