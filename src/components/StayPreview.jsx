@@ -1,7 +1,8 @@
 
-import React, { useState } from 'react';
+import React, { lazy, useState } from 'react';
+import { Suspense } from 'react';
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
-
+const LazyLoadedImage = lazy(() => import('./LazyLoadedImg'))
 
 
 
@@ -23,15 +24,15 @@ export function StayPreview({ stay }) {
 
     return (
         <section className='stay-preview'>
-            <img className='img-preview' src={stay.imgUrls[currentImageIndex]} alt='img' />
+            <Suspense>
+                <LazyLoadedImage className='img-preview' src={stay.imgUrls[currentImageIndex]} alt='img' />
+            </Suspense>
             <div className='preview-loc'>{stay.loc.city},{stay.loc.country}</div>
             <div className='preview-name'>{stay.name}</div>
             <div>{stay.price}$ night</div>
             <div className='image-slider-arrows'>
-
                 <IoIosArrowBack className='arrow arrow-left' onClick={prevImage} />
                 <IoIosArrowForward className='arrow arrow-right' onClick={nextImage} />
-
             </div>
             <div className='image-points'>
                 {stay.imgUrls.map((_, index) => (

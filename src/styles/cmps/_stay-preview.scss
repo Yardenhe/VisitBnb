@@ -15,11 +15,14 @@
 
     .preview-name {
         color: $clr4;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
     }
 
     .image-slider-arrows {
         position: absolute;
-        top: 40%;
+        top: 150px;
         transform: translateY(-50%);
         width: 100%;
         display: flex;
@@ -37,18 +40,17 @@
 
     .image-points {
         position: absolute;
-        bottom: 10px;
-        top: 10px;
+        top: 242px;
         left: 50%;
         transform: translateX(-50%);
         display: flex;
 
         .point {
-            width: 7px;
-            height: 7px;
+            width: 6px;
+            height: 6px;
             border-radius: 50%;
             background-color: $clr4;
-            margin: 0 5px;
+            margin: 0 3px;
             cursor: pointer;
             transition: background-color 0.3s;
 
