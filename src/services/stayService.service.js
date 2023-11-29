@@ -243,7 +243,7 @@ function getLoggedUser() {
 // }
 
 function _createStay() {
-	const stay = getEmptyStay(stay1)
+	const stay = getEmptyStay()
   console.log('stay', stay);
 	stay._id = utilService.makeId()
 	return stay
@@ -252,8 +252,8 @@ function _createStay() {
 function _createStays() {
 	let stays = utilService.loadFromStorage(STAY_KEY)
 	if (!stays || !stays.length) {
-    stays = []
-    stays.push(_createStay())
+    stays = [stay1,stay1,stay1,stay1,stay1,stay1,stay1,stay1]
+    //stays.push(_createStay())
 		utilService.saveToStorage(STAY_KEY, stays)
 	}
 }
