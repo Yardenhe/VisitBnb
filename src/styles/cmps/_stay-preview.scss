@@ -1,14 +1,11 @@
 .stay-preview {
-
-    //  padding: 10px;
-
+    position: relative;
 
     .img-preview {
         width: 100%;
         height: 260px;
         object-fit: cover;
         border-radius: 8px;
-        // margin-bottom: 10px;
     }
 
     .preview-loc {
@@ -18,5 +15,47 @@
 
     .preview-name {
         color: $clr4;
+    }
+
+    .image-slider-arrows {
+        position: absolute;
+        top: 40%;
+        transform: translateY(-50%);
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+
+        svg {
+            background: white;
+            border: none;
+            font-size: 24px;
+            color: $clr4;
+            cursor: pointer;
+            border-radius: 50%;
+        }
+    }
+
+    .image-points {
+        position: absolute;
+        bottom: 10px;
+        top: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+
+        .point {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background-color: $clr4;
+            margin: 0 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+
+            &.active {
+                font-weight: bold;
+                background-color: white;
+            }
+        }
     }
 }
