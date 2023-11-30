@@ -2,12 +2,14 @@
 import React, { lazy, useState } from 'react';
 import { Suspense } from 'react';
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
+import { Link } from 'react-router-dom';
 const LazyLoadedImage = lazy(() => import('./LazyLoadedImg'))
 
 
 
 export function StayPreview({ stay }) {
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
+    console.log('stayID', stay._id);
 
     const nextImage = () => {
         setCurrentImageIndex((prevIndex) => (prevIndex + 1) % stay.imgUrls.length);
@@ -27,6 +29,9 @@ export function StayPreview({ stay }) {
             <Suspense>
                 <LazyLoadedImage className='img-preview' src={stay.imgUrls[currentImageIndex]} alt='img' />
             </Suspense>
+            {/* <Link to={`/details/${stay._id}`}> */}
+
+
             <div className='preview-loc'>{stay.loc.city},{stay.loc.country}</div>
             <div className='preview-name'>{stay.name}</div>
             <div>{stay.price}$ night</div>
@@ -43,7 +48,7 @@ export function StayPreview({ stay }) {
                     />
                 ))}
             </div>
-
+            {/* </Link> */}
         </section>
     )
 }

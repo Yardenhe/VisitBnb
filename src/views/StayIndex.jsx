@@ -34,7 +34,6 @@ export function StayIndex() {
                 <section className='index-layout'>
                     <StayFilter />
                     <StayList stays={stays} />
-                    <Link to='/details/e1'>Details</Link>
                 </section>
             }
 
