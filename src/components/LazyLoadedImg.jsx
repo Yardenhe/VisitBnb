@@ -1,23 +1,15 @@
 import { useEffect, useState } from "react"
 
 
-const LazyLoadedImg = () => {
+const LazyLoadedImg = ({ className, src, alt }) => {
     // Simulate a delay in loading the image (you can replace this with your actual image URL)
-    const [imageUrl, setImageUrl] = useState('')
-    useEffect(() => {
-        getData()
-    }, [])
+    const [imageUrl, setImageUrl] = useState(src)
 
-    async function getData() {
-        let prm = await fetch('https://yesno.wtf/api')
-        const ans = await prm.json()
-        setImageUrl(ans.image);
-    }
 
     // Imagine if it was a gallery!
     if (!imageUrl) return <></>
     return <>
-        <img src={imageUrl} alt="Lazy Loaded" />
+        <img className={className} src={imageUrl} alt="Img" />
     </>
 }
 
