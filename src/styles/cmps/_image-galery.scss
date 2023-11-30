@@ -20,6 +20,10 @@ $img-radius:4%;
     object-fit: fill;
     min-width: 100%;
     min-height: 100%;
+    &:hover {
+      cursor: pointer;
+      opacity: 0.8;
+    }
     &:first-child {
       border-top-left-radius: $img-radius;
       border-bottom-left-radius: $img-radius;

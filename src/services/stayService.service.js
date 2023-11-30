@@ -27,6 +27,9 @@ export const stay1 = {
   price: 80.00,
   summary: "Fantastic duplex apartment...",
   capacity: 8,
+  beds: 4,
+  bedrooms: 3,
+  bathrooms: 2,
   amenities: [
     "TV",
     "Wifi",
@@ -112,6 +115,9 @@ function getEmptyStay(
   price= null,
   summary= "",
   capacity= null,
+  beds=null,
+  bedrooms=null,
+  bathrooms=null,
   amenities= [],
   labels= [],
   host= {
@@ -127,19 +133,6 @@ function getEmptyStay(
     lat: null,
     lng: null
   }}
-  // reviews= [
-  //   {
-  //     id: "",
-  //     txt: "",
-  //     rate: null,
-  //     by: {
-  //       _id: "",
-  //       fullname: "",
-  //       imgUrl: ""
-  //     }
-  //   }
-  //   ],
-  //   likedByUsers= ['mini-user']
 ) {
 	return {
     _id,
@@ -149,6 +142,9 @@ function getEmptyStay(
     price,
     summary,
     capacity,
+    beds,
+  bedrooms,
+  bathrooms,
     amenities,
     labels,
     host,

@@ -1,22 +1,28 @@
 import { Link } from "react-router-dom";
 import { IoIosStar as StarIcon} from "react-icons/io";
+import {pluralizeLabel} from '../services/util.service'
 
-export function StayDescription() {
+export function StayDescription({stay}) {
+
+
+
+  console.log(stay);
+  const {amenities,summary,type,labels,host,loc,capacity,bedrooms,beds,bathrooms} = stay;
   return (
     <article className="details-short">
-      <h3>_stayType in Tel-Aviv,israel</h3>
+      <h3>{`${type} in ${loc.city},${loc.country}`}</h3>
       <div className="stay-capacity-details">
-        {/* map from data */}
-        <li>4 guests</li>
-        <li>2 bedrooms</li>
-        <li>2 beds</li>
-        <li>1 bath</li>
+        {/* map from data [!currently missing] */}
+        <li>{pluralizeLabel(capacity,'guest')}</li>
+        <li>{pluralizeLabel(bedrooms,'bedroom')}</li>
+        <li>{pluralizeLabel(beds,'bed')}</li>
+        <li>{pluralizeLabel(bathrooms,'bathroom')}</li>
       </div>
       <div className="rating-peek">
-        {/* map from data */}
+        {/* map from data [!missing]*/}
         <StarIcon />
-        <span>4.8 </span>
-        <Link>41 reviews</Link>
+        <span>4.8</span>
+        <Link> 41 reviews</Link>
       </div>
       <hr />
       
@@ -32,8 +38,7 @@ export function StayDescription() {
       <div className="stay-description">
         {/* make hr a dynamic component */}
         <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo, quia
-          voluptatum. Quisquam, voluptatum. Quisquam, voluptatum. Quis
+          {summary}
         </p>
         <button>show more</button>
       </div>

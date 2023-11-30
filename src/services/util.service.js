@@ -15,7 +15,11 @@ export const utilService = {
 	validateMail,
 	formatMailDate,
 	getSymbolCurrency,
+	// pluralizeLabel,
 }
+export function pluralizeLabel(num,label){
+    return `${num} ${label}${(+num<=1)?'':'s'}`
+  }
 
 function makeId(length = 6) {
 	var txt = ''
@@ -69,6 +73,7 @@ function makeLorem(size = 100) {
 	}
 	return txt.slice(0, -1)
 }
+
 
 function getRandomIntInclusive(min, max) {
 	min = Math.ceil(min)
