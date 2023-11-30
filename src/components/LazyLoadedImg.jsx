@@ -4,6 +4,10 @@ import { useEffect, useState } from "react"
 const LazyLoadedImg = ({ className, src, alt }) => {
     // Simulate a delay in loading the image (you can replace this with your actual image URL)
     const [imageUrl, setImageUrl] = useState(src)
+    
+    useEffect(()=>{
+        setImageUrl(src)
+    },[src])
 
 
     // Imagine if it was a gallery!
