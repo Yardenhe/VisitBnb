@@ -12,7 +12,6 @@ export function StayDescription({stay}) {
     <article className="details-short">
       <h3>{`${type} in ${loc.city},${loc.country}`}</h3>
       <div className="stay-capacity-details">
-        {/* map from data [!currently missing] */}
         <li>{pluralizeLabel(capacity,'guest')}</li>
         <li>{pluralizeLabel(bedrooms,'bedroom')}</li>
         <li>{pluralizeLabel(beds,'bed')}</li>
