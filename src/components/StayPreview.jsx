@@ -10,11 +10,13 @@ export function StayPreview({ stay }) {
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
     console.log('stayID', stay._id);
 
-    const nextImage = () => {
+    const nextImage = (e) => {
+        e.preventDefault()
         setCurrentImageIndex((prevIndex) => (prevIndex + 1) % stay.imgUrls.length);
     };
 
-    const prevImage = () => {
+    const prevImage = (e) => {
+        e.preventDefault()
         setCurrentImageIndex((prevIndex) =>
             prevIndex === 0 ? stay.imgUrls.length - 1 : prevIndex - 1
         );
@@ -47,5 +49,6 @@ export function StayPreview({ stay }) {
                 ))}
             </div>
         </section>
+
     )
 }
