@@ -59,7 +59,9 @@ export const StayList = memo(({ stays }) => {
             <ul className="stay-list">
                 {
                     items.map(stay => <li key={stay.id}>
-                        <StayPreview stay={stay} />
+                        <Link to={`/details/${stay._id}`}>
+                            <StayPreview stay={stay} />
+                        </Link>
                     </li>)
                 }
             </ul>

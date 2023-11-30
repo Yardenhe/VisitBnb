@@ -28,6 +28,9 @@
         display: flex;
         justify-content: space-between;
 
+        .arrow{
+            pointer-events: auto;
+        }
         svg {
             background: white;
             border: none;
