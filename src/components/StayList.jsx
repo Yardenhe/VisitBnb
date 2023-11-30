@@ -8,7 +8,7 @@ export const StayList = memo(({ stays }) => {
     const [items, setItems] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
     const loadingRef = useRef(null)
-    
+
     useEffect(() => {
         console.log(loadingRef);
         loadItems()
@@ -65,6 +65,7 @@ export const StayList = memo(({ stays }) => {
             </ul>
             {isLoading && <p>Loading more items...</p>}
             <div id="loading" style={{ height: '0px' }} ref={loadingRef}></div>
+            <div>bla</div>
         </section>
     )
 
