@@ -8,8 +8,8 @@ export const StayList = memo(({ stays }) => {
     const [items, setItems] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
     const loadingRef = useRef(null)
+    
     useEffect(() => {
-
         console.log(loadingRef);
         loadItems()
         // Create an Intersection Observer
