@@ -11,6 +11,7 @@
     .preview-loc {
         margin-bottom: 5px;
         font-family: 'cereal-bold';
+        color: $clr5;
     }
 
     .preview-name {
@@ -22,9 +23,11 @@
 
     .preview-price {
         font-family: 'cereal-bold';
+        color: $clr5;
 
         span {
             font-family: 'cereal';
+            color: $clr5;
         }
     }
 

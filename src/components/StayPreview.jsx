@@ -8,7 +8,7 @@ const LazyLoadedImage = lazy(() => import('./LazyLoadedImg'))
 
 export function StayPreview({ stay }) {
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
-    console.log('stayID', stay._id);
+
 
     const nextImage = (e) => {
         e.preventDefault()

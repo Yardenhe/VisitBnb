@@ -101,6 +101,7 @@
         margin-right: 25px;
         background-color: #ffffff;
         border: none;
+        min-width: 130px;
 
         &:hover {
             background-color: $clr2;
@@ -155,7 +156,6 @@
         border-radius: 100%;
         border: 1px solid #d3d3d3;
         padding: 7.2px;
-        height: 40px;
-        width: 40px;
+
     }
 }
