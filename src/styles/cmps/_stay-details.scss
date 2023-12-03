@@ -1,6 +1,6 @@
 $details-padding: 80px;
 $child-margin: 180px;
-$section-padding-top: 12px;
+$section-top: 32px;
 
 .details-layout{
     display: flex;
@@ -14,9 +14,9 @@ $section-padding-top: 12px;
     justify-content: center;
     
     >section{
-        padding-top: $section-padding-top;
+        // margin-top: $section-top;
         width: 100%;
-        margin: 0 $child-margin;
+        margin: $section-top $child-margin 0;
     }
     .details-header{
         width: 100%;
@@ -30,84 +30,84 @@ $section-padding-top: 12px;
             gap: 10px;
         }
     }
-
+}
+.checkout-container{
+    display: flex;
+    min-width: 100%;
+    justify-content: space-between;
     .details-short{
-        display: flex;
-        width: 100%;
-        flex-direction: column;
-        .stay-capacity-details{
-            >:first-child{
-                list-style: none;
-            }
-            display: flex;
-            gap: 10px;
-            align-items: center;
-        }
-        .rating-peek{
-            display: flex;
-            margin-top: 8px;
-            align-items: center;
-            gap: 6px;
-        }
+        flex-grow: 1;
     }
-
-    .checkout-container{
+    .checkout-card{
         display: flex;
-        min-width: 100%;
-        flex-direction: row;
-        justify-content: space-between;
-        .details-short{
-            flex-grow: 1;
-        }
-        .checkout-card{
-            position: relative !important;
-            width: 33.33333333333333% !important;
-            margin-left: 8.333333333333332% !important;
-            margin-right: 0% !important;
-            border: 1px solid #ff0000;
-            // width: 300px;
-            // height: 450px;
-            // margin-left: 50px;
-        }
-        
-    
+        flex-direction: column;
+        border-radius: 12px;
+        align-content: flex-start;
+        padding: 24px;
+        box-shadow: rgba(0, 0, 0, 0.12) 0px 6px 16px;
+        position: relative !important;
+        width: 40.33333333333333% !important;
+        height: 479px;
+        // flex-flow: wrap;
+        margin-left: 8.333333333333332% !important;
+        margin-right: 0% !important;
+        border: 1px solid #ff0000;
+    }
+}
+.date-btn-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin: 0 auto;
+}
+.btn-info{
+    @include btn();
+    display: flex;
+    flex-direction: column;
+    padding: 12px;
+    min-height: 56px;
+    border: none;
+    margin-top: 5px;
+    &-label{
+        font-weight: 400;
+        font-size: small;    
+    }
+    &-detail{
+        font-size: smaller;
     }
 
 }
+.details-short{
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    .stay-capacity-details{
+        >:first-child{
+            list-style: none;
+        }
+        display: flex;
+        gap: 10px;
+        align-items: center;
+    }
+    .rating-peek{
+        display: flex;
+        margin-top: 8px;
+        align-items: center;
+        gap: 6px;
+    }
+}
+.price-break-down,.checkout-total{
+    padding: 2px;
+    display: flex;
+    justify-content: space-between;
+    font-size: small;
+    button{
+        text-decoration: underline;
+        border: none;
+        background: transparent;
+    }
+}
 
-// .details-short{
-//     display: flex;
-//     flex-direction: column;
-//     .stay-capacity-details{
-//         >:first-child{
-//             list-style: none;
-//         }
-//         display: flex;
-//         gap: 10px;
-//         align-items: center;
-//     }
-//     .rating-peek{
-//         background-color: #ff0000;
-//     }
-// }
-// .checkout-container{
-//     display: flex;
-//     min-width: 100%;
-//     flex-direction: row;
-//     justify-content: space-between;
-//     .details-short{
-//         flex-grow: 1;
-//     }
-//     .checkout-card{
-//         position: relative !important;
-//         width: 33.33333333333333% !important;
-//         margin-left: 8.333333333333332% !important;
-//         margin-right: 0% !important;
-//         border: 1px solid #ff0000;
-//         // width: 300px;
-//         // height: 450px;
-//         // margin-left: 50px;
-//     }
-    
-
-// }
+.checkout-total{
+    border-top: 1px solid $clr4;
+}

@@ -34,7 +34,7 @@ export function StayDetails() {
   
   if (!stay) return <div>Loading..</div>
   // destructure after loading
-  const {name,imgUrls,host,loc,capacity} = stay;
+  const {name,imgUrls,price,host,loc,capacity} = stay;
   
   return (
     <div className="details-layout">
@@ -53,7 +53,7 @@ export function StayDetails() {
       {/* DESCRIPTION */}
       <section className="checkout-container ">
         <StayDescription stay={stay} />
-        <StayCheckout />
+        <StayCheckout price={price}/>
       </section>
     </div>
   );
