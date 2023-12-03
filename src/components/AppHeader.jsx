@@ -14,8 +14,8 @@ export function AppHeader() {
             </Link>
 
             <section className='date-picker'>
-                <section className='btn-datepicker'>AnyWhere</section>
-                <section className='btn-datepicker'>Any Week</section>
+                <section className='btn-datepicker bold'>AnyWhere</section>
+                <section className='btn-datepicker bold'>Any Week</section>
                 <section className='btn-datepicker'>Add guests  </section>
                 <IoSearch className='search-btn' />
             </section>
