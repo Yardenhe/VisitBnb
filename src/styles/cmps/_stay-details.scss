@@ -83,6 +83,23 @@ $section-top: 32px;
     }
     
 }
+.checkout-container{
+    margin-top: 0;
+    display: flex;
+    min-width: 100%;
+    justify-content: space-between;
+    .details-short{
+        flex-grow: 1;
+    }
+    .checkout-card-container{
+        display: flex;
+        flex-direction: column;
+        width: 50%;
+        height: 100%;
+        position: relative;
+    }
+    
+}
 // checkout card
 .checkout-card{
     display: flex;
@@ -91,7 +108,8 @@ $section-top: 32px;
     align-content: flex-start;
     padding: 24px;
     box-shadow: rgba(0, 0, 0, 0.12) 0px 6px 16px;
-    position: relative !important;
+    position: sticky !important;
+    top: 32px;
     min-width: 33.33333333333333% !important;
     max-width: 40.33333333333333% !important;
     min-height: 479px;
@@ -102,6 +120,7 @@ $section-top: 32px;
     margin-left: 8.333333333333332% !important;
     margin-right: 0% !important;
     margin-top: 32px;
+    margin-bottom: 48px;
     border: 1px solid $clr2;
     // > :not( :first-child){
     //     margin-top: 8px;
@@ -177,22 +196,7 @@ $section-top: 32px;
     margin-top: 24px;
    }
 }
-.checkout-container{
-    margin-top: 0;
-    display: flex;
-    min-width: 100%;
-    justify-content: space-between;
-    .details-short{
-        flex-grow: 1;
-    }
-    .checkout-card-container{
-        display: flex;
-        flex-direction: column;
-        width: 50%;
-    
-    }
-    
-}
+
 
 //stay-dates
 .stay-dates{
