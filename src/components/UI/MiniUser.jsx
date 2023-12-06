@@ -1,5 +1,5 @@
 
-export default function MiniUser({user,type='user'}) {
+export function MiniUser({user,type='user'}) {
     const {fullname,isSuperhost,thumbnailUrl:img} = user
     console.log("user",user);
     const tempImg = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ-2d9_t-RCT8ScVQ7MJAtZRcZdcmwPGMzEGmj-kOL0KBikwQgQQeN6cSyr3hOZu9aiooc&usqp=CAU'

@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom";
 import { IoIosStar as StarIcon } from "react-icons/io";
-import { pluralizeLabel } from "../services/util.service";
-import MiniUser from "./UI/MiniUser";
-import AmenityList from "./AmenityList";
+import { pluralizeLabel } from "../../services/util.service";
+import {MiniUser} from "../UI/MiniUser";
+import {AmenityList} from "./AmenityList";
+import { DatePicker } from "./DatePicker";
 
 export function StayDescription({ stay }) {
   console.log(stay);
@@ -63,6 +64,12 @@ export function StayDescription({ stay }) {
       <section className="stay-amenities">
         <AmenityList amenities={amenities}/>
       </section>
+
+      <section className="stay-dates">
+        <DatePicker/>
+      </section>
     </article>
+    
+
   );
 }

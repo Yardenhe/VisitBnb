@@ -1,6 +1,5 @@
-import React from 'react'
 
-export default function AmenityList({amenities}) {
+export function AmenityList({amenities}) {
     const totalAmenities = amenities.length
     const shortAmenities = amenities.slice(0,4)
   return (

@@ -33,7 +33,7 @@ $section-top: 32px;
     }
 }
 
-// 
+// top part (dual:static & slide)
 .details-top{
     display: flex;
     width: 100%;
@@ -77,42 +77,9 @@ $section-top: 32px;
         @include section-padding(4);
         @include border-top();
     }
-    
-}
-//amenities
-.stay-amenities{
-   h4{
-    padding-top: 0;
-    padding-bottom: 24px;
-   }
-}
-.amenity-list{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-    .amenity{
-        width: 50%;
-        border: solid 0.8px green;
-        display: flex;
-        padding-bottom: 16px;
-   }
-   button{
-    margin-top: 24px;
-   }
-}
-.checkout-container{
-    margin-top: 0;
-    display: flex;
-    min-width: 100%;
-    justify-content: space-between;
-    .details-short{
-        flex-grow: 1;
-    }
-    .checkout-card-container{
-        display: flex;
-        flex-direction: column;
-        width: 50%;
-    
+    .stay-dates{
+        @include section-padding(4);
+        @include border-top();
     }
     
 }
@@ -189,10 +156,64 @@ $section-top: 32px;
     padding-top: 1em;
     font-weight: 600;
 }
-// .checkout-card::before{
-//         line-height: 20px;
-//         display: flex;
-//         height: 100%;
-//         width: 100%;
-//         content: '';
-// }
+//amenities
+.stay-amenities{
+   h4{
+    padding-top: 0;
+    padding-bottom: 24px;
+   }
+}
+.amenity-list{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    .amenity{
+        width: 50%;
+        border: solid 0.8px green;
+        display: flex;
+        padding-bottom: 16px;
+   }
+   button{
+    margin-top: 24px;
+   }
+}
+.checkout-container{
+    margin-top: 0;
+    display: flex;
+    min-width: 100%;
+    justify-content: space-between;
+    .details-short{
+        flex-grow: 1;
+    }
+    .checkout-card-container{
+        display: flex;
+        flex-direction: column;
+        width: 50%;
+    
+    }
+    
+}
+
+//stay-dates
+.stay-dates{
+    
+    .date-picker-large{
+        background-color: rgba(107, 196, 196, 0.239);
+        width: 100%;
+        height: 500px;
+    }
+}
+
+// reviews
+
+.stay-reviews{
+    @include section-padding(4);
+    @include border-top();
+    .review-stats{
+        width: 100%;
+        padding: 0 12px;
+        border: 1px saddlebrown solid;
+        height: 150px;
+    }
+}
+
