@@ -66,8 +66,62 @@
   }
 }
 
-// Buttons
+// UI mixins
+@mixin btn(){
 
+    border: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    
+    min-width: 100px;
+    min-height: 30px;
+    max-width: 250px;
+    max-height: 50px;
+  
+    cursor: pointer;
+    background: transparent;
+    // padding: 13px 23px;
+    margin: -1px;
+  }
+@mixin section-padding($duplicates:1){
+  padding: 12px*$duplicates  0  12px*$duplicates
+}
+@mixin border-top(){
+  border-top: 0.87px solid $clr2;
+}
+
+
+// Type --?
+@mixin type($type: bold) {
+
+  // type options: 
+  // 1.bold 
+  // 2.boldCondensed 
+  // 3.condensed
+  @if $type ==bold {
+    font-variation-settings: "wght" 430;
+  }
+
+  @else if $type ==boldCondensed {
+    font-variation-settings: "wght" 430, "wdth" 80;
+    letter-spacing: em(6.72px);
+  }
+
+  @else if $type ==condensed {
+    font-variation-settings: "wdth" 80;
+    letter-spacing: em(6.72px);
+  }
+
+  @else if $type ==light {
+    font-variation-settings: "wght" 200;
+  }
+}
+
+// Buttons
 // @mixin btn($type: regular, $bg: $clr1, $clr: $clr3, $padding: em(24px) em(44px), $hover: darken($bg, 8%)) {
 //   display: inline-flex;
 //   align-items: center;
@@ -111,50 +165,3 @@
 //     }
 //   }
 // }
-@mixin btn(){
-
-    border: none;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
-    text-align: center;
-    position: relative;
-    
-    min-width: 100px;
-    min-height: 30px;
-    max-width: 250px;
-    max-height: 50px;
-  
-    cursor: pointer;
-    background: transparent;
-    // padding: 13px 23px;
-    margin: -1px;
-  }
-
-// Type
-
-@mixin type($type: bold) {
-
-  // type options: 
-  // 1.bold 
-  // 2.boldCondensed 
-  // 3.condensed
-  @if $type ==bold {
-    font-variation-settings: "wght" 430;
-  }
-
-  @else if $type ==boldCondensed {
-    font-variation-settings: "wght" 430, "wdth" 80;
-    letter-spacing: em(6.72px);
-  }
-
-  @else if $type ==condensed {
-    font-variation-settings: "wdth" 80;
-    letter-spacing: em(6.72px);
-  }
-
-  @else if $type ==light {
-    font-variation-settings: "wght" 200;
-  }
-}

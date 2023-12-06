@@ -2,8 +2,18 @@
 .flex {
     display: flex;
 }
+.flex-start{
+    align-items: start;
+}
 .inline-flex {
     display: inline-flex;
+}
+.bnb-color{
+    background: $clr1;
+    color: #fff;
+    &:hover{
+        background: $clr1;
+    }
 }
 
 // List 
