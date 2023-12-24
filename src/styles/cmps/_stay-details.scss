@@ -16,9 +16,10 @@ $section-top: 32px;
     >section{
         // margin-top: $section-top;
         width: 100%;
-        margin: $section-top $child-margin 0;
+        margin: 0 $child-margin 0;
     }
     .details-header{
+        @include section-padding(2);
         width: 100%;
         display: flex;
         justify-content: space-between;
@@ -31,56 +32,16 @@ $section-top: 32px;
         }
     }
 }
-.checkout-container{
-    display: flex;
-    min-width: 100%;
-    justify-content: space-between;
-    .details-short{
-        flex-grow: 1;
-    }
-    .checkout-card{
-        display: flex;
-        flex-direction: column;
-        border-radius: 12px;
-        align-content: flex-start;
-        padding: 24px;
-        box-shadow: rgba(0, 0, 0, 0.12) 0px 6px 16px;
-        position: relative !important;
-        width: 40.33333333333333% !important;
-        height: 479px;
-        // flex-flow: wrap;
-        margin-left: 8.333333333333332% !important;
-        margin-right: 0% !important;
-        border: 1px solid #ff0000;
-    }
-}
-.date-btn-container{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    margin: 0 auto;
-}
-.btn-info{
-    @include btn();
-    display: flex;
-    flex-direction: column;
-    padding: 12px;
-    min-height: 56px;
-    border: none;
-    margin-top: 5px;
-    &-label{
-        font-weight: 400;
-        font-size: small;    
-    }
-    &-detail{
-        font-size: smaller;
-    }
 
-}
-.details-short{
+// top part (dual:static & slide)
+.details-top{
     display: flex;
     width: 100%;
     flex-direction: column;
+    &-head{
+        @include section-padding(3);
+
+    }
     .stay-capacity-details{
         >:first-child{
             list-style: none;
@@ -95,6 +56,106 @@ $section-top: 32px;
         align-items: center;
         gap: 6px;
     }
+    .host-mini-section{
+        // border: 1px saddlebrown solid;
+        @include section-padding(2);
+        @include border-top();
+        img{
+            border-radius: 100%;
+            object-fit: fill;
+        }
+    }
+    .stay-facts{
+        @include section-padding(3);
+        @include border-top();
+    }
+    .stay-description{
+        @include section-padding(4);
+        @include border-top();
+    }
+    .stay-amenities{
+        @include section-padding(4);
+        @include border-top();
+    }
+    .stay-dates{
+        @include section-padding(4);
+        @include border-top();
+    }
+    
+}
+.checkout-container{
+    margin-top: 0;
+    display: flex;
+    min-width: 100%;
+    justify-content: space-between;
+    .details-short{
+        flex-grow: 1;
+    }
+    .checkout-card-container{
+        display: flex;
+        flex-direction: column;
+        width: 50%;
+        height: 100%;
+        position: relative;
+    }
+    
+}
+// checkout card
+.checkout-card{
+    display: flex;
+    flex-direction: column;
+    border-radius: 12px;
+    align-content: flex-start;
+    padding: 24px;
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 6px 16px;
+    position: sticky !important;
+    top: 32px;
+    min-width: 33.33333333333333% !important;
+    max-width: 40.33333333333333% !important;
+    min-height: 479px;
+    height: 479px;
+    max-height:520px;
+    line-height: 1.25rem;
+    // flex-flow: wrap;
+    margin-left: 8.333333333333332% !important;
+    margin-right: 0% !important;
+    margin-top: 32px;
+    margin-bottom: 48px;
+    border: 1px solid $clr2;
+    // > :not( :first-child){
+    //     margin-top: 8px;
+    // }
+    button{
+        border: 1px solid $clr2;
+    }
+    .btn-continue{
+        margin-top: 5px;
+        padding: 12px;
+        min-height: 56px;
+    }
+}
+.date-btn-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin: 0 auto;
+}
+.btn-info{
+    @include btn();
+    flex-direction: column;
+    padding: 12px;
+    min-height: 56px;
+    border: none;
+    margin-top: 5px;
+    
+    &-label{
+        font-weight: 400;
+        font-size: small;    
+    }
+    &-detail{
+        font-size: smaller;
+    }
+
 }
 .price-break-down,.checkout-total{
     padding: 2px;
@@ -107,7 +168,56 @@ $section-top: 32px;
         background: transparent;
     }
 }
-
 .checkout-total{
-    border-top: 1px solid $clr4;
+    // border-top: 1px solid $clr4;
+    @include border-top();
+    margin-top: 1em;
+    padding-top: 1em;
+    font-weight: 600;
 }
+//amenities
+.stay-amenities{
+   h4{
+    padding-top: 0;
+    padding-bottom: 24px;
+   }
+}
+.amenity-list{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    .amenity{
+        width: 50%;
+        border: solid 0.8px green;
+        display: flex;
+        padding-bottom: 16px;
+   }
+   button{
+    margin-top: 24px;
+   }
+}
+
+
+//stay-dates
+.stay-dates{
+    
+    .date-picker-large{
+        background-color: rgba(107, 196, 196, 0.239);
+        width: 100%;
+        height: 500px;
+    }
+}
+
+// reviews
+
+.stay-reviews{
+    @include section-padding(4);
+    @include border-top();
+    .review-stats{
+        width: 100%;
+        padding: 0 12px;
+        border: 1px saddlebrown solid;
+        height: 150px;
+    }
+}
+

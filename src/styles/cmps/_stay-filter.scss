@@ -9,10 +9,12 @@
 
     .scroll-container {
         display: grid;
+        gap: 20px;
         grid-auto-flow: column;
         overflow-x: auto;
         padding: 10px;
         overflow: hidden;
+
 
     }
 
@@ -21,18 +23,36 @@
         flex-direction: column;
         align-items: center;
         margin-right: 20px;
+        cursor: pointer;
+        border-bottom: 2px solid transparent;
+
+
+        &:hover {
+            border-bottom-color: $clr4;
+        }
+
+
 
 
         img {
             height: 24px;
             width: 24px;
             margin-bottom: 5px;
+
+
+
         }
 
         p {
             font: 12px;
             color: $clr4;
+
+
+
+
         }
+
+
     }
 
     .filter-button {
@@ -46,11 +66,14 @@
         margin-left: 5px;
         margin-bottom: 15px;
 
+
+
         svg {
             font-size: 20px;
             margin-top: 0px;
             font-weight: bold;
             padding-right: 5px;
+
         }
 
         p {

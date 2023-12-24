@@ -8,7 +8,7 @@ const LazyLoadedImage = lazy(() => import('./LazyLoadedImg'))
 
 export function StayPreview({ stay }) {
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
-    console.log('stayID', stay._id);
+
 
     const nextImage = (e) => {
         e.preventDefault()
@@ -34,7 +34,8 @@ export function StayPreview({ stay }) {
 
             <div className='preview-loc'>{stay.loc.city},{stay.loc.country}</div>
             <div className='preview-name'>{stay.name}</div>
-            <div>{stay.price}$ night</div>
+            <div className='preview-price'>{stay.price}$ <span>night</span> </div>
+
             <div className='image-slider-arrows'>
                 <IoIosArrowBack className='arrow arrow-left' onClick={prevImage} />
                 <IoIosArrowForward className='arrow arrow-right' onClick={nextImage} />

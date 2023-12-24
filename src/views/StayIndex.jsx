@@ -1,5 +1,4 @@
-import React, { useEffect } from 'react'
-
+import React, { useEffect, useState, useRef } from 'react'
 import { Link, Outlet, useParams } from 'react-router-dom'
 import { StayFilter } from "../components/StayFilter";
 import { useSelector } from 'react-redux';
@@ -14,6 +13,8 @@ export function StayIndex() {
     const filterBy = useSelector(storeState => storeState.stayModule.filterBy)
 
 
+
+
     const params = useParams()
     console.log('StayIndex', params)
     const { stayId } = params
@@ -22,6 +23,10 @@ export function StayIndex() {
         loadStays()
         //setSearchParams(filterBy)
     }, []) //filterBy
+
+
+
+
 
     if (!stays) return <div>Loading..</div>
     return (

@@ -22,18 +22,19 @@ a {
 
 
 body {
+  display: flex;
   margin: 0;
-
-  // display: grid;
-
-  min-width: 320px;
+  align-items: center;
+  justify-content: center;
   min-height: 100vh;
+  font-family: 'cereal';
 }
 
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
 }
+
 
 
 button{

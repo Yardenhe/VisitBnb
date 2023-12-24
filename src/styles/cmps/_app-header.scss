@@ -24,9 +24,11 @@
     border-radius: 40.6px;
     border: 1px solid #d3d3d3;
     transition: box-shadow 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
 
     &:hover {
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
     }
 
 
@@ -44,6 +46,8 @@
         font-size: 14px;
         border-radius: 20px;
         padding: 5px 16.4px;
+
+
 
     }
 
@@ -97,16 +101,17 @@
         margin-right: 25px;
         background-color: #ffffff;
         border: none;
+        min-width: 130px;
 
         &:hover {
             background-color: $clr2;
             border-radius: 20px;
-            padding: 5px;
+
         }
     }
 
     .global-btn {
-        font-size: 19px;
+        font-size: 15px;
         align-self: center;
     }
 
@@ -117,8 +122,9 @@
     }
 
     .menu-icon {
-        font-size: 18px;
+        font-size: 30px;
         margin: 0px 5px;
+
     }
 
     .menu-bar {
@@ -147,10 +153,9 @@
         align-items: center;
         color: #ffffff;
         background-color: #0b0b0b;
-        border-radius: 58.1%;
+        border-radius: 100%;
         border: 1px solid #d3d3d3;
         padding: 7.2px;
-        height: 35.9px;
-        min-width: 24.8px;
+
     }
 }
