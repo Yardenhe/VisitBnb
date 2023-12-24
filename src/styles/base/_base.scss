@@ -53,8 +53,15 @@ h2 {
 }
 
 h3 {
-    font-size: em(29px);
+    font-size:26px;
+    font-weight: 800;
+    line-height: 30px;
 }
+h4{
+    font-size:22px;
+    font-weight: 600;
+    line-height: 30px;
+  }
 
 // img {
 //     width: 100%;
@@ -97,15 +104,15 @@ p {
 }
 
 .btn {
-    @include btn;
+    @include btn();
 
-    &-dark {
-        @include btn($type: dark);
-    }
+    // &-dark {
+    //     @include btn($type: dark);
+    // }
 
-    &-light {
-        @include btn($type: light);
-    }
+    // &-light {
+    //     @include btn($type: light);
+    // }
 }
 
 

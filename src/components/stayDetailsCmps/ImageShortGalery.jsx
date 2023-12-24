@@ -1,4 +1,4 @@
-import { Button } from "./UI/Button";
+import { Button } from "../UI/Button";
 import { TbGridDots as Dots } from "react-icons/tb";
 
 export function ImageShortGalery({ imgUrls }) {

@@ -1,7 +1,7 @@
 import { Link, useNavigate, useOutletContext } from "react-router-dom";
-import { ImageShortGalery } from "../components/ImageShortGalery";
-import { StayDescription } from "../components/StayDescription";
-import { StayCheckout } from "../components/StayCheckout";
+import { ImageShortGalery } from "../components/stayDetailsCmps/ImageShortGalery";
+import { StayDescription } from "../components//stayDetailsCmps/StayDescription";
+import { StayCheckout } from "../components//stayDetailsCmps/StayCheckout";
 import { IoIosHeartEmpty as Heart } from "react-icons/io";
 import { MdIosShare as ShareIcon } from "react-icons/md";
 
@@ -9,6 +9,7 @@ import { Button } from "../components/UI/Button";
 
 import { stayService } from "../services/stayService.service";
 import { useEffect, useState } from "react";
+import { StayReviews } from "../components/stayDetailsCmps/StayReviews";
 
 
 export function StayDetails() {
@@ -34,7 +35,7 @@ export function StayDetails() {
   
   if (!stay) return <div>Loading..</div>
   // destructure after loading
-  const {name,imgUrls,host,loc,capacity} = stay;
+  const {name,imgUrls,price,host,loc,capacity} = stay;
   
   return (
     <div className="details-layout">
@@ -53,8 +54,14 @@ export function StayDetails() {
       {/* DESCRIPTION */}
       <section className="checkout-container ">
         <StayDescription stay={stay} />
-        <StayCheckout />
+        <StayCheckout price={price}/>
       </section>
+
+      {/* All details */}
+      <section className="stay-reviews">
+        <StayReviews />
+      </section>
+      
     </div>
   );
 }
