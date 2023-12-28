@@ -19,7 +19,7 @@ export async function removeStay(stayId) {
         await stayService.remove(stayId)
     } catch (err) {
         store.dispatch({ type: UNDO_CHANGES })
-        console.log('Had issues loading stays', err);
+        console.log('Had issues remove stay', err);
         throw err
     }
 }

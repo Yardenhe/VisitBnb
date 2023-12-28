@@ -4,17 +4,17 @@ import { memo } from 'react';
 import { StayPreview } from "./StayPreview";
 import { Link } from 'react-router-dom';
 
-export const StayList = memo(({ stays }) => {
+export const StayList = memo(({ stays, onRemove }) => {
     const [items, setItems] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
     const loadingRef = useRef(null)
 
     useEffect(() => {
-        console.log(loadingRef);
+        // console.log(loadingRef);
         loadItems()
         // Create an Intersection Observer
         const observer = new IntersectionObserver((entries) => {
-            console.log('entries', entries);
+            // console.log('entries', entries);
             const entry = entries[0]
             if (entry.isIntersecting) {
                 loadItems()
@@ -58,10 +58,14 @@ export const StayList = memo(({ stays }) => {
         <section>
             <ul className="stay-list">
                 {
-                    items.map(stay => <li key={stay._id}>
+                    stays.map(stay => <li key={stay._id}>
                         <Link to={`/details/${stay._id}`}>
                             <StayPreview stay={stay} />
                         </Link>
+                        <div className="stay-actions">
+                            <button onClick={() => onRemove(`${stay._id}`)}>X</button>
+                            <Link to={`/stay/edit/${stay.id}`}><button>Edit</button></Link>
+                        </div>
                     </li>)
                 }
             </ul>

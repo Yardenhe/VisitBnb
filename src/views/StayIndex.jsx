@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react'
+import React, { useEffect, useState, useRef, useCallback } from 'react'
 import { Link, Outlet, useParams } from 'react-router-dom'
 import { StayFilter } from "../components/StayFilter";
 import { useSelector } from 'react-redux';
@@ -16,7 +16,6 @@ export function StayIndex() {
 
 
     const params = useParams()
-    console.log('StayIndex', params)
     const { stayId } = params
 
     useEffect(() => {
@@ -25,7 +24,15 @@ export function StayIndex() {
     }, []) //filterBy
 
 
-
+    const onRemoveStay = useCallback(async (stayId) => {
+        try {
+            await removeStay(stayId)
+            showSuccessMsg('Successfully removed')
+        } catch (err) {
+            console.log('Had issues loading stays', err);
+            showErrorMsg('can not remove!')
+        }
+    }, [])
 
 
     if (!stays) return <div>Loading..</div>
@@ -38,7 +45,7 @@ export function StayIndex() {
                 :
                 <section className='index-layout'>
                     <StayFilter />
-                    <StayList stays={stays} />
+                    <StayList stays={stays} onRemove={onRemoveStay} />
                 </section>
             }
 

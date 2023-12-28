@@ -30,14 +30,14 @@ export function stayReducer(state = initialState, action = {}) {
             const laststays = [...state.stays]
             return {
                 ...state,
-                stays: state.stays.filter(stay => stay.id !== action.stayId),
+                stays: state.stays.filter(stay => stay._id !== action.stayId),
                 laststays
 
             }
         case UPDATE_STAY:
             return {
                 ...state,
-                stays: state.stays.map(stay => stay.id === action.stay.id ? action.stay : stay)
+                stays: state.stays.map(stay => stay._id === action.stay._id ? action.stay : stay)
             }
         case SET_FILTER_BY:
             return {
