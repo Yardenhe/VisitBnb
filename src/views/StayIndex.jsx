@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef, useCallback } from 'react'
-import { Link, Outlet, useParams } from 'react-router-dom'
+import { Link, Outlet, useParams, useNavigate } from 'react-router-dom'
 import { StayFilter } from "../components/StayFilter";
 import { useSelector } from 'react-redux';
 import { stayService } from '../services/stayService.service'
@@ -14,7 +14,7 @@ export function StayIndex() {
 
 
 
-
+    const navigate = useNavigate()
     const params = useParams()
     const { stayId } = params
 
@@ -33,7 +33,14 @@ export function StayIndex() {
             showErrorMsg('can not remove!')
         }
     }, [])
-
+    async function onSaveStay(stay) {
+        try {
+            await saveStay(stay)
+            navigate('/')
+        } catch (err) {
+            console.log('Had issues adding stay', err);
+        }
+    }
 
     if (!stays) return <div>Loading..</div>
     return (
@@ -41,7 +48,7 @@ export function StayIndex() {
         <>
             {/* ↓ will be mapped with each result */}
             {params.stayId ?
-                <Outlet context={{ stayId }} />
+                <Outlet context={{ stayId, onSaveStay }} />
                 :
                 <section className='index-layout'>
                     <StayFilter />

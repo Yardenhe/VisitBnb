@@ -6,6 +6,7 @@ export const stayService = {
 	query,
 	get,
 	remove,
+  getById,
 	save,
 	getEmptyStay,
 	getLoggedUser,
@@ -43940,9 +43941,12 @@ async function getUnreadCount() {
 function remove(stayId) {
 	return storageService.remove(STAY_KEY, stayId)
 }
+function getById(stayId) {
+  return storageService.get(STAY_KEY, stayId)
+}
 
 function save(stay) {
-	if (stay.id) {
+	if (stay._id) {
 		return storageService.put(STAY_KEY, stay)
 	} else {
 		stay.from = getLoggedUser().estay
@@ -43951,16 +43955,16 @@ function save(stay) {
 }
 
 function getEmptyStay(
-	{_id= "",
+	_id= "",
   name= "",
   type= "",
   imgUrls= [],
-  price= null,
+  price= 100,
   summary= "",
-  capacity= null,
-  beds=null,
-  bedrooms=null,
-  bathrooms=null,
+  capacity= 0,
+  beds=0,
+  bedrooms=0,
+  bathrooms=0,
   amenities= [],
   labels= [],
   host= {
@@ -43973,9 +43977,9 @@ function getEmptyStay(
     countryCode: "",
     cit: "",
     address: "",
-    lat: null,
-    lng: null
-  }}
+    lat: 0,
+    lng: 0
+  }
 ) {
 	return {
     _id,

@@ -7,6 +7,7 @@ import { AppHeader } from './components/AppHeader'
 import { StayDetails } from './views/StayDetails'
 
 import { Route, HashRouter as Router, Routes } from 'react-router-dom'
+import { StayEdit } from './views/StayEdit'
 
 function App() {
   return (
@@ -22,6 +23,8 @@ function App() {
               path='/details/:stayId'
               element={<StayDetails />}
             />
+            <Route path="/edit/:stayId?"
+              element={<StayEdit />} />
           </Route>
         </Routes>
       </section>

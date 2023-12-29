@@ -64,7 +64,7 @@ export const StayList = memo(({ stays, onRemove }) => {
                         </Link>
                         <div className="stay-actions">
                             <button onClick={() => onRemove(`${stay._id}`)}>X</button>
-                            <Link to={`/stay/edit/${stay.id}`}><button>Edit</button></Link>
+                            <Link to={`/edit/${stay._id}`}><button>Edit</button></Link>
                         </div>
                     </li>)
                 }
