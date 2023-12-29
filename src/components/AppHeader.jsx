@@ -24,7 +24,7 @@ export function AppHeader() {
                     <button>Switch to hosting</button>
                     <LuGlobe className='global-btn' />
                 </div>
-                <div className='menu-bar'> <IoMdMenu className='menu-icon' /><div className='circle'>YH</div></div>
+                <div className='menu-bar'> <IoMdMenu className='menu-icon' /><div className='circle'>י</div></div>
 
             </section>
 
