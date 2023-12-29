@@ -10,7 +10,7 @@ export function AmenityList({amenities}) {
         <div className='amenity' key={i}>
             {amenity}
         </div>)}
-        <button onClick={()=>console.log(amenities)}>Show all {totalAmenities} amenities</button>
+        <button onClick={()=>console.log(amenities)} className="commun-btn">Show all {totalAmenities} amenities</button>
     </div>
     </>  
   )

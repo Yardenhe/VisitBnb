@@ -221,3 +221,9 @@ $section-top: 32px;
     }
 }
 
+.commun-btn{
+    @include btn();
+    padding: 13px 23px;
+    border: 0.95px solid #000;
+    font-weight: 600;
+}

@@ -56,9 +56,8 @@ export function StayDescription({ stay }) {
       </section>
 
       <section className="stay-description">
-        {/* make hr a dynamic component */}
         <p>{summary}</p>
-        <button>show more</button>
+        <button className="btn-info">show more</button>
       </section>
 
       <section className="stay-amenities">

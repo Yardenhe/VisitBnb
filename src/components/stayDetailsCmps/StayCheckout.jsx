@@ -8,14 +8,17 @@ export function StayCheckout({ price, orderInfo }) {
       {/* actions */}
       <button>
         <div className="date-btn-container">
+
           <div className="btn-info">
             <div className="btn-info-label">check-in</div>
             <div className="btn-info-detail">12/1/2023</div>
           </div>
+
           <div className="btn-info">
             <div className="btn-info-label">check-out</div>
             <div className="btn-info-detail">12/1/2023</div>
           </div>
+  
         </div>
       </button>
       <button>

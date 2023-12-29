@@ -8,6 +8,10 @@ export function StayReviews() {
         
       </div>
     {/* TODO: reviews-list cmp  */}
+    <div className="review-list-short">
+      
+    </div>
+    <button className="commun-btn">Show all __ reviews</button>
     </>
   )
 }
