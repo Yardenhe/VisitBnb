@@ -9,6 +9,7 @@ import { StayList } from '../components/StayList';
 
 
 export function StayIndex() {
+    
     const stays = useSelector(storeState => storeState.stayModule.stays)
     const filterBy = useSelector(storeState => storeState.stayModule.filterBy)
 
@@ -16,7 +17,7 @@ export function StayIndex() {
 
 
     const params = useParams()
-    console.log('StayIndex', params)
+    // console.log('StayIndex', params)
     const { stayId } = params
 
     useEffect(() => {

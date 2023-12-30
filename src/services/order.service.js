@@ -48,21 +48,49 @@ const orderData = [
     }
   ]
   // order status: pending ,approved, rejected
-const STORAGE_KEY = 'orders'
+const STORAGE_KEY = 'orderDB'
 
 export const orderService = {
-  // query,
-  // save,
-  // remove,
-  // getById,
-  createOrder,
+  query,
+  getById,
+  save,
+  remove,
+  getEmptyOrder,
+  getOrderFromParams,
 }
 
 _createOrders()
 
-function createOrder(){
+// Read
+async function query(){
+	const orders = await storageService.query(STORAGE_KEY)
+  console.log('ordersFromQuery',orders);
+	return orders
+}
+// Read - getById
+function getById(orderId) {
+	return storageService.get(STAY_KEY, orderId)
+}
+// Create / Update
+async function save(order) {
+  console.log('service',order);
+  let method = order.id ? 'put' : 'post'
+  return await storageService[method](STORAGE_KEY, order)
+	// if (order.id) {
+	// 	return storageService.put(STORAGE_KEY, order)
+	// } else {
+	// 	return storageService.post(STORAGE_KEY, order)
+	// }
+}
+// Delete
+async function remove(orderId){
+  return await storageService.remove(orderId)
+}
+
+
+function getEmptyOrder(){
   return {
-    _id: "",
+    // _id: "",
     // hostId: "",
     // buyer: {
     //   _id: "",
@@ -94,6 +122,15 @@ function _createOrders(){
   }
 }
 
+function getOrderFromParams(searchParams) {
+  const defaultOrder = getEmptyOrder()
+  const order = {}
+  for (const field in defaultOrder) {
+      order[field] = searchParams.get(field) || ''
+  }
+  return order
+}
+
 // search criteria result
 // .com/?
 // tab_id=home_tab
@@ -113,6 +150,7 @@ function _createOrders(){
 // &adults=1
 // &children=1
 // &infants=1
+
 // &source=structured_search_input_header
 // &search_type=filter_change
 

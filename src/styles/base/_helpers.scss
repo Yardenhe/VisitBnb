@@ -20,6 +20,19 @@
 .bold {
     font-family: 'cereal-bold';
 }
+.dev-actions{
+    display: flex;
+    align-items: center;
+    flex-flow: row;
+    flex-wrap: wrap;
+    margin:  0.5em auto;
+    gap: 20px;
+    & button{
+        height: 80px;
+        width: 250px;
+        padding: 0.75em;
+    }
+}
 
 // List 
 .clean-list {

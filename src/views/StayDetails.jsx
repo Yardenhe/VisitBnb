@@ -11,28 +11,33 @@ import { stayService } from "../services/stayService.service";
 import { useEffect, useState } from "react";
 import { StayReviews } from "../components/stayDetailsCmps/StayReviews";
 import { orderService } from "../services/order.service";
+import { useSelector } from "react-redux";
+import { loadOrders, saveOrder, setCurrOrder } from "../store/actions/order.actions";
 
 
 export function StayDetails() {
   // TODO: get the stay from the store
-  const { stayId } = useOutletContext();
+  const { stayId } = useOutletContext(); //
   const [stay, setStay] = useState(null);
   const navigate = useNavigate();
 
+  const orders = useSelector(storeState=>storeState.orderModule.orders)
+  const currOrder = useSelector(storeState=>storeState.orderModule.currOrder)
+  // const [orderToSend,setOrderToSend] = useState(currOrder)
+
   // obtain orderData from params , 
   // add orderDetails to params (useParams/searchParams),
-  // turn into object
-
+  // turn into object...
   //idea ↓ (flow doesnt exist yet)
   // const [order,setOrder] = useState(orderService.getOrderFromParams() || orderService.getDefaultOrder())
-  const [searchParams,setSearchParams] = useSearchParams()
+  // const [searchParams,setSearchParams] = useSearchParams()
+  // useEffect(()=>{
+  //   setSearchParams(new URLSearchParams(orderService.getEmptyOrder()))
+  //   console.log('blank order: ',searchParams.entries() );
+  // },[])
   
-  
-  useEffect(()=>{
-    setSearchParams(new URLSearchParams(orderService.createOrder()))
-    console.log('blank order: ',searchParams.entries() );
-  },[])
-  
+  console.log('global Orders',orders);
+
   useEffect(() => {
     loadStay();
   }, [stayId]);
@@ -48,14 +53,19 @@ export function StayDetails() {
     }
   }
 
-  async function createOrderToSend(){
-    try {
-      const order = await orderService.createOrder()
-      console.log('createOrderToSend');
-    } catch (err) {
-      console.log(err);
-    }
+  async function onChangeOrderData({startDate,endDate,guests}){
+    return await setCurrOrder({startDate,endDate,guests})
+    // setOrderToSend(prev=>({...prev,startDate,endDate,guests}))
   }
+
+// CREATE ORDER
+// UPDATE ORDER
+// REMOVE ORDER
+// SAVE ORDER ()
+
+  
+  
+  
   
   if (!stay) return <div>Loading..</div>
   // destructure after loading
@@ -64,10 +74,14 @@ export function StayDetails() {
   return (
     <div className="details-layout">
       <div className="dev-actions">
-        <button onClick={createOrderToSend}>createOrderToSend</button>
-        {/* <button onClick={}>updateOrderToSend</button> */}
-        {/* <button onClick={}>saveOrder</button> */}
-        {/* <button onClick={}></button> */}
+        <button onClick={()=>loadOrders()}>LoadOrders</button>
+        <button onClick={()=>onChangeOrderData(orders[0])}>set/update currOrder</button>
+        {/* <button onClick={()=>setCurrOrder(orderToSend)}>setCurrOrder</button> */}
+
+        <button onClick={()=>console.log(currOrder)}>LOG CURR ORDER</button>
+        <button onClick={()=>console.log(orders)}>LOG all ORDERS</button>
+
+        <button onClick={()=>saveOrder(currOrder)}>placeOrder (save)</button>
       </div>
       {/* HEADER */}
       <section className="details-header ">

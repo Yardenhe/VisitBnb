@@ -6,7 +6,7 @@ import {AmenityList} from "./AmenityList";
 import { DatePicker } from "./DatePicker";
 
 export function StayDescription({ stay }) {
-  console.log(stay);
+  // console.log('StayDescription',stay);
   const {
     amenities,
     summary,
