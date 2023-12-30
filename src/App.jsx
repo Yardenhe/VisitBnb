@@ -6,7 +6,7 @@ import { AppHeader } from './components/AppHeader'
 
 import { StayDetails } from './views/StayDetails'
 
-import { Route, HashRouter as Router, Routes } from 'react-router-dom'
+import { Route, BrowserRouter as Router, Routes } from 'react-router-dom'
 import { StayEdit } from './views/StayEdit'
 
 function App() {

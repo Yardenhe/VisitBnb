@@ -56,6 +56,7 @@ export const StayList = memo(({ stays, onRemove }) => {
 
     return (
         <section>
+
             <ul className="stay-list">
                 {
                     stays.map(stay => <li key={stay._id}>

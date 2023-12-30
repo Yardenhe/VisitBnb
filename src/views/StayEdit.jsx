@@ -5,6 +5,7 @@ import { utilService } from "../services/util.service";
 import { useForm } from "../customHooks/useForm";
 
 export function StayEdit() {
+    console.log('StayEdit component rendered');
     const [stay, handleChange, setStay] = useForm(stayService.getEmptyStay())
     const { onSaveStay } = useOutletContext()
     const { stayId } = useParams()

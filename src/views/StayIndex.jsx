@@ -52,6 +52,7 @@ export function StayIndex() {
                 :
                 <section className='index-layout'>
                     <StayFilter />
+                    <Link to="/edit"><button>Add stay</button></Link>
                     <StayList stays={stays} onRemove={onRemoveStay} />
                 </section>
             }
