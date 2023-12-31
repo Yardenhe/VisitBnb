@@ -1,6 +1,6 @@
 $gallery-columns: 4;
 $gallery-rows: 2;
-$slot-width: 220px;
+$slot-width: 10.3rem;//220px;
 $slot-height: $slot-width*1.03; //* 0.83163214285;
 $img-gap: 8px;
 $img-radius:4%;
@@ -11,7 +11,7 @@ $img-radius:4%;
   display: grid;
   gap: $img-gap;
   max-width: 100%;
-  min-width: 100%;
+  min-width: 80%;
   height: 100%;
   grid-template-columns: repeat($gallery-columns, 1fr);
   grid-template-rows: repeat($gallery-rows, 1fr);
@@ -45,13 +45,15 @@ $img-radius:4%;
   }
   .button-overlay {
     position: absolute;
-    bottom: 30px;
-    right: 32px;
+    bottom: 1.3rem;
+    right: 1.3rem;
   }
 }
 
 .galery-btn{
+  font-weight: 500;
+  outline: 0.5px solid black;
   max-height: 10px;
-  padding: 7px 15px;
-  min-width: 160px;
+  padding: 7px 5px;
+  width: 8.7rem;
 }

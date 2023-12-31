@@ -57,23 +57,14 @@ export function StayDetails() {
     return await setCurrOrder({startDate,endDate,guests})
     // setOrderToSend(prev=>({...prev,startDate,endDate,guests}))
   }
-
-// CREATE ORDER
-// UPDATE ORDER
-// REMOVE ORDER
-// SAVE ORDER ()
-
-  
-  
   
   
   if (!stay) return <div>Loading..</div>
   // destructure after loading
   const {name,imgUrls,price,host,loc,capacity} = stay;
   
-  return (
-    <div className="details-layout">
-      <div className="dev-actions">
+  // dev - order actions
+      const elDevActions = <div className="dev-actions">
         <button onClick={()=>loadOrders()}>LoadOrders</button>
         <button onClick={()=>onChangeOrderData(orders[0])}>set/update currOrder</button>
         {/* <button onClick={()=>setCurrOrder(orderToSend)}>setCurrOrder</button> */}
@@ -83,6 +74,9 @@ export function StayDetails() {
 
         <button onClick={()=>saveOrder(currOrder)}>placeOrder (save)</button>
       </div>
+  return (
+    <div className="details-layout">
+      {/* {elDevActions} */}
       {/* HEADER */}
       <section className="details-header ">
         <h3>{name}</h3>

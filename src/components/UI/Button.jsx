@@ -1,6 +1,6 @@
-export function Button({ icon, classname = "", text }) {
+export function Button({ icon, className = "", text }) {
   return (
-    <button className={`action-btn ${classname}`}>
+    <button className={`action-btn ${className}`}>
       {icon && <div className="icon-holder">{icon}</div>}
       {text}
     </button>

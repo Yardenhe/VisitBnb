@@ -1,4 +1,4 @@
-$details-padding: 80px;
+$details-padding: 6.5rem;
 $child-margin: 180px;
 $section-top: 32px;
 
@@ -24,7 +24,8 @@ $section-top: 32px;
         display: flex;
         justify-content: space-between;
         align-items: flex-end;
-        max-height: 80px;
+        max-height: 100px;
+        min-height: 82px;
         .btn-header-container{
             display: flex;
             align-items: center;
@@ -40,7 +41,7 @@ $section-top: 32px;
     flex-direction: column;
     &-head{
         @include section-padding(3);
-
+        
     }
     .stay-capacity-details{
         >:first-child{
@@ -188,13 +189,18 @@ $section-top: 32px;
     justify-content: flex-start;
     .amenity{
         width: 50%;
-        border: solid 0.8px green;
+        border: solid 0.8px rgb(223, 229, 223);
         display: flex;
-        padding-bottom: 16px;
+        padding: 16px 0;
+        align-items: center;
+        padding-left: 0.5em;
    }
    button{
     margin-top: 24px;
    }
+}
+.amenity-icon , .amenity-name{
+    padding-left: 1em;
 }
 
 
