@@ -64,7 +64,8 @@ export function StayDetails() {
   const {name,imgUrls,price,host,loc,capacity} = stay;
   
   // dev - order actions
-      const elDevActions = <div className="dev-actions">
+      const elDevActions = 
+      <div className="dev-actions">
         <button onClick={()=>loadOrders()}>LoadOrders</button>
         <button onClick={()=>onChangeOrderData(orders[0])}>set/update currOrder</button>
         {/* <button onClick={()=>setCurrOrder(orderToSend)}>setCurrOrder</button> */}
@@ -74,6 +75,7 @@ export function StayDetails() {
 
         <button onClick={()=>saveOrder(currOrder)}>placeOrder (save)</button>
       </div>
+      
   return (
     <div className="details-layout">
       {/* {elDevActions} */}
