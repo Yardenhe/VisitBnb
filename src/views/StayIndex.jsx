@@ -17,7 +17,6 @@ export function StayIndex() {
     const navigate = useNavigate()
     const params = useParams()
     const { stayId } = params
-
     useEffect(() => {
         loadStays()
         //setSearchParams(filterBy)
@@ -46,8 +45,10 @@ export function StayIndex() {
     return (
 
         <>
+
             {/* ↓ will be mapped with each result */}
-            {params.stayId ?
+            {params.stayId || location.pathname.includes('edit') ?
+
                 <Outlet context={{ stayId, onSaveStay }} />
                 :
                 <section className='index-layout'>
