@@ -14,8 +14,8 @@ export function AppHeader() {
 
     useEffect(() => {
         const handleScroll = () => {
-            if (isOpenFilter) {
-                onToggle();
+            if (isOpenEffect) {
+                onToggleEffect();
             }
         };
 
@@ -24,7 +24,7 @@ export function AppHeader() {
         return () => {
             window.removeEventListener('scroll', handleScroll);
         };
-    }, [isOpenFilter, onToggle]);
+    }, [isOpenEffect, onToggleEffect]);
 
     useEffect(() => {
         if (isFirstRender.current) {
@@ -35,7 +35,7 @@ export function AppHeader() {
 
         const timeoutId = setTimeout(() => {
             onToggle();
-        }, 150);
+        }, 200);
 
         return () => {
 
@@ -57,7 +57,7 @@ export function AppHeader() {
                     <img className="app-header-logo" src="img/airbnb-logoo.PNG" />
                 </Link>
 
-                <section className={`date-picker${isOpenEffect ? ' enlarge' : ' shrink'}`} onClick={onToggleEffect}>
+                <section className={`date-picker${isOpenEffect ? ' enlarge' : ' '}`} onClick={onToggleEffect}>
                     <section className='btn-datepicker bold'>AnyWhere</section>
                     <section className='btn-datepicker bold'>Any Week</section>
                     <section className='btn-datepicker'>Add guests  </section>
@@ -77,7 +77,7 @@ export function AppHeader() {
             {isOpenFilter && <header className='app-header-filter'>
 
 
-                <section className='app-header grid-app-header'>
+                <section className="app-header grid-app-header">
                     <Link to="/">
                         <img className="app-header-logo" src="img/airbnb-logoo.PNG" />
                     </Link>
@@ -97,7 +97,7 @@ export function AppHeader() {
 
                     </section>
                 </section>
-                <section className='date-picker grid-date-picker' onClick={onToggleEffect}>
+                <section className={`date-picker grid-date-picker${!isOpenEffect ? ' shrink' : ' '}`} onClick={onToggleEffect}>
                     <section className='btn-datepicker'>
                         <span className='bold'>Where</span>
                         <p >Search destinations</p>
