@@ -10,6 +10,7 @@ export const stayService = {
 	save,
 	getEmptyStay,
 	getLoggedUser,
+  getFilterFromParams,
 	// getStayFromSearchParams,
 	// getSortFromParams,
 	getUnreadCount,
@@ -43922,9 +43923,9 @@ const loggedInUser = {
 _createStays()
 
 
-async function query(){   //filterBy = {}, sortBy = getDefaultSort()) {
+async function query(filterBy){   //, sortBy = getDefaultSort()) {
 	let stays = await storageService.query(STAY_KEY)
-	// stays = _filterStays(stays, filterBy)
+	stays = _filterStays(stays, filterBy)
 	// _sortStays(stays, sortBy)
 	return stays
 }
@@ -44004,6 +44005,21 @@ function getEmptyStay(
 function getLoggedUser() {
 	return loggedInUser
 }
+function getFilterFromParams(searchParams) {
+  const defaultFilter = getDefaultFilter()
+  const filterBy = {}
+  for (const field in defaultFilter) {
+      filterBy[field] = searchParams.get(field) || ''
+  }
+
+  return filterBy
+}
+function getDefaultFilter() {
+  return {
+      type: '',
+      price: '',
+  }
+}
 
 // function getDefaultFilter() {
 // 	return {
@@ -44056,20 +44072,21 @@ function getLoggedUser() {
 
 
 
-// function _filterStays(stays, filterBy) {
-// 	if (filterBy.status) {
-// 		stays = _filterStaysByFolder(stays, filterBy.status)
-// 	}
-// 	if (filterBy.txt) {
-// 		const regExp = new RegExp(filterBy.txt, 'i')
-// 		stays = stays.filter(stay => regExp.test(stay.subject) || regExp.test(stay.body) || regExp.test(stay.from))
-// 	}
-// 	if (filterBy.isRead !== null && filterBy.isRead !== undefined) {
-// 		stays = stays.filter(stay => stay.isRead === filterBy.isRead)
-// 	}
-// 	return stays
+function _filterStays(stays, filterBy) {
+  let {  type = '', price = '' } = filterBy
+	if (filterBy.type) {
+		stays = stays.filter(stay => stay.type.toLowerCase().includes(type.toLowerCase()))
+	}
+	// if (filterBy.txt) {
+	// 	const regExp = new RegExp(filterBy.txt, 'i')
+	// 	stays = stays.filter(stay => regExp.test(stay.subject) || regExp.test(stay.body) || regExp.test(stay.from))
+	// }
+	// if (filterBy.isRead !== null && filterBy.isRead !== undefined) {
+	// 	stays = stays.filter(stay => stay.isRead === filterBy.isRead)
+	// }
+	return stays
 
-// }
+}
 
 
 

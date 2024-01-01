@@ -1,14 +1,22 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { BsSliders } from "react-icons/bs";
+import { useEffectUpdate } from "../customHooks/useEffectUpdate"
 
 const iconBasePath = 'img/labels/';
 const iconNames = ['amazingpools', 'amazingviews', 'cabins', 'castles', 'Countryside'
     , 'cycladichomes', 'iconiccities', 'luxe', 'mansions', 'minsus', 'nationalparks', 'omg!', 'towers'];
-export function StayFilter({ }) {
+export function StayFilter({ filterBy, onSetFilter }) {
 
     const scrollContainerRef = useRef(null);
+    const [filterByToEdit, setFilterByToEdit] = useState(filterBy)
 
+    useEffectUpdate(() => {
+        onSetFilter(filterByToEdit)
+    }, [filterByToEdit])
+    function onTypeChange(iconName) {
+        setFilterByToEdit((prevFilter) => ({ ...prevFilter, "type": iconName }))
+    }
     const handleScroll = (direction) => {
         if (scrollContainerRef.current) {
             const scrollAmount = 300; // Adjust the scroll amount as needed
@@ -34,7 +42,7 @@ export function StayFilter({ }) {
             <IoIosArrowBack className='arrow arrow-left' onClick={() => handleScroll('left')} />
             <div className='scroll-container' ref={scrollContainerRef}>
                 {iconNames.map((iconName, index) => (
-                    <section className='stay-icon' key={index}>
+                    <section className='stay-icon' key={index} onClick={() => onTypeChange(iconName)}>
                         <img src={`${iconBasePath}${iconName}.jpg`} alt={iconName} />
                         <p>{iconName}</p>
                     </section>

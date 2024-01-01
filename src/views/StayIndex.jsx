@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef, useCallback } from 'react'
-import { Link, Outlet, useParams, useNavigate } from 'react-router-dom'
+import { Link, Outlet, useParams, useNavigate, useSearchParams } from 'react-router-dom'
 import { StayFilter } from "../components/StayFilter";
 import { useSelector } from 'react-redux';
 import { stayService } from '../services/stayService.service'
@@ -17,10 +17,16 @@ export function StayIndex() {
     const navigate = useNavigate()
     const params = useParams()
     const { stayId } = params
+    const [searchParams, setSearchParams] = useSearchParams()
+
+    useEffect(() => {
+        setFilterBy(stayService.getFilterFromParams(searchParams))
+    }, [])
+
     useEffect(() => {
         loadStays()
-        //setSearchParams(filterBy)
-    }, []) //filterBy
+        setSearchParams(filterBy)
+    }, [filterBy])
 
 
     const onRemoveStay = useCallback(async (stayId) => {
@@ -40,8 +46,13 @@ export function StayIndex() {
             console.log('Had issues adding stay', err);
         }
     }
+    function onSetFilter(fieldsToUpdate) {
+        fieldsToUpdate = { ...filterBy, ...fieldsToUpdate }
+        setFilterBy(fieldsToUpdate)
+    }
 
     if (!stays) return <div>Loading..</div>
+    const { type, price } = filterBy
     return (
 
         <>
@@ -52,7 +63,7 @@ export function StayIndex() {
                 <Outlet context={{ stayId, onSaveStay }} />
                 :
                 <section className='index-layout'>
-                    <StayFilter />
+                    <StayFilter onSetFilter={onSetFilter} filterBy={{ type }} />
                     <Link to="/edit"><button>Add stay</button></Link>
                     <StayList stays={stays} onRemove={onRemoveStay} />
                 </section>
