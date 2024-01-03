@@ -7,6 +7,7 @@ import { AppHeader } from './components/AppHeader'
 import { StayDetails } from './views/StayDetails'
 
 import { Route, HashRouter as Router, Routes } from 'react-router-dom'
+import { OrderIndex } from './views/OrderIndex'
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
               element={<StayDetails />}
             />
           </Route>
+          <Route path='/orders' element={<OrderIndex/>}/>
         </Routes>
       </section>
     </Router>

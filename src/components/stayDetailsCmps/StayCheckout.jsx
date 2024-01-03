@@ -1,10 +1,13 @@
+import { RiArrowDropDownLine as DownArrow } from "react-icons/ri";
+
 export function StayCheckout({ price, orderInfo }) {
   return (
     //<div className="checkout-card-container">
     <div className="checkout-card">
-      <p>
-        <b>${price}</b> <span className="btn-info-detail">night</span>
-      </p>
+      <div className="price-container">
+        <div className="price"> ${price}</div> 
+        <span className="btn-info-detail">night</span>
+      </div>
       {/* actions */}
       <button>
         <div className="date-btn-container">
@@ -22,9 +25,15 @@ export function StayCheckout({ price, orderInfo }) {
         </div>
       </button>
       <button>
+        <div className="guest-btn-container">
+
         <div className="btn-info">
           <div className="btn-info-label">guests</div>
           <div className="btn-info-detail">1</div>
+        </div>
+        <div className="btn-info down-arrow">
+          <DownArrow/>
+        </div>
         </div>
       </button>
       <button className="btn-continue bnb-color">continue</button>

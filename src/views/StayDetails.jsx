@@ -75,9 +75,12 @@ export function StayDetails() {
 
         <button onClick={()=>saveOrder(currOrder)}>placeOrder (save)</button>
       </div>
-      
+
   return (
     <div className="details-layout">
+      <div className="dev-action-element">
+        <button><Link to={'/orders'}>Orders Page (dev-btn)</Link></button>
+      </div>
       {/* {elDevActions} */}
       {/* HEADER */}
       <section className="details-header ">

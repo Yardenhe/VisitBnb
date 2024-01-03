@@ -1,9 +1,12 @@
 import { Link } from "react-router-dom";
 import { IoIosStar as StarIcon } from "react-icons/io";
+import { PiDoorOpenLight as DoorIcon } from "react-icons/pi";
 import { pluralizeLabel } from "../../services/util.service";
+
 import { MiniUser } from "../UI/MiniUser";
 import { AmenityList } from "./AmenityList";
 import { DatePicker } from "./DatePicker";
+import { TagToIcon } from "../UI/TagToIcon";
 
 export function StayDescription({ stay }) {
   // console.log('StayDescription',stay);
@@ -39,7 +42,7 @@ export function StayDescription({ stay }) {
             <StarIcon />
             <span className="total-rating">4.8</span>
           </div>
-            <span className="dot"></span>
+          <span className="dot"></span>
           <div className="total-reviews">
             <Link>41 reviews</Link>
           </div>
@@ -51,12 +54,34 @@ export function StayDescription({ stay }) {
       </section>
 
       <section className="stay-facts">
-        <ul>
-          {/* map from data */}
-          <li>Entire home</li>
-          <li>Self check-in</li>
-          <li>Free cancelation before..</li>
-        </ul>
+        {/* create a FactMap component and map from data */}
+        <div className="stay-facts-row">
+          <div className="stay-facts-icon">
+            <TagToIcon tag={'door'} />
+          </div>
+          <div className="list-item-nest">
+            <li>Entire home</li>
+            <sub>Have the privacy of the entire place.</sub>
+          </div>
+        </div>
+        <div className="stay-facts-row">
+          <div className="stay-facts-icon">
+            <TagToIcon tag={'gps-loc'} />
+          </div>
+          <div className="list-item-nest">
+            <li>Great location</li>
+            <sub>90% of {host.fullname} Guests rated this location a 5 star rating.</sub>
+          </div>
+        </div>
+        <div className="stay-facts-row">
+          <div className="stay-facts-icon">
+            <TagToIcon tag={'calendar'}/>
+          </div>
+          <div className="list-item-nest">
+            <li>Free cancelation before..</li>
+            <sub>Check yourself in with the smartlock.</sub>
+          </div>
+        </div>
       </section>
 
       <section className="stay-description">

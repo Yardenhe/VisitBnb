@@ -70,3 +70,16 @@
 .ratio-poster {
     @include aspect-ratio(100, 150);
 }
+
+// a dev element that sits on top of everthing (fixed position)
+.dev-action-element{
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 50px;
+    left: 50px;
+    max-width: 200px;
+}
+.sub-text{
+    color: $clr4;
+}

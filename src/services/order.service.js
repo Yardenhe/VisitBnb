@@ -3,10 +3,10 @@ import { utilService } from "./util.service";
 
 const orderData = [
     {
-      "_id": "o1225",
+      "id": "o1225",
       "hostId": "u102",
       "buyer": {
-        "_id": "u101",
+        "id": "u101",
         "fullname": "User 1"
       },
       "totalPrice": 160,
@@ -17,7 +17,7 @@ const orderData = [
         "kids": 2
       },
       "stay": {
-        "_id": "h102",
+        "id": "h102",
         "name": "House Of Uncle My",
         "price": 80.00
       },
@@ -25,10 +25,10 @@ const orderData = [
       "status": "pending" 
     },
     {
-      "_id": "o12s",
+      "id": "o12s",
       "hostId": "u102",
       "buyer": {
-        "_id": "u101",
+        "id": "u101",
         "fullname": "User 1"
       },
       "totalPrice": 160,
@@ -39,7 +39,7 @@ const orderData = [
         "kids": 2
       },
       "stay": {
-        "_id": "h102",
+        "id": "h102",
         "name": "House Of Uncle My",
         "price": 80.00
       },
@@ -90,10 +90,10 @@ async function remove(orderId){
 
 function getEmptyOrder(){
   return {
-    // _id: "",
+    // id: "",
     // hostId: "",
     // buyer: {
-    //   _id: "",
+    //   id: "",
     //   fullname: "",
     // },
     totalPrice: 0,
@@ -105,7 +105,7 @@ function getEmptyOrder(){
     }
   //   ,
   //   stay: {
-  //     _id: "",
+  //     id: "",
   //     name: "",
   //     price: 0,
   //   },
