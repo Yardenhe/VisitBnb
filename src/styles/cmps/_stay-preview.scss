@@ -2,8 +2,8 @@
     position: relative;
 
     .img-preview {
-        width: 100%;
-        height: 260px;
+        width: 20em;
+        height: 18em;
         object-fit: cover;
         border-radius: 8px;
     }
@@ -38,8 +38,11 @@
         width: 100%;
         display: flex;
         justify-content: space-between;
+        pointer-events: auto;
+        transition: opacity 0.3s ease;
 
-        .arrow {
+
+        &:hover {
             pointer-events: auto;
         }
 
@@ -50,6 +53,20 @@
             color: $clr4;
             cursor: pointer;
             border-radius: 50%;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        &:hover svg {
+            opacity: 1;
+        }
+
+        .arrow-left {
+            margin-left: 0.3em;
+        }
+
+        .arrow-right {
+            margin-right: 0.7em;
         }
     }
 

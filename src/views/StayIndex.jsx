@@ -1,5 +1,5 @@
-import React, { useEffect, useState, useRef } from 'react'
-import { Link, Outlet, useParams } from 'react-router-dom'
+import React, { useEffect, useState, useRef, useCallback } from 'react'
+import { Link, Outlet, useParams, useNavigate, useSearchParams } from 'react-router-dom'
 import { StayFilter } from "../components/StayFilter";
 import { useSelector } from 'react-redux';
 import { stayService } from '../services/stayService.service'
@@ -15,31 +15,58 @@ export function StayIndex() {
 
 
 
-
+    const navigate = useNavigate()
     const params = useParams()
-    // console.log('StayIndex', params)
     const { stayId } = params
+    const [searchParams, setSearchParams] = useSearchParams()
+
+    useEffect(() => {
+        setFilterBy(stayService.getFilterFromParams(searchParams))
+    }, [])
 
     useEffect(() => {
         loadStays()
-        //setSearchParams(filterBy)
-    }, []) //filterBy
+        setSearchParams(filterBy)
+    }, [filterBy])
 
 
-
-
+    const onRemoveStay = useCallback(async (stayId) => {
+        try {
+            await removeStay(stayId)
+            showSuccessMsg('Successfully removed')
+        } catch (err) {
+            console.log('Had issues loading stays', err);
+            showErrorMsg('can not remove!')
+        }
+    }, [])
+    async function onSaveStay(stay) {
+        try {
+            await saveStay(stay)
+            navigate('/')
+        } catch (err) {
+            console.log('Had issues adding stay', err);
+        }
+    }
+    function onSetFilter(fieldsToUpdate) {
+        fieldsToUpdate = { ...filterBy, ...fieldsToUpdate }
+        setFilterBy(fieldsToUpdate)
+    }
 
     if (!stays) return <div>Loading..</div>
+    const { type, price } = filterBy
     return (
 
         <>
+
             {/* ↓ will be mapped with each result */}
-            {params.stayId ?
-                <Outlet context={{ stayId }} />
+            {params.stayId || location.pathname.includes('edit') ?
+
+                <Outlet context={{ stayId, onSaveStay }} />
                 :
                 <section className='index-layout'>
-                    <StayFilter />
-                    <StayList stays={stays} />
+                    <StayFilter onSetFilter={onSetFilter} filterBy={{ type }} />
+                    <Link to="/edit"><button>Add stay</button></Link>
+                    <StayList stays={stays} onRemove={onRemoveStay} />
                 </section>
             }
 

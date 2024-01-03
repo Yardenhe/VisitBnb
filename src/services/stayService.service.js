@@ -6,9 +6,11 @@ export const stayService = {
 	query,
 	get,
 	remove,
+  getById,
 	save,
 	getEmptyStay,
 	getLoggedUser,
+  getFilterFromParams,
 	// getStayFromSearchParams,
 	// getSortFromParams,
 	getUnreadCount,
@@ -43921,9 +43923,9 @@ const loggedInUser = {
 _createStays()
 
 
-async function query(){   //filterBy = {}, sortBy = getDefaultSort()) {
+async function query(filterBy){   //, sortBy = getDefaultSort()) {
 	let stays = await storageService.query(STAY_KEY)
-	// stays = _filterStays(stays, filterBy)
+	stays = _filterStays(stays, filterBy)
 	// _sortStays(stays, sortBy)
 	return stays
 }
@@ -43940,9 +43942,12 @@ async function getUnreadCount() {
 function remove(stayId) {
 	return storageService.remove(STAY_KEY, stayId)
 }
+function getById(stayId) {
+  return storageService.get(STAY_KEY, stayId)
+}
 
 function save(stay) {
-	if (stay.id) {
+	if (stay._id) {
 		return storageService.put(STAY_KEY, stay)
 	} else {
 		stay.from = getLoggedUser().estay
@@ -43951,16 +43956,16 @@ function save(stay) {
 }
 
 function getEmptyStay(
-	{_id= "",
+	_id= "",
   name= "",
   type= "",
   imgUrls= [],
-  price= null,
+  price= 100,
   summary= "",
-  capacity= null,
-  beds=null,
-  bedrooms=null,
-  bathrooms=null,
+  capacity= 0,
+  beds=0,
+  bedrooms=0,
+  bathrooms=0,
   amenities= [],
   labels= [],
   host= {
@@ -43973,9 +43978,9 @@ function getEmptyStay(
     countryCode: "",
     cit: "",
     address: "",
-    lat: null,
-    lng: null
-  }}
+    lat: 0,
+    lng: 0
+  }
 ) {
 	return {
     _id,
@@ -43999,6 +44004,21 @@ function getEmptyStay(
 
 function getLoggedUser() {
 	return loggedInUser
+}
+function getFilterFromParams(searchParams) {
+  const defaultFilter = getDefaultFilter()
+  const filterBy = {}
+  for (const field in defaultFilter) {
+      filterBy[field] = searchParams.get(field) || ''
+  }
+
+  return filterBy
+}
+function getDefaultFilter() {
+  return {
+      type: '',
+      price: '',
+  }
 }
 
 // function getDefaultFilter() {
@@ -44052,20 +44072,21 @@ function getLoggedUser() {
 
 
 
-// function _filterStays(stays, filterBy) {
-// 	if (filterBy.status) {
-// 		stays = _filterStaysByFolder(stays, filterBy.status)
-// 	}
-// 	if (filterBy.txt) {
-// 		const regExp = new RegExp(filterBy.txt, 'i')
-// 		stays = stays.filter(stay => regExp.test(stay.subject) || regExp.test(stay.body) || regExp.test(stay.from))
-// 	}
-// 	if (filterBy.isRead !== null && filterBy.isRead !== undefined) {
-// 		stays = stays.filter(stay => stay.isRead === filterBy.isRead)
-// 	}
-// 	return stays
+function _filterStays(stays, filterBy) {
+  let {  type = '', price = '' } = filterBy
+	if (filterBy.type) {
+		stays = stays.filter(stay => stay.type.toLowerCase().includes(type.toLowerCase()))
+	}
+	// if (filterBy.txt) {
+	// 	const regExp = new RegExp(filterBy.txt, 'i')
+	// 	stays = stays.filter(stay => regExp.test(stay.subject) || regExp.test(stay.body) || regExp.test(stay.from))
+	// }
+	// if (filterBy.isRead !== null && filterBy.isRead !== undefined) {
+	// 	stays = stays.filter(stay => stay.isRead === filterBy.isRead)
+	// }
+	return stays
 
-// }
+}
 
 
 

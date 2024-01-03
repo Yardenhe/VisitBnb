@@ -19,14 +19,14 @@ export async function removeStay(stayId) {
         await stayService.remove(stayId)
     } catch (err) {
         store.dispatch({ type: UNDO_CHANGES })
-        console.log('Had issues loading stays', err);
+        console.log('Had issues remove stay', err);
         throw err
     }
 }
 
 export async function saveStay(stay) {
     try {
-        const type = stay.id ? UPDATE_STAY : ADD_STAY
+        const type = stay._id ? UPDATE_STAY : ADD_STAY
         const stayToSave = await stayService.save(stay)
         store.dispatch({ type, stay: stayToSave })
     } catch (err) {
