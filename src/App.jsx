@@ -7,6 +7,7 @@ import { AppHeader } from './components/AppHeader'
 import { StayDetails } from './views/StayDetails'
 
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom'
+import { OrderIndex } from './views/OrderIndex'
 import { StayEdit } from './views/StayEdit'
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
             <Route path="/edit/:stayId?"
               element={<StayEdit />} />
           </Route>
+          <Route path='/orders' element={<OrderIndex/>}/>
         </Routes>
       </section>
     </Router>

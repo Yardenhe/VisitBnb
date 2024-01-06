@@ -115,7 +115,11 @@ p {
     // }
 }
 
-
+.generic-icon{
+    min-width: 25px;
+    max-width: 100px;
+    max-height: 100px;
+}
 // links
 a {
     color: $clr4;

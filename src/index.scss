@@ -40,11 +40,12 @@ button {
   cursor: pointer;
   text-align: center;
   border-radius: 4px;
+  padding-inline: 0;
   // padding: 0;
 }
 
 button:hover {
-  background: #eeecec;
+  background: rgb(247, 247, 247)
   // border-color: #646cff;
 }
 

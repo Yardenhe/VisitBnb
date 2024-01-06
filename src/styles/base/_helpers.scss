@@ -23,6 +23,19 @@
 .bold {
     font-family: 'cereal-bold';
 }
+.dev-actions{
+    display: flex;
+    align-items: center;
+    flex-flow: row;
+    flex-wrap: wrap;
+    margin:  0.5em auto;
+    gap: 20px;
+    & button{
+        height: 80px;
+        width: 250px;
+        padding: 0.75em;
+    }
+}
 
 .black {
     color: $clr5;
@@ -68,4 +81,17 @@
 
 .ratio-poster {
     @include aspect-ratio(100, 150);
+}
+
+// a dev element that sits on top of everthing (fixed position)
+.dev-action-element{
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 50px;
+    left: 50px;
+    max-width: 200px;
+}
+.sub-text{
+    color: $clr4;
 }

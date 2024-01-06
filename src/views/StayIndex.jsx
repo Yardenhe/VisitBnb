@@ -9,6 +9,7 @@ import { StayList } from '../components/StayList';
 
 
 export function StayIndex() {
+    
     const stays = useSelector(storeState => storeState.stayModule.stays)
     const filterBy = useSelector(storeState => storeState.stayModule.filterBy)
 

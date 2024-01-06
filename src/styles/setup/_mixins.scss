@@ -67,6 +67,14 @@
 }
 
 // UI mixins
+@mixin bold($font-size:24px){
+  font-family: 'cereal-bold';
+  font-size: $font-size;
+}
+@mixin medium-bold($font-size:24px){
+  font-family: 'cereal-medium';
+  font-size: $font-size;
+}
 @mixin btn(){
 
     border: none;
@@ -83,7 +91,7 @@
     max-height: 50px;
   
     cursor: pointer;
-    background: transparent;
+    background-color: $clr3;
     // padding: 13px 23px;
     margin: -1px;
   }

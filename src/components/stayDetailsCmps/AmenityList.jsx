@@ -1,3 +1,4 @@
+import { TagToIcon } from "../UI/TagToIcon"
 
 export function AmenityList({amenities}) {
     const totalAmenities = amenities.length
@@ -8,9 +9,12 @@ export function AmenityList({amenities}) {
     <div className="amenity-list">
         {shortAmenities.map((amenity,i)=>
         <div className='amenity' key={i}>
-            {amenity}
+            <TagToIcon tag={amenity} className={'amenity-icon'}/>
+            <div className="amenity-name">
+              {amenity}
+            </div>
         </div>)}
-        <button onClick={()=>console.log(amenities)}>Show all {totalAmenities} amenities</button>
+        <button onClick={()=>console.log(amenities)} className="commun-btn">Show all {totalAmenities} amenities</button>
     </div>
     </>  
   )

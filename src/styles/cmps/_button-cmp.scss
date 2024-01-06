@@ -1,9 +1,12 @@
 .action-btn {
     border: none;
+    border-radius: 0.22rem;
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-between;
+    padding: 7px 15px;
     align-items: center;
+    
     text-align: center;
     position: relative;
     
@@ -14,9 +17,10 @@
   
     cursor: pointer;
     background: #fff;
-    // padding: 13px 23px;
     margin: -1px;
-  
+    // padding: 13px 23px;
+    
+    transition: transform 0.05s ease-in-out;
   
     .icon-holder{
       display: flex;
@@ -34,7 +38,8 @@
     }
     &:focus,
     &:focus-visible {
-      outline: 4px auto -webkit-focus-ring-color;
+      // outline: 0.5px auto -webkit-focus-ring-color;
+      transform: scale(0.95);
     }
     &:disabled {
       opacity: 0.5;
