@@ -3,24 +3,24 @@
     display: grid;
     grid-template-columns: 1fr auto 1fr;
     align-items: center;
-    padding: 0px rem(70px);
+    padding: 0px rem(80px);
     border-bottom: 1px solid #d3d3d3;
+
 
 }
 
 
 .grid-app-header {
-    grid-row: 1 / 2;
     border-bottom: none;
 }
 
 .app-header-filter {
-    display: grid;
-    align-items: center;
-    padding: 0px rem(70px);
-    display: grid;
-    grid-template-rows: auto auto;
+
     z-index: 1002;
+    position: fixed;
+    background-color: $clr3;
+    width: 100%;
+    padding-bottom: 1em;
 }
 
 
@@ -111,12 +111,14 @@
 
 .overlay {
     position: fixed;
-    top: 12em;
+
     left: 0;
     width: 100%;
     height: 100%;
     background: rgba(0, 0, 0, 0.5);
-    z-index: 1000;
+    z-index: 1002;
+
+
 
 }
 
@@ -131,19 +133,19 @@
     transition: box-shadow 0.3s ease;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     cursor: pointer;
-    transition: transform 0.3s ease, opacity 0.3s ease;
+
 
     &.enlarge {
-        transform: scale(1.4);
 
-        opacity: 1;
+        transform: scaleX(1.4) scaleY(1);
+        opacity: 0;
         margin-top: 4em;
-
+        transition: transform 0.3s ease, opacity 0.3s ease, margin-top 0.3s ease;
     }
 
     &.shrink {
         transform: scale(0.7);
-        margin-bottom: 4em;
+        transition: transform 0.3s ease, opacity 0.3s ease, margin-bottom 0.3s ease;
         opacity: 1;
     }
 

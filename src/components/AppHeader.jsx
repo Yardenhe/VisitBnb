@@ -34,7 +34,7 @@ export function AppHeader() {
 
         const timeoutId = setTimeout(() => {
             onToggle();
-        }, 200);
+        }, 150);
 
         return () => {
 
@@ -53,9 +53,11 @@ export function AppHeader() {
 
             <header className={!isOpenFilter ? 'app-header' : ' app-header-filter'}>
 
-                {!isOpenFilter && <Link to="/">
-                    <img className="app-header-logo" src="img/airbnb-logoo.PNG" />
-                </Link>}
+                {!isOpenFilter &&
+                    <Link to="/">
+                        <img className="app-header-logo" src="img/airbnb-logoo.PNG" />
+                    </Link>
+                }
 
                 {isOpenFilter &&
                     <section className="app-header grid-app-header">

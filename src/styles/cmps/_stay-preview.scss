@@ -2,8 +2,8 @@
     position: relative;
 
     .img-preview {
-        width: 20em;
-        height: 18em;
+        width: 100%;
+        aspect-ratio: 1/1;
         object-fit: cover;
         border-radius: 8px;
     }

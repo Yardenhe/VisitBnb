@@ -1,4 +1,4 @@
-$layoutPadding : rem(70px);
+$layoutPadding : rem(80px);
 // .main-layout {
 //     display: grid;
 //     max-width: 100%;
@@ -56,5 +56,5 @@ $layoutPadding : rem(70px);
 }
 
 .index-layout {
-    margin: 0 $layoutPadding;
+    padding: 0 $layoutPadding;
 }
