@@ -31,6 +31,16 @@
         }
     }
 
+    .heart-svg {
+        aspect-ratio: 1/1;
+        width: 25px;
+        margin: 0.8em;
+        position: absolute;
+        top: 0;
+        right: 0;
+
+    }
+
     .image-slider-arrows {
         position: absolute;
         top: 150px;

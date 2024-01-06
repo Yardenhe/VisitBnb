@@ -28,7 +28,9 @@ export function StayPreview({ stay }) {
 
     return (
         <section className='stay-preview'>
+
             <Suspense>
+                <img src="/public/img/icons/heart.svg" className='heart-svg'></img>
                 <LazyLoadedImage className='img-preview' src={stay.imgUrls[currentImageIndex]} alt='img' />
             </Suspense>
 
