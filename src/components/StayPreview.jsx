@@ -2,6 +2,7 @@
 import React, { lazy, useState } from 'react';
 import { Suspense } from 'react';
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
+import { IoIosStar as StarIcon } from "react-icons/io";
 const LazyLoadedImage = lazy(() => import('./LazyLoadedImg'))
 
 
@@ -31,8 +32,14 @@ export function StayPreview({ stay }) {
                 <LazyLoadedImage className='img-preview' src={stay.imgUrls[currentImageIndex]} alt='img' />
             </Suspense>
 
-
-            <div className='preview-loc'>{stay.loc.city},{stay.loc.country}</div>
+            <div className='space-between'>
+                <div className='preview-loc'>{stay.loc.city},{stay.loc.country}</div>
+                <div className="rating-peek black">
+                    {/* map from data [!missing]*/}
+                    <StarIcon />
+                    <span>4.8</span>
+                </div>
+            </div>
             <div className='preview-name'>{stay.name}</div>
             <div className='preview-price'>{stay.price}$ <span>night</span> </div>
 

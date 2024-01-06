@@ -3,22 +3,34 @@
     display: flex;
 }
 
-.flex-start{
+.flex-start {
     align-items: start;
 }
+
 .inline-flex {
     display: inline-flex;
 }
-.bnb-color{
+
+.bnb-color {
     background: $clr1;
     color: #fff;
-    &:hover{
+
+    &:hover {
         background: $clr1;
     }
 }
 
 .bold {
     font-family: 'cereal-bold';
+}
+
+.black {
+    color: $clr5;
+}
+
+.space-between {
+    display: flex;
+    justify-content: space-between;
 }
 
 // List 
