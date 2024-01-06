@@ -36,7 +36,7 @@ export function StayPreview({ stay }) {
 
             <div className='space-between'>
                 <div className='preview-loc'>{stay.loc.city},{stay.loc.country}</div>
-                <div className="rating-peek black">
+                <div className="rating-peek black center">
                     {/* map from data [!missing]*/}
                     <StarIcon />
                     <span>4.8</span>

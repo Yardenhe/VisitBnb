@@ -9,7 +9,6 @@
     }
 
     .preview-loc {
-        margin-bottom: 5px;
         font-family: 'cereal-bold';
         color: $clr5;
     }
@@ -22,6 +21,7 @@
     }
 
     .preview-price {
+        margin-top: 5px;
         font-family: 'cereal-bold';
         color: $clr5;
 
@@ -43,7 +43,7 @@
 
     .image-slider-arrows {
         position: absolute;
-        top: 150px;
+        top: 40%;
         transform: translateY(-50%);
         width: 100%;
         display: flex;
@@ -54,13 +54,15 @@
 
         &:hover {
             pointer-events: auto;
+
         }
 
         svg {
             background: white;
             border: none;
+            color: $clr5;
             font-size: 24px;
-            color: $clr4;
+            padding: 5px;
             cursor: pointer;
             border-radius: 50%;
             opacity: 0;
@@ -69,6 +71,7 @@
 
         &:hover svg {
             opacity: 1;
+            transform: scale(1.2);
         }
 
         .arrow-left {
@@ -76,13 +79,13 @@
         }
 
         .arrow-right {
-            margin-right: 0.7em;
+            margin-right: 0.3em;
         }
     }
 
     .image-points {
         position: absolute;
-        top: 242px;
+        top: 70%;
         left: 50%;
         transform: translateX(-50%);
         display: flex;

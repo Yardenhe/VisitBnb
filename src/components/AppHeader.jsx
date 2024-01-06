@@ -91,19 +91,24 @@ export function AppHeader() {
                             <span className='bold'>Where</span>
                             <p >Search destinations</p>
                         </section>
-                        <section className='btn-datepicker'>
-                            <span className='bold'>Check in</span>
-                            <p >Add dates</p>
+                        <section>
+                            <section className='btn-datepicker'>
+                                <span className='bold'>Check in</span>
+                                <p >Add dates</p>
+                            </section>
+                            <div className='btn-datepicker'>
+                                <span className='bold'>Check out</span>
+                                <p >Add dates</p>
+                            </div>
                         </section>
                         <section className='btn-datepicker'>
-                            <span className='bold'>Check out</span>
-                            <p >Add dates</p>
+                            <section>
+                                <span className='bold'>Who</span>
+                                <p className='block' >Add guests</p>
+                            </section>
+                            <IoSearch className='search-btn' />
                         </section>
-                        <section className='btn-datepicker'>
-                            <span className='bold'>Who</span>
-                            <p className='block' >Add guests</p>
-                        </section>
-                        <IoSearch className='search-btn' />
+
                     </section>}
                 {!isOpenFilter && <section className='right-header-menu'>
                     <div className='switchlen-menu'>
