@@ -9,7 +9,7 @@ import { StayList } from '../components/StayList';
 
 
 export function StayIndex() {
-    
+
     const stays = useSelector(storeState => storeState.stayModule.stays)
     const filterBy = useSelector(storeState => storeState.stayModule.filterBy)
 
@@ -29,7 +29,12 @@ export function StayIndex() {
         setSearchParams(filterBy)
     }, [filterBy])
 
-
+    useEffect(() => {
+        document.body.classList.add('no-overflow');
+        return () => {
+            document.body.classList.remove('no-overflow');
+        };
+    }, []);
     const onRemoveStay = useCallback(async (stayId) => {
         try {
             await removeStay(stayId)

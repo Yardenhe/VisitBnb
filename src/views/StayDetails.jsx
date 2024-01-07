@@ -21,8 +21,8 @@ export function StayDetails() {
   const [stay, setStay] = useState(null);
   const navigate = useNavigate();
 
-  const orders = useSelector(storeState=>storeState.orderModule.orders)
-  const currOrder = useSelector(storeState=>storeState.orderModule.currOrder)
+  const orders = useSelector(storeState => storeState.orderModule.orders)
+  const currOrder = useSelector(storeState => storeState.orderModule.currOrder)
   // const [orderToSend,setOrderToSend] = useState(currOrder)
 
   // obtain orderData from params , 
@@ -35,46 +35,54 @@ export function StayDetails() {
   //   setSearchParams(new URLSearchParams(orderService.getEmptyOrder()))
   //   console.log('blank order: ',searchParams.entries() );
   // },[])
-  
-  console.log('global Orders',orders);
+
+  console.log('global Orders', orders);
 
   useEffect(() => {
     loadStay();
   }, [stayId]);
-  
-  async function loadStay(){
-    try{
+
+  useEffect(() => {
+
+    document.body.classList.remove('no-overflow');
+    return () => {
+      document.body.classList.add('no-overflow');
+    };
+  }, []);
+
+  async function loadStay() {
+    try {
       const stay = await stayService.get(stayId);
       setStay(stay);
     }
-    catch(err){
+    catch (err) {
       navigate('/')
       console.log(err);
     }
   }
 
-  async function onChangeOrderData({startDate,endDate,guests}){
-    return await setCurrOrder({startDate,endDate,guests})
+  async function onChangeOrderData({ startDate, endDate, guests }) {
+    return await setCurrOrder({ startDate, endDate, guests })
     // setOrderToSend(prev=>({...prev,startDate,endDate,guests}))
   }
-  
-  
+
+
   if (!stay) return <div>Loading..</div>
   // destructure after loading
-  const {name,imgUrls,price,host,loc,capacity} = stay;
-  
+  const { name, imgUrls, price, host, loc, capacity } = stay;
+
   // dev - order actions
-      const elDevActions = 
-      <div className="dev-actions">
-        <button onClick={()=>loadOrders()}>LoadOrders</button>
-        <button onClick={()=>onChangeOrderData(orders[0])}>set/update currOrder</button>
-        {/* <button onClick={()=>setCurrOrder(orderToSend)}>setCurrOrder</button> */}
+  const elDevActions =
+    <div className="dev-actions">
+      <button onClick={() => loadOrders()}>LoadOrders</button>
+      <button onClick={() => onChangeOrderData(orders[0])}>set/update currOrder</button>
+      {/* <button onClick={()=>setCurrOrder(orderToSend)}>setCurrOrder</button> */}
 
-        <button onClick={()=>console.log(currOrder)}>LOG CURR ORDER</button>
-        <button onClick={()=>console.log(orders)}>LOG all ORDERS</button>
+      <button onClick={() => console.log(currOrder)}>LOG CURR ORDER</button>
+      <button onClick={() => console.log(orders)}>LOG all ORDERS</button>
 
-        <button onClick={()=>saveOrder(currOrder)}>placeOrder (save)</button>
-      </div>
+      <button onClick={() => saveOrder(currOrder)}>placeOrder (save)</button>
+    </div>
 
   return (
     <div className="details-layout">
@@ -97,14 +105,14 @@ export function StayDetails() {
       {/* DESCRIPTION */}
       <section className="checkout-container ">
         <StayDescription stay={stay} />
-        <StayCheckout price={price}/>
+        <StayCheckout price={price} />
       </section>
 
       {/* All details */}
       <section className="stay-reviews">
         <StayReviews />
       </section>
-      
+
     </div>
   );
 }
