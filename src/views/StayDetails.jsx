@@ -23,6 +23,7 @@ export function StayDetails() {
 
   const orders = useSelector(storeState=>storeState.orderModule.orders)
   const currOrder = useSelector(storeState=>storeState.orderModule.currOrder)
+  let {startDate,endDate} = currOrder
   // const [orderToSend,setOrderToSend] = useState(currOrder)
 
   // obtain orderData from params , 
@@ -97,7 +98,7 @@ export function StayDetails() {
       {/* DESCRIPTION */}
       <section className="checkout-container ">
         <StayDescription stay={stay} />
-        <StayCheckout price={price}/>
+        <StayCheckout price={price} startDate={startDate} endDate={endDate}/>
       </section>
 
       {/* All details */}

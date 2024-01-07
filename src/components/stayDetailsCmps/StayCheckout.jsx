@@ -1,6 +1,14 @@
 import { RiArrowDropDownLine as DownArrow } from "react-icons/ri";
+import { onToggleModal } from "../../store/actions/app.actions";
+import { utilService } from "../../services/util.service";
 
-export function StayCheckout({ price, orderInfo }) {
+export function StayCheckout({ price, orderInfo,startDate, endDate }) {
+  const formattedStartDate = utilService.formatDate(startDate)
+  const formattedEndDate = utilService.formatDate(endDate)
+
+  function onOpenDatePicker(){
+    onToggleModal({type:'datePicker',action})
+  }
   return (
     //<div className="checkout-card-container">
     <div className="checkout-card">
@@ -9,20 +17,20 @@ export function StayCheckout({ price, orderInfo }) {
         <span className="btn-info-detail">night</span>
       </div>
       {/* actions */}
-      <button>
-        <div className="date-btn-container">
+      <button onClick={onOpenDatePicker}>
 
+        <div className="date-btn-container">
           <div className="btn-info">
             <div className="btn-info-label">check-in</div>
-            <div className="btn-info-detail">12/1/2023</div>
+            <div className="btn-info-detail">{formattedStartDate}</div>
           </div>
 
           <div className="btn-info">
             <div className="btn-info-label">check-out</div>
-            <div className="btn-info-detail">12/1/2023</div>
+            <div className="btn-info-detail">{formattedEndDate}</div>
           </div>
-  
         </div>
+
       </button>
       <button>
         <div className="guest-btn-container">
