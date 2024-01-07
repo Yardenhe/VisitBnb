@@ -2,6 +2,7 @@ import React, { useRef, useState } from 'react';
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { BsSliders } from "react-icons/bs";
 import { useEffectUpdate } from "../customHooks/useEffectUpdate"
+import { useToggle } from "../customHooks/useToggle"
 
 const iconBasePath = 'img/labels/';
 const iconNames = ['amazingpools', 'amazingviews', 'arctics', 'beachfront', 'cabins', 'boats', 'camping', 'castles', 'desert', 'design', 'Countryside'
@@ -11,6 +12,7 @@ export function StayFilter({ filterBy, onSetFilter }) {
     const scrollContainerRef = useRef(null);
     const [filterByToEdit, setFilterByToEdit] = useState(filterBy)
     const [arrowVisibility, setArrowVisibility] = useState({ left: false, right: true });
+    const [clickedIconIndex, setClickedIconIndex] = useState(null);
 
 
     useEffectUpdate(() => {
@@ -44,12 +46,18 @@ export function StayFilter({ filterBy, onSetFilter }) {
         }
 
     };
+    const onToggleIcon = (index) => {
+
+        setClickedIconIndex(index);
+    };
     return (
         <section className='stay-filter'>
             <IoIosArrowBack className={`arrow arrow-left  ${!arrowVisibility.left && ' hidden'}`} onClick={() => handleScroll('left')} />
             <div className='scroll-container' ref={scrollContainerRef}>
                 {iconNames.map((iconName, index) => (
-                    <section className='stay-icon' key={index} onClick={() => onTypeChange(iconName)}>
+                    <section className={`stay-icon ${clickedIconIndex === index ? 'hover-icon' : ''}`}
+                        key={index}
+                        onClick={() => { onTypeChange(iconName), onToggleIcon(index) }}>
                         <img src={`${iconBasePath}${iconName}.jpg`} alt={iconName} />
                         <p>{iconName}</p>
                     </section>

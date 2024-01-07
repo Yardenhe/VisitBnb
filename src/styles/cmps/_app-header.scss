@@ -49,18 +49,31 @@
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     // grid-template-rows: auto;
-    margin: 0px 24.7em;
-    padding-inline: 1em;
-    border-radius: 5em;
+    margin: 0px 20em;
+    // padding-inline: 1em;
+    border-radius: 32px;
     height: 66px;
     justify-content: space-between;
     overflow: hidden;
-    padding-top: 5px;
+
 
     .btn-datepicker {
-        padding: 5px 0px 16.4px 17px;
+        padding: 8.4px 0px 0px 13px;
+        height: 100%;
+        width: 100%;
+
+
+
+        &:hover {
+            background-color: $clr2;
+        }
     }
 
+    .check {
+        padding: 5px 0px 5px 0px;
+        height: 100%;
+
+    }
 
 
     .search-btn {
@@ -84,8 +97,6 @@
 
     section:nth-child(1) {
 
-        border-bottom-left-radius: 20px;
-        border-top-left-radius: 20px;
         align-content: center;
 
 
@@ -101,7 +112,9 @@
 
 
         div {
-            border-left: 1px solid $clr2;
+            //  border-left: 1px solid $clr2;
+            // padding: 0px 0px;
+            justify-self: center;
         }
 
 
@@ -140,7 +153,7 @@
 .date-picker {
     display: flex;
     align-items: center;
-    padding: 0px 2.3px;
+    padding: 0px 0px;
     margin: 0px 3em;
     border-radius: 40.6px;
     border: 1px solid #d3d3d3;
@@ -172,7 +185,7 @@
 
     .btn-datepicker {
         text-align: center;
-        border-radius: 4px;
+        border-radius: 32px;
         background: transparent;
         cursor: pointer;
         padding: 0;
@@ -185,10 +198,13 @@
         //border-radius: 20px;
         padding: 5px 16.4px;
 
+
+
+
         p {
             font-size: 1em;
-            padding: none;
-            margin: none;
+            padding: 0;
+            margin: 0;
             color: $clr4;
         }
 
@@ -199,15 +215,7 @@
     }
 
 
-    section:nth-child(1) {
-
-
-        border-bottom-left-radius: 20px;
-        border-top-left-radius: 20px;
-
-
-
-    }
+    //section:nth-child(1) {}
 
     section:nth-child(2) {
         border-right: 1px solid $clr2;

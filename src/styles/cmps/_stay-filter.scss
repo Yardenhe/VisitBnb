@@ -18,6 +18,8 @@
 
     }
 
+
+
     .stay-icon {
         display: flex;
         flex-direction: column;
@@ -30,6 +32,11 @@
         &:hover {
             border-bottom-color: $clr4;
         }
+
+        &.hover-icon {
+            border-bottom-color: $clr4;
+        }
+
 
 
 

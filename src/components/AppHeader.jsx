@@ -92,11 +92,11 @@ export function AppHeader() {
                             <p >Search destinations</p>
                         </section>
                         <section>
-                            <section className='btn-datepicker'>
+                            <section className='btn-datepicker check'>
                                 <span className='bold'>Check in</span>
                                 <p >Add dates</p>
                             </section>
-                            <div className='btn-datepicker'>
+                            <div className='btn-datepicker check'>
                                 <span className='bold'>Check out</span>
                                 <p >Add dates</p>
                             </div>
