@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef, useCallback } from 'react'
-import { Link, Outlet, useParams, useNavigate, useSearchParams } from 'react-router-dom'
+import { Link, Outlet, useParams, useNavigate, useSearchParams, useLocation } from 'react-router-dom'
 import { StayFilter } from "../components/StayFilter";
 import { useSelector } from 'react-redux';
 import { stayService } from '../services/stayService.service'
@@ -19,6 +19,8 @@ export function StayIndex() {
     const params = useParams()
     const { stayId } = params
     const [searchParams, setSearchParams] = useSearchParams()
+    const location = useLocation();
+    const isSpecificPage = location.pathname === '/';
 
     useEffect(() => {
         setFilterBy(stayService.getFilterFromParams(searchParams))
@@ -29,12 +31,12 @@ export function StayIndex() {
         setSearchParams(filterBy)
     }, [filterBy])
 
-    useEffect(() => {
-        document.body.classList.add('no-overflow');
-        return () => {
-            document.body.classList.remove('no-overflow');
-        };
-    }, []);
+    // useEffect(() => {
+    //     document.body.classList.add('no-overflow');
+    //     return () => {
+    //         document.body.classList.remove('no-overflow');
+    //     };
+    // }, []);
     const onRemoveStay = useCallback(async (stayId) => {
         try {
             await removeStay(stayId)
@@ -61,7 +63,7 @@ export function StayIndex() {
     const { type, price } = filterBy
     return (
 
-        <>
+        <section className={isSpecificPage && `${'stay-index'}`}>
 
             {/* ↓ will be mapped with each result */}
             {params.stayId || location.pathname.includes('edit') ?
@@ -75,7 +77,7 @@ export function StayIndex() {
                 </section>
             }
 
-        </>
+        </section>
 
     )
 }

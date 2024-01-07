@@ -42,13 +42,7 @@ export function StayDetails() {
     loadStay();
   }, [stayId]);
 
-  useEffect(() => {
 
-    document.body.classList.remove('no-overflow');
-    return () => {
-      document.body.classList.add('no-overflow');
-    };
-  }, []);
 
   async function loadStay() {
     try {

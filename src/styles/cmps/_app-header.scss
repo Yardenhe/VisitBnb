@@ -7,8 +7,19 @@
     border-bottom: 1px solid #d3d3d3;
     height: 80px;
 
-
 }
+
+.sticky-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1002;
+    background-color: #fff;
+    // Add other styles as needed
+}
+
+
 
 
 .grid-app-header {
@@ -20,7 +31,7 @@
 
 .app-header-filter {
 
-    z-index: 1002;
+    z-index: 1004;
     position: fixed;
     background-color: $clr3;
     width: 100%;
@@ -40,6 +51,8 @@
 
 }
 
+
+
 .app-header-logo {
     max-width: 100px;
 }
@@ -57,6 +70,7 @@
     overflow: hidden;
 
 
+
     .btn-datepicker {
         padding: 8.4px 0px 0px 13px;
         height: 100%;
@@ -68,6 +82,11 @@
             background-color: $clr2;
         }
     }
+
+    .right {
+        padding: 0px;
+    }
+
 
     .check {
         padding: 5px 0px 5px 0px;
@@ -86,7 +105,8 @@
         background-color: #ff385c;
         border-radius: 50%;
         padding: 12px;
-        margin: 0px 0;
+        margin-right: 10px;
+        // margin-bottom: 10px;
         height: 47px;
         min-width: 50px;
         justify-self: flex-end;
@@ -218,12 +238,14 @@
     //section:nth-child(1) {}
 
     section:nth-child(2) {
-        border-right: 1px solid $clr2;
+        // border-right: 1px solid $clr2;
         border-radius: 0px;
-        border-left: 1px solid $clr2;
+        // border-left: 1px solid $clr2;
 
 
     }
+
+
 
     section:nth-child(3) {
         border-right: 1px none black;

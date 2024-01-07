@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { BsSliders } from "react-icons/bs";
 import { useEffectUpdate } from "../customHooks/useEffectUpdate"
@@ -13,7 +13,20 @@ export function StayFilter({ filterBy, onSetFilter }) {
     const [filterByToEdit, setFilterByToEdit] = useState(filterBy)
     const [arrowVisibility, setArrowVisibility] = useState({ left: false, right: true });
     const [clickedIconIndex, setClickedIconIndex] = useState(null);
+    const [isSticky, setIsSticky] = useState(false);
 
+    useEffect(() => {
+        const handleScroll = () => {
+            const scrollY = window.scrollY;
+            setIsSticky(scrollY > 0); // Adjust the value based on when you want it to become sticky
+        };
+
+        window.addEventListener('scroll', handleScroll);
+
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, []);
 
     useEffectUpdate(() => {
         onSetFilter(filterByToEdit)
@@ -51,7 +64,7 @@ export function StayFilter({ filterBy, onSetFilter }) {
         setClickedIconIndex(index);
     };
     return (
-        <section className='stay-filter'>
+        <section className={`stay-filter ${isSticky ? 'sticky' : ''}`}>
             <IoIosArrowBack className={`arrow arrow-left  ${!arrowVisibility.left && ' hidden'}`} onClick={() => handleScroll('left')} />
             <div className='scroll-container' ref={scrollContainerRef}>
                 {iconNames.map((iconName, index) => (

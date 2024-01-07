@@ -1,15 +1,18 @@
 import React from 'react'
-import { Link, NavLink } from 'react-router-dom'
+import { Link, NavLink, useLocation } from 'react-router-dom'
 import { useEffect, useState, useRef, useCallback } from 'react'
 import { IoSearch } from "react-icons/io5";
 import { LuGlobe } from "react-icons/lu";
 import { IoMdMenu } from "react-icons/io";
 import { useToggle } from "../customHooks/useToggle"
 
+
 export function AppHeader() {
     const [isOpenEffect, onToggleEffect] = useToggle()
     const [isOpenFilter, onToggle] = useToggle()
     const isFirstRender = useRef(true);
+    const location = useLocation();
+    const isSpecificPage = location.pathname === '/';
 
     useEffect(() => {
         const handleScroll = () => {
@@ -47,7 +50,7 @@ export function AppHeader() {
 
 
     return (
-        <>
+        <section className={isSpecificPage ? 'sticky-header' : ''}>
             {isOpenFilter && <div className="overlay" onClick={onToggleEffect}></div>}
 
 
@@ -101,7 +104,7 @@ export function AppHeader() {
                                 <p >Add dates</p>
                             </div>
                         </section>
-                        <section className='btn-datepicker'>
+                        <section className='btn-datepicker right'>
                             <section>
                                 <span className='bold'>Who</span>
                                 <p className='block' >Add guests</p>
@@ -118,6 +121,6 @@ export function AppHeader() {
                     <div className='menu-bar'> <IoMdMenu className='menu-icon' /><div className='circle'>י</div></div>
                 </section>}
             </header>
-        </>
+        </section >
     )
 }
