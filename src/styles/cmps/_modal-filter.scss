@@ -1,0 +1,97 @@
+.location-modal {
+    position: fixed;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    z-index: 1003;
+    position: fixed;
+    margin-top: 12px;
+    background: white;
+    border-radius: 32px;
+    box-shadow: 0 0 0 1px #0000000a, 0 8px 16px #00000026;
+    padding: 16px 20px;
+    cursor: auto;
+    //  min-width: 100%;
+    min-height: 400px;
+    display: flex;
+    width: max-content;
+
+    .loc-title-map {
+        font-family: cereal-bold;
+
+    }
+
+    .loc-right {
+        padding: 50px;
+    }
+
+    .loc-map-list {
+        display: grid;
+        grid-template-rows: 1fr 1fr;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 12px;
+    }
+
+    .img-loc {
+        aspect-ratio: 1/1;
+        width: 100%;
+        height: 122px;
+        border-radius: 10px;
+    }
+
+    .loc-list {
+        cursor: pointer;
+        display: flex;
+        // flex-direction: column;
+        align-items: center;
+        padding: 10px;
+
+        img {
+            width: 32px;
+            /* Adjust the width as needed */
+            height: 32px;
+            /* Adjust the height as needed */
+            background-color: $clr2;
+            border-radius: 5px;
+            padding: 5px;
+        }
+
+        div {
+            margin-top: 8px;
+            /* Adjust the margin as needed */
+        }
+
+        &.selected {
+            border-bottom: 2px solid blue;
+            /* Highlight the selected item */
+        }
+
+        &:hover {
+            background-color: $clr2;
+            /* Add a background color on hover */
+        }
+
+    }
+
+    .loc-left {
+        padding: 50px;
+    }
+
+    .img-list-loc {
+        height: 50px;
+    }
+
+    .loc-list-container {
+        display: flex;
+        width: 100%;
+        overflow-x: auto;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .loc-name {
+        margin-left: 5px;
+    }
+}
