@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux"
 import { SET_MODAL_DATA } from "../../store/reducers/app.reducer";
-import { DatePicker } from "../stayDetailsCmps/DatePicker";
+import { DatePicker } from "./DatePicker";
 
 export function DynamicModal() {
     const modalData = useSelector(storeState => storeState.appModule.modalData)
@@ -13,7 +13,7 @@ export function DynamicModal() {
             modalData: null
         })
     }
-
+    // {type: 'goodbye', payload: {style, stay}}
     if (!modalData) return <></>
     return (
         <div className="dynamic-modal" onClick={modalData.cb}>
@@ -23,6 +23,7 @@ export function DynamicModal() {
         </div>
     )
 }
+
 
 function DynamicCmp({ type, payload }) {
     console.log(type);

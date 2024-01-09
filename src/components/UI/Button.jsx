@@ -1,8 +1,8 @@
-export function Button({ icon, className = "", text }) {
+export function Button({ icon, className = "", text,isUnderlined }) {
   return (
     <button className={`action-btn ${className}`}>
       {icon && <div className="icon-holder">{icon}</div>}
-      {text}
+      <span className={isUnderlined ? 'underline' : ''}>{text}</span>
     </button>
   );
 }

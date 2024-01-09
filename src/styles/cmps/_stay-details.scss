@@ -20,6 +20,9 @@ $section-top: 32px;
   }
   .details-header {
     @include section-padding(2);
+    h3{
+      @include medium-bold(35.75px);
+    }
     width: 100%;
     display: flex;
     justify-content: space-between;
@@ -33,8 +36,6 @@ $section-top: 32px;
     }
   }
 }
-// superhost tag
-// mini-user-img{}
 .mini-user {
   display: flex;
   // gap: 24px;
@@ -80,7 +81,7 @@ $section-top: 32px;
   &-head {
     h4 {
       line-height: 1;
-      @include medium-bold(32px);
+      @include medium-bold(30.25px);
     }
     @include section-padding(3);
   }
