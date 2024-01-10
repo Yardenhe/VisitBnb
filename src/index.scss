@@ -22,11 +22,12 @@ a {
 
 
 body {
-  display: flex;
+  //display: flex;
   margin: 0;
-  justify-content: center;
+  //  justify-content: center;
   min-height: 100vh;
   font-family: 'cereal';
+
 }
 
 h1 {
@@ -45,8 +46,7 @@ button {
 }
 
 button:hover {
-  background: rgb(247, 247, 247)
-  // border-color: #646cff;
+  background: rgb(247, 247, 247) // border-color: #646cff;
 }
 
 button:focus,

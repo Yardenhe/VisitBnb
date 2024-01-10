@@ -84,6 +84,8 @@ export function StayDetails() {
 
       <button onClick={() => console.log(currOrder)}>LOG CURR ORDER</button>
       <button onClick={() => console.log(orders)}>LOG all ORDERS</button>
+      <button onClick={() => console.log(currOrder)}>LOG CURR ORDER</button>
+      <button onClick={() => console.log(orders)}>LOG all ORDERS</button>
 
       <button onClick={() => saveOrder(currOrder)}>placeOrder (save)</button>
     </div>

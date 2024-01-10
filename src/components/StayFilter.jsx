@@ -1,15 +1,32 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { BsSliders } from "react-icons/bs";
 import { useEffectUpdate } from "../customHooks/useEffectUpdate"
+import { useToggle } from "../customHooks/useToggle"
 
 const iconBasePath = 'img/labels/';
-const iconNames = ['amazingpools', 'amazingviews', 'cabins', 'castles', 'Countryside'
-    , 'cycladichomes', 'iconiccities', 'luxe', 'mansions', 'minsus', 'nationalparks', 'omg!', 'towers'];
+const iconNames = ['amazingpools', 'amazingviews', 'arctics', 'beachfront', 'cabins', 'boats', 'camping', 'castles', 'desert', 'design', 'Countryside'
+    , 'cycladichomes', 'iconiccities', 'islands', 'luxe', 'mansions', 'minsus', 'nationalparks', 'omg!', 'towers', 'topoftheworld', 'treehouses', 'tropical', 'trending'];
 export function StayFilter({ filterBy, onSetFilter }) {
 
     const scrollContainerRef = useRef(null);
     const [filterByToEdit, setFilterByToEdit] = useState(filterBy)
+    const [arrowVisibility, setArrowVisibility] = useState({ left: false, right: true });
+    const [clickedIconIndex, setClickedIconIndex] = useState(null);
+    const [isSticky, setIsSticky] = useState(false);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            const scrollY = window.scrollY;
+            setIsSticky(scrollY > 0); // Adjust the value based on when you want it to become sticky
+        };
+
+        window.addEventListener('scroll', handleScroll);
+
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, []);
 
     useEffectUpdate(() => {
         onSetFilter(filterByToEdit)
@@ -19,37 +36,48 @@ export function StayFilter({ filterBy, onSetFilter }) {
     }
     const handleScroll = (direction) => {
         if (scrollContainerRef.current) {
-            const scrollAmount = 300; // Adjust the scroll amount as needed
+            const scrollAmount = 500;
             const scrollWidth = scrollContainerRef.current.scrollWidth;
             const currentScroll = scrollContainerRef.current.scrollLeft;
 
-            let newScroll;
+            const newScroll = direction === 'left'
+                ? Math.max(0, currentScroll - scrollAmount)
+                : Math.min(scrollWidth, currentScroll + scrollAmount);
 
-            if (direction === 'left') {
-                newScroll = Math.max(0, currentScroll - scrollAmount);
-            } else {
-                newScroll = Math.min(scrollWidth, currentScroll + scrollAmount);
-            }
+            const isAtLeftEdge = newScroll === 0;
+            const isAtRightEdge = newScroll + scrollContainerRef.current.clientWidth >= scrollWidth;
+
+            setArrowVisibility({
+                left: !isAtLeftEdge,
+                right: !isAtRightEdge
+            });
 
             scrollContainerRef.current.scrollTo({
                 left: newScroll,
                 behavior: 'smooth',
             });
         }
+
+    };
+    const onToggleIcon = (index) => {
+
+        setClickedIconIndex(index);
     };
     return (
-        <section className='stay-filter'>
-            <IoIosArrowBack className='arrow arrow-left' onClick={() => handleScroll('left')} />
+        <section className={`stay-filter ${isSticky ? 'sticky' : ''}`}>
+            <IoIosArrowBack className={`arrow arrow-left  ${!arrowVisibility.left && ' hidden'}`} onClick={() => handleScroll('left')} />
             <div className='scroll-container' ref={scrollContainerRef}>
                 {iconNames.map((iconName, index) => (
-                    <section className='stay-icon' key={index} onClick={() => onTypeChange(iconName)}>
+                    <section className={`stay-icon ${clickedIconIndex === index ? 'hover-icon' : ''}`}
+                        key={index}
+                        onClick={() => { onTypeChange(iconName), onToggleIcon(index) }}>
                         <img src={`${iconBasePath}${iconName}.jpg`} alt={iconName} />
                         <p>{iconName}</p>
                     </section>
                 ))}
 
             </div>
-            <IoIosArrowForward className='arrow arrow-right' onClick={() => handleScroll('right')} />
+            <IoIosArrowForward className={`arrow arrow-right ${!arrowVisibility.right && 'hidden'}`} onClick={() => handleScroll('right')} />
             <div className='filter-button'>
                 <BsSliders />
                 <p>Filters</p>

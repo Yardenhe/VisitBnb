@@ -3,16 +3,19 @@
     display: flex;
 }
 
-.flex-start{
+.flex-start {
     align-items: start;
 }
+
 .inline-flex {
     display: inline-flex;
 }
-.bnb-color{
+
+.bnb-color {
     background: $clr1;
     color: #fff;
-    &:hover{
+
+    &:hover {
         background: $clr1;
     }
 }
@@ -20,18 +23,33 @@
 .bold {
     font-family: 'cereal-bold';
 }
-.dev-actions{
+
+.dev-actions {
     display: flex;
     align-items: center;
     flex-flow: row;
     flex-wrap: wrap;
-    margin:  0.5em auto;
+    margin: 0.5em auto;
     gap: 20px;
-    & button{
+
+    & button {
         height: 80px;
         width: 250px;
         padding: 0.75em;
     }
+}
+
+.black {
+    color: $clr5;
+}
+
+.hidden {
+    display: none;
+}
+
+.space-between {
+    display: flex;
+    justify-content: space-between;
 }
 
 // List 
@@ -75,8 +93,13 @@
     @include aspect-ratio(100, 150);
 }
 
+.center {
+    display: flex;
+    align-items: center;
+}
+
 // a dev element that sits on top of everthing (fixed position)
-.dev-action-element{
+.dev-action-element {
     display: flex;
     flex-direction: column;
     position: fixed;
@@ -84,6 +107,11 @@
     left: 50px;
     max-width: 200px;
 }
-.sub-text{
+
+.sub-text {
     color: $clr4;
+}
+
+.no-overflow {
+    overflow: hidden;
 }
