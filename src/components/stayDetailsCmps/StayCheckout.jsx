@@ -22,12 +22,12 @@ export function StayCheckout({ price, orderInfo,startDate, endDate }) {
         <div className="date-btn-container">
           <div className="btn-info">
             <div className="btn-info-label">check-in</div>
-            <div className="btn-info-detail">{formattedStartDate}</div>
+            <div className="btn-info-detail">{formattedStartDate?formattedStartDate : 'Add date'}</div>
           </div>
 
           <div className="btn-info">
             <div className="btn-info-label">check-out</div>
-            <div className="btn-info-detail">{formattedEndDate}</div>
+            <div className="btn-info-detail">{formattedEndDate?formattedEndDate : 'Add date'}</div>
           </div>
         </div>
 
