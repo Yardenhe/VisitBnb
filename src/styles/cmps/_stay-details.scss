@@ -7,8 +7,9 @@ $section-top: 32px;
   flex-direction: column;
   align-self: center;
   max-width: 1400px;
-  min-width: 1200px;
+  min-width: 800px;
   padding: 0 $details-padding;
+  margin: 0 auto;
   align-items: center;
   // justify-content: space-between;
   justify-content: center;
@@ -236,9 +237,14 @@ $section-top: 32px;
   }
   .btn-continue {
     margin-top: 5px;
-    padding: 12px;
     min-height: 56px;
   }
+}
+
+.btn-continue {
+  padding: 12px;
+  // background: radial-gradient(circle at center,#FF385C 0%,#E61E4D 27.5%,#E31C5F 40%,#D70466 57.5%,#BD1E59 75%,#BD1E59 100%);
+
 }
 
 .date-btn-container,
@@ -354,6 +360,7 @@ $section-top: 32px;
     border: 2px solid black;
     border-radius: 100% !important;
     background-color: var(--rdp-background-color);
+    color: #000 !important;
   }
   // .rdp-day:hover:not(.rdp-day_range_end){
   //   background-color: #fff;
@@ -367,7 +374,6 @@ $section-top: 32px;
     color: #fff !important;
     border: 2px solid black
   }
-  
 }
 
 // reviews

@@ -12,12 +12,12 @@
 }
 
 .bnb-color {
-    background: $clr1;
+    background-color: $clr1;
     color: #fff;
 
-    &:hover {
-        background: $clr1;
-    }
+    // &:hover {
+    //     background: $clr1;
+    // }
 }
 
 .bold {
