@@ -1,0 +1,12 @@
+.dynamic-modal {
+    position: fixed;
+    inset: 0;
+    margin: 100px;
+    text-align: center;
+    background: lightblue;
+    button {
+        position: absolute;
+        left: 20px;
+        top: 20px;
+    }
+}

@@ -5,7 +5,7 @@ import { pluralizeLabel } from "../../services/util.service";
 
 import { MiniUser } from "../UI/MiniUser";
 import { AmenityList } from "./AmenityList";
-import { DatePicker } from "./DatePicker";
+import { DatePicker } from "../UI/DatePicker";
 import { TagToIcon } from "../UI/TagToIcon";
 
 export function StayDescription({ stay }) {

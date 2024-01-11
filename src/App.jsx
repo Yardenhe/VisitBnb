@@ -9,6 +9,7 @@ import { StayDetails } from './views/StayDetails'
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom'
 import { OrderIndex } from './views/OrderIndex'
 import { StayEdit } from './views/StayEdit'
+import { DynamicModal } from './components/UI/DynamicModal'
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
           </Route>
           <Route path='/orders' element={<OrderIndex/>}/>
         </Routes>
+        <DynamicModal/>
       </section>
     </Router>
   )

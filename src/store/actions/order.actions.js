@@ -17,6 +17,7 @@ export async function setCurrOrder(currOrder){
     let order = currOrder ? currOrder : orderService.getEmptyOrder()
     store.dispatch({type:SET_CURR_ORDER , order})
 }
+
 // ADD_ORDER / UPDATE_ORDER
 export async function saveOrder(order){
     try {

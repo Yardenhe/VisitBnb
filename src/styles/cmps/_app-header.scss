@@ -5,18 +5,35 @@
     align-items: center;
     padding: 0px rem(80px);
     border-bottom: 1px solid #d3d3d3;
-
+    height: 80px;
+    z-index: 1000;
 
 }
+
+.sticky-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1001;
+    background-color: #fff;
+    // Add other styles as needed
+
+}
+
+
 
 
 .grid-app-header {
     border-bottom: none;
+    z-index: 999;
+
 }
+
 
 .app-header-filter {
 
-    z-index: 1002;
+    z-index: 1004;
     position: fixed;
     background-color: $clr3;
     width: 100%;
@@ -36,88 +53,115 @@
 
 }
 
+
+
 .app-header-logo {
     max-width: 100px;
 }
 
 .date-picker.grid-date-picker {
 
-    grid-row: 2 / 3;
-    grid-column: 1 / -1;
-    margin: 0px 16.5em;
-    padding-inline: 1em;
-    border-radius: 5em;
-    min-height: 1em;
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    // grid-template-rows: auto;
+    margin: 0px 20em;
+    // padding-inline: 1em;
+    border-radius: 32px;
+    height: 66px;
     justify-content: space-between;
     overflow: hidden;
 
 
 
     .btn-datepicker {
-        background: transparent;
-        cursor: pointer;
-        text-align: inherit;
-        border: 1px solid transparent;
-        background-color: #ffffff;
-        color: #484848;
-        padding-top: 5px;
+        padding: 8.4px 0px 0px 13px;
+        height: 100%;
+        width: 100%;
+
+
+
+        &:hover {
+            background-color: $clr2;
+        }
+    }
+
+    .right {
+        padding: 0px;
+    }
+
+
+    .check {
+        padding: 5px 0px 5px 8px;
+        height: 100%;
 
     }
 
+
     .search-btn {
-        display: flex;
+        justify-self: end; // Align to the end of the grid item
+        align-self: center;
         justify-content: center;
         align-items: center;
+
         color: #fff;
         background-color: #ff385c;
         border-radius: 50%;
-        padding: 10px;
-        margin: 7px 7px 7px 0;
-        height: 50px;
+        padding: 12px;
+        margin-right: 10px;
+        // margin-bottom: 10px;
+        height: 47px;
         min-width: 50px;
-        margin-block: 1em;
+        justify-self: flex-end;
+        align-self: flex-start;
 
     }
 
+
     section:nth-child(1) {
 
-
-        border-bottom-left-radius: 20px;
-        border-top-left-radius: 20px;
-
+        align-content: center;
 
 
     }
 
     section:nth-child(2) {
-        border-right: 1px solid $clr2;
-        border-radius: 0px;
-        border-left: 1px solid $clr2;
+        display: flex;
+        justify-content: space-around;
+        //  border-right: 1px solid $clr2;
+
+        // border-left: 1px solid $clr2;
+
+
+
+        div {
+            //  border-left: 1px solid $clr2;
+            // padding: 0px 0px;
+            justify-self: center;
+        }
 
 
     }
 
     section:nth-child(3) {
-        border-right: 1px none black;
-        margin: 0px 5px;
-        border-right: 1px solid $clr2;
-        border-radius: 0px;
-
-
-
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        // border-right: 1px none black;
+        // margin: 0px 5px;
+        align-content: center;
+        align-items: center;
+        padding-left: 10px
     }
 }
 
 .overlay {
     position: fixed;
-
     left: 0;
     width: 100%;
     height: 100%;
     background: rgba(0, 0, 0, 0.5);
-    z-index: 1002;
-
+    z-index: 1003;
+    transition: opacity 0.3s ease;
 
 
 }
@@ -126,7 +170,7 @@
 .date-picker {
     display: flex;
     align-items: center;
-    padding: 0px 2.3px;
+    padding: 0px 0px;
     margin: 0px 3em;
     border-radius: 40.6px;
     border: 1px solid #d3d3d3;
@@ -158,7 +202,7 @@
 
     .btn-datepicker {
         text-align: center;
-        border-radius: 4px;
+        border-radius: 32px;
         background: transparent;
         cursor: pointer;
         padding: 0;
@@ -171,10 +215,13 @@
         //border-radius: 20px;
         padding: 5px 16.4px;
 
+
+
+
         p {
             font-size: 1em;
-            padding: none;
-            margin: none;
+            padding: 0;
+            margin: 0;
             color: $clr4;
         }
 
@@ -185,23 +232,17 @@
     }
 
 
-    section:nth-child(1) {
-
-
-        border-bottom-left-radius: 20px;
-        border-top-left-radius: 20px;
-
-
-
-    }
+    //section:nth-child(1) {}
 
     section:nth-child(2) {
-        border-right: 1px solid $clr2;
+        // border-right: 1px solid $clr2;
         border-radius: 0px;
-        border-left: 1px solid $clr2;
+        // border-left: 1px solid $clr2;
 
 
     }
+
+
 
     section:nth-child(3) {
         border-right: 1px none black;
@@ -295,4 +336,5 @@
         padding: 7.2px;
 
     }
+
 }

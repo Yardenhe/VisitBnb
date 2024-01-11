@@ -4,6 +4,20 @@
     grid-auto-flow: column;
     margin-top: 10px;
     padding-block: 0.2em;
+    position: sticky !important;
+    background-color: $clr3;
+    z-index: 1000;
+    width: 100%;
+
+    &.sticky {
+        top: 79.7px;
+        z-index: 1000;
+
+    }
+
+
+
+
 
 
 
@@ -18,6 +32,8 @@
 
     }
 
+
+
     .stay-icon {
         display: flex;
         flex-direction: column;
@@ -30,6 +46,11 @@
         &:hover {
             border-bottom-color: $clr4;
         }
+
+        &.hover-icon {
+            border-bottom-color: $clr4;
+        }
+
 
 
 
@@ -121,6 +142,8 @@
         position: relative;
         right: 0;
     }
+
+
 
 
 }
