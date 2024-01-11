@@ -1,9 +1,9 @@
 import React from 'react'
-//import { DatePicker } from "../stayDetailsCmps/DatePicker"
+import { DatePicker } from "../UI/DatePicker"
 export function CheckInOutModal() {
     return (
-        <div className='location-modal'>
-            {/* <DatePicker /> */}
+        <div className='location-modal hight-datepicker-checkin' >
+            <DatePicker />
         </div>
     )
 }

@@ -123,3 +123,33 @@
         margin-left: 5px;
     }
 }
+
+.hight-datepicker-checkin {
+    height: 500px;
+}
+
+.who-items {
+    display: flex;
+}
+
+.list-gusets {
+    display: block;
+    min-width: 400px;
+    ;
+
+}
+
+.who-items {
+    border-bottom: $clr4 solid 1px;
+    padding-bottom: 5px;
+    padding-top: 5px;
+
+    h5 {
+        font-family: 'cereal-bold';
+        font-size: 16px;
+    }
+
+    p {
+        font-size: 14px;
+    }
+}
