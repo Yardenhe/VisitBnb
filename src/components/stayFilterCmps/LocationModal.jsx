@@ -13,6 +13,9 @@ export function LocationModal() {
         { id: 1, name: 'Italy', imgUrl: '/public/img/icons/location.svg' },
         { id: 2, name: 'Spain', imgUrl: '/public/img/icons/location.svg' },
         { id: 3, name: 'Israel', imgUrl: '/public/img/icons/location.svg' },
+        { id: 4, name: 'Portugal', imgUrl: '/public/img/icons/location.svg' },
+        { id: 5, name: 'United States', imgUrl: '/public/img/icons/location.svg' },
+        { id: 6, name: 'Canada', imgUrl: '/public/img/icons/location.svg' }
         // Add more locations as needed
     ];
     return (

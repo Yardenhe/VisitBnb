@@ -27,6 +27,30 @@
         padding: 50px;
     }
 
+    .loc-list-scroll {
+        overflow: auto;
+        height: 300px;
+
+        &::-webkit-scrollbar {
+            width: 12px; // Set the width of the scrollbar
+        }
+
+        &::-webkit-scrollbar-track {
+            background: #f1f1f1; // Background color of the track
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background: #888; // Color of the scrollbar handle
+            border-radius: 6px; // Add rounded corners to the handle
+        }
+
+        &::-webkit-scrollbar-thumb:hover {
+            background: #555; // Change color on hover
+        }
+
+    }
+
+
     .loc-map-list {
         display: grid;
         grid-template-rows: 1fr 1fr;
@@ -46,7 +70,10 @@
         display: flex;
         // flex-direction: column;
         align-items: center;
+        min-width: 200px;
         padding: 10px;
+
+
 
         img {
             width: 32px;
@@ -76,7 +103,8 @@
     }
 
     .loc-left {
-        padding: 50px;
+
+        padding: 50px 0px 0px 0px;
     }
 
     .img-list-loc {
