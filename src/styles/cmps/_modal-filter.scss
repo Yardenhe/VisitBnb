@@ -178,7 +178,7 @@
     left: 50%;
     transform: translate(-50%, -50%);
     background-color: #fff;
-    padding: 20px;
+    padding: 0px 0px 20px 20px;
     border-radius: 10px;
     z-index: 1001;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
@@ -188,7 +188,23 @@
     height: 70vh;
     width: 100vh;
 
+    .price-range {
+        border-bottom: $clr2 solid 1px;
+        padding-bottom: 15px;
+        padding-top: 15px;
+    }
 
+    h3 {
+        font-family: 'cereal-bold';
+        text-align: center;
+        font-size: 16px;
+        border-bottom: $clr2 solid 1px;
+        padding-bottom: 15px;
+        padding-top: 15px;
+        position: sticky;
+        top: 0;
+        background-color: $clr3;
+    }
 }
 
 .overlayModal {
@@ -201,13 +217,6 @@
     z-index: 1005;
 
 
-    h3 {
-        font-family: 'cereal-bold';
-        text-align: center;
-        font-size: 16px;
-        border-bottom: $clr2 solid 1px;
-        padding-bottom: 15px;
-    }
 
 
 
