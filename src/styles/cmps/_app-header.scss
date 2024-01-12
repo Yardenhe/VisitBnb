@@ -41,14 +41,14 @@
     ;
 
     padding-bottom: 1em;
-    opacity: 0; // Initially transparent
-    visibility: hidden; // Initially hidden
-    transition: all .4s ease-in-out; // Apply delay to visibility
+    opacity: 0;
+    visibility: hidden;
+    transition: all .4s ease-in-out;
 
     &.show-explore {
-        opacity: 1; // Fully visible
-        visibility: visible; // Make it visible
-        //  transition-delay: 0s; // Remove delay for visibility
+        opacity: 1;
+        visibility: visible;
+        transition-delay: 0s;
     }
 }
 

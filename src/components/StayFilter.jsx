@@ -3,6 +3,7 @@ import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { BsSliders } from "react-icons/bs";
 import { useEffectUpdate } from "../customHooks/useEffectUpdate"
 import { useToggle } from "../customHooks/useToggle"
+import { ModalFilter } from './stayFilterCmps/ModalFilter';
 
 const iconBasePath = 'img/labels/';
 const iconNames = ['amazingpools', 'amazingviews', 'arctics', 'beachfront', 'cabins', 'boats', 'camping', 'castles', 'desert', 'design', 'Countryside'
@@ -14,6 +15,7 @@ export function StayFilter({ filterBy, onSetFilter }) {
     const [arrowVisibility, setArrowVisibility] = useState({ left: false, right: true });
     const [clickedIconIndex, setClickedIconIndex] = useState(null);
     const [isSticky, setIsSticky] = useState(false);
+    const [isOpenFilterModal, onToggleFilterModal] = useToggle()
 
     useEffect(() => {
         const handleScroll = () => {
@@ -78,10 +80,11 @@ export function StayFilter({ filterBy, onSetFilter }) {
 
             </div>
             <IoIosArrowForward className={`arrow arrow-right ${!arrowVisibility.right && 'hidden'}`} onClick={() => handleScroll('right')} />
-            <div className='filter-button'>
-                <BsSliders />
+            <div className='filter-button' onClick={() => onToggleFilterModal()}>
+                <BsSliders className='bold-icon' />
                 <p>Filters</p>
             </div>
+            {isOpenFilterModal && <ModalFilter isOpen={isOpenFilterModal} onClose={() => onToggleFilterModal()} />}
         </section>
     );
 }
