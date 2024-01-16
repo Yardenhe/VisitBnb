@@ -77,6 +77,10 @@
 
     }
 
+    .bold-icon {
+        font-weight: bold;
+    }
+
     .filter-button {
         display: flex;
         align-items: center;
@@ -84,9 +88,11 @@
         border: 1px solid #717171;
         border-radius: 20%;
         align-self: center;
+        font-family: 'cereal-bold';
         padding: 15px;
         margin-left: 5px;
         margin-bottom: 15px;
+        cursor: pointer;
 
 
 
@@ -142,6 +148,8 @@
         position: relative;
         right: 0;
     }
+
+
 
 
 }

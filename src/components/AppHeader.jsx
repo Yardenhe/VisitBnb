@@ -5,11 +5,14 @@ import { IoSearch } from "react-icons/io5";
 import { LuGlobe } from "react-icons/lu";
 import { IoMdMenu } from "react-icons/io";
 import { useToggle } from "../customHooks/useToggle"
-
+import { LocationModal } from "../components/stayFilterCmps/LocationModal"
+import { GuestsModal } from './stayFilterCmps/GuestsModal';
+import { CheckInOutModal } from './stayFilterCmps/CheckInOutModal';
 
 export function AppHeader() {
     const [isOpenEffect, onToggleEffect] = useToggle()
     const [isOpenFilter, onToggle] = useToggle()
+    const [whichExploreBar, setwhichExploreBar] = useState('')
     const isFirstRender = useRef(true);
     const location = useLocation();
     const isSpecificPage = location.pathname === '/';
@@ -46,23 +49,35 @@ export function AppHeader() {
 
     }, [isOpenEffect]);
 
-
+    function onChangeStyle(newStyle) {
+        setFooterStyle(prevStyle => ({ ...prevStyle, ...newStyle }))
+        showSuccessMsg('Changed style!')
+    }
 
 
     return (
-        <section className={isSpecificPage ? 'sticky-header' : ''}>
-            {isOpenFilter && <div className="overlay" onClick={onToggleEffect}></div>}
-
-
-            <header className={!isOpenFilter ? 'app-header' : ' app-header-filter'}>
-
-                {!isOpenFilter &&
+        <>
+            <section className={isSpecificPage ? 'sticky-header' : ''}>
+                {isOpenFilter && <div className="overlay" onClick={onToggleEffect}></div>}
+                <header className={'app-header'} >
                     <Link to="/">
                         <img className="app-header-logo" src="img/airbnb-logoo.PNG" />
                     </Link>
-                }
+                    <section className={`date-picker${isOpenEffect ? ' enlarge' : ' '}`} onClick={onToggleEffect}>
+                        <section className='btn-datepicker bold'>AnyWhere</section>
+                        <section className='btn-datepicker bold'>Any Week</section>
+                        <section className='btn-datepicker'><p>Add guests</p> <IoSearch className='search-btn' /> </section>
 
-                {isOpenFilter &&
+                    </section>
+                    <section className='right-header-menu'>
+                        <div className='switchlen-menu'>
+                            <button>Switch to hosting</button>
+                            <LuGlobe className='global-btn' />
+                        </div>
+                        <div className='menu-bar'> <IoMdMenu className='menu-icon' /><div className='circle'>י</div></div>
+                    </section>
+                </header>
+                <header className={`app-header-filter${isOpenFilter ? ' show-explore' : ' slideOut'}`}>
                     <section className="app-header grid-app-header">
                         <Link to="/">
                             <img className="app-header-logo" src="img/airbnb-logoo.PNG" />
@@ -82,45 +97,49 @@ export function AppHeader() {
                             <div className='menu-bar'> <IoMdMenu className='menu-icon' /><div className='circle'>י</div></div>
 
                         </section>
-                    </section>}
-                {!isOpenFilter ? <section className={`date-picker${isOpenEffect ? ' enlarge' : ' '}`} onClick={onToggleEffect}>
-                    <section className='btn-datepicker bold'>AnyWhere</section>
-                    <section className='btn-datepicker bold'>Any Week</section>
-                    <section className='btn-datepicker'>Add guests  </section>
-                    <IoSearch className='search-btn' />
-                </section> :
-                    <section className={`date-picker grid-date-picker${!isOpenEffect ? ' shrink' : ' '}`} onClick={onToggleEffect}>
-                        <section className='btn-datepicker'>
+                    </section>
+                    <section className={`date-picker grid-date-picker${!isOpenEffect ? ' shrink' : ' '}`} >
+                        <section className='btn-datepicker' onClick={() => setwhichExploreBar('location')}>
                             <span className='bold'>Where</span>
                             <p >Search destinations</p>
                         </section>
                         <section>
-                            <section className='btn-datepicker check'>
+                            <section className='btn-datepicker check' onClick={() => setwhichExploreBar('checkin')}>
                                 <span className='bold'>Check in</span>
                                 <p >Add dates</p>
                             </section>
-                            <div className='btn-datepicker check'>
+                            <div className='btn-datepicker check' onClick={() => setwhichExploreBar('checkin')}>
                                 <span className='bold'>Check out</span>
                                 <p >Add dates</p>
                             </div>
                         </section>
                         <section className='btn-datepicker right'>
-                            <section>
+                            <section onClick={() => setwhichExploreBar('guests')}>
                                 <span className='bold'>Who</span>
                                 <p className='block' >Add guests</p>
                             </section>
                             <IoSearch className='search-btn' />
                         </section>
 
-                    </section>}
-                {!isOpenFilter && <section className='right-header-menu'>
-                    <div className='switchlen-menu'>
-                        <button>Switch to hosting</button>
-                        <LuGlobe className='global-btn' />
-                    </div>
-                    <div className='menu-bar'> <IoMdMenu className='menu-icon' /><div className='circle'>י</div></div>
-                </section>}
-            </header>
-        </section >
+                    </section>
+                </header>
+            </section >
+            {isOpenFilter && <DynamicCmp cmpType={whichExploreBar} name={'Muki'} />}
+        </>
+
     )
+}
+function DynamicCmp(props) {
+
+    switch (props.cmpType) {
+
+        case 'location':
+            return <LocationModal {...props} />
+        case 'checkin':
+            return <CheckInOutModal {...props} />
+        case 'guests':
+            return <GuestsModal {...props} />
+        default:
+            return <></>
+    }
 }
