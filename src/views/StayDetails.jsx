@@ -97,6 +97,7 @@ export function StayDetails() {
         <button>
           <Link to={"/orders"}>Orders Page (dev-btn)</Link>
         </button>
+        {elDevActions}
       </div>
       {/* HEADER */}
       <section className="details-header ">

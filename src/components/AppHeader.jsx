@@ -66,8 +66,8 @@ export function AppHeader() {
                     <section className={`date-picker${isOpenEffect ? ' enlarge' : ' '}`} onClick={onToggleEffect}>
                         <section className='btn-datepicker bold'>AnyWhere</section>
                         <section className='btn-datepicker bold'>Any Week</section>
-                        <section className='btn-datepicker'>Add guests  </section>
-                        <IoSearch className='search-btn' />
+                        <section className='btn-datepicker'><p>Add guests</p> <IoSearch className='search-btn' /> </section>
+
                     </section>
                     <section className='right-header-menu'>
                         <div className='switchlen-menu'>
@@ -77,7 +77,7 @@ export function AppHeader() {
                         <div className='menu-bar'> <IoMdMenu className='menu-icon' /><div className='circle'>י</div></div>
                     </section>
                 </header>
-                <header className={`app-header-filter${isOpenFilter ? ' show-explore' : ' '}`}>
+                <header className={`app-header-filter${isOpenFilter ? ' show-explore' : ' slideOut'}`}>
                     <section className="app-header grid-app-header">
                         <Link to="/">
                             <img className="app-header-logo" src="img/airbnb-logoo.PNG" />
