@@ -5,8 +5,9 @@ import { PropertyFilter } from './PropertyFilter';
 import { IoMdCheckmark } from "react-icons/io";
 import { useSelector } from "react-redux";
 import { IoCloseOutline } from "react-icons/io5";
+import { useEffectUpdate } from '../../customHooks/useEffectUpdate';
 
-export function ModalFilter({ isOpen, onClose }) {
+export function ModalFilter({ isOpen, onClose, setFilterByToEdit }) {
 
     const stays = useSelector((storeState) => storeState.stayModule.stays);
     const [minPrice, setMinPrice] = useState(10);
@@ -61,10 +62,21 @@ export function ModalFilter({ isOpen, onClose }) {
             txt: "Iron",
         },
     ];
+    useEffectUpdate(() => {
+        setFilterByToEdit((prevFilter) => ({ ...prevFilter, "ammenties": selectedAmmenties }))
+    }, [selectedAmmenties])
+    useEffectUpdate(() => {
+        setFilterByToEdit((prevFilter) => ({ ...prevFilter, "beds": selectedBeds, "bedrooms": selectedBedrooms, "bathrooms": selectedBathrooms }))
+    }, [selectedBeds, selectedBathrooms, selectedBedrooms])
+    useEffectUpdate(() => {
+        setFilterByToEdit((prevFilter) => ({ ...prevFilter, "Properties": selectedProperties }))
+    }, [selectedProperties])
+
+
     const handlePriceChange = (event, newValue) => {
         setMinPrice(newValue[0])
         setMaxPrice(newValue[1])
-
+        setFilterByToEdit((prevFilter) => ({ ...prevFilter, "minPrice": newValue[0], "MaxPrice": newValue[1] }))
     };
     function handleCheckboxChange(ev) {
         const { name, checked } = ev.target;
@@ -75,7 +87,9 @@ export function ModalFilter({ isOpen, onClose }) {
                 return prevSelectedAmmenties.filter((ammenty) => ammenty !== name);
             }
         });
+
     }
+
     return (
         <div className={overlayClassName} >
             <div className='modal-filters'>
