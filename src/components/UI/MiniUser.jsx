@@ -1,7 +1,10 @@
 import { useState } from "react";
 
-export function MiniUser({user,type='user'}) {
-    const {fullname,isSuperhost,thumbnailUrl:img} = user
+export function MiniUser({user,type='user' ,isReview = false}) {
+  
+    const {fullname,isSuperhost,[isReview ? 'thumbnailUrl' : 'imgUrl']:img} = user
+ 
+
     // console.log("MiniUser",user);
     const [userImg,setUserImg] = useState(img)
     const tempImg = '/public/img/Icons/user-circle.svg'

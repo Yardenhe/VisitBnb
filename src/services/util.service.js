@@ -16,6 +16,7 @@ export const utilService = {
 	formatMailDate,
 	getSymbolCurrency,
 	formatDate,
+	calculateTimeAgo,
 	// pluralizeLabel,
 }
 export function pluralizeLabel(num,label){
@@ -199,3 +200,32 @@ function getSymbolCurrency(currency) {
 			break
 	}
 }
+
+function calculateTimeAgo(timestamp) {
+	const currentDate = new Date();
+	const pastDate = new Date(timestamp);
+  
+	const timeDifference = currentDate - pastDate;
+	// changing units to days
+	const daysDifference = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+  
+	if (daysDifference <= 30) {
+	  return `${daysDifference} days ago`;
+	} else {
+	  const monthNames = [
+		'January', 'February', 'March', 'April', 'May', 'June',
+		'July', 'August', 'September', 'October', 'November', 'December'
+	  ];
+  
+	  const year = pastDate.getFullYear();
+	  const month = pastDate.getMonth();
+  
+	  return `${monthNames[month]} ${year}`;
+	}
+  }
+  
+  // Example usage:
+  const timestamp = '2016-08-23T04:00:00.000Z';
+  const result = calculateTimeAgo(timestamp);
+  console.log(result);
+  

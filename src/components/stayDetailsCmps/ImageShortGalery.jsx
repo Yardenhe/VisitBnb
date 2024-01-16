@@ -11,7 +11,7 @@ export function ImageShortGalery({ imgUrls }) {
           <img key={id} src={url} alt="" />
         ))}
         <div className="button-overlay">
-          <Button icon={<Dots />} text={"show all photos"} className="galery-btn"/>
+          <Button icon={<Dots />} text={"Show all photos"} className="galery-btn"/>
         </div>
       </section>
     </>

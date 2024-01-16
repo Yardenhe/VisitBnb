@@ -102,8 +102,8 @@ export function StayDetails() {
       <section className="details-header ">
         <h3>{name}</h3>
         <div className="btn-header-container">
-          <Button icon={<ShareIcon />} text={"share"} isUnderlined={true} />
-          <Button icon={<Heart />} text={"save"} isUnderlined={true} />
+          <Button icon={<ShareIcon />} className={'share-save-btn'} text={"Share"} isUnderlined={true} />
+          <Button icon={<Heart />} className={'share-save-btn'} text={"Save"} isUnderlined={true} />
         </div>
       </section>
 
@@ -118,7 +118,7 @@ export function StayDetails() {
 
       {/* All details */}
       <section className="stay-reviews">
-        <StayReviews />
+        <StayReviews reviews={stay.reviews}/>
       </section>
     </div>
   );
