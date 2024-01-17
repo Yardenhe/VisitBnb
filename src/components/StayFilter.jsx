@@ -18,6 +18,7 @@ export function StayFilter({ filterBy, onSetFilter }) {
     const [isSticky, setIsSticky] = useState(false);
     const [isOpenFilterModal, onToggleFilterModal] = useToggle()
 
+
     useEffect(() => {
 
         const handleScroll = () => {
