@@ -73,10 +73,11 @@ export function ModalFilter({ isOpen, onClose, setFilterByToEdit }) {
     }, [selectedProperties])
 
 
+
     const handlePriceChange = (event, newValue) => {
         setMinPrice(newValue[0])
         setMaxPrice(newValue[1])
-        setFilterByToEdit((prevFilter) => ({ ...prevFilter, "minPrice": newValue[0], "MaxPrice": newValue[1] }))
+        setFilterByToEdit((prevFilter) => ({ ...prevFilter, "minPrice": newValue[0], "maxPrice": newValue[1] }))
     };
     function handleCheckboxChange(ev) {
         const { name, checked } = ev.target;
@@ -120,13 +121,13 @@ export function ModalFilter({ isOpen, onClose, setFilterByToEdit }) {
                                     <div className="details-input" key={label}>
                                         <button
                                             type="button"
-                                            className={`details-btn ${selectedBedrooms.toString() === label
+                                            className={`details-btn ${selectedBedrooms && (selectedBedrooms.toString() === label
                                                 ? "selected"
                                                 : ""
-                                                }`}
+                                            )}`}
                                             onClick={() => {
                                                 if (label === "Any") {
-                                                    setSelectedBedrooms("Any");
+                                                    setSelectedBedrooms(null);
                                                 } else {
                                                     setSelectedBedrooms(parseInt(label));
                                                 }
@@ -145,11 +146,11 @@ export function ModalFilter({ isOpen, onClose, setFilterByToEdit }) {
                                     <div className="details-input" key={label}>
                                         <button
                                             type="button"
-                                            className={`details-btn ${selectedBeds.toString() === label ? "selected" : ""
-                                                }`}
+                                            className={`details-btn ${selectedBeds && (selectedBeds.toString() === label ? "selected" : ""
+                                            )}`}
                                             onClick={() => {
                                                 if (label === "Any") {
-                                                    setSelectedBeds("Any");
+                                                    setSelectedBeds(null);
                                                 } else {
                                                     setSelectedBeds(parseInt(label));
                                                 }
@@ -169,13 +170,13 @@ export function ModalFilter({ isOpen, onClose, setFilterByToEdit }) {
                                     <div className="details-input" key={label}>
                                         <button
                                             type="button"
-                                            className={`details-btn ${selectedBathrooms.toString() === label
+                                            className={`details-btn ${selectedBathrooms && (selectedBathrooms.toString() === label
                                                 ? "selected"
                                                 : ""
-                                                }`}
+                                            )}`}
                                             onClick={() => {
                                                 if (label === "Any") {
-                                                    setSelectedBathrooms("Any");
+                                                    setSelectedBathrooms(null);
                                                 } else {
                                                     setSelectedBathrooms(parseInt(label));
                                                 }
@@ -187,12 +188,7 @@ export function ModalFilter({ isOpen, onClose, setFilterByToEdit }) {
                                 )
                             )}
                         </div>
-                        <div className="stay-ammenities">
-                            <div className="stay-ammenities-title">Amenities</div>
-                        </div>
-                        <div className="price-range-slider-container">
 
-                        </div>
                     </div>
                     <div className='stay-property'>
                         <h4 className='bold'>Property Type</h4>
