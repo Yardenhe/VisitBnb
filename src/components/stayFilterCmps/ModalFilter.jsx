@@ -1,13 +1,14 @@
 import React from 'react'
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { PriceSlider } from './PriceSlider';
 import { PropertyFilter } from './PropertyFilter';
 import { IoMdCheckmark } from "react-icons/io";
 import { useSelector } from "react-redux";
 import { IoIosClose } from "react-icons/io";
 import { useEffectUpdate } from '../../customHooks/useEffectUpdate';
+import { stayService } from '../../services/stay.service';
 
-export function ModalFilter({ isOpen, onClose, setFilterByToEdit }) {
+export function ModalFilter({ isOpen, onClose, setFilterByToEdit, filterByToEdit }) {
 
     const stays = useSelector((storeState) => storeState.stayModule.stays);
     const [minPrice, setMinPrice] = useState(10);
@@ -85,8 +86,16 @@ export function ModalFilter({ isOpen, onClose, setFilterByToEdit }) {
         //setFilterByToEdit((prevFilter) => ({ ...prevFilter, "propertyType": selectedProperties }))
         setModalFilters((prevFilter) => ({ ...prevFilter, "propertyType": selectedProperties }))
     }, [selectedProperties])
+    useEffect(() => {
+        onHandleCount()
 
+    }, [modalFilters])
 
+    async function onHandleCount() {
+        const filterby = { ...filterByToEdit, ...modalFilters }
+        const length = await stayService.getStayCount(filterby)
+        setResultLength(length)
+    }
 
     const handlePriceChange = (event, newValue) => {
         setMinPrice(newValue[0])

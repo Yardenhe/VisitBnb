@@ -14,6 +14,7 @@ export const stayService = {
 	// getStayFromSearchParams,
 	// getSortFromParams,
 	getUnreadCount,
+  getStayCount
 }
 
 const BASE_URL = 'stay/'
@@ -108,6 +109,16 @@ function getFilterFromParams(searchParams) {
   }
 
   return filterBy
+}
+async function getStayCount(filterBy){
+  console.log("🚀 ~ getStayCount ~ filterBy:", filterBy)
+  try{
+    const {count} = await httpService.get(BASE_URL+'count', filterBy)
+    console.log('count', count);
+    return count
+  } catch(err){
+    throw err
+  }
 }
 
 function getDefaultFilter() {

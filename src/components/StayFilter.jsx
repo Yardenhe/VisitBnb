@@ -88,7 +88,7 @@ export function StayFilter({ filterBy, onSetFilter }) {
                 <BsSliders className='bold-icon' />
                 <p>Filters</p>
             </div>
-            {isOpenFilterModal && <ModalFilter isOpen={isOpenFilterModal} onClose={() => onToggleFilterModal()} setFilterByToEdit={setFilterByToEdit} />}
+            {isOpenFilterModal && <ModalFilter isOpen={isOpenFilterModal} filterByToEdit={filterByToEdit} onClose={() => onToggleFilterModal()} setFilterByToEdit={setFilterByToEdit} />}
         </section>
     );
 }
