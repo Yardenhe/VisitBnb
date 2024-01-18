@@ -4,22 +4,21 @@
     grid-auto-flow: column;
     margin-top: 10px;
     padding-block: 0.2em;
-    position: sticky !important;
+    position: sticky;
     background-color: $clr3;
-    z-index: 990;
+    z-index: 1001;
     width: 100%;
 
     &.sticky {
         top: 79.7px;
-        z-index: 1000;
+
 
     }
 
+    &.low-z-index {
+        z-index: 970;
 
-
-
-
-
+    }
 
     .scroll-container {
         display: grid;
@@ -115,7 +114,7 @@
 
 // Navigation arrows
 .stay-filter {
-    position: relative;
+    // position: relative;
 
     .arrow {
         position: absolute;

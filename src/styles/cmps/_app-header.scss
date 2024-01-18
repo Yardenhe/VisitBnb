@@ -6,10 +6,11 @@
     padding: 0px rem(80px);
     border-bottom: 1px solid #d3d3d3;
     height: 80px;
-    z-index: 999;
+    z-index: 1000;
 
 
 }
+
 
 .sticky-header {
     position: fixed;
@@ -29,16 +30,14 @@
     padding: 0px rem(80px);
     border-bottom: 1px solid #d3d3d3;
     height: 80px;
-    z-index: 1000;
-
     border-bottom: none;
-    z-index: 999;
+    z-index: 1000;
 
 }
 
 
 .app-header-filter {
-    z-index: 1004;
+    z-index: 1005;
     position: fixed;
     background-color: $clr3;
     width: 100%;
@@ -158,7 +157,9 @@
         //border-radius: 20px;
         padding: 0px 16px;
 
-
+        flex &.clicked-color {
+            background-color: $clr2;
+        }
 
 
 
@@ -172,6 +173,8 @@
         span {
             font-size: 0.8em;
         }
+
+
 
     }
 
@@ -230,10 +233,9 @@
     // grid-template-rows: auto;
     margin: 0px 20em;
     // padding-inline: 1em;
-
+    background-color: $clr2;
     border-radius: 32px;
     height: 66px;
-    justify-content: space-between;
     overflow: hidden;
 
 
@@ -242,25 +244,39 @@
         padding: 8.4px 0px 0px 13px;
         height: 100%;
         width: 100%;
+        background-color: $clr2;
 
-
-
-        &:hover {
-            background-color: $clr2;
-        }
+        // &:hover {
+        //     background-color: $clr2;
+        // }
     }
 
     .right {
         padding: 0px;
     }
 
+    .right-txt-explore {
+        // display: flex;
+        // flex-direction: row;
+
+        p:nth-child(1) {
+            font-size: 0.8em;
+            color: $clr5;
+        }
+
+    }
+
 
     .check {
         padding: 5px 0px 5px 8px;
         height: 100%;
+        border-radius: 32px;
 
     }
 
+    .clicked-color {
+        background-color: $clr3;
+    }
 
     .search-btn {
         justify-self: end; // Align to the end of the grid item
@@ -289,12 +305,9 @@
 
     }
 
-    section:nth-child(2) {
+    .middle-explore {
         display: flex;
-        justify-content: space-around;
-        //  border-right: 1px solid $clr2;
 
-        // border-left: 1px solid $clr2;
 
 
 
@@ -302,6 +315,7 @@
             //  border-left: 1px solid $clr2;
             // padding: 0px 0px;
             justify-self: center;
+            flex: 1;
         }
 
 

@@ -112,8 +112,8 @@ function getFilterFromParams(searchParams) {
 
 function getDefaultFilter() {
   return {
-      type: '',
-      price: '',
+      // type: '',
+      // price: '',
   }
 }
 

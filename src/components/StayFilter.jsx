@@ -70,7 +70,7 @@ export function StayFilter({ filterBy, onSetFilter }) {
         setClickedIconIndex(index);
     };
     return (
-        <section className={`stay-filter ${isSticky ? 'sticky' : ''}`}>
+        <section className={`stay-filter ${isSticky && ' sticky'}${!isOpenFilterModal && ' low-z-index'}`}>
             <IoIosArrowBack className={`arrow arrow-left  ${!arrowVisibility.left && ' hidden'}`} onClick={() => handleScroll('left')} />
             <div className='scroll-container' ref={scrollContainerRef}>
                 {iconNames.map((iconName, index) => (

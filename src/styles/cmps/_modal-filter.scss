@@ -31,6 +31,7 @@
     .loc-list-scroll {
         overflow-y: auto;
         height: 300px;
+        overflow-x: hidden;
 
         &::-webkit-scrollbar {
             width: 12px; // Set the width of the scrollbar
@@ -714,6 +715,7 @@
     height: 100%;
     background: rgba(32, 32, 32, 0.5);
     z-index: 1005;
+
 
 
 
