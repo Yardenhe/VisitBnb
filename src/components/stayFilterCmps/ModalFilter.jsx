@@ -4,13 +4,15 @@ import { PriceSlider } from './PriceSlider';
 import { PropertyFilter } from './PropertyFilter';
 import { IoMdCheckmark } from "react-icons/io";
 import { useSelector } from "react-redux";
-import { IoCloseOutline } from "react-icons/io5";
+import { IoIosClose } from "react-icons/io";
 import { useEffectUpdate } from '../../customHooks/useEffectUpdate';
 
 export function ModalFilter({ isOpen, onClose, setFilterByToEdit }) {
 
     const stays = useSelector((storeState) => storeState.stayModule.stays);
     const [minPrice, setMinPrice] = useState(10);
+    const [modalFilters, setModalFilters] = useState({});
+    console.log("🚀 ~ ModalFilter ~ modalFilters:", modalFilters)
     const [maxPrice, setMaxPrice] = useState(500);
     const [selectedBedrooms, setSelectedBedrooms] = useState("Any");
     const [selectedBeds, setSelectedBeds] = useState("Any");
@@ -61,15 +63,27 @@ export function ModalFilter({ isOpen, onClose, setFilterByToEdit }) {
             title: "iron",
             txt: "Iron",
         },
+        {
+            title: "pets allowed",
+            txt: "Pets allowed",
+        },
+        {
+            title: "smoking allowed",
+            txt: "Smoking allowed",
+        },
     ];
+
     useEffectUpdate(() => {
-        setFilterByToEdit((prevFilter) => ({ ...prevFilter, "ammenties": selectedAmmenties }))
+        //setFilterByToEdit((prevFilter) => ({ ...prevFilter, "amenities": selectedAmmenties }))
+        setModalFilters((prevFilter) => ({ ...prevFilter, "amenities": selectedAmmenties }))
     }, [selectedAmmenties])
     useEffectUpdate(() => {
-        setFilterByToEdit((prevFilter) => ({ ...prevFilter, "beds": selectedBeds, "bedrooms": selectedBedrooms, "bathrooms": selectedBathrooms }))
+        //setFilterByToEdit((prevFilter) => ({ ...prevFilter, "beds": selectedBeds, "bedrooms": selectedBedrooms, "bathrooms": selectedBathrooms }))
+        setModalFilters((prevFilter) => ({ ...prevFilter, "beds": selectedBeds, "bedrooms": selectedBedrooms, "bathrooms": selectedBathrooms }))
     }, [selectedBeds, selectedBathrooms, selectedBedrooms])
     useEffectUpdate(() => {
-        setFilterByToEdit((prevFilter) => ({ ...prevFilter, "Properties": selectedProperties }))
+        //setFilterByToEdit((prevFilter) => ({ ...prevFilter, "propertyType": selectedProperties }))
+        setModalFilters((prevFilter) => ({ ...prevFilter, "propertyType": selectedProperties }))
     }, [selectedProperties])
 
 
@@ -77,7 +91,8 @@ export function ModalFilter({ isOpen, onClose, setFilterByToEdit }) {
     const handlePriceChange = (event, newValue) => {
         setMinPrice(newValue[0])
         setMaxPrice(newValue[1])
-        setFilterByToEdit((prevFilter) => ({ ...prevFilter, "minPrice": newValue[0], "maxPrice": newValue[1] }))
+        // setFilterByToEdit((prevFilter) => ({ ...prevFilter, "minPrice": newValue[0], "maxPrice": newValue[1] }))
+        setModalFilters((prevFilter) => ({ ...prevFilter, "minPrice": newValue[0], "maxPrice": newValue[1] }))
     };
     function handleCheckboxChange(ev) {
         const { name, checked } = ev.target;
@@ -90,12 +105,15 @@ export function ModalFilter({ isOpen, onClose, setFilterByToEdit }) {
         });
 
     }
+    function handleSubmitFilterModal() {
+        setFilterByToEdit((prevFilter) => ({ ...prevFilter, ...modalFilters }))
+    }
 
     return (
         <div className={overlayClassName} >
             <div className='modal-filters'>
                 <div className='modal-header'>
-                    <p onClick={() => onClose()}><IoCloseOutline /></p>
+                    <p onClick={() => onClose()}><IoIosClose /></p>
                     <h3>Filters</h3>
                 </div>
                 <div className='modal-content'>
@@ -240,7 +258,7 @@ export function ModalFilter({ isOpen, onClose, setFilterByToEdit }) {
                                 setSelectedBeds("Any");
                                 setSelectedBathrooms("Any");
                                 setSelectedAmmenties([]);
-                                // setAppliedFilters([]);
+                                setModalFilters({});
                                 setSelectedProperties([]);
                             }}
                         >
@@ -251,8 +269,9 @@ export function ModalFilter({ isOpen, onClose, setFilterByToEdit }) {
                                 type="submit"
                                 className="filter-modal-btn"
                                 onClick={() => {
-                                    //  handleFilterModal("close");
-                                    //  console.log("btn submit clicked ");
+                                    handleSubmitFilterModal()
+                                    onClose()
+
                                 }}
                                 disabled={!resultLength}
                             >
