@@ -17,7 +17,7 @@ $img-radius:4%;
   grid-template-rows: repeat($gallery-rows, 1fr);
   position: relative;  
   img {
-    object-fit: fill;
+    object-fit: cover;
     min-width: 100%;
     min-height: 100%;
     &:hover {

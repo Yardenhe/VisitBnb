@@ -1,6 +1,7 @@
 import { RiArrowDropDownLine as DownArrow } from "react-icons/ri";
 import { onToggleModal } from "../../store/actions/app.actions";
 import { utilService } from "../../services/util.service";
+import { ReserveBtn } from "../UI/ReserveBtn";
 
 export function StayCheckout({ price, orderInfo,startDate, endDate }) {
   const formattedStartDate = utilService.formatDate(startDate)
@@ -8,6 +9,9 @@ export function StayCheckout({ price, orderInfo,startDate, endDate }) {
 
   function onOpenDatePicker(){
     onToggleModal({type:'datePicker',action})
+  }
+  function handleReserve(){
+    console.log('Reserve');
   }
   return (
     //<div className="checkout-card-container">
@@ -44,7 +48,8 @@ export function StayCheckout({ price, orderInfo,startDate, endDate }) {
         </div>
         </div>
       </button>
-      <button className="btn-continue bnb-color">continue</button>
+      {/* <button className="btn-continue bnb-color">continue</button> */}
+      <ReserveBtn cb={handleReserve}/>
       {/* pricing */}
       <div className="price-break-down">
         <button className="btn-desc-modal">{`${price} x 5 nights`}</button>

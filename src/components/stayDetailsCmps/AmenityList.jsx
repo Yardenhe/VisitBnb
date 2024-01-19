@@ -2,7 +2,7 @@ import { TagToIcon } from "../UI/TagToIcon"
 
 export function AmenityList({amenities}) {
     const totalAmenities = amenities.length
-    const shortAmenities = amenities.slice(0,4)
+    const shortAmenities = amenities.slice(0,6)
   return (
     <>
     <h4>What this place offers</h4>

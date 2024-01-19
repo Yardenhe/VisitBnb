@@ -1,0 +1,47 @@
+.review-list-short {
+  display: flex;
+  flex-wrap: wrap;
+}
+.review-item-container {
+  display: flex;
+  width: 50%;
+  max-width: 500px;
+  min-width: 200px;
+  margin-right: auto;
+}
+
+.mini-user-review {
+  display: flex;
+  flex-direction: column;
+  @include section-padding(2);
+  width: 450px;
+}
+.review-content {
+  width: 350px;
+  &-text {
+    line-height: 24px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    -webkit-line-clamp: 3;
+  }
+}
+
+.review-content-info {
+  display: flex;
+
+  &-rating {
+  }
+  &-date {
+  }
+
+  span {
+    max-width: 2.5px;
+    margin: 0 2px;
+    // position: relative;
+    // top: 500%;
+  }
+}
+
+.review-action {
+}

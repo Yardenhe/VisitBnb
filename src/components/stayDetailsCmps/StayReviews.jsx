@@ -1,5 +1,19 @@
+import { MiniUserReview } from "../UI/MiniUserReview";
 
-export function StayReviews() {
+export function StayReviews({reviews}) {
+  let hasMoreReviews
+  let reviewsToShow = reviews
+  
+  const totalReviews = reviews.length
+
+  // limit to 6 reviews
+  if (totalReviews > 6) {
+    reviewsToShow = reviews.slice(0,6)
+    hasMoreReviews = true
+  }
+  
+  // show more reviews 
+
   return (
     <>
     {/* TODO: stats cmp  */}
@@ -7,11 +21,16 @@ export function StayReviews() {
       <div className="review-stats">
         
       </div>
-    {/* TODO: reviews-list cmp  */}
     <div className="review-list-short">
-      
+      {reviewsToShow.map((review,i)=>(
+        <article key={i} className="review-item-container">
+          <MiniUserReview review={review}/>
+        </article>
+      ))}
     </div>
-    <button className="commun-btn">Show all __ reviews</button>
+    {hasMoreReviews && 
+      <button className="commun-btn">Show all {totalReviews} reviews</button>
+    }
     </>
   )
 }
