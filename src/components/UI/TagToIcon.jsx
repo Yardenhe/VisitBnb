@@ -11,6 +11,6 @@ export function TagToIcon({tag , className = ''}) {
     }
 
   return (
-    <img onError={HandleSvgError} src={iconPath} className={`generic-icon ${className}`}></img>
+    <img onError={HandleSvgError} src={iconPath} className={`generic-icon ${className}`}/>
     )
 }

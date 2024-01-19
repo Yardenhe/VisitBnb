@@ -76,7 +76,7 @@ export function ModalFilter({ isOpen, onClose, setFilterByToEdit }) {
     const handlePriceChange = (event, newValue) => {
         setMinPrice(newValue[0])
         setMaxPrice(newValue[1])
-        setFilterByToEdit((prevFilter) => ({ ...prevFilter, "minPrice": newValue[0], "MaxPrice": newValue[1] }))
+        setFilterByToEdit((prevFilter) => ({ ...prevFilter, "minPrice": newValue[0], "maxPrice": newValue[1] }))
     };
     function handleCheckboxChange(ev) {
         const { name, checked } = ev.target;

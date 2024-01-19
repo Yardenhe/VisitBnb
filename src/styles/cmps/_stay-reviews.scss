@@ -29,10 +29,19 @@
 
 .review-content-info {
   display: flex;
-
+  align-items: center;
+  gap: 5px;
   &-rating {
+    // align-items: center;
+    // justify-content: center;
+  }
+  .dot{
+    font-size: 18px;
+    justify-content: center;
+    align-items: center;
   }
   &-date {
+
   }
 
   span {
@@ -44,4 +53,5 @@
 }
 
 .review-action {
+  margin-top:8px ;
 }

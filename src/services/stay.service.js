@@ -13,7 +13,6 @@ export const stayService = {
   getFilterFromParams,
 	// getStayFromSearchParams,
 	// getSortFromParams,
-	getUnreadCount,
 }
 
 const BASE_URL = 'stay/'
@@ -140,10 +139,6 @@ function _createStay() {
 	return stay
 }
 
-async function getUnreadCount() {
-	const stays = await storageService.query(STAY_KEY)
-	return stays.filter(stay => !stay.isRead).length
-}
 
 function _createStays() {
 	let stays = utilService.loadFromStorage(STAY_KEY)
