@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link, NavLink, useLocation, useSearchParams } from 'react-router-dom'
+import { Link, NavLink, Navigate, useLocation, useSearchParams } from 'react-router-dom'
 import { useEffect, useState, useRef, useCallback } from 'react'
 import { IoSearch } from "react-icons/io5";
 import { LuGlobe } from "react-icons/lu";
@@ -14,6 +14,7 @@ import { DynamicCmp } from './stayFilterCmps/DynamicCmp';
 export function AppHeader() {
     const [isOpenEffect, onToggleEffect] = useToggle()
     const [isOpenFilter, onToggle] = useToggle()
+    const [isOpenUserModal, onToggleUserModal] = useToggle()
     const [whichExploreBar, setwhichExploreBar] = useState('location')
     const isFirstRender = useRef(true);
     const location = useLocation();
@@ -61,7 +62,7 @@ export function AppHeader() {
     }, [filterBy])
 
     const handleReloadClick = () => {
-        window.location.reload();
+        Navigate("/")
     };
 
     function onSetFilter(fieldsToUpdate) {
@@ -90,7 +91,7 @@ export function AppHeader() {
                             <button>Switch to hosting</button>
                             <LuGlobe className='global-btn' />
                         </div>
-                        <div className='menu-bar'> <IoMdMenu className='menu-icon' /><div className='circle'>י</div></div>
+                        <div className='menu-bar' onClick={() => onToggleUserModal()}> <IoMdMenu className='menu-icon' /><div className='circle'>י</div></div>
                     </section>
                 </header>
                 <header className={`app-header-filter${isOpenFilter ? ' show-explore' : ' slideOut'}`}>
@@ -110,7 +111,7 @@ export function AppHeader() {
                                 <button>Switch to hosting</button>
                                 <LuGlobe className='global-btn' />
                             </div>
-                            <div className='menu-bar'> <IoMdMenu className='menu-icon' /><div className='circle'>י</div></div>
+                            <div className='menu-bar' onClick={() => onToggleUserModal()}> <IoMdMenu className='menu-icon' /><div className='circle'>י</div></div>
 
                         </section>
                     </section>
@@ -139,7 +140,17 @@ export function AppHeader() {
                         </section>
 
                     </section>
+
                 </header >
+                {isOpenUserModal && <section className='user-modal'>
+                    <Link to="/order">
+                        <div className='user-modal-item' onClick={() => onToggleUserModal()}>Trips</div>
+                    </Link>
+                    <div className='user-modal-item'>Wishlists</div>
+                    <div className='user-modal-item'>Dashboard</div>
+                    <div className='user-modal-item'>Logout</div>
+                </section>}
+
             </section >
             {isOpenFilter && <DynamicCmp cmpType={whichExploreBar} onSetFilter={onSetFilter} />
             }

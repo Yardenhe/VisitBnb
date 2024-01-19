@@ -346,9 +346,6 @@
 
 }
 
-
-
-
 .right-header-menu {
 
     display: flex;
@@ -420,4 +417,30 @@
 
     }
 
+}
+
+.user-modal {
+    position: absolute;
+    top: 32px;
+    right: 6em;
+    background-color: #fff;
+    width: 240px;
+    box-shadow: 0 2px 16px #0000001f;
+    border-radius: 12px;
+    padding: 8px 0;
+    margin-top: 34px;
+    font-size: 14px;
+    z-index: 1005;
+
+    .user-modal-item {
+        padding: 8px 16px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        color: #222;
+
+        &:hover {
+            background-color: #f8f5f5;
+        }
+    }
 }
