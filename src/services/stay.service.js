@@ -4,15 +4,16 @@ import { httpService } from './http.service'
 
 
 export const stayService = {
-	query,
-	remove,
+  query,
+  remove,
   getById,
-	save,
-	getEmptyStay,
-	getLoggedUser,
+  save,
+  getEmptyStay,
+  getLoggedUser,
   getFilterFromParams,
-	// getStayFromSearchParams,
-	// getSortFromParams,
+  // getStayFromSearchParams,
+  // getSortFromParams,
+  getStayCount
 }
 
 const BASE_URL = 'stay/'
@@ -22,11 +23,11 @@ const loggedInUser = {
 // _createStays()
 
 // READ
-async function query(filterBy = {}){   //, sortBy = getDefaultSort()) {
-  try{
+async function query(filterBy = {}) {   //, sortBy = getDefaultSort()) {
+  try {
     const stays = await httpService.get(BASE_URL, filterBy)
     return stays
-  } catch(err){
+  } catch (err) {
     throw err
   }
 }
@@ -37,8 +38,8 @@ async function getById(stayId) {
 }
 // DELETE
 async function remove(stayId) {
-  const url = BASE_URL+stayId
-	return await httpService.delete(url)
+  const url = BASE_URL + stayId
+  return await httpService.delete(url)
 }
 // CREATE / UPDATE
 async function save(stay) {
@@ -49,24 +50,24 @@ async function save(stay) {
 // OTHER
 //
 function getEmptyStay(
-	_id= "",
-  name= "",
-  type= "",
-  imgUrls= [],
-  price= 100,
-  summary= "",
-  capacity= 0,
-  beds=0,
-  bedrooms=0,
-  bathrooms=0,
-  amenities= [],
-  labels= [],
-  host= {
+  _id = "",
+  name = "",
+  type = "",
+  imgUrls = [],
+  price = 100,
+  summary = "",
+  capacity = 0,
+  beds = 0,
+  bedrooms = 0,
+  bathrooms = 0,
+  amenities = [],
+  labels = [],
+  host = {
     _id: "",
     fullname: "",
     imgUrl: "",
   },
-  loc= {
+  loc = {
     country: "",
     countryCode: "",
     cit: "",
@@ -75,7 +76,7 @@ function getEmptyStay(
     lng: 0
   }
 ) {
-	return {
+  return {
     _id,
     name,
     type,
@@ -96,139 +97,63 @@ function getEmptyStay(
 }
 
 function getLoggedUser() {
-	return loggedInUser
+  return loggedInUser
 }
 
 function getFilterFromParams(searchParams) {
   const defaultFilter = getDefaultFilter()
   const filterBy = {}
   for (const field in defaultFilter) {
-      filterBy[field] = searchParams.get(field) || ''
+    filterBy[field] = searchParams.get(field) || ''
   }
 
   return filterBy
 }
-
-function getDefaultFilter() {
-  return {
-      type: '',
-      price: '',
+async function getStayCount(filterBy) {
+  try {
+    const { count } = await httpService.get(BASE_URL + 'count', filterBy)
+    console.log('count', count);
+    return count
+  } catch (err) {
+    throw err
   }
 }
 
-function _filterStays(stays, filterBy) {
-  let {  type = '', price = '' } = filterBy
-	if (filterBy.type) {
-		stays = stays.filter(stay => stay.type.toLowerCase().includes(type.toLowerCase()))
-	}
-	// if (filterBy.txt) {
-	// 	const regExp = new RegExp(filterBy.txt, 'i')
-	// 	stays = stays.filter(stay => regExp.test(stay.subject) || regExp.test(stay.body) || regExp.test(stay.from))
-	// }
-	// if (filterBy.isRead !== null && filterBy.isRead !== undefined) {
-	// 	stays = stays.filter(stay => stay.isRead === filterBy.isRead)
-	// }
-	return stays
-
+function getDefaultFilter() {
+  return {
+    // type: '',
+    // price: '',
+  }
 }
 
-function _createStay() {
-	const stay = getEmptyStay()
-  console.log('stay', stay);
-	// stay._id = utilService.makeId()
-	return stay
-}
+// function _filterStays(stays, filterBy) {
+//   let { type = '', price = '' } = filterBy
+//   if (filterBy.type) {
+//     stays = stays.filter(stay => stay.type.toLowerCase().includes(type.toLowerCase()))
+//   }
 
+//   return stays
 
-function _createStays() {
-	let stays = utilService.loadFromStorage(STAY_KEY)
-	if (!stays || !stays.length) {
-    stays = staysData
-    //stays.push(_createStay())
-		utilService.saveToStorage(STAY_KEY, stays)
-	}
-}
+// }
 
-
-
-  
-// const users = [
-//     {
-//       _id= "u101",
-//       fullname= "User 1",
-//       imgUrl= "/img/img1.jpg",
-//       username= "user1",
-//       password= "secret"
-//     },
-//     {
-//       _id= "u102",
-//       fullname= "User 2",
-//       imgUrl= "/img/img2.jpg",
-//       username= "user2",
-//       password= "secret",
-//     }
-//   ]
-  // Homepage= TOP categories= Best Rate / Houses / Kitchen  - show all - link to Explore
-  // Renders a <StayList> with <StayPreview> with Link to <StayDetails>   url= /stay/123
-  // See More => /explore?topRate=true
-  // See More => /explore?type=House
-  // See More => /explore?amenities=Kitchen
-  // Explore page=
-  // stayService.query({type= 'House'})
-  
-  // UserDetails
-  //  basic info
-  //  visitedStays => orderService.query({userId= 'u101'})
-  //  myStayOrders => orderService.query({hostId= 'u101'})
-  //  ownedStays => stayService.query({hostId= 'u103'})
-  
-  // StayEdit - make it super easy to add Stay for development
-  // StayList, StayPreview
-  // Order, confirm Order
-  // Lastly= StayExplore, Filtering
-  
-  
-  
-  // Example - figuring up if the user is an owner=
-  // userService.login()
-    //  const userStays = stayService.query({ownerId= loggeinUser._id})
-    //  loggeinUser.isOwner = userStays.length > 0
-  
+// // function _createStay() {
+// //   const stay = getEmptyStay()
+// //   console.log('stay', stay);
+// //   // stay._id = utilService.makeId()
+// //   return stay
+// // }
 
 
 
-  // _id= "",
-  // name= "",
-  // type= "",
-  // imgUrls= [],
-  // price= null,
-  // summary= "",
-  // capacity= null,
-  // amenities= [],
-  // labels= [],
-  // host= {
-  //   _id: "",
-  //   fullname: "",
-  //   imgUrl: "",
-  // },
-  // loc= {
-  //   country: "",
-  //   countryCode: "",
-  //   cit: "",
-  //   address: "",
-  //   lat: null,
-  //   lng: null
-  // },
-  // reviews= [
-  //   {
-  //     id: "",
-  //     txt: "",
-  //     rate: null,
-  //     by: {
-  //       _id: "",
-  //       fullname: "",
-  //       imgUrl: ""
-  //     }
-  //   }
-  //   ],
-  // likedByUsers= ['mini-user']
+// // function _createStays() {
+// //   let stays = utilService.loadFromStorage(STAY_KEY)
+// //   if (!stays || !stays.length) {
+// //     stays = staysData
+// //     //stays.push(_createStay())
+// //     utilService.saveToStorage(STAY_KEY, stays)
+// //   }
+// }
+
+
+
+

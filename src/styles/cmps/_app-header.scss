@@ -11,12 +11,13 @@
 
 }
 
+
 .sticky-header {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    z-index: 1001;
+    z-index: 1000;
     background-color: #fff;
     // Add other styles as needed
 
@@ -29,16 +30,14 @@
     padding: 0px rem(80px);
     border-bottom: 1px solid #d3d3d3;
     height: 80px;
-    z-index: 1000;
-
     border-bottom: none;
-    z-index: 999;
+    z-index: 1000;
 
 }
 
 
 .app-header-filter {
-    z-index: 1004;
+    z-index: 1005;
     position: fixed;
     background-color: $clr3;
     width: 100%;
@@ -55,6 +54,7 @@
         visibility: visible;
         transition-delay: 0s;
         animation: sslideOut 0.3s ease-in-out;
+        z-index: 1005;
     }
 
     @keyframes slideIn {
@@ -114,23 +114,23 @@
     border-radius: 40.6px;
     border: 1px solid #d3d3d3;
     // transition: transform 0.4s ease, translate 0.4s ease;
-    transition: all 0.3s ease-in-out;
+    transition: all 0.2s ease-in-out;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     cursor: pointer;
 
 
     &.enlarge {
 
-        transform: scaleX(1.5) scaleY(1.2);
+        transform: scaleX(1.7) scaleY(1.2);
         opacity: 1;
         translate: 0 60px;
-        transition: transform 0.4s ease, opacity 0.4s ease, ;
+        transition: all 0.2s ease-in-out;
 
     }
 
     &.shrink {
         transform: scale(1);
-        transition: transform 0.3s ease, opacity 0.3s ease, margin-bottom 0.3s ease;
+        transition: all 0.2s ease-in-out;
         opacity: 1;
     }
 
@@ -157,7 +157,9 @@
         //border-radius: 20px;
         padding: 0px 16px;
 
-
+        flex &.clicked-color {
+            background-color: $clr2;
+        }
 
 
 
@@ -171,6 +173,8 @@
         span {
             font-size: 0.8em;
         }
+
+
 
     }
 
@@ -229,10 +233,9 @@
     // grid-template-rows: auto;
     margin: 0px 20em;
     // padding-inline: 1em;
-
+    background-color: $clr2;
     border-radius: 32px;
     height: 66px;
-    justify-content: space-between;
     overflow: hidden;
 
 
@@ -241,25 +244,39 @@
         padding: 8.4px 0px 0px 13px;
         height: 100%;
         width: 100%;
+        background-color: $clr2;
 
-
-
-        &:hover {
-            background-color: $clr2;
-        }
+        // &:hover {
+        //     background-color: $clr2;
+        // }
     }
 
     .right {
         padding: 0px;
     }
 
+    .right-txt-explore {
+        // display: flex;
+        // flex-direction: row;
+
+        p:nth-child(1) {
+            font-size: 0.8em;
+            color: $clr5;
+        }
+
+    }
+
 
     .check {
         padding: 5px 0px 5px 8px;
         height: 100%;
+        border-radius: 32px;
 
     }
 
+    .clicked-color {
+        background-color: $clr3;
+    }
 
     .search-btn {
         justify-self: end; // Align to the end of the grid item
@@ -288,12 +305,10 @@
 
     }
 
-    section:nth-child(2) {
+    .middle-explore {
         display: flex;
-        justify-content: space-around;
-        //  border-right: 1px solid $clr2;
+        height: 100%;
 
-        // border-left: 1px solid $clr2;
 
 
 
@@ -301,6 +316,7 @@
             //  border-left: 1px solid $clr2;
             // padding: 0px 0px;
             justify-self: center;
+            flex: 1;
         }
 
 
@@ -323,15 +339,12 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(32, 32, 32, 0.5);
     z-index: 1003;
     transition: opacity 0.3s ease;
 
 
 }
-
-
-
 
 .right-header-menu {
 
@@ -404,4 +417,30 @@
 
     }
 
+}
+
+.user-modal {
+    position: absolute;
+    top: 32px;
+    right: 6em;
+    background-color: #fff;
+    width: 240px;
+    box-shadow: 0 2px 16px #0000001f;
+    border-radius: 12px;
+    padding: 8px 0;
+    margin-top: 34px;
+    font-size: 14px;
+    z-index: 1005;
+
+    .user-modal-item {
+        padding: 8px 16px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        color: #222;
+
+        &:hover {
+            background-color: #f8f5f5;
+        }
+    }
 }

@@ -32,6 +32,15 @@ export function StayPreview({ stay }) {
             <Suspense>
                 <img src="/public/img/icons/heart.svg" className='heart-svg'></img>
                 <LazyLoadedImage className='img-preview' src={stay.imgUrls[currentImageIndex]} alt='img' />
+                <div className='image-points'>
+                    {stay.imgUrls.map((_, index) => (
+                        <div
+                            key={index}
+                            className={`point ${index === currentImageIndex ? 'active' : ''}`}
+                            onClick={() => goToImage(index)}
+                        />
+                    ))}
+                </div>
             </Suspense>
 
             <div className='space-between'>
@@ -49,15 +58,7 @@ export function StayPreview({ stay }) {
                 <IoIosArrowBack className='arrow arrow-left' onClick={prevImage} />
                 <IoIosArrowForward className='arrow arrow-right' onClick={nextImage} />
             </div>
-            <div className='image-points'>
-                {stay.imgUrls.map((_, index) => (
-                    <div
-                        key={index}
-                        className={`point ${index === currentImageIndex ? 'active' : ''}`}
-                        onClick={() => goToImage(index)}
-                    />
-                ))}
-            </div>
+
         </section>
 
     )
