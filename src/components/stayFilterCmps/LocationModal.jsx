@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { useEffectUpdate } from '../../customHooks/useEffectUpdate';
 
-export function LocationModal() {
+export function LocationModal({ onSetFilter }) {
     const imageInfo = [
         { url: 'https://a0.muscache.com/pictures/f9ec8a23-ed44-420b-83e5-10ff1f071a13.jpg', label: 'I’m flexible' },
         { url: 'https://a0.muscache.com/im/pictures/a0fd6dfc-6bec-4abb-850e-9ab78ed7bf37.jpg?im_w=320', label: 'Spain' },
@@ -18,13 +19,20 @@ export function LocationModal() {
         { id: 6, name: 'Canada', imgUrl: '/public/img/icons/location.svg' }
         // Add more locations as needed
     ];
+    const [filterByToEdit, setFilterByToEdit] = useState({});
+    useEffectUpdate(() => {
+        onSetFilter(filterByToEdit)
+    }, [filterByToEdit])
+    function handleChooseCountry(location) {
+        setFilterByToEdit((prevFilter) => ({ ...prevFilter, "country": location }))
+    }
     return (
         <div className='location-modal'>
             <div className='loc-left'>
 
                 <div className='loc-list-scroll'>
                     {locations.map((location) => (
-                        <div key={location.id} className={'loc-list'} >
+                        <div key={location.id} className={'loc-list'} onClick={() => handleChooseCountry(location.name)} >
                             <img src={location.imgUrl} alt={`${location.name} icon`} />
                             <div className='loc-name'>{location.name}</div>
                         </div>

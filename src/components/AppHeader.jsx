@@ -1,21 +1,26 @@
 import React from 'react'
-import { Link, NavLink, useLocation } from 'react-router-dom'
+import { Link, NavLink, Navigate, useLocation, useSearchParams } from 'react-router-dom'
 import { useEffect, useState, useRef, useCallback } from 'react'
 import { IoSearch } from "react-icons/io5";
 import { LuGlobe } from "react-icons/lu";
 import { IoMdMenu } from "react-icons/io";
 import { useToggle } from "../customHooks/useToggle"
-import { LocationModal } from "../components/stayFilterCmps/LocationModal"
-import { GuestsModal } from './stayFilterCmps/GuestsModal';
-import { CheckInOutModal } from './stayFilterCmps/CheckInOutModal';
+import { useSelector } from 'react-redux'
+import { setFilterBy } from '../store/actions/stay.actions';
+import { stayService } from '../services/stay.service'
+
+import { DynamicCmp } from './stayFilterCmps/DynamicCmp';
 
 export function AppHeader() {
     const [isOpenEffect, onToggleEffect] = useToggle()
     const [isOpenFilter, onToggle] = useToggle()
-    const [whichExploreBar, setwhichExploreBar] = useState('')
+    const [isOpenUserModal, onToggleUserModal] = useToggle()
+    const [whichExploreBar, setwhichExploreBar] = useState('location')
     const isFirstRender = useRef(true);
     const location = useLocation();
     const isSpecificPage = location.pathname === '/';
+    const filterBy = useSelector(storeState => storeState.stayModule.filterBy)
+    const [searchParams, setSearchParams] = useSearchParams()
 
     useEffect(() => {
         const handleScroll = () => {
@@ -48,19 +53,31 @@ export function AppHeader() {
         };
 
     }, [isOpenEffect]);
+    useEffect(() => {
+        setFilterBy(stayService.getFilterFromParams(searchParams))
+    }, [])
 
-    function onChangeStyle(newStyle) {
-        setFooterStyle(prevStyle => ({ ...prevStyle, ...newStyle }))
-        showSuccessMsg('Changed style!')
+    useEffect(() => {
+        setSearchParams(filterBy)
+    }, [filterBy])
+
+    const handleReloadClick = () => {
+        Navigate("/")
+    };
+
+    function onSetFilter(fieldsToUpdate) {
+
+        fieldsToUpdate = { ...filterBy, ...fieldsToUpdate }
+        console.log("🚀 ~ onSetFilter ~ fieldsToUpdate:", fieldsToUpdate)
+        setFilterBy(fieldsToUpdate)
     }
-
 
     return (
         <>
             <section className={isSpecificPage ? 'sticky-header' : ''}>
                 {isOpenFilter && <div className="overlay" onClick={onToggleEffect}></div>}
                 <header className={'app-header'} >
-                    <Link to="/">
+                    <Link to="/" onClick={handleReloadClick}>
                         <img className="app-header-logo" src="img/airbnb-logoo.PNG" />
                     </Link>
                     <section className={`date-picker${isOpenEffect ? ' enlarge' : ' '}`} onClick={onToggleEffect}>
@@ -74,12 +91,12 @@ export function AppHeader() {
                             <button>Switch to hosting</button>
                             <LuGlobe className='global-btn' />
                         </div>
-                        <div className='menu-bar'> <IoMdMenu className='menu-icon' /><div className='circle'>י</div></div>
+                        <div className='menu-bar' onClick={() => onToggleUserModal()}> <IoMdMenu className='menu-icon' /><div className='circle'>י</div></div>
                     </section>
                 </header>
                 <header className={`app-header-filter${isOpenFilter ? ' show-explore' : ' slideOut'}`}>
                     <section className="app-header grid-app-header">
-                        <Link to="/">
+                        <Link to="/" onClick={handleReloadClick}>
                             <img className="app-header-logo" src="img/airbnb-logoo.PNG" />
                         </Link>
                         <section className='app-mini-menu'>
@@ -94,52 +111,50 @@ export function AppHeader() {
                                 <button>Switch to hosting</button>
                                 <LuGlobe className='global-btn' />
                             </div>
-                            <div className='menu-bar'> <IoMdMenu className='menu-icon' /><div className='circle'>י</div></div>
+                            <div className='menu-bar' onClick={() => onToggleUserModal()}> <IoMdMenu className='menu-icon' /><div className='circle'>י</div></div>
 
                         </section>
                     </section>
                     <section className={`date-picker grid-date-picker${!isOpenEffect ? ' shrink' : ' '}`} >
-                        <section className='btn-datepicker' onClick={() => setwhichExploreBar('location')}>
+                        <section className={`btn-datepicker${whichExploreBar == 'location' ? ' clicked-color' : ' '}`} onClick={() => setwhichExploreBar('location')}>
                             <span className='bold'>Where</span>
                             <p >Search destinations</p>
                         </section>
-                        <section>
-                            <section className='btn-datepicker check' onClick={() => setwhichExploreBar('checkin')}>
+                        <section className='middle-explore'>
+                            <section className={`btn-datepicker check${whichExploreBar == 'checkin' ? ' clicked-color' : ''}`} onClick={() => setwhichExploreBar('checkin')}>
                                 <span className='bold'>Check in</span>
                                 <p >Add dates</p>
                             </section>
-                            <div className='btn-datepicker check' onClick={() => setwhichExploreBar('checkin')}>
+                            <section className={`btn-datepicker check${whichExploreBar == 'checkin' ? ' clicked-color' : ''}`} onClick={() => setwhichExploreBar('checkin')}>
                                 <span className='bold'>Check out</span>
                                 <p >Add dates</p>
-                            </div>
-                        </section>
-                        <section className='btn-datepicker right'>
-                            <section onClick={() => setwhichExploreBar('guests')}>
-                                <span className='bold'>Who</span>
-                                <p className='block' >Add guests</p>
                             </section>
+                        </section>
+                        <section className={`btn-datepicker right${whichExploreBar == 'guests' ? ' clicked-color' : ''}`} onClick={() => setwhichExploreBar('guests')}>
+                            <section className='right-txt-explore'>
+                                <p className='bold'>Who</p>
+                                <p >Add guests</p>
+                            </section>
+
                             <IoSearch className='search-btn' />
                         </section>
 
                     </section>
-                </header>
+
+                </header >
+                {isOpenUserModal && <section className='user-modal'>
+                    <Link to="/order">
+                        <div className='user-modal-item' onClick={() => onToggleUserModal()}>Trips</div>
+                    </Link>
+                    <div className='user-modal-item'>Wishlists</div>
+                    <div className='user-modal-item'>Dashboard</div>
+                    <div className='user-modal-item'>Logout</div>
+                </section>}
+
             </section >
-            {isOpenFilter && <DynamicCmp cmpType={whichExploreBar} name={'Muki'} />}
+            {isOpenFilter && <DynamicCmp cmpType={whichExploreBar} onSetFilter={onSetFilter} />
+            }
         </>
 
     )
-}
-function DynamicCmp(props) {
-
-    switch (props.cmpType) {
-
-        case 'location':
-            return <LocationModal {...props} />
-        case 'checkin':
-            return <CheckInOutModal {...props} />
-        case 'guests':
-            return <GuestsModal {...props} />
-        default:
-            return <></>
-    }
 }

@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef, useCallback } from 'react'
 import { Link, Outlet, useParams, useNavigate, useSearchParams, useLocation } from 'react-router-dom'
 import { StayFilter } from "../components/StayFilter";
 import { useSelector } from 'react-redux';
-import { stayService } from '../services/stayService.service'
+import { stayService } from '../services/stay.service'
 import { showErrorMsg, showSuccessMsg } from "../services/event-bus.service";
 import { loadStays, removeStay, saveStay, setFilterBy } from '../store/actions/stay.actions';
 import { StayList } from '../components/StayList';

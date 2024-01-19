@@ -13,7 +13,7 @@ import { MdIosShare as ShareIcon } from "react-icons/md";
 
 import { Button } from "../components/UI/Button";
 
-import { stayService } from "../services/stayService.service";
+import { stayService } from "../services/stay.service";
 import { useEffect, useState } from "react";
 import { StayReviews } from "../components/stayDetailsCmps/StayReviews";
 import { orderService } from "../services/order.service";
@@ -56,7 +56,7 @@ export function StayDetails() {
 
   async function loadStay() {
     try {
-      const stay = await stayService.get(stayId);
+      const stay = await stayService.getById(stayId);
       setStay(stay);
     } catch (err) {
       navigate("/");

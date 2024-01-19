@@ -28,9 +28,9 @@ function App() {
             <Route path="/edit/:stayId?"
               element={<StayEdit />} />
           </Route>
-          <Route path='/orders' element={<OrderIndex/>}/>
+          <Route path='/order' element={<OrderIndex />} />
         </Routes>
-        <DynamicModal/>
+        <DynamicModal />
       </section>
     </Router>
   )

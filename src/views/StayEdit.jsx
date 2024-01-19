@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate, useOutletContext, useParams } from "react-router-dom";
-import { stayService } from "../services/stayService.service";
+import { stayService } from "../services/stay.service";
 import { utilService } from "../services/util.service";
 import { useForm } from "../customHooks/useForm";
 
