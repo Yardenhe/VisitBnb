@@ -19,12 +19,12 @@ export function DatePicker() {
   function onChangeDates(newDates){
     console.log('newDates',newDates);
     if (newDates===undefined) return
-    if (!!newDates.from && !!newDates.to){
+    // if (!!newDates.from && !!newDates.to){
       const {from:startDate,to:endDate} = newDates
       // console.log('startDate',startDate);
       // console.log('endDate',endDate);
       setCurrOrder( {startDate,endDate} )
-    }
+    // }
     setSelected(newDates)
   }
   return (

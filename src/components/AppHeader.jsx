@@ -10,6 +10,7 @@ import { setFilterBy } from '../store/actions/stay.actions';
 import { stayService } from '../services/stay.service'
 
 import { DynamicCmp } from './stayFilterCmps/DynamicCmp';
+import { onToggleModal } from '../store/actions/app.actions';
 
 export function AppHeader() {
     const [isOpenEffect, onToggleEffect] = useToggle()
@@ -21,6 +22,10 @@ export function AppHeader() {
     const isSpecificPage = location.pathname === '/';
     const filterBy = useSelector(storeState => storeState.stayModule.filterBy)
     const [searchParams, setSearchParams] = useSearchParams()
+
+    const user = useSelector(storeState => storeState.userModule.user)
+    console.log("🚀 ~ AppHeader ~ user:", user)
+    
 
     useEffect(() => {
         const handleScroll = () => {
@@ -35,7 +40,6 @@ export function AppHeader() {
             window.removeEventListener('scroll', handleScroll);
         };
     }, [isOpenEffect, onToggleEffect]);
-
     useEffect(() => {
         if (isFirstRender.current) {
             // Skip the first render
@@ -148,7 +152,7 @@ export function AppHeader() {
                     </Link>
                     <div className='user-modal-item'>Wishlists</div>
                     <div className='user-modal-item'>Dashboard</div>
-                    <div className='user-modal-item'>Logout</div>
+                    <div className='user-modal-item' onClick={()=>{onToggleModal({type:'loginSignup',payload:{isLogin:true}})}}>Logout</div>
                 </section>}
 
             </section >

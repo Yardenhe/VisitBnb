@@ -6,16 +6,18 @@ const BASE_USER_URL = 'user/'
 const BASE_AUTH_URL = 'auth/'
 
 export const userService = {
-    // login,
-    // logout,
-    // signup,
+    login,
+    logout,
+    signup,
     getLoggedinUser,
-    // saveLocalUser,
+    saveLocalUser,
     getUsers,
     getById,
     remove,
     update,
-    getEmptyUser
+    getEmptyUser,
+    getLoginForm,
+    getSignupForm
 }
 
 // window.userService = userService
@@ -50,6 +52,7 @@ async function login(credentials) {
 }
 
 async function signup(credentials) {
+console.log("🚀 ~ signup ~ credentials:", credentials)
 
     const user = await httpService.post(BASE_AUTH_URL + 'signup', credentials)
     return saveLocalUser(user)
@@ -66,6 +69,7 @@ function getEmptyUser() {
     return {
         username: '',
         fullname: '',
+        email:'',
         password: '',
         imgUrl: '',
     }
@@ -81,7 +85,23 @@ function getLoggedinUser() {
     return JSON.parse(sessionStorage.getItem(STORAGE_KEY_LOGGEDIN_USER))
 }
 
+function getSignupForm(){
+    return {
+        // firstName:'First name',
+        // lastName:'Last name',
+        fullname:'Full name',
+        dateOfBirth:'Birthdate',
+        email:'Email',
+        password:'Password'
+    }
+}
 
+function getLoginForm(){
+    return {
+        email:'Email',
+        password:'Password'
+    }
+}
 // ;(async ()=>{
 //     await userService.signup({fullname: 'Puki Norma', username: 'puki', password:'123', isAdmin: false})
 //     await userService.signup({fullname: 'Master Adminov', username: 'admin', password:'123',  isAdmin: true})

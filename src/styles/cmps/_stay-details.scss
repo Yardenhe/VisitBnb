@@ -394,11 +394,15 @@ $section-top: 32px;
 
   .amenity {
     width: 50%;
-    border: solid 0.8px rgb(223, 229, 223);
+    // border: solid 0.8px rgb(223, 229, 223);
     display: flex;
-    padding: 16px 0;
+    padding: 5px 0;
     align-items: center;
-    padding-left: 0.5em;
+    &> img{
+      width: 46px;
+      height: 46px;
+    }
+    // padding-left: 0.5em;
   }
 
   button {

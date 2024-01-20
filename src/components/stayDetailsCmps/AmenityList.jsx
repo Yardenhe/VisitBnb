@@ -1,8 +1,10 @@
+import { onToggleModal } from "../../store/actions/app.actions"
 import { TagToIcon } from "../UI/TagToIcon"
 
 export function AmenityList({amenities}) {
     const totalAmenities = amenities.length
-    const shortAmenities = amenities.slice(0,6)
+    const shortAmenities = amenities.slice(0,10)
+    
   return (
     <>
     <h4>What this place offers</h4>
@@ -14,7 +16,7 @@ export function AmenityList({amenities}) {
               {amenity}
             </div>
         </div>)}
-        <button onClick={()=>console.log(amenities)} className="commun-btn">Show all {totalAmenities} amenities</button>
+        <button onClick={()=>onToggleModal({type:'ameintyModal',payload:{amenities}})} className="commun-btn">Show all {totalAmenities} amenities</button>
     </div>
     </>  
   )

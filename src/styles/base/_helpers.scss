@@ -19,6 +19,13 @@
     //     background: $clr1;
     // }
 }
+.clickable{
+    cursor: pointer;
+    transition: color 0.15s;
+    &:hover{
+        color: $clr1;
+    }
+}
 
 .bold {
     font-family: 'cereal-bold';

@@ -49,7 +49,7 @@ export function StayCheckout({ price, orderInfo,startDate, endDate }) {
         </div>
       </button>
       {/* <button className="btn-continue bnb-color">continue</button> */}
-      <ReserveBtn cb={handleReserve}/>
+      <ReserveBtn text={'Reserve'} cb={handleReserve}/>
       {/* pricing */}
       <div className="price-break-down">
         <button className="btn-desc-modal">{`${price} x 5 nights`}</button>

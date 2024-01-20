@@ -93,11 +93,11 @@ export function StayDetails() {
 
   return (
     <div className="details-layout">
-      <div className="dev-action-element">
+      {/* <div className="dev-action-element">
         <button>
           <Link to={"/orders"}>Orders Page (dev-btn)</Link>
         </button>
-      </div>
+      </div> */}
       {/* HEADER */}
       <section className="details-header ">
         <h3>{name}</h3>

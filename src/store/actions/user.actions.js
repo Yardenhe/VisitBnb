@@ -1,6 +1,6 @@
 import { userService } from "../../services/user.service.js";
 
-import { SPEND_BALANCE, REMOVE_USER, SET_USER, SET_USERS } from "../reducers/user.reducer"
+import { REMOVE_USER, SET_USER, SET_USERS } from "../reducers/user.reducer"
 
 import { store } from "../store"
 

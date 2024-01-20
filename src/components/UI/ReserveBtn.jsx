@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-export function ReserveBtn({cb}) {
+export function ReserveBtn({ text ,cb}) {
   const [mousePosition,setMousePosition] = useState({x:0,y:0})
 
   // console.log(mousePosition);
@@ -21,7 +21,7 @@ export function ReserveBtn({cb}) {
         className='btn-continue bnb-color'
         style={{background:dynamicGradient}}
     >
-      Reserve
+      {text}
     </button>
   )
 }

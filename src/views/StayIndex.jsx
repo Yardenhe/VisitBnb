@@ -63,7 +63,7 @@ export function StayIndex() {
     const { type, price } = filterBy
     return (
 
-        <section className={isSpecificPage && `${'stay-index'}`}>
+        <section className={isSpecificPage && 'stay-index'}>
 
             {/* ↓ will be mapped with each result */}
             {params.stayId || location.pathname.includes('edit') ?
