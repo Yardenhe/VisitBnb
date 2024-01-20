@@ -3,21 +3,22 @@ import { onToggleModal } from "../../store/actions/app.actions";
 import { utilService } from "../../services/util.service";
 import { ReserveBtn } from "../UI/ReserveBtn";
 
-export function StayCheckout({ price, orderInfo,startDate, endDate }) {
+export function StayCheckout({ price, orderInfo, startDate, endDate, onSaveOrder }) {
   const formattedStartDate = utilService.formatDate(startDate)
   const formattedEndDate = utilService.formatDate(endDate)
 
-  function onOpenDatePicker(){
-    onToggleModal({type:'datePicker',action})
+  function onOpenDatePicker() {
+    onToggleModal({ type: 'datePicker', action })
   }
-  function handleReserve(){
-    console.log('Reserve');
+  function handleReserve() {
+    onSaveOrder()
   }
+
   return (
     //<div className="checkout-card-container">
     <div className="checkout-card">
       <div className="price-container">
-        <div className="price"> ${price}</div> 
+        <div className="price"> ${price}</div>
         <span className="btn-info-detail">night</span>
       </div>
       {/* actions */}
@@ -26,12 +27,12 @@ export function StayCheckout({ price, orderInfo,startDate, endDate }) {
         <div className="date-btn-container">
           <div className="btn-info">
             <div className="btn-info-label">check-in</div>
-            <div className="btn-info-detail">{formattedStartDate?formattedStartDate : 'Add date'}</div>
+            <div className="btn-info-detail">{formattedStartDate ? formattedStartDate : 'Add date'}</div>
           </div>
 
           <div className="btn-info">
             <div className="btn-info-label">check-out</div>
-            <div className="btn-info-detail">{formattedEndDate?formattedEndDate : 'Add date'}</div>
+            <div className="btn-info-detail">{formattedEndDate ? formattedEndDate : 'Add date'}</div>
           </div>
         </div>
 
@@ -39,17 +40,17 @@ export function StayCheckout({ price, orderInfo,startDate, endDate }) {
       <button>
         <div className="guest-btn-container">
 
-        <div className="btn-info">
-          <div className="btn-info-label">guests</div>
-          <div className="btn-info-detail">1</div>
-        </div>
-        <div className="btn-info down-arrow">
-          <DownArrow/>
-        </div>
+          <div className="btn-info">
+            <div className="btn-info-label">guests</div>
+            <div className="btn-info-detail">1</div>
+          </div>
+          <div className="btn-info down-arrow">
+            <DownArrow />
+          </div>
         </div>
       </button>
       {/* <button className="btn-continue bnb-color">continue</button> */}
-      <ReserveBtn cb={handleReserve}/>
+      <ReserveBtn cb={handleReserve} />
       {/* pricing */}
       <div className="price-break-down">
         <button className="btn-desc-modal">{`${price} x 5 nights`}</button>

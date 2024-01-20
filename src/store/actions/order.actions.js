@@ -4,26 +4,27 @@ import { store } from "../store";
 
 
 // SET_ORDERS
-export async function loadOrders(){
+export async function loadOrders() {
     try {
         const orders = await orderService.query()
-        store.dispatch({type:SET_ORDERS , orders })
+        store.dispatch({ type: SET_ORDERS, orders })
     } catch (err) {
         console.log(err);
     }
 }
 // SET_CURR_ORDER
-export async function setCurrOrder(currOrder){
+export async function setCurrOrder(currOrder) {
     let order = currOrder ? currOrder : orderService.getEmptyOrder()
-    store.dispatch({type:SET_CURR_ORDER , order})
+    store.dispatch({ type: SET_CURR_ORDER, order })
 }
 
 // ADD_ORDER / UPDATE_ORDER
-export async function saveOrder(order){
+export async function saveOrder(order) {
+    console.log("🚀 ~ saveOrder ~ order:", order)
     try {
-        const type = order.id ? UPDATE_ORDER : ADD_ORDER
+        const type = order._id ? UPDATE_ORDER : ADD_ORDER
         const savedOrder = await orderService.save(order)
-        store.dispatch({type, order:savedOrder})
+        store.dispatch({ type, order: savedOrder })
     } catch (err) {
         console.log(err);
     }

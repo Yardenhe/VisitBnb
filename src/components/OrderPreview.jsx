@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { stayService } from '../services/stay.service'
-
+import { utilService } from '../services/util.service';
 
 export function OrderPreview({ order }) {
     const [stayOrder, setStayOrder] = useState();
@@ -22,8 +22,8 @@ export function OrderPreview({ order }) {
             <section>
                 <div className='sub-text bold'>{stayOrder.loc.city}</div>
                 <div className='sub-text'>Hosted by {stayOrder.host.fullname}</div>
-                <div className='sub-text'>{order.endDate}</div>
-                <div className='sub-text'>{order.startDate}</div>
+                <span className='sub-text'>{utilService.formatMailDate(order.endDate) + " - "}</span>
+                <span className='sub-text'>{utilService.formatMailDate(order.startDate)}</span>
             </section>
 
         </article>

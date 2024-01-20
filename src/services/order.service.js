@@ -47,7 +47,7 @@ function getEmptyOrder() {
     _id: "",
     hostId: "",
     buyer: {
-      id: "",
+      _id: "",
       fullname: "",
     },
     totalPrice: 0,
@@ -59,7 +59,7 @@ function getEmptyOrder() {
     }
     ,
     stay: {
-      id: "",
+      _id: "",
       name: "",
       price: 0,
     },
