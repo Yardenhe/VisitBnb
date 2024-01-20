@@ -1,14 +1,24 @@
 import React from 'react'
 import { useState } from 'react';
 import { Counter } from './Counter';
+import { setCurrOrder } from '../../store/actions/order.actions';
+import { useEffectUpdate } from '../../customHooks/useEffectUpdate';
+
 
 export function GuestsModal() {
-    const [selectedGuests, setSelectedGuests] = useState({
+    const [guests, setSelectedGuests] = useState({
         adults: 0,
         children: 0,
         infants: 0,
         pets: 0,
     });
+    useEffectUpdate(() => {
+        setCurrOrder({ guests })
+    }, [guests])
+
+
+
+
 
     const handleIncrement = (type) => {
         setSelectedGuests(prevState => ({
@@ -18,7 +28,7 @@ export function GuestsModal() {
     };
 
     const handleDecrement = (type) => {
-        if (selectedGuests[type] > 0) {
+        if (guests[type] > 0) {
             setSelectedGuests(prevState => ({
                 ...prevState,
                 [type]: prevState[type] - 1,
@@ -35,7 +45,7 @@ export function GuestsModal() {
                 </div>
                 <Counter
                     label="Adults"
-                    count={selectedGuests.adults}
+                    count={guests.adults}
                     onIncrement={() => handleIncrement('adults')}
                     onDecrement={() => handleDecrement('adults')}
                 />
@@ -48,7 +58,7 @@ export function GuestsModal() {
                 </div>
                 <Counter
                     label="Children"
-                    count={selectedGuests.children}
+                    count={guests.children}
                     onIncrement={() => handleIncrement('children')}
                     onDecrement={() => handleDecrement('children')}
                 />
@@ -61,7 +71,7 @@ export function GuestsModal() {
                 </div>
                 <Counter
                     label="Infants"
-                    count={selectedGuests.infants}
+                    count={guests.infants}
                     onIncrement={() => handleIncrement('infants')}
                     onDecrement={() => handleDecrement('infants')}
                 />
@@ -74,7 +84,7 @@ export function GuestsModal() {
 
                 <Counter
                     label="Pets"
-                    count={selectedGuests.pets}
+                    count={guests.pets}
                     onIncrement={() => handleIncrement('pets')}
                     onDecrement={() => handleDecrement('pets')}
                 />

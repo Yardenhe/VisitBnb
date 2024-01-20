@@ -7,8 +7,8 @@
 
     .order-list {
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-        gap: 100px;
+        grid-template-columns: repeat(3, minmax(100px, 1fr));
+        gap: 20px;
         list-style: none;
         padding: 0;
         margin: 0;
@@ -19,10 +19,11 @@
         display: flex;
 
         .img-preview-orders {
-            width: 100%;
-            aspect-ratio: 1/1;
+            width: 80px;
+            height: 80px;
             object-fit: cover;
             border-radius: 8px;
+            margin-right: 10px;
         }
     }
 }

@@ -79,6 +79,7 @@ export function StayFilter({ filterBy, onSetFilter }) {
                         onClick={() => { onTypeChange(iconName), onToggleIcon(index) }}>
                         <img src={`${iconBasePath}${iconName}.jpg`} alt={iconName} />
                         <p>{iconName}</p>
+                        <div className="overlay-icon"></div>
                     </section>
                 ))}
 

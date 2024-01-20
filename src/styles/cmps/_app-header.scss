@@ -148,14 +148,14 @@
         background: transparent;
         cursor: pointer;
         padding: 0;
-        text-align: inherit;
+        //text-align: inherit;
         border: 1px solid transparent;
         // margin: -1px;
         background-color: #ffffff;
         color: #484848;
         font-size: 14px;
         //border-radius: 20px;
-        padding: 0px 16px;
+        // padding: 0px 16px;
 
         flex &.clicked-color {
             background-color: $clr2;
@@ -190,8 +190,6 @@
         min-width: 103px;
 
     }
-
-
 
     section:nth-child(3) {
         border-right: 1px none black;
@@ -443,4 +441,14 @@
             background-color: #f8f5f5;
         }
     }
+}
+
+.vl {
+    border-right: 2px solid $clr2;
+    height: 22px;
+    position: absolute;
+    margin-left: 20px;
+    padding-bottom: 5px;
+    align-self: center;
+    justify-self: center;
 }

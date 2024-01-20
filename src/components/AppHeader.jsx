@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link, NavLink, Navigate, useLocation, useSearchParams } from 'react-router-dom'
+import { Link, NavLink, Navigate, useLocation, useSearchParams, useParams } from 'react-router-dom'
 import { useEffect, useState, useRef, useCallback } from 'react'
 import { IoSearch } from "react-icons/io5";
 import { LuGlobe } from "react-icons/lu";
@@ -8,8 +8,9 @@ import { useToggle } from "../customHooks/useToggle"
 import { useSelector } from 'react-redux'
 import { setFilterBy } from '../store/actions/stay.actions';
 import { stayService } from '../services/stay.service'
-
 import { DynamicCmp } from './stayFilterCmps/DynamicCmp';
+import { utilService } from '../services/util.service';
+
 
 export function AppHeader() {
     const [isOpenEffect, onToggleEffect] = useToggle()
@@ -21,6 +22,13 @@ export function AppHeader() {
     const isSpecificPage = location.pathname === '/';
     const filterBy = useSelector(storeState => storeState.stayModule.filterBy)
     const [searchParams, setSearchParams] = useSearchParams()
+    const { country } = filterBy || ''
+    const currOrder = useSelector(storeState => storeState.orderModule.currOrder)
+    const { endDate, startDate, guests } = currOrder || ''
+
+
+
+
 
     useEffect(() => {
         const handleScroll = () => {
@@ -55,11 +63,19 @@ export function AppHeader() {
     }, [isOpenEffect]);
     useEffect(() => {
         setFilterBy(stayService.getFilterFromParams(searchParams))
+
     }, [])
 
     useEffect(() => {
         setSearchParams(filterBy)
+        if (country) setwhichExploreBar('checkin')
+
     }, [filterBy])
+    useEffect(() => {
+        if (startDate && endDate) setwhichExploreBar('guests')
+    }, [currOrder])
+
+
 
     const handleReloadClick = () => {
         Navigate("/")
@@ -81,9 +97,10 @@ export function AppHeader() {
                         <img className="app-header-logo" src="img/airbnb-logoo.PNG" />
                     </Link>
                     <section className={`date-picker${isOpenEffect ? ' enlarge' : ' '}`} onClick={onToggleEffect}>
-                        <section className='btn-datepicker bold'>AnyWhere</section>
-                        <section className='btn-datepicker bold'>Any Week</section>
-                        <section className='btn-datepicker'><p>Add guests</p> <IoSearch className='search-btn' /> </section>
+                        <section className='btn-datepicker bold'>{country ? country : 'AnyWhere'} <span className="vl"></span> </section>
+
+                        <section className='btn-datepicker bold'>{startDate && endDate ? (utilService.formatMailDate(startDate) + " - " + utilService.formatMailDate(endDate)) : 'Any Week'}<span className="vl"></span></section>
+                        <section className='btn-datepicker'><p>{guests.adults ? guests.adults + " adults" : 'Add guests'}</p> <IoSearch className='search-btn' />  </section>
 
                     </section>
                     <section className='right-header-menu'>
@@ -121,11 +138,11 @@ export function AppHeader() {
                             <p >Search destinations</p>
                         </section>
                         <section className='middle-explore'>
-                            <section className={`btn-datepicker check${whichExploreBar == 'checkin' ? ' clicked-color' : ''}`} onClick={() => setwhichExploreBar('checkin')}>
+                            <section className={`btn-datepicker check${!startDate && !endDate && whichExploreBar == 'checkin' ? ' clicked-color' : ''}`} onClick={() => setwhichExploreBar('checkin')}>
                                 <span className='bold'>Check in</span>
                                 <p >Add dates</p>
                             </section>
-                            <section className={`btn-datepicker check${whichExploreBar == 'checkin' ? ' clicked-color' : ''}`} onClick={() => setwhichExploreBar('checkin')}>
+                            <section className={`btn-datepicker check${startDate && whichExploreBar == 'checkin' ? ' clicked-color' : ''}`} onClick={() => setwhichExploreBar('checkin')}>
                                 <span className='bold'>Check out</span>
                                 <p >Add dates</p>
                             </section>

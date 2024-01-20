@@ -20,8 +20,8 @@ export function OrderPreview({ order }) {
         <article className='order-preview'>
             <img className='img-preview-orders' alt='img' src={stayOrder.imgUrls[0]} />
             <section>
-                <div className='sub-text'>{stayOrder.loc.city}</div>
-                <div className='sub-text'>{stayOrder.host.fullname}</div>
+                <div className='sub-text bold'>{stayOrder.loc.city}</div>
+                <div className='sub-text'>Hosted by {stayOrder.host.fullname}</div>
                 <div className='sub-text'>{order.endDate}</div>
                 <div className='sub-text'>{order.startDate}</div>
             </section>
