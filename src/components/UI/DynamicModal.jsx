@@ -5,7 +5,6 @@ import { DatePicker } from "./DatePicker";
 export function DynamicModal() {
     const modalData = useSelector(storeState => storeState.appModule.modalData)
     const dispatch = useDispatch()
-    console.log('modalData', modalData);
     function onCloseModal(ev) {
         console.log('Hey hey i dont wanna close')
         dispatch({
@@ -28,7 +27,7 @@ export function DynamicModal() {
 function DynamicCmp({ type, payload }) {
     console.log(type);
     const cmpMap = {
-        datePicker: <DatePicker/>,
+        datePicker: <DatePicker />,
         hello: <HelloModal payload={payload} />,
         goodbye: <GoodbyeModal payload={payload} />
     }

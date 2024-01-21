@@ -5,24 +5,11 @@ import { PropertyFilter } from './PropertyFilter';
 import { IoMdCheckmark } from "react-icons/io";
 import { useSelector } from "react-redux";
 import { IoIosClose } from "react-icons/io";
+import { useParams, useSearchParams } from 'react-router-dom'
 import { useEffectUpdate } from '../../customHooks/useEffectUpdate';
 import { stayService } from '../../services/stay.service';
 
 export function ModalFilter({ isOpen, onClose, setFilterByToEdit, filterByToEdit }) {
-
-    const stays = useSelector((storeState) => storeState.stayModule.stays);
-    const [minPrice, setMinPrice] = useState(10);
-    const [modalFilters, setModalFilters] = useState({});
-    console.log("🚀 ~ ModalFilter ~ modalFilters:", modalFilters)
-    const [maxPrice, setMaxPrice] = useState(500);
-    const [selectedBedrooms, setSelectedBedrooms] = useState("Any");
-    const [selectedBeds, setSelectedBeds] = useState("Any");
-    const [selectedBathrooms, setSelectedBathrooms] = useState("Any");
-    const [selectedProperties, setSelectedProperties] = useState([]);
-    const [selectedAmmenties, setSelectedAmmenties] = useState([]);
-    const [resultLength, setResultLength] = useState(stays.length);
-    const overlayClassName = isOpen ? 'overlayModal' : '';
-
     const amenities = [
         {
             title: "wifi",
@@ -74,21 +61,30 @@ export function ModalFilter({ isOpen, onClose, setFilterByToEdit, filterByToEdit
         },
     ];
 
+    const stays = useSelector((storeState) => storeState.stayModule.stays);
+    const [minPrice, setMinPrice] = useState(filterByToEdit.minPrice || 10);
+    const [modalFilters, setModalFilters] = useState({});
+    const [maxPrice, setMaxPrice] = useState(filterByToEdit.maxPrice || 500);
+    const [selectedBedrooms, setSelectedBedrooms] = useState(filterByToEdit.bedrooms || "Any");
+    const [selectedBeds, setSelectedBeds] = useState(filterByToEdit.beds || "Any");
+    const [selectedBathrooms, setSelectedBathrooms] = useState(filterByToEdit.bathrooms || "Any");
+    const [selectedProperties, setSelectedProperties] = useState(filterByToEdit.propertyType || []);
+    const [selectedAmenties, setSelectedAmenties] = useState(filterByToEdit.amenities || []);
+    const [resultLength, setResultLength] = useState(stays.length);
+    const overlayClassName = isOpen ? 'overlayModal' : '';
+
+
     useEffectUpdate(() => {
-        //setFilterByToEdit((prevFilter) => ({ ...prevFilter, "amenities": selectedAmmenties }))
-        setModalFilters((prevFilter) => ({ ...prevFilter, "amenities": selectedAmmenties }))
-    }, [selectedAmmenties])
+        setModalFilters((prevFilter) => ({ ...prevFilter, "amenities": selectedAmenties }))
+    }, [selectedAmenties])
     useEffectUpdate(() => {
-        //setFilterByToEdit((prevFilter) => ({ ...prevFilter, "beds": selectedBeds, "bedrooms": selectedBedrooms, "bathrooms": selectedBathrooms }))
         setModalFilters((prevFilter) => ({ ...prevFilter, "beds": selectedBeds, "bedrooms": selectedBedrooms, "bathrooms": selectedBathrooms }))
     }, [selectedBeds, selectedBathrooms, selectedBedrooms])
     useEffectUpdate(() => {
-        //setFilterByToEdit((prevFilter) => ({ ...prevFilter, "propertyType": selectedProperties }))
         setModalFilters((prevFilter) => ({ ...prevFilter, "propertyType": selectedProperties }))
     }, [selectedProperties])
     useEffect(() => {
         onHandleCount()
-
     }, [modalFilters])
 
     async function onHandleCount() {
@@ -100,12 +96,12 @@ export function ModalFilter({ isOpen, onClose, setFilterByToEdit, filterByToEdit
     const handlePriceChange = (event, newValue) => {
         setMinPrice(newValue[0])
         setMaxPrice(newValue[1])
-        // setFilterByToEdit((prevFilter) => ({ ...prevFilter, "minPrice": newValue[0], "maxPrice": newValue[1] }))
+
         setModalFilters((prevFilter) => ({ ...prevFilter, "minPrice": newValue[0], "maxPrice": newValue[1] }))
     };
     function handleCheckboxChange(ev) {
         const { name, checked } = ev.target;
-        setSelectedAmmenties((prevSelectedAmmenties) => {
+        setSelectedAmenties((prevSelectedAmmenties) => {
             if (checked) {
                 return [...prevSelectedAmmenties, name];
             } else {
@@ -130,7 +126,7 @@ export function ModalFilter({ isOpen, onClose, setFilterByToEdit, filterByToEdit
                         <h4 className='medium-bold' >Price range</h4>
                         <p>Nightly prices including fees and taxes</p>
                         <div className="price-range-slider-container">
-                            <PriceSlider defaultValue={[10, 500]} onChange={handlePriceChange} />
+                            <PriceSlider defaultValue={[minPrice, maxPrice]} onChange={handlePriceChange} />
 
                         </div>
                         <div className='price-numbers'>
@@ -236,17 +232,17 @@ export function ModalFilter({ isOpen, onClose, setFilterByToEdit, filterByToEdit
                                             id={amenity.title}
                                             name={amenity.title}
                                             onChange={handleCheckboxChange}
-                                            checked={selectedAmmenties.includes(amenity.title)}
+                                            checked={selectedAmenties.includes(amenity.title)}
                                         />
                                         <div className="input-container">
                                             <span
-                                                className={`input-icon ${selectedAmmenties.includes(amenity.title)
+                                                className={`input-icon ${selectedAmenties.includes(amenity.title)
                                                     ? "selected"
                                                     : ""
                                                     }`}
                                             >
                                                 <IoMdCheckmark />
-                                                {selectedAmmenties.includes(amenity.title)
+                                                {selectedAmenties.includes(amenity.title)
                                                     ? ""
                                                     : ""}
                                             </span>
@@ -266,7 +262,7 @@ export function ModalFilter({ isOpen, onClose, setFilterByToEdit, filterByToEdit
                                 setSelectedBedrooms("Any");
                                 setSelectedBeds("Any");
                                 setSelectedBathrooms("Any");
-                                setSelectedAmmenties([]);
+                                setSelectedAmenties([]);
                                 setModalFilters({});
                                 setSelectedProperties([]);
                             }}

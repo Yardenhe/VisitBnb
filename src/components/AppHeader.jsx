@@ -100,7 +100,7 @@ export function AppHeader() {
                         <section className='btn-datepicker bold'>{country ? country : 'AnyWhere'} <span className="vl"></span> </section>
 
                         <section className='btn-datepicker bold'>{startDate && endDate ? (utilService.formatMailDate(startDate) + " - " + utilService.formatMailDate(endDate)) : 'Any Week'}<span className="vl"></span></section>
-                        <section className='btn-datepicker'><p>{guests.adults ? guests.adults + " adults" : 'Add guests'}</p> <IoSearch className='search-btn' />  </section>
+                        <section className={`btn-datepicker ${guests.adults && 'bold-choose-guests'}`}><p>{guests.adults ? guests.adults + " guests" : 'Add guests'}</p> <IoSearch className='search-btn' />  </section>
 
                     </section>
                     <section className='right-header-menu'>

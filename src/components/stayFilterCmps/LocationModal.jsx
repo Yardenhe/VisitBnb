@@ -11,9 +11,9 @@ export function LocationModal({ onSetFilter }) {
         { url: 'https://a0.muscache.com/im/pictures/ea5598d7-2b07-4ed7-84da-d1eabd9f2714.jpg?im_w=320', label: 'Italy' },
     ];
     const locations = [
-        { id: 1, name: 'Italy', imgUrl: '/public/img/icons/location.svg' },
+        { id: 1, name: 'Turkey', imgUrl: '/public/img/icons/location.svg' },
         { id: 2, name: 'Spain', imgUrl: '/public/img/icons/location.svg' },
-        { id: 3, name: 'Israel', imgUrl: '/public/img/icons/location.svg' },
+        { id: 3, name: 'Brazil', imgUrl: '/public/img/icons/location.svg' },
         { id: 4, name: 'Portugal', imgUrl: '/public/img/icons/location.svg' },
         { id: 5, name: 'United States', imgUrl: '/public/img/icons/location.svg' },
         { id: 6, name: 'Canada', imgUrl: '/public/img/icons/location.svg' }
@@ -45,7 +45,7 @@ export function LocationModal({ onSetFilter }) {
                 <div className='loc-title-map'>Search by region</div>
                 <div className='loc-map-list'>
                     {imageInfo.map((info, index) => (
-                        <div key={index}>
+                        <div key={index} onClick={() => handleChooseCountry(info.label)}>
                             <img className='img-loc' alt='' src={info.url} />
                             <p>{info.label}</p>
                         </div>

@@ -112,7 +112,6 @@ function getFilterFromParams(searchParams) {
 async function getStayCount(filterBy) {
   try {
     const { count } = await httpService.get(BASE_URL + 'count', filterBy)
-    console.log('count', count);
     return count
   } catch (err) {
     throw err
