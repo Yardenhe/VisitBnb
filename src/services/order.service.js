@@ -64,7 +64,7 @@ function getEmptyOrder() {
       price: 0,
     },
     msgs: [],
-    status: "",
+    status: "pending",
   };
 }
 

@@ -119,4 +119,15 @@
 
     }
 
+    .secondpage-edit {
+        display: flex;
+        align-items: start;
+        justify-content: center;
+        flex-direction: column;
+
+        h3 {
+            font-size: 32px;
+            font-family: 'cereal-bold';
+        }
+    }
 }

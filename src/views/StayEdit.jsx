@@ -3,13 +3,24 @@ import { Link, useNavigate, useOutletContext, useParams } from "react-router-dom
 import { stayService } from "../services/stay.service";
 import { utilService } from "../services/util.service";
 import { useForm } from "../customHooks/useForm";
+import { FirstPage } from "../components/StayEditCmps/FirstPage";
+import { SecondPage } from "../components/StayEditCmps/SecondPage";
+
 
 
 export function StayEdit() {
-    console.log('StayEdit component rendered');
+
     const [stay, handleChange, setStay] = useForm(stayService.getEmptyStay())
     const { onSaveStay } = useOutletContext()
     const { stayId } = useParams()
+    const [step, setStep] = useState(1);
+
+    const pages = [
+        { component: <FirstPage /> },
+        { component: <SecondPage /> },
+
+    ];
+    const currentPage = pages[step - 1];
 
     useEffect(() => {
         loadStay()
@@ -51,23 +62,17 @@ export function StayEdit() {
                 <Link to="/">  <img src="/public/img/icons/airbnbBlack.svg" ></img></Link>
                 {/* <h1>{stayId ? 'Edit' : 'Add'} Stay</h1> */}
             </section>
-            <section className="firstpage-edit">
-                <div>
-                    <h4>Step 1</h4>
-                    <h1>Tell us about your place</h1>
-                    <h3>In this step, we'll ask you which type of property you have and if guests will book the entire place or just a room. Then let us know the location and how many guests can stay.</h3>
-                </div>
-                <div class="video-container"><video src="https://stream.media.muscache.com/zFaydEaihX6LP01x8TSCl76WHblb01Z01RrFELxyCXoNek.mp4?v_q=high" autoplay="" playsinline="" className="video"></video></div>
-
+            <section className="edit-main">
+                {currentPage.component}
             </section>
             <section className="edit-footer">
-                <div class="footer-loader" >
-                    <div class="loader" ></div>
+                <div className="footer-loader" >
+                    <div className="loader" ></div>
                 </div>
                 <section className="footer-btns">
 
-                    <button class="back-btn" disabled="">Back</button>
-                    <button class="next-btn" fdprocessedid="bgpl49">Next</button>
+                    <button className="back-btn" disabled={step <= 1} onClick={() => setStep(step - 1)}>Back</button>
+                    <button className="next-btn" onClick={() => setStep(step === pages.length ? 1 : step + 1)}>Next</button>
 
                 </section>
             </section>
