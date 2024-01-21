@@ -90,88 +90,93 @@ export function AppHeader() {
 
     return (
         <>
-            <section className={isSpecificPage ? 'sticky-header' : ''}>
-                {isOpenFilter && <div className="overlay" onClick={onToggleEffect}></div>}
-                <header className={'app-header'} >
-                    <Link to="/" onClick={handleReloadClick}>
-                        <img className="app-header-logo" src="img/airbnb-logoo.PNG" />
-                    </Link>
-                    <section className={`date-picker${isOpenEffect ? ' enlarge' : ' '}`} onClick={onToggleEffect}>
-                        <section className='btn-datepicker bold'>{country ? country : 'AnyWhere'} <span className="vl"></span> </section>
+            {location.pathname.includes('edit') ? (<></>) : (
+                <>
 
-                        <section className='btn-datepicker bold'>{startDate && endDate ? (utilService.formatMailDate(startDate) + " - " + utilService.formatMailDate(endDate)) : 'Any Week'}<span className="vl"></span></section>
-                        <section className={`btn-datepicker ${guests.adults && 'bold-choose-guests'}`}><p>{guests.adults ? guests.adults + " guests" : 'Add guests'}</p> <IoSearch className='search-btn' />  </section>
+                    <section className={isSpecificPage ? 'sticky-header' : ''}>
+                        {isOpenFilter && <div className="overlay" onClick={onToggleEffect}></div>}
+                        <header className={'app-header'} >
+                            <Link to="/" onClick={handleReloadClick}>
+                                <img className="app-header-logo" src="img/airbnb-logoo.PNG" />
+                            </Link>
+                            <section className={`date-picker${isOpenEffect ? ' enlarge' : ' '}`} onClick={onToggleEffect}>
+                                <section className='btn-datepicker bold'>{country ? country : 'AnyWhere'} <span className="vl"></span> </section>
 
-                    </section>
-                    <section className='right-header-menu'>
-                        <div className='switchlen-menu'>
-                            <button>Switch to hosting</button>
-                            <LuGlobe className='global-btn' />
-                        </div>
-                        <div className='menu-bar' onClick={() => onToggleUserModal()}> <IoMdMenu className='menu-icon' /><div className='circle'>י</div></div>
-                    </section>
-                </header>
-                <header className={`app-header-filter${isOpenFilter ? ' show-explore' : ' slideOut'}`}>
-                    <section className="app-header grid-app-header">
-                        <Link to="/" onClick={handleReloadClick}>
-                            <img className="app-header-logo" src="img/airbnb-logoo.PNG" />
-                        </Link>
-                        <section className='app-mini-menu'>
-                            <section >Stays</section>
-                            <section >Experience</section>
-                            <section >Online Experience </section>
-                        </section>
+                                <section className='btn-datepicker bold'>{startDate && endDate ? (utilService.formatMailDate(startDate) + " - " + utilService.formatMailDate(endDate)) : 'Any Week'}<span className="vl"></span></section>
+                                <section className={`btn-datepicker ${guests.adults && 'bold-choose-guests'}`}><p>{guests.adults ? guests.adults + " guests" : 'Add guests'}</p> <IoSearch className='search-btn' />  </section>
 
-
-                        <section className='right-header-menu'>
-                            <div className='switchlen-menu'>
-                                <button>Switch to hosting</button>
-                                <LuGlobe className='global-btn' />
-                            </div>
-                            <div className='menu-bar' onClick={() => onToggleUserModal()}> <IoMdMenu className='menu-icon' /><div className='circle'>י</div></div>
-
-                        </section>
-                    </section>
-                    <section className={`date-picker grid-date-picker${!isOpenEffect ? ' shrink' : ' '}`} >
-                        <section className={`btn-datepicker${whichExploreBar == 'location' ? ' clicked-color' : ' '}`} onClick={() => setwhichExploreBar('location')}>
-                            <span className='bold'>Where</span>
-                            <p >Search destinations</p>
-                        </section>
-                        <section className='middle-explore'>
-                            <section className={`btn-datepicker check${!startDate && !endDate && whichExploreBar == 'checkin' ? ' clicked-color' : ''}`} onClick={() => setwhichExploreBar('checkin')}>
-                                <span className='bold'>Check in</span>
-                                <p >Add dates</p>
                             </section>
-                            <section className={`btn-datepicker check${startDate && whichExploreBar == 'checkin' ? ' clicked-color' : ''}`} onClick={() => setwhichExploreBar('checkin')}>
-                                <span className='bold'>Check out</span>
-                                <p >Add dates</p>
+                            <section className='right-header-menu'>
+                                <div className='switchlen-menu'>
+                                    <Link to="/edit"> <button>Airbnb your home</button></Link>
+                                    <LuGlobe className='global-btn' />
+                                </div>
+                                <div className='menu-bar' onClick={() => onToggleUserModal()}> <IoMdMenu className='menu-icon' /><div className='circle'>י</div></div>
                             </section>
-                        </section>
-                        <section className={`btn-datepicker right${whichExploreBar == 'guests' ? ' clicked-color' : ''}`} onClick={() => setwhichExploreBar('guests')}>
-                            <section className='right-txt-explore'>
-                                <p className='bold'>Who</p>
-                                <p >Add guests</p>
+                        </header>
+                        <header className={`app-header-filter${isOpenFilter ? ' show-explore' : ' slideOut'}`}>
+                            <section className="app-header grid-app-header">
+                                <Link to="/" onClick={handleReloadClick}>
+                                    <img className="app-header-logo" src="img/airbnb-logoo.PNG" />
+                                </Link>
+                                <section className='app-mini-menu'>
+                                    <section >Stays</section>
+                                    <section >Experience</section>
+                                    <section >Online Experience </section>
+                                </section>
+
+
+                                <section className='right-header-menu'>
+                                    <div className='switchlen-menu'>
+
+                                        <Link to="/edit"> <button>Airbnb your home</button></Link>
+                                        <LuGlobe className='global-btn' />
+                                    </div>
+                                    <div className='menu-bar' onClick={() => onToggleUserModal()}> <IoMdMenu className='menu-icon' /><div className='circle'>י</div></div>
+
+                                </section>
+                            </section>
+                            <section className={`date-picker grid-date-picker${!isOpenEffect ? ' shrink' : ' '}`} >
+                                <section className={`btn-datepicker${whichExploreBar == 'location' ? ' clicked-color' : ' '}`} onClick={() => setwhichExploreBar('location')}>
+                                    <span className='bold'>Where</span>
+                                    <p >Search destinations</p>
+                                </section>
+                                <section className='middle-explore'>
+                                    <section className={`btn-datepicker check${!startDate && !endDate && whichExploreBar == 'checkin' ? ' clicked-color' : ''}`} onClick={() => setwhichExploreBar('checkin')}>
+                                        <span className='bold'>Check in</span>
+                                        <p >Add dates</p>
+                                    </section>
+                                    <section className={`btn-datepicker check${startDate && whichExploreBar == 'checkin' ? ' clicked-color' : ''}`} onClick={() => setwhichExploreBar('checkin')}>
+                                        <span className='bold'>Check out</span>
+                                        <p >Add dates</p>
+                                    </section>
+                                </section>
+                                <section className={`btn-datepicker right${whichExploreBar == 'guests' ? ' clicked-color' : ''}`} onClick={() => setwhichExploreBar('guests')}>
+                                    <section className='right-txt-explore'>
+                                        <p className='bold'>Who</p>
+                                        <p >Add guests</p>
+                                    </section>
+
+                                    <IoSearch className='search-btn' />
+                                </section>
+
                             </section>
 
-                            <IoSearch className='search-btn' />
-                        </section>
+                        </header >
+                        {isOpenUserModal && <section className='user-modal'>
+                            <Link to="/order">
+                                <div className='user-modal-item' onClick={() => onToggleUserModal()}>Trips</div>
+                            </Link>
+                            <div className='user-modal-item'>Wishlists</div>
+                            <div className='user-modal-item'>Dashboard</div>
+                            <div className='user-modal-item'>Logout</div>
+                        </section>}
 
-                    </section>
-
-                </header >
-                {isOpenUserModal && <section className='user-modal'>
-                    <Link to="/order">
-                        <div className='user-modal-item' onClick={() => onToggleUserModal()}>Trips</div>
-                    </Link>
-                    <div className='user-modal-item'>Wishlists</div>
-                    <div className='user-modal-item'>Dashboard</div>
-                    <div className='user-modal-item'>Logout</div>
-                </section>}
-
-            </section >
-            {isOpenFilter && <DynamicCmp cmpType={whichExploreBar} onSetFilter={onSetFilter} />
+                    </section >
+                    {isOpenFilter && <DynamicCmp cmpType={whichExploreBar} onSetFilter={onSetFilter} />
+                    }
+                </>)
             }
         </>
-
     )
 }
