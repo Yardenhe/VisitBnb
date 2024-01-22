@@ -241,6 +241,7 @@
         align-items: center;
         justify-content: center;
         flex-direction: column;
+        margin: auto;
 
         h3 {
             font-size: 32px;
@@ -248,9 +249,96 @@
             margin-bottom: 20px;
         }
 
-        h5 {
+        h4 {
             font-size: 18px;
             color: $clr4;
         }
+
+        h5 {
+
+            font-size: 18px;
+            font-family: 'cereal';
+        }
+
+        .basics-details {
+            display: block;
+        }
+
+        .counter-list {
+            width: calc(100vh - 180px);
+        }
+
+        .who-items {
+            width: 100%;
+            padding: 16px 0px;
+        }
+
+        &.eighth-page {
+            align-items: start;
+
+
+        }
+
+
+
+
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 30px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            resize: vertical;
+            font-size: 16px;
+            line-height: 1.5;
+            width: calc(110vh - 180px);
+            max-height: 50vh;
+            min-height: 25vh;
+
+            &:focus {
+                outline: none;
+                border-color: #007bff;
+                box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+            }
+        }
+
+        .price-box {
+            display: flex;
+            align-items: center;
+
+            input {
+                width: 50vh;
+                padding: 10px;
+                border: none;
+                border-bottom: none;
+                background-color: transparent;
+                color: #070707;
+                outline: none;
+                box-shadow: none;
+                font-size: 100px;
+                font-family: 'cereal-bold';
+
+                &::placeholder {
+                    color: #ccc;
+                    font-family: 'cereal-bold';
+                }
+            }
+
+            input[type="number"]::-webkit-inner-spin-button,
+            input[type="number"]::-webkit-outer-spin-button {
+                -webkit-appearance: none;
+                margin: 0;
+            }
+
+
+
+            span {
+                font-size: 100px;
+                color: #070707;
+            }
+
+        }
     }
+
+
 }

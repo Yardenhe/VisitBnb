@@ -10,6 +10,7 @@ import { FourthPage } from "../components/StayEditCmps/FourthPage";
 import { FifthPage } from "../components/StayEditCmps/FifthPage";
 import { SixthPage } from "../components/StayEditCmps/SixthPage";
 import { SeventhPage } from "../components/StayEditCmps/SeventhPage";
+import { EighthPage } from "../components/StayEditCmps/EighthPage";
 import { NinthPage } from "../components/StayEditCmps/NinthPage"
 import { TenthPage } from "../components/StayEditCmps/TenthPage"
 
@@ -32,6 +33,7 @@ export function StayEdit() {
         { component: <FifthPage /> },
         { component: <SixthPage /> },
         { component: <SeventhPage /> },
+        { component: <EighthPage /> },
         { component: <NinthPage /> },
         { component: <TenthPage /> },
 

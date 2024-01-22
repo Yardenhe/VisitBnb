@@ -1,15 +1,89 @@
-import React from 'react'
-
+import React, { useState } from 'react'
+import { Counter } from '../stayFilterCmps/Counter';
 export function FifthPage() {
+    const [guests, setSelectedGuests] = useState({
+        guests: 0,
+        bedrooms: 0,
+        beds: 0,
+        bathrooms: 0,
+    });
+    const handleIncrement = (type) => {
+        setSelectedGuests(prevState => ({
+            ...prevState,
+            [type]: prevState[type] + 1,
+        }));
+    };
+
+    const handleDecrement = (type) => {
+        if (guests[type] > 0) {
+            setSelectedGuests(prevState => ({
+                ...prevState,
+                [type]: prevState[type] - 1,
+            }));
+        }
+    };
     return (
         <section className="firstpage-edit fourthPage-edit">
             <div>
                 <h3>Share some basics about your place</h3>
-                <h5>You'll add more details later, like bed types.</h5>
+                <h4>You'll add more details later, like bed types.</h4>
 
             </div>
-            <section className='roomtype-list' >
-                <p>bad,bathrooms</p>
+            <section className='counter-list' >
+
+                <div className='who-items'>
+                    <div>
+                        <h5>Guests</h5>
+
+
+                    </div>
+                    <Counter
+                        label="Guests"
+                        count={guests.guests}
+                        onIncrement={() => handleIncrement('guests')}
+                        onDecrement={() => handleDecrement('guests')}
+                    />
+
+                </div>
+                <div className='who-items'>
+                    <div>
+                        <h5>Bedrooms</h5>
+
+                    </div>
+                    <Counter
+                        label="Bedrooms"
+                        count={guests.bedrooms}
+                        onIncrement={() => handleIncrement('bedrooms')}
+                        onDecrement={() => handleDecrement('bedrooms')}
+                    />
+                </div>
+                <div className='who-items'>
+                    <div>
+                        <h5>beds</h5>
+
+
+                    </div>
+                    <Counter
+                        label="Beds"
+                        count={guests.beds}
+                        onIncrement={() => handleIncrement('beds')}
+                        onDecrement={() => handleDecrement('beds')}
+                    />
+                </div>
+                <div className='who-items'>
+                    <div>
+                        <h5>Bathrooms</h5>
+
+                    </div>
+
+                    <Counter
+                        label="Bathrooms"
+                        count={guests.bathrooms}
+                        onIncrement={() => handleIncrement('bathrooms')}
+                        onDecrement={() => handleDecrement('bathrooms')}
+                    />
+                </div>
+
             </section>
 
         </section >
