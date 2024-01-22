@@ -5,6 +5,15 @@ import { utilService } from "../services/util.service";
 import { useForm } from "../customHooks/useForm";
 import { FirstPage } from "../components/StayEditCmps/FirstPage";
 import { SecondPage } from "../components/StayEditCmps/SecondPage";
+import { ThirdPage } from "../components/StayEditCmps/ThirdPage";
+import { FourthPage } from "../components/StayEditCmps/FourthPage";
+import { FifthPage } from "../components/StayEditCmps/FifthPage";
+import { SixthPage } from "../components/StayEditCmps/SixthPage";
+import { SeventhPage } from "../components/StayEditCmps/SeventhPage";
+import { NinthPage } from "../components/StayEditCmps/NinthPage"
+import { TenthPage } from "../components/StayEditCmps/TenthPage"
+
+
 
 
 
@@ -18,6 +27,13 @@ export function StayEdit() {
     const pages = [
         { component: <FirstPage /> },
         { component: <SecondPage /> },
+        { component: <ThirdPage /> },
+        { component: <FourthPage /> },
+        { component: <FifthPage /> },
+        { component: <SixthPage /> },
+        { component: <SeventhPage /> },
+        { component: <NinthPage /> },
+        { component: <TenthPage /> },
 
     ];
     const currentPage = pages[step - 1];

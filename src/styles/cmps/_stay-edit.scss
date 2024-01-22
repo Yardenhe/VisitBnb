@@ -121,13 +121,136 @@
 
     .secondpage-edit {
         display: flex;
-        align-items: start;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        overflow: hidden;
+
+        h3 {
+            font-size: 32px;
+            font-family: 'cereal-bold';
+            margin-bottom: 20px;
+        }
+
+        .type-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            overflow: auto;
+            gap: 15px;
+            padding-top: 10px;
+            padding-inline: 10px;
+
+            .edit-icon-type {
+                display: flex;
+                flex-direction: column;
+                outline: 1px solid #95969845;
+                width: 170px;
+                padding: 16px;
+                border-radius: 10px;
+                justify-content: space-between;
+                cursor: pointer;
+                height: 100px;
+                transition: all 100ms ease-in-out;
+                user-select: none;
+
+                &:hover {
+                    outline: 1px solid #222222 !important;
+                }
+
+                img {
+                    height: 32px;
+                    width: 32px;
+                }
+
+                .property-title {
+                    font-family: 'cereal-bold';
+                }
+            }
+
+        }
+
+        .type-list::-webkit-scrollbar {
+            overflow: hidden;
+        }
+    }
+
+    .thirdpage-edit {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        overflow: hidden;
+
+        h3 {
+            font-size: 32px;
+            font-family: 'cereal-bold';
+            margin-bottom: 20px;
+        }
+
+        .roomtype-list {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 10px;
+            padding-top: 10px;
+            padding-inline: 10px;
+
+            .edit-icon-type {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                outline: 1px solid #95969845;
+                width: 630px;
+                padding: 32px;
+                border-radius: 10px;
+                justify-content: space-between;
+                cursor: pointer;
+                height: 100px;
+                transition: all 100ms ease-in-out;
+                user-select: none;
+
+                &:hover {
+                    outline: 1px solid #222222 !important;
+                }
+
+                img {
+                    height: 32px;
+                    width: 32px;
+                }
+
+                .property-title {
+                    margin: 24px;
+
+                    h4 {
+                        font-size: 18px;
+                        font-family: 'cereal-medium';
+                        margin: 0;
+                    }
+
+                    h5 {
+                        font-size: 14px;
+                    }
+                }
+
+
+            }
+        }
+    }
+
+    .fourthPage-edit {
+        display: flex;
+        align-items: center;
         justify-content: center;
         flex-direction: column;
 
         h3 {
             font-size: 32px;
-            font-family: 'cereal-bold';
+            font-family: 'cereal-medium';
+            margin-bottom: 20px;
+        }
+
+        h5 {
+            font-size: 18px;
+            color: $clr4;
         }
     }
 }
