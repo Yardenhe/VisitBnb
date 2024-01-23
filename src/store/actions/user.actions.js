@@ -1,6 +1,6 @@
 import { userService } from "../../services/user.service.js";
 
-import { SPEND_BALANCE, REMOVE_USER, SET_USER, SET_USERS } from "../reducers/user.reducer"
+import { REMOVE_USER, SET_USER, SET_USERS } from "../reducers/user.reducer"
 
 import { store } from "../store"
 
@@ -24,18 +24,6 @@ export async function removeUser(userId) {
     }
 }
 
-export async function spendBalance(amount) {
-    try {
-        const user = await userService.changeBalance(amount)
-        store.dispatch({
-            type: SET_USER,
-            user
-        })
-    } catch (err) {
-        console.log('Cannot login', err)
-        throw err
-    }
-}
 
 export async function login(credentials) {
     try {

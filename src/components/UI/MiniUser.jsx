@@ -1,6 +1,8 @@
 import { useState } from "react";
 
 export function MiniUser({user,type='user' ,isReview = false}) {
+  // console.log("🚀 ~ MiniUser ~ user:", user)
+  
   
     const {fullname,isSuperhost,[isReview ? 'thumbnailUrl' : 'imgUrl']:img} = user
  
@@ -34,10 +36,10 @@ export function MiniUser({user,type='user' ,isReview = false}) {
             <span className="sub-text">{isSuperhost && <span><b>Superhost</b></span>} -years of experience</span>
           </div>
           :
-          <>
+          <div className="user-card">
             <h4>{fullname}</h4>
-            <span>{user.location}</span>
-          </>
+            <span className="sub-text">{user.location ?user.location: 'no-location-info'  }</span>
+          </div>
         }
     </div>
   )

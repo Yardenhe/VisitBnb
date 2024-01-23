@@ -8,11 +8,18 @@ import { useToggle } from "../customHooks/useToggle"
 import { useSelector } from 'react-redux'
 import { setFilterBy } from '../store/actions/stay.actions';
 import { stayService } from '../services/stay.service'
+
+import { logout } from '../store/actions/user.actions';
 import { DynamicCmp } from './stayFilterCmps/DynamicCmp';
+import { onToggleModal } from '../store/actions/app.actions';
+import { userService } from '../services/user.service';
 import { utilService } from '../services/util.service';
 
 
 export function AppHeader() {
+    // const [loggedinUser, setLoggedinUser] = useState(userService.getLoggedinUser())
+    const loggedinUser = useSelector(store => store.userModule.user)
+
     const [isOpenEffect, onToggleEffect] = useToggle()
     const [isOpenFilter, onToggle] = useToggle()
     const [isOpenUserModal, onToggleUserModal] = useToggle()
@@ -22,6 +29,10 @@ export function AppHeader() {
     const isSpecificPage = location.pathname === '/';
     const filterBy = useSelector(storeState => storeState.stayModule.filterBy)
     const [searchParams, setSearchParams] = useSearchParams()
+
+    const user = useSelector(storeState => storeState.userModule.user)
+    console.log("🚀 ~ AppHeader ~ user:", user)
+
     const { country } = filterBy || ''
     const currOrder = useSelector(storeState => storeState.orderModule.currOrder)
     const { endDate, startDate, guests } = currOrder || ''
@@ -43,7 +54,6 @@ export function AppHeader() {
             window.removeEventListener('scroll', handleScroll);
         };
     }, [isOpenEffect, onToggleEffect]);
-
     useEffect(() => {
         if (isFirstRender.current) {
             // Skip the first render
@@ -86,6 +96,15 @@ export function AppHeader() {
         fieldsToUpdate = { ...filterBy, ...fieldsToUpdate }
         console.log("🚀 ~ onSetFilter ~ fieldsToUpdate:", fieldsToUpdate)
         setFilterBy(fieldsToUpdate)
+    }
+
+    async function handleLoginSignup() {
+        if (loggedinUser) {
+            // logging out from store
+            await logout()
+        } else {
+            onToggleModal({ type: 'loginSignup', payload: { isLogin: true } })
+        }
     }
 
     return (
@@ -169,7 +188,7 @@ export function AppHeader() {
                             </Link>
                             <div className='user-modal-item'>Wishlists</div>
                             <div className='user-modal-item'>Dashboard</div>
-                            <div className='user-modal-item'>Logout</div>
+                            <div className='user-modal-item' onClick={handleLoginSignup}>{loggedinUser ? 'Logout' : 'Login / Signup'}</div>
                         </section>}
 
                     </section >
