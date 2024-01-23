@@ -11,12 +11,12 @@ export function LocationModal({ onSetFilter }) {
         { url: 'https://a0.muscache.com/im/pictures/ea5598d7-2b07-4ed7-84da-d1eabd9f2714.jpg?im_w=320', label: 'Italy' },
     ];
     const locations = [
-        { id: 1, name: 'Turkey', imgUrl: '/public/img/icons/location.svg' },
-        { id: 2, name: 'Spain', imgUrl: '/public/img/icons/location.svg' },
-        { id: 3, name: 'Brazil', imgUrl: '/public/img/icons/location.svg' },
-        { id: 4, name: 'Portugal', imgUrl: '/public/img/icons/location.svg' },
-        { id: 5, name: 'United States', imgUrl: '/public/img/icons/location.svg' },
-        { id: 6, name: 'Canada', imgUrl: '/public/img/icons/location.svg' }
+        { id: 1, name: 'Turkey', imgUrl: '/public/img/general-icons/location.svg' },
+        { id: 2, name: 'Spain', imgUrl: '/public/img/general-icons/location.svg' },
+        { id: 3, name: 'Brazil', imgUrl: '/public/img/general-icons/location.svg' },
+        { id: 4, name: 'Portugal', imgUrl: '/public/img/general-icons/location.svg' },
+        { id: 5, name: 'United States', imgUrl: '/public/img/general-icons/location.svg' },
+        { id: 6, name: 'Canada', imgUrl: '/public/img/general-icons/location.svg' }
         // Add more locations as needed
     ];
     const [filterByToEdit, setFilterByToEdit] = useState({});

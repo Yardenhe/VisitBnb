@@ -346,6 +346,22 @@
             }
 
         }
+
+        .stay-submit-preview {
+            display: flex;
+            flex-direction: row;
+            width: 600px;
+
+            img {
+                height: 300px;
+                width: 300px;
+                border-radius: 20px;
+            }
+
+            .stay-submit-text {
+                margin-inline: 40px;
+            }
+        }
     }
 
 

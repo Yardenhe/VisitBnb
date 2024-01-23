@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Counter } from '../stayFilterCmps/Counter';
 export function FifthPage({ onSetStay, stay }) {
     const [guests, setSelectedGuests] = useState({
-        guests: stay.guests,
+        capacity: stay.capacity,
         bedrooms: stay.bedrooms,
         beds: stay.beds,
         bathrooms: stay.bathrooms,
@@ -42,9 +42,9 @@ export function FifthPage({ onSetStay, stay }) {
                     </div>
                     <Counter
                         label="Guests"
-                        count={guests.guests}
-                        onIncrement={() => handleIncrement('guests')}
-                        onDecrement={() => handleDecrement('guests')}
+                        count={guests.capacity}
+                        onIncrement={() => handleIncrement('capacity')}
+                        onDecrement={() => handleDecrement('capacity')}
                     />
 
                 </div>
