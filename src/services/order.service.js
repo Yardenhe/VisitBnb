@@ -17,9 +17,9 @@ export const orderService = {
 // _createOrders()
 const BASE_URL = 'order/'
 // READ
-async function query(filterBy = {}) {
+async function query(userId) {
   try {
-    const orders = await httpService.get(BASE_URL, filterBy)
+    const orders = await httpService.get(BASE_URL, userId)
     return orders
   } catch (err) {
     throw err

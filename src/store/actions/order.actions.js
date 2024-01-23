@@ -1,12 +1,14 @@
+import { useSelector } from "react-redux";
 import { orderService } from "../../services/order.service";
 import { ADD_ORDER, REMOVE_ORDER, SET_CURR_ORDER, SET_ORDERS, UPDATE_ORDER } from "../reducers/order.reducer";
 import { store } from "../store";
 
 
 // SET_ORDERS
-export async function loadOrders() {
+export async function loadOrders(userId) {
+    
     try {
-        const orders = await orderService.query()
+        const orders = await orderService.query(userId)
         store.dispatch({ type: SET_ORDERS, orders })
     } catch (err) {
         console.log(err);

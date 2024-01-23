@@ -31,7 +31,6 @@ export function AppHeader() {
     const [searchParams, setSearchParams] = useSearchParams()
 
     const user = useSelector(storeState => storeState.userModule.user)
-    console.log("🚀 ~ AppHeader ~ user:", user)
 
     const { country } = filterBy || ''
     const currOrder = useSelector(storeState => storeState.orderModule.currOrder)
@@ -187,7 +186,7 @@ export function AppHeader() {
                                 <div className='user-modal-item' onClick={() => onToggleUserModal()}>Trips</div>
                             </Link>
                             <div className='user-modal-item'>Wishlists</div>
-                            <div className='user-modal-item'>Dashboard</div>
+                            <Link to='/dashboard'><div className='user-modal-item'>Dashboard</div></Link>
                             <div className='user-modal-item' onClick={handleLoginSignup}>{loggedinUser ? 'Logout' : 'Login / Signup'}</div>
                         </section>}
 
