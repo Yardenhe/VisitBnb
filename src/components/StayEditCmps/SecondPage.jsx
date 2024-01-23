@@ -1,11 +1,17 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { PropertyFilter } from '../stayFilterCmps/PropertyFilter';
 const iconNames = ['amazingpools', 'amazingviews', 'arctics', 'beachfront', 'cabins', 'boats', 'camping', 'castles', 'desert', 'design', 'Countryside'
     , 'cycladichomes', 'iconiccities', 'islands', 'luxe', 'mansions', 'minsus', 'nationalparks', 'omg!', 'towers', 'topoftheworld', 'treehouses', 'tropical', 'trending'];
 
-export function SecondPage() {
-    const [selectedProperties, setSelectedProperties] = useState([]);
+export function SecondPage({ onSetStay, stay }) {
+
+    const [selectedProperties, setSelectedProperties] = useState(stay.type);
     const iconBasePath = 'img/labels/';
+    useEffect(() => {
+        onSetStay({ "type": selectedProperties })
+    }, [selectedProperties])
+
+
     return (
         <section className="firstpage-edit secondpage-edit">
             <div>
@@ -14,9 +20,9 @@ export function SecondPage() {
             </div>
             <section className='type-list' >
                 {iconNames.map((iconName, index) => (
-                    <section className='edit-icon-type'
+                    <section className={`edit-icon-type ${selectedProperties == iconName ? " selected" : ""}`}
                         key={index}
-                    //onClick={() => { onTypeChange(iconName), onToggleIcon(index) }}
+                        onClick={() => { setSelectedProperties(iconName) }}
                     >
                         <div className='property-logo'>
                             <img src={`${iconBasePath}${iconName}.jpg`} alt={iconName} />

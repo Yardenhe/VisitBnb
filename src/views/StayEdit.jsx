@@ -20,22 +20,23 @@ import { TenthPage } from "../components/StayEditCmps/TenthPage"
 
 export function StayEdit() {
 
-    const [stay, handleChange, setStay] = useForm(stayService.getEmptyStay())
+    const [stay, setStay] = useState(stayService.getEmptyStay())
+    console.log("🚀 ~ StayEdit ~ stay:", stay)
     const { onSaveStay } = useOutletContext()
     const { stayId } = useParams()
     const [step, setStep] = useState(1);
 
     const pages = [
         { component: <FirstPage /> },
-        { component: <SecondPage /> },
-        { component: <ThirdPage /> },
-        { component: <FourthPage /> },
-        { component: <FifthPage /> },
-        { component: <SixthPage /> },
-        { component: <SeventhPage /> },
-        { component: <EighthPage /> },
-        { component: <NinthPage /> },
-        { component: <TenthPage /> },
+        { component: <SecondPage onSetStay={onSetStay} stay={stay} /> },
+        { component: <ThirdPage onSetStay={onSetStay} stay={stay} /> },
+        { component: <FourthPage onSetStay={onSetStay} stay={stay} /> },
+        { component: <FifthPage onSetStay={onSetStay} stay={stay} /> },
+        { component: <SixthPage onSetStay={onSetStay} stay={stay} /> },
+        { component: <SeventhPage onSetStay={onSetStay} stay={stay} /> },
+        { component: <EighthPage onSetStay={onSetStay} stay={stay} /> },
+        { component: <NinthPage onSetStay={onSetStay} stay={stay} /> },
+        { component: <TenthPage onSetStay={onSetStay} stay={stay} /> },
 
     ];
     const currentPage = pages[step - 1];
@@ -49,6 +50,11 @@ export function StayEdit() {
             const stay = await stayService.getById(stayId)
             setStay(stay)
         }
+    }
+
+    function onSetStay(fieldsToUpdate) {
+        fieldsToUpdate = { ...stay, ...fieldsToUpdate }
+        setStay(fieldsToUpdate)
     }
     function onSubmitStay(ev) {
         ev.preventDefault()

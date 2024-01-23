@@ -1,6 +1,10 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 
-export function TenthPage() {
+export function TenthPage({ onSetStay, stay }) {
+    const [selectedPrice, setSelectedPrice] = useState(stay.price);
+    useEffect(() => {
+        onSetStay({ "price": selectedPrice })
+    }, [selectedPrice])
     return (
         <section className='center'>
             <section className="firstpage-edit fourthPage-edit eighth-page">
@@ -13,9 +17,10 @@ export function TenthPage() {
                 <section className='price-box' >
                     <span>₪</span>
                     <input
+                        value={selectedPrice}
                         type="number"
                         placeholder='256'
-
+                        onChange={(e) => setSelectedPrice(e.target.value)}
                     />
 
                 </section>

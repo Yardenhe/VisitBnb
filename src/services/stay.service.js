@@ -56,12 +56,14 @@ function getEmptyStay(
   imgUrls = [],
   price = 100,
   summary = "",
+  propertyType = "",
   capacity = 0,
   beds = 0,
   bedrooms = 0,
   bathrooms = 0,
   amenities = [],
   labels = [],
+
   host = {
     _id: "",
     fullname: "",
@@ -83,6 +85,7 @@ function getEmptyStay(
     imgUrls,
     price,
     summary,
+    propertyType,
     capacity,
     beds,
     bedrooms,

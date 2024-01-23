@@ -1,6 +1,12 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 
-export function EighthPage() {
+
+
+export function EighthPage({ onSetStay, stay }) {
+    const [selectedTitle, setSelectedTitle] = useState(stay.name);
+    useEffect(() => {
+        onSetStay({ "name": selectedTitle })
+    }, [selectedTitle])
     return (
         <section className='center'>
             <section className="firstpage-edit fourthPage-edit eighth-page">
@@ -11,7 +17,8 @@ export function EighthPage() {
                 </div>
                 <section className='roomtype-list' >
                     <textarea
-
+                        value={selectedTitle}
+                        onChange={(e) => setSelectedTitle(e.target.value)}
                     />
                 </section>
 

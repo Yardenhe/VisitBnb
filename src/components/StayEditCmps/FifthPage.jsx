@@ -1,12 +1,15 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Counter } from '../stayFilterCmps/Counter';
-export function FifthPage() {
+export function FifthPage({ onSetStay, stay }) {
     const [guests, setSelectedGuests] = useState({
-        guests: 0,
-        bedrooms: 0,
-        beds: 0,
-        bathrooms: 0,
+        guests: stay.guests,
+        bedrooms: stay.bedrooms,
+        beds: stay.beds,
+        bathrooms: stay.bathrooms,
     });
+    useEffect(() => {
+        onSetStay(guests)
+    }, [guests])
     const handleIncrement = (type) => {
         setSelectedGuests(prevState => ({
             ...prevState,
