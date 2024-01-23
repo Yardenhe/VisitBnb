@@ -2,19 +2,28 @@ import { RiArrowDropDownLine as DownArrow } from "react-icons/ri";
 import { onToggleModal } from "../../store/actions/app.actions";
 import { utilService } from "../../services/util.service";
 import { ReserveBtn } from "../UI/ReserveBtn";
+import { DatePicker } from "../UI/DatePicker";
+import { useState } from "react";
 
 export function StayCheckout({ price, orderInfo,startDate, endDate }) {
   const formattedStartDate = utilService.formatDate(startDate)
   const formattedEndDate = utilService.formatDate(endDate)
+  const [isOpenDatePickerModal,setIsOpenDatePickerModal] = useState(false)
 
   function onOpenDatePicker(){
-    onToggleModal({type:'datePicker',action})
+    console.log("🚀 ~ onOpenDatePicker ",isOpenDatePickerModal)
+    setIsOpenDatePickerModal(prev=>!prev)
+  
   }
   function handleReserve(){
     console.log('Reserve');
   }
   return (
     //<div className="checkout-card-container">
+    <>
+    <div className={`date-picker-modal ${!isOpenDatePickerModal ? 'hidden' : '' }`}>
+        <DatePicker/>
+    </div>
     <div className="checkout-card">
       <div className="price-container">
         <div className="price"> ${price}</div> 
@@ -72,6 +81,8 @@ export function StayCheckout({ price, orderInfo,startDate, endDate }) {
         <span>${`${price}`}</span>
       </div>
     </div>
+    </>
+
     //</div>
   );
 }

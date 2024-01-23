@@ -59,15 +59,12 @@ console.log("🚀 ~ signup ~ credentials:", credentials)
 }
 
 async function logout() {
-    console.log('loging out');
     await httpService.post(BASE_AUTH_URL + 'logout')
-    console.log('loging out21');
     sessionStorage.removeItem(STORAGE_KEY_LOGGEDIN_USER)
 }
 
 function getEmptyUser() {
     return {
-        username: '',
         fullname: '',
         email:'',
         password: '',
@@ -90,7 +87,7 @@ function getSignupForm(){
         // firstName:'First name',
         // lastName:'Last name',
         fullname:'Full name',
-        dateOfBirth:'Birthdate',
+        // dateOfBirth:'Birthdate',
         email:'Email',
         password:'Password'
     }

@@ -9,10 +9,15 @@ import { useSelector } from 'react-redux'
 import { setFilterBy } from '../store/actions/stay.actions';
 import { stayService } from '../services/stay.service'
 
+import { logout } from '../store/actions/user.actions';
 import { DynamicCmp } from './stayFilterCmps/DynamicCmp';
 import { onToggleModal } from '../store/actions/app.actions';
+import { userService } from '../services/user.service';
 
 export function AppHeader() {
+    // const [loggedinUser, setLoggedinUser] = useState(userService.getLoggedinUser())
+    const loggedinUser = useSelector(store=>store.userModule.user)
+
     const [isOpenEffect, onToggleEffect] = useToggle()
     const [isOpenFilter, onToggle] = useToggle()
     const [isOpenUserModal, onToggleUserModal] = useToggle()
@@ -25,7 +30,7 @@ export function AppHeader() {
 
     const user = useSelector(storeState => storeState.userModule.user)
     console.log("🚀 ~ AppHeader ~ user:", user)
-    
+
 
     useEffect(() => {
         const handleScroll = () => {
@@ -76,6 +81,15 @@ export function AppHeader() {
         setFilterBy(fieldsToUpdate)
     }
 
+    async function handleLoginSignup(){
+        if (loggedinUser){
+            // logging out from store
+            await logout()
+        } else {
+            onToggleModal({ type: 'loginSignup', payload: { isLogin: true } })
+        }
+    }
+        
     return (
         <>
             <section className={isSpecificPage ? 'sticky-header' : ''}>
@@ -152,7 +166,7 @@ export function AppHeader() {
                     </Link>
                     <div className='user-modal-item'>Wishlists</div>
                     <div className='user-modal-item'>Dashboard</div>
-                    <div className='user-modal-item' onClick={()=>{onToggleModal({type:'loginSignup',payload:{isLogin:true}})}}>Logout</div>
+                    <div className='user-modal-item' onClick={handleLoginSignup}>{loggedinUser ? 'Logout' : 'Login / Signup'}</div>
                 </section>}
 
             </section >

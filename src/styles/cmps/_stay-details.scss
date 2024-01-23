@@ -233,6 +233,10 @@ $section-top: 32px;
     width: 50%;
     height: 100%;
     position: relative;
+    .date-picker-modal{
+     position: absolute;
+     z-index: 2; 
+    }
   }
 }
 
@@ -273,6 +277,7 @@ $section-top: 32px;
   margin-top: 32px;
   margin-bottom: 48px;
   border: 1px solid $clr2;
+  z-index: 1;
 
   // > :not( :first-child){
   //     margin-top: 8px;
@@ -416,6 +421,25 @@ $section-top: 32px;
 }
 
 //stay-dates
+.date-picker-modal{
+  position: sticky;
+  background: white;
+  border-radius: 32px;
+  box-shadow: 0 0 0 1px #0000000a, 0 8px 16px #00000026;
+  padding: 16px 32px;
+  z-index: 10;
+  right: -5px;
+  width: auto;
+  height: 50vh;
+  top: 32px;
+
+  margin-left: 8.333333333333332% !important;
+  margin-right: 0% !important;
+  margin-top: 32px;
+  margin-bottom: 48px;
+  border: 1px solid $clr2;
+
+}
 .stay-dates {}
 
 .date-picker-large {

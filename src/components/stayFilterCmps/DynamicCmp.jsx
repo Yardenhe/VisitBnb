@@ -29,9 +29,11 @@ console.log("🚀 ~ StoreDynamicCmp ~ type:", type)
 
 
     const cmpMap = {
-        // datePicker: <DatePicker/>,
+
         loginSignup: <LoginSignup payload={payload} />,
-        ameintyModal: <AmeintyModal payload={payload} />
+        ameintyModal: <AmeintyModal payload={payload} />,
+        // datePicker: <DatePicker payload={payload} />
+        
     }
 
     const CmpToRender = cmpMap[type]

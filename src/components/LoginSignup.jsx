@@ -22,12 +22,15 @@ export function LoginSignup({ payload }) {
 
     async function onLoginSignup() {
         console.log("🚀 ~ onLoginSignup ~ credentials:", credentials)
+        // signup flow
         if (!isLoginForm) {
             if (!credentials.email || !credentials.password || !credentials.fullname) return
             console.log('signup');
             await signup(credentials)
-        } else {
-            if (!credentials.email) return
+        } 
+        // login flow
+        else {
+            if (!credentials.email || !credentials.password) return
             console.log('login');
             await login(credentials)
         }
