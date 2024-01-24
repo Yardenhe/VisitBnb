@@ -9,8 +9,8 @@ export function MiniUser({user,type='user' ,isReview = false}) {
 
     // console.log("MiniUser",user);
     const [userImg,setUserImg] = useState(img)
-    const tempImg = '/public/img/Icons/user-circle.svg'
-    const superhostTag = '/public/img/Icons/superhost-tag.svg'
+    const tempImg = '/public/img/general-icons/user-circle.svg'
+    const superhostTag = '/public/img/general-icons/superhost-tag.svg'
 
     function handleImgError({src}){
       console.log('error in src: ', src);

@@ -30,7 +30,7 @@ export function StayPreview({ stay }) {
         <section className='stay-preview'>
 
             <Suspense>
-                <img src="/public/img/icons/heart.svg" className='heart-svg'></img>
+                <img src="/public/img/general-icons/heart.svg" className='heart-svg'></img>
                 <LazyLoadedImage className='img-preview' src={stay.imgUrls[currentImageIndex]} alt='img' />
                 <div className='image-points'>
                     {stay.imgUrls.map((_, index) => (

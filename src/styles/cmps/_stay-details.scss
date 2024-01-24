@@ -41,7 +41,8 @@ $section-top: 32px;
     position: relative;
     top: 12px;
     .action-btn{
-      padding: 0 0 0 15px;
+      justify-content: space-around;
+      margin: 0;
     }
   }
 }
@@ -401,11 +402,12 @@ $section-top: 32px;
     width: 50%;
     // border: solid 0.8px rgb(223, 229, 223);
     display: flex;
-    padding: 5px 0;
+    padding: 8px 0;
     align-items: center;
     &> img{
-      width: 46px;
-      height: 46px;
+      padding: 0;
+      width: 45px;
+      height: 45px;
     }
     // padding-left: 0.5em;
   }
