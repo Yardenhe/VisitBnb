@@ -182,11 +182,14 @@ export function AppHeader() {
 
                         </header >
                         {isOpenUserModal && <section className='user-modal'>
+                            {loggedinUser && <>
                             <Link to="/order">
                                 <div className='user-modal-item' onClick={() => onToggleUserModal()}>Trips</div>
                             </Link>
                             <div className='user-modal-item'>Wishlists</div>
                             <Link to='/hosting/dashboard'><div className='user-modal-item'>Dashboard</div></Link>
+                            </>
+                            }
                             <div className='user-modal-item' onClick={handleLoginSignup}>{loggedinUser ? 'Logout' : 'Login / Signup'}</div>
                         </section>}
 
