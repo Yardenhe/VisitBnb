@@ -17,6 +17,8 @@ export const utilService = {
 	getSymbolCurrency,
 	formatDate,
 	calculateTimeAgo,
+	calculateNightsBetweenDates,
+	convertMillisecondsToNights,
 	// pluralizeLabel,
 }
 export function pluralizeLabel(num,label){
@@ -224,8 +226,17 @@ function calculateTimeAgo(timestamp) {
 	}
   }
   
-  // Example usage:
-  const timestamp = '2016-08-23T04:00:00.000Z';
-  const result = calculateTimeAgo(timestamp);
-  console.log(result);
+function calculateNightsBetweenDates(startDate, endDate) {
+	const start = new Date(startDate);
+	const end = new Date(endDate);
+	const oneDay = 24 * 60 * 60 * 1000; // hours*minutes*seconds*milliseconds
+	const nights = Math.round(Math.abs((start - end) / oneDay));
   
+	return nights;
+  }
+
+function convertMillisecondsToNights(milliseconds) {
+	const oneDay = 24 * 60 * 60 * 1000; // hours*minutes*seconds*milliseconds
+	const nights = Math.round(milliseconds / oneDay);
+	return nights;
+  }

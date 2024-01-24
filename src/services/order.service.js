@@ -12,6 +12,10 @@ export const orderService = {
   remove,
   getEmptyOrder,
   getOrderFromParams,
+  getRevenueInsight,
+  getGuestsInsight,
+  getAverageBookingDuration,
+
 }
 
 // _createOrders()
@@ -83,5 +87,25 @@ function getOrderFromParams(searchParams) {
     order[field] = searchParams.get(field) || ''
   }
   return order
+}
+
+// FOR HOST INSIGHTS 
+function getRevenueInsight(orders) {
+  let result = orders.reduce((total, order) => total + order.totalPrice, 0);
+  return result
+}
+function getGuestsInsight(orders) {
+  return orders.reduce((totalGuests, order) => totalGuests + (+order.guests.adults || 0) + (+order.guests.kids || 0) + (+order.guests.infants || 0), 0);
+}
+function getAverageBookingDuration(orders) {
+  const durations = orders.map(order => {
+    const startDate = new Date(order.startDate);
+    const endDate = new Date(order.endDate);
+    return endDate - startDate; // Duration in milliseconds
+  });
+
+  const averageDuration = durations.reduce((total, duration) => total + duration, 0) / durations.length;
+
+  return utilService.convertMillisecondsToNights(averageDuration) // Result in milliseconds
 }
 

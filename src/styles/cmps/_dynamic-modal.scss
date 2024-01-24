@@ -48,8 +48,15 @@
     
     &-list{
         display:inherit;
+        padding: 0;
+        gap: 10px;
+        width: 80%;
         flex-direction: column;
         align-items: flex-start;
+    }
+    .amenity{
+        display: flex;
+        align-items: center;
     }
 }
 // LOGIN-SIGNUP

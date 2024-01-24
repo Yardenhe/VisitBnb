@@ -287,9 +287,6 @@
 
         }
 
-
-
-
         textarea {
             width: 100%;
             padding: 10px;
@@ -352,6 +349,7 @@
             flex-direction: row;
             width: 600px;
 
+
             img {
                 height: 300px;
                 width: 300px;
@@ -361,6 +359,11 @@
             .stay-submit-text {
                 margin-inline: 40px;
             }
+        }
+
+        .map-container {
+            height: 50vh;
+            width: 500px
         }
     }
 

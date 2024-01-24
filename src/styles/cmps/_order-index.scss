@@ -1,5 +1,35 @@
+// .order-index {
+//     padding: 0px 5rem;
+
+//     .order-title {
+//         padding-block: 30px;
+//     }
+
+//     .order-list {
+//         display: grid;
+//         grid-template-columns: repeat(3, minmax(100px, 1fr));
+//         gap: 20px;
+//         list-style: none;
+//         padding: 0;
+//         margin: 0;
+
+//     }
+
+//     .order-preview {
+//         display: flex;
+
+//         .img-preview-orders {
+//             width: 80px;
+//             height: 80px;
+//             object-fit: cover;
+//             border-radius: 8px;
+//             margin-right: 10px;
+//         }
+//     }
+// }
+
 .order-index {
-    padding: 0px 5rem;
+    padding: 2rem 0;
 
     .order-title {
         padding-block: 30px;
@@ -17,10 +47,11 @@
 
     .order-preview {
         display: flex;
+        max-width: 350px;
 
         .img-preview-orders {
-            width: 80px;
-            height: 80px;
+            width: 200px;
+            height: 200px;
             object-fit: cover;
             border-radius: 8px;
             margin-right: 10px;
