@@ -3,8 +3,9 @@ import { loadOrders } from "../store/actions/order.actions"
 import { OrderList } from "../components/OrderList"
 import { useSelector } from "react-redux"
 import { DashboardInsights } from "../components/dashboard/DashboardInsights"
+import { NavLink, Navigate, Outlet } from "react-router-dom"
 
-export function Dashboard() {
+export function DashboardHome() {
     const loggedInUser = useSelector(storeState => storeState.userModule.user)
     const orders = useSelector(storeState => storeState.orderModule.orders)
 
@@ -15,25 +16,21 @@ export function Dashboard() {
     }, [])
 
     const elLoader = <p>loading orders.. or am i loading orders?</p>
+    if (!loggedInUser) return <h1>Please Log in</h1>
     if (!orders) return elLoader
 
     return (<>
         <div className='dashboard-layout'>
-            <h3 className='dashboard-header'>Welcome,{loggedInUser.fullname.split(' ')[0]}!</h3>
-            <section className="dashboard-section">
-                <div className="dashboard-title">
-                    <h3>Your reservations</h3>
-                </div>
-                <OrderList orders={orders} />
-            </section>
-            <section className="dashboard-section">
-                <div className="dashboard-title">
-                    <h3>Some insights</h3>
-                </div>
-                <DashboardInsights orders={orders} />
-            </section>
+            <div className="dashboard-nav-inks">
+                <NavLink to='/hosting/dashboard'>Dashboard</NavLink>
+                <NavLink to='/hosting/reservations'>Reservations</NavLink>
+                <NavLink to='/hosting/listings'>Listings</NavLink>
+            </div>
+            <Outlet
+                context={{loggedInUser , orders}} />
         </div>
     </>
 
     )
 }
+

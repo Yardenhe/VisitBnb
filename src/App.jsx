@@ -10,7 +10,10 @@ import { Route, BrowserRouter as Router, Routes } from 'react-router-dom'
 import { OrderIndex } from './views/OrderIndex'
 import { StayEdit } from './views/StayEdit'
 import { DynamicModal } from './components/UI/DynamicModal'
-import { Dashboard } from './views/Dashboard'
+import { DashboardHome } from './views/DashboardHome'
+import { ReservationManager } from './components/dashboard/ReservationManager'
+import { Dashboard } from './components/dashboard/Dashboard'
+import { Listings } from './components/dashboard/Listings'
 
 function App() {
   return (
@@ -29,8 +32,15 @@ function App() {
             <Route path="/edit/:stayId?"
               element={<StayEdit />} />
           </Route>
+
           <Route path='/order' element={<OrderIndex />} />
-          <Route path='/dashboard' element={<Dashboard />} />
+          <Route path='/hosting' element={<DashboardHome />} >
+
+            <Route path='/hosting/dashboard' element={<Dashboard />} />
+            <Route path='/hosting/reservations' element={<ReservationManager />} />
+            <Route path='/hosting/listings' element={<Listings />} />
+
+          </Route>
         </Routes>
         <DynamicModal />
       </section>
