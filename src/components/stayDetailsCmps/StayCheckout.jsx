@@ -22,10 +22,10 @@ export function StayCheckout({ price, orderInfo, startDate, endDate, onSaveOrder
   return (
     //<div className="checkout-card-container">
     <>
+      <div className="checkout-card">
       <div className={`date-picker-modal ${!isOpenDatePickerModal ? 'hidden' : ''}`}>
         <DatePicker />
       </div>
-      <div className="checkout-card">
         <div className="price-container">
           <div className="price"> ${price}</div>
           <span className="btn-info-detail">night</span>

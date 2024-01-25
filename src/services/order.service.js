@@ -15,6 +15,7 @@ export const orderService = {
   getRevenueInsight,
   getGuestsInsight,
   getAverageBookingDuration,
+  getOverviewInsights,
 
 }
 
@@ -108,4 +109,23 @@ function getAverageBookingDuration(orders) {
 
   return utilService.convertMillisecondsToNights(averageDuration) // Result in milliseconds
 }
+function getOrderStatusBreakdown(orders) {
+  const statusCounts = {}
+  orders.forEach(order => {
+    const { status } = order
+    statusCounts[status] = (statusCounts[status] || 0) + 1;
+  })
+  return statusCounts;
+}
 
+function getOverviewInsights(orders) {
+  const overviewStats = {}
+  const {pending , approved , canceled} = getOrderStatusBreakdown(orders)
+
+  overviewStats["Total Orders"] = orders.length
+  // overviewStats["Average revenue"] = 
+  overviewStats["Approved"] = approved || 0
+  overviewStats["Pending"] = pending || 0
+  overviewStats["Canceled"] = canceled || 0
+  return overviewStats
+}

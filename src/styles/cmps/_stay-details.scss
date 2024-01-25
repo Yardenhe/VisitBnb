@@ -222,6 +222,7 @@ $section-top: 32px;
   margin-top: 0;
   display: flex;
   min-width: 100%;
+  position: relative;
   justify-content: space-between;
 
   .details-short {
@@ -424,7 +425,7 @@ $section-top: 32px;
 
 //stay-dates
 .date-picker-modal{
-  position: sticky;
+  position: absolute;
   background: white;
   border-radius: 32px;
   box-shadow: 0 0 0 1px #0000000a, 0 8px 16px #00000026;
@@ -442,7 +443,9 @@ $section-top: 32px;
   border: 1px solid $clr2;
 
 }
-.stay-dates {}
+.stay-dates {
+  
+}
 
 .date-picker-large {
   // background-color: rgba(107, 196, 196, 0.239);

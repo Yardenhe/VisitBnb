@@ -33,6 +33,8 @@
 
     .dashboard-title {
         font-size: larger;
+        margin-bottom: 1em;
+        // text-decoration: underline solid 0.5%;
     }
 
     .dashboard-section {
@@ -40,8 +42,97 @@
         display: flex;
         flex-direction: column;
         justify-content: flex-start;
+        @include section-padding(2)
     }
 
+}
+
+.insights-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(3, 200px);
+    gap: 10px;
+    margin-bottom: 5rem;
+
+    // border: 2px solid black;
+    .insight-card {
+        padding: 1em;
+        box-shadow: rgba(0, 0, 0, 0.12) 0px 6px 16px;
+        border-radius: 12px;
+        border: 1px solid #dddddd;
+        display: flex;
+        flex-direction: column;
+        transition: transform 0.23s ease;
+        background-color: white;
+
+        &-header {
+            @include medium-bold(18px)
+        }
+
+        &-data {
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+        }
+
+        .insight-number {
+            @include bold(56px);
+        }
+    }
+
+    .insight-card:hover {
+        transform: translate3d(6px, 5%, 3em);
+    }
+
+    .insight-long {
+        grid-area: 1 / 4 / 4 / 5;
+    }
+
+    .insight-large {
+        grid-area: 2/1/4/4;
+    }
+}
+
+.insight-card-graph {
+    height: 100%;
+    border: 1px solid $clr1;
+}
+
+.overview-list-item {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 24px;
+    padding-top: 24px;
+    align-items: center;
+
+    &:first-child {
+        margin-top: 0;
+    }
+
+    &:not(:first-child) {
+        @include border-top()
+    }
+
+    &-title {
+        font-size: larger;
+    }
+
+    &-stats {
+        @include medium-bold(24px)
+    }
+}
+
+.approved-green {
+    color: #39ff14;
+}
+
+.canceled-red {
+    color: #ff073a;
+}
+
+.pending-orange {
+    color: orange;
 }
 
 .dashboard-reservations {

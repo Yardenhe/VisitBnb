@@ -10,7 +10,6 @@ export function OrderPreview({ order }) {
     useEffect(() => { loadStay() }, [])
 
     async function loadStay() {
-
         const stay = await stayService.getById(order.stay._id)
         console.log("🚀 ~ OrderPreview ~ stayOrder:", stay)
         setStayOrder(stay)
