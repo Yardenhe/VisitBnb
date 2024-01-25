@@ -118,6 +118,10 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     cursor: pointer;
 
+    &.left {
+        padding-left: 10px;
+        //padding-right: 10px;
+    }
 
     &.enlarge {
 
@@ -143,7 +147,7 @@
 
 
     .btn-datepicker {
-        text-align: center;
+        // text-align: center;
         border-radius: 32px;
         background: transparent;
         cursor: pointer;
@@ -157,11 +161,30 @@
         //border-radius: 20px;
         // padding: 0px 16px;
 
+
         flex &.clicked-color {
             background-color: $clr2;
         }
 
+        &.add-guests-label {
+            display: inline-flex;
+            align-items: center;
+            min-width: 110px;
 
+
+            justify-content: space-between;
+
+            p {
+                font-size: 1em;
+                padding: 0;
+                margin: 0;
+                color: $clr4;
+                min-width: 106px;
+                font-size: 14px;
+                //  padding: 0 16px;
+
+            }
+        }
 
         p {
             font-size: 1em;
@@ -186,6 +209,7 @@
             }
         }
 
+
     }
 
 
@@ -201,23 +225,7 @@
 
     }
 
-    section:nth-child(3) {
-        //border-right: 1px none black;
-        //margin: 0px 5px;
-        min-width: 110px;
 
-        display: inline-flex;
-        justify-content: center;
-        align-items: center;
-
-        p {
-            // padding: 0px 16px;
-            min-width: 106px;
-            font-size: 14px;
-            padding: 0 16px;
-
-        }
-    }
 
     .search-btn {
         display: flex;
@@ -228,9 +236,12 @@
         background-color: #ff385c;
         border-radius: 50%;
         padding: 10px;
-        margin: 7px 10px 7px -6.3px;
+        margin: 7px 10px 7px 10px;
         height: 32px;
         min-width: 32px;
+
+
+
     }
 }
 
@@ -250,6 +261,7 @@
 
     .btn-datepicker {
         padding: 8.4px 0px 0px 13px;
+
         height: 100%;
         width: 100%;
         background-color: $clr2;
@@ -260,23 +272,15 @@
     }
 
     .right {
-        padding: 0px;
-    }
-
-    .right-txt-explore {
-        // display: flex;
-        // flex-direction: row;
-
-        p:nth-child(1) {
-            font-size: 0.8em;
-            color: $clr5;
-        }
+        position: relative;
 
     }
+
+
 
 
     .check {
-        padding: 5px 0px 5px 8px;
+        //  padding: 5px 0px 5px 8px;
         height: 100%;
         border-radius: 32px;
 
@@ -303,6 +307,11 @@
         justify-self: flex-end;
         align-self: flex-start;
 
+        &.explore {
+            position: absolute;
+            right: 0;
+            top: 0;
+        }
     }
 
 
@@ -320,6 +329,7 @@
 
 
 
+
         div {
             //  border-left: 1px solid $clr2;
             // padding: 0px 0px;
@@ -330,16 +340,7 @@
 
     }
 
-    section:nth-child(3) {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        // border-right: 1px none black;
-        // margin: 0px 5px;
-        align-content: center;
-        align-items: center;
-        padding-left: 10px
-    }
+
 }
 
 .overlay {
@@ -415,8 +416,8 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        height: 2.5em;
-        width: 2.5em;
+        height: 35px;
+        width: 35px;
         color: #ffffff;
         background-color: #0b0b0b;
         border-radius: 100%;

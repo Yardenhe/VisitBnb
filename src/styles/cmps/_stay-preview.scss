@@ -1,6 +1,7 @@
 .stay-preview {
     position: relative;
 
+
     .img-preview {
         width: 100%;
         aspect-ratio: 1/1;
@@ -83,11 +84,15 @@
         }
     }
 
+    .image-container {
+        position: relative;
+    }
+
     .image-points {
         position: absolute;
-        top: 70%;
-        left: 50%;
-        transform: translate(-50%, -50%);
+        bottom: 2em;
+        left: 40%;
+        // transform: translate(-50%, -50%);
         display: flex;
 
         .point {

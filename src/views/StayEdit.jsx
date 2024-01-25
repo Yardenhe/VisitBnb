@@ -13,6 +13,7 @@ import { SeventhPage } from "../components/StayEditCmps/SeventhPage";
 import { EighthPage } from "../components/StayEditCmps/EighthPage";
 import { NinthPage } from "../components/StayEditCmps/NinthPage"
 import { TenthPage } from "../components/StayEditCmps/TenthPage"
+import { ElevenPage } from "../components/StayEditCmps/ElevenPage";
 
 
 
@@ -37,6 +38,7 @@ export function StayEdit() {
         { component: <EighthPage onSetStay={onSetStay} stay={stay} /> },
         { component: <NinthPage onSetStay={onSetStay} stay={stay} /> },
         { component: <TenthPage onSetStay={onSetStay} stay={stay} /> },
+        { component: <ElevenPage onSetStay={onSetStay} stay={stay} /> },
 
     ];
     const currentPage = pages[step - 1];
@@ -56,12 +58,7 @@ export function StayEdit() {
         fieldsToUpdate = { ...stay, ...fieldsToUpdate }
         setStay(fieldsToUpdate)
     }
-    function onSubmitStay(ev) {
-        ev.preventDefault()
-        const elInputs = Array.from(ev.target).filter(elInput => elInput.nodeName !== 'BUTTON')
-        const elEmptyInputs = elInputs.filter(elInput => !elInput.value || elInput.value === '0')
-        if (elEmptyInputs.length) return handleEmptyInputs(elEmptyInputs)
-
+    function onSubmitStay() {
         try {
             onSaveStay(stay)
         } catch (err) {
@@ -96,33 +93,11 @@ export function StayEdit() {
                 <section className="footer-btns">
 
                     <button className="back-btn" disabled={step <= 1} onClick={() => setStep(step - 1)}>Back</button>
-                    <button className="next-btn" onClick={() => setStep(step === pages.length ? 1 : step + 1)}>Next</button>
+                    {step === pages.length ? <button className="next-btn" onClick={() => onSubmitStay()}>Submit</button> :
+                        <button className="next-btn" onClick={() => setStep(step === pages.length ? 1 : step + 1)}>Next</button>}
 
                 </section>
             </section>
-
-
-            {/* <form onSubmit={onSubmitStay}>
-                <label htmlFor="name">Name</label>
-                <input value={name} onChange={handleChange}
-                    type="text" id="name" name="name" />
-
-                <label htmlFor="type">Type</label>
-                <select value={type} onChange={handleChange}
-                    id="type" name="type" >
-                    <option disabled value="">Choose a type</option>
-                    <option value="House">House</option>
-                    <option value="National parks">National parks</option>
-                    <option value="Islands">Islands</option>
-                    <option value="Castles">Castles</option>
-                </select>
-
-                <label>price {price}
-                    <input type="range" value={price} onChange={handleChange}
-                        id="price" name="price" min={10} max={700} step={1} />
-                </label>
-                <button>Save</button>
-            </form> */}
         </section>
     )
 }

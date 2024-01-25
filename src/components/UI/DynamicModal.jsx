@@ -27,7 +27,7 @@ export function DynamicModal() {
                     <button onClick={onCloseModal}><CloseSvg /></button>
                 </div>
 
-                <StoreDynamicCmp type={modalData.type} payload={modalData.payload} />
+                <StoreDynamicCmp type={modalData.type} payload={modalData.payload} onCloseModal={onCloseModal} />
             </div>
             {/* {modalData.cmp} */}
         </div>

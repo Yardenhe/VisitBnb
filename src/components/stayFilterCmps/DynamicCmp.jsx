@@ -5,6 +5,7 @@ import { CheckInOutModal } from '../stayFilterCmps/CheckInOutModal';
 import { LoginSignup } from '../LoginSignUp';
 import { DatePicker } from '../UI/DatePicker';
 import { AmeintyModal } from '../stayDetailsCmps/AmeintyModal';
+import { ApproveRejectOrderModal } from '../dashboard/approveRejectOrderModal';
 
 
 export function DynamicCmp(props) {
@@ -24,16 +25,17 @@ export function DynamicCmp(props) {
 
 // change into object mapping
 
-export function StoreDynamicCmp({ type, payload }) {
-console.log("🚀 ~ StoreDynamicCmp ~ type:", type)
+export function StoreDynamicCmp({ type, payload, onCloseModal }) {
+    console.log("🚀 ~ StoreDynamicCmp ~ type:", type)
 
 
     const cmpMap = {
 
-        loginSignup: <LoginSignup payload={payload} />,
-        ameintyModal: <AmeintyModal payload={payload} />,
+        loginSignup: <LoginSignup payload={payload} onCloseModal={onCloseModal} />,
+        ameintyModal: <AmeintyModal payload={payload} onCloseModal={onCloseModal} />,
+        approveRejectOrder: <ApproveRejectOrderModal payload={payload} onCloseModal={onCloseModal} />
         // datePicker: <DatePicker payload={payload} />
-        
+
     }
 
     const CmpToRender = cmpMap[type]

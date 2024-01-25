@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link, NavLink, Navigate, useLocation, useSearchParams, useParams } from 'react-router-dom'
+import { Link, NavLink, Navigate, useLocation, useSearchParams, useNavigate } from 'react-router-dom'
 import { useEffect, useState, useRef, useCallback } from 'react'
 import { IoSearch } from "react-icons/io5";
 import { LuGlobe } from "react-icons/lu";
@@ -35,7 +35,7 @@ export function AppHeader() {
     const { country } = filterBy || ''
     const currOrder = useSelector(storeState => storeState.orderModule.currOrder)
     const { endDate, startDate, guests } = currOrder || ''
-
+    const navigate = useNavigate()
 
 
 
@@ -101,8 +101,11 @@ export function AppHeader() {
         if (loggedinUser) {
             // logging out from store
             await logout()
+            onToggleUserModal()
+            navigate("/")
         } else {
             onToggleModal({ type: 'loginSignup', payload: { isLogin: true } })
+            onToggleUserModal()
         }
     }
 
@@ -117,11 +120,14 @@ export function AppHeader() {
                             <Link to="/" onClick={handleReloadClick}>
                                 <img className="app-header-logo" src="../img/airbnb-logoo.PNG" />
                             </Link>
-                            <section className={`date-picker${isOpenEffect ? ' enlarge' : ' '}`} onClick={onToggleEffect}>
-                                <section className='btn-datepicker bold'>{country ? country : 'AnyWhere'} <span className="vl"></span> </section>
+                            <section className={`date-picker left${isOpenEffect ? ' enlarge' : ' '}`} onClick={onToggleEffect}>
+                                <section className='btn-datepicker bold '>{country ? country : 'Anywhere'} <span className="vl"></span> </section>
 
-                                <section className='btn-datepicker bold'>{startDate && endDate ? (utilService.formatMailDate(startDate) + " - " + utilService.formatMailDate(endDate)) : 'Any Week'}<span className="vl"></span></section>
-                                <section className={`btn-datepicker ${guests.adults && 'bold-choose-guests'}`}><p>{guests.adults ? guests.adults + " guests" : 'Add guests'}</p> <IoSearch className='search-btn' />  </section>
+                                <section className='btn-datepicker bold'>{startDate && endDate ? (utilService.formatMailDate(startDate) + " - " + utilService.formatMailDate(endDate)) : 'Any week'}<span className="vl"></span></section>
+                                <section className={`btn-datepicker add-guests-label ${guests.adults && 'bold-choose-guests'}`}>
+                                    <>{guests.adults ? guests.adults + " guests" : 'Add guests'}</>
+                                    <IoSearch className='search-btn' />
+                                </section>
 
                             </section>
                             <section className='right-header-menu'>
@@ -129,7 +135,9 @@ export function AppHeader() {
                                     <Link to="/edit"> <button>Airbnb your home</button></Link>
                                     <LuGlobe className='global-btn' />
                                 </div>
-                                <div className='menu-bar' onClick={() => onToggleUserModal()}> <IoMdMenu className='menu-icon' /><div className='circle'>י</div></div>
+                                <div className='menu-bar' onClick={() => onToggleUserModal()}>
+                                    <IoMdMenu className='menu-icon' />
+                                    <div className='circle'>י</div></div>
                             </section>
                         </header>
                         <header className={`app-header-filter${isOpenFilter ? ' show-explore' : ' slideOut'}`}>
@@ -169,13 +177,12 @@ export function AppHeader() {
                                         <p >Add dates</p>
                                     </section>
                                 </section>
-                                <section className={`btn-datepicker right${whichExploreBar == 'guests' ? ' clicked-color' : ''}`} onClick={() => setwhichExploreBar('guests')}>
-                                    <section className='right-txt-explore'>
-                                        <p className='bold'>Who</p>
-                                        <p >Add guests</p>
-                                    </section>
+                                <section className={`btn-datepicker check right ${whichExploreBar == 'guests' ? ' clicked-color' : ''}`} onClick={() => setwhichExploreBar('guests')}>
 
-                                    <IoSearch className='search-btn' />
+                                    <span className='bold'>Check out</span>
+                                    <p >Add dates</p>
+
+                                    <IoSearch className='search-btn explore' />
                                 </section>
 
                             </section>
@@ -183,11 +190,11 @@ export function AppHeader() {
                         </header >
                         {isOpenUserModal && <section className='user-modal'>
                             {loggedinUser && <>
-                            <Link to="/order">
-                                <div className='user-modal-item' onClick={() => onToggleUserModal()}>Trips</div>
-                            </Link>
-                            <div className='user-modal-item'>Wishlists</div>
-                            <Link to='/hosting/dashboard'><div className='user-modal-item'>Dashboard</div></Link>
+                                <Link to="/order">
+                                    <div className='user-modal-item' onClick={() => onToggleUserModal()}>Trips</div>
+                                </Link>
+                                <div className='user-modal-item'>Wishlists</div>
+                                <Link to='/hosting/dashboard'><div onClick={() => onToggleUserModal()} className='user-modal-item'>Dashboard</div></Link>
                             </>
                             }
                             <div className='user-modal-item' onClick={handleLoginSignup}>{loggedinUser ? 'Logout' : 'Login / Signup'}</div>

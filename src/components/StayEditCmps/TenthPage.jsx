@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react'
+import { onToggleModal } from '../../store/actions/app.actions';
+
 
 export function TenthPage({ onSetStay, stay }) {
     const [selectedPrice, setSelectedPrice] = useState(stay.price);
