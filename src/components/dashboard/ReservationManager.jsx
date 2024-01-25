@@ -1,13 +1,14 @@
 import { useOutletContext } from "react-router"
 import { utilService } from "../../services/util.service"
 import { useState } from "react";
+import { onToggleModal } from "../../store/actions/app.actions";
 
 export function ReservationManager() {
-  const [selectedOrder, setSelectedOrder] = useState(false)
   const openMiniModal = (order) => {
-    setSelectedOrder(!selectedOrder)
+    onToggleModal({ type: 'approveRejectOrder', payload: { order: order, onSaveOrder: onSaveOrder } })
   };
-  const { orders } = useOutletContext()
+  const { orders, onSaveOrder } = useOutletContext()
+
   return (
     <div className="dashboard-reservations">
       <h3>Reservations</h3>
@@ -28,7 +29,7 @@ export function ReservationManager() {
               <td>{order.status}</td>
               <td>
                 <h4>{`${order.buyer.fullname}`}</h4>
-                <h5>{`${order.guests.adults} Adults  ${order.guests.kids ? order.guests.kids + 'Kids' : ''} `}</h5>
+                <h5>{`${order.guests.adults} Adults  ${order.guests.kids ? order.guests.kids + ' Kids' : ''} `}</h5>
               </td>
               <td>
                 <h4>{`${utilService.formatDate(order.startDate)} - ${utilService.formatDate(order.endDate)}`}</h4>
@@ -36,11 +37,6 @@ export function ReservationManager() {
               </td>
               <td>{order.stay.name}</td>
               <td>{`${order.totalPrice} ₪`}</td>
-              <td>...</td>
-              {selectedOrder && <td className={`mini-modal ${selectedOrder ? 'open' : ''}`}>
-                <p>Approve</p>
-                <p>Reject</p>
-              </td>}
             </tr>
           ))}
 

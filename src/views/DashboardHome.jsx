@@ -3,12 +3,13 @@ import { loadOrders } from "../store/actions/order.actions"
 import { OrderList } from "../components/OrderList"
 import { useSelector } from "react-redux"
 import { DashboardInsights } from "../components/dashboard/DashboardInsights"
-import { NavLink, Navigate, Outlet } from "react-router-dom"
+import { NavLink, Navigate, Outlet, useNavigate } from "react-router-dom"
+import { saveOrder } from "../store/actions/order.actions"
 
 export function DashboardHome() {
     const loggedInUser = useSelector(storeState => storeState.userModule.user)
     const orders = useSelector(storeState => storeState.orderModule.orders)
-
+    const navigate = useNavigate()
 
 
     useEffect(() => {
@@ -16,6 +17,14 @@ export function DashboardHome() {
         loadOrders(userToGetOrdersBy)
     }, [])
 
+
+    async function onSaveOrder(order) {
+        try {
+            await saveOrder(order)
+        } catch (err) {
+            console.log('Had issues adding order', err);
+        }
+    }
     const elLoader = <p>loading orders.. or am i loading orders?</p>
     if (!loggedInUser) return <h1>Please Log in</h1>
     if (!orders) return elLoader
@@ -28,7 +37,7 @@ export function DashboardHome() {
                 <NavLink to='/hosting/listings'>Listings</NavLink>
             </div>
             <Outlet
-                context={{ loggedInUser, orders }} />
+                context={{ loggedInUser, orders, onSaveOrder }} />
         </div>
     </>
 

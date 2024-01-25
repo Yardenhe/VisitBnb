@@ -1,0 +1,47 @@
+import React, { useState } from 'react'
+import { utilService } from '../../services/util.service'
+import { useEffectUpdate } from '../../customHooks/useEffectUpdate'
+
+export function ApproveRejectOrderModal({ payload }) {
+    const { order, onSaveOrder } = payload
+    const [orderToUpdate, setOrderToUpdate] = useState(order)
+    useEffectUpdate(() => {
+        try {
+            onSaveOrder(orderToUpdate)
+        } catch (err) {
+            console.log('Had issues adding order', err);
+        }
+    }, [orderToUpdate])
+
+    function onSetApprove() {
+        setOrderToUpdate({ ...orderToUpdate, "status": 'approved' })
+
+    }
+    function onSetReject() {
+        setOrderToUpdate({ ...orderToUpdate, "status": 'rejected' })
+    }
+
+    return (
+        <section className='approve-reject-order-modal' >
+            <h3 className='title'>Order details</h3>
+
+
+            <section className='stay-submit-preview' >
+
+                <section className='stay-submit-text' >
+                    <h4>{`${order.buyer.fullname}`}</h4>
+                    <h5>{`${order.guests.adults} Adults  ${order.guests.kids ? order.guests.kids + ' Kids' : ''} `}</h5>
+                    <h4>{`${utilService.formatDate(order.startDate)} - ${utilService.formatDate(order.endDate)}`}</h4>
+                    <h5>{utilService.calculateNightsBetweenDates(order.startDate, order.endDate)} night</h5>
+                    <h4>{order.totalPrice}₪</h4>
+
+                </section>
+                <section className='apprej-buttons'>
+                    <button onClick={() => onSetApprove()}>Approve</button>
+                    <button onClick={() => onSetReject()}>Reject</button>
+                </section>
+
+            </section>
+        </section>
+    )
+}
