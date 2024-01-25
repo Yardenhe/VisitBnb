@@ -3,9 +3,7 @@ import { orderService } from "../../services/order.service"
 export function DashboardInsights({ orders }) {
   console.log("🚀 ~ DashboardInsights ~ orders:", orders)
 
-  const revenue = orderService.getRevenueInsight(orders)
-  const totalGuests = orderService.getGuestsInsight(orders)
-  const averageDuration = orderService.getAverageBookingDuration(orders)
+  const {revenue,totalGuests,averageDuration} = orderService.getOrdersInsights(orders)
   const overview = orderService.getOverviewInsights(orders)
   console.log("🚀 ~ DashboardInsights ~ overview:", overview)
 
