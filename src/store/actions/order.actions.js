@@ -6,7 +6,7 @@ import { store } from "../store";
 
 // SET_ORDERS
 export async function loadOrders(userId) {
-    
+
     try {
         const orders = await orderService.query(userId)
         store.dispatch({ type: SET_ORDERS, orders })
@@ -26,9 +26,10 @@ export async function saveOrder(order) {
     try {
         const type = order._id ? UPDATE_ORDER : ADD_ORDER
         const savedOrder = await orderService.save(order)
+        console.log("🚀 ~ saveOrder ~ savedOrder:", savedOrder)
         store.dispatch({ type, order: savedOrder })
     } catch (err) {
-        console.log(err);
+        console.error(err);
     }
 }
 // REMOVE_ORDER

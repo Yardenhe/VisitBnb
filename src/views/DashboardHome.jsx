@@ -9,7 +9,8 @@ import { saveOrder } from "../store/actions/order.actions"
 export function DashboardHome() {
     const loggedInUser = useSelector(storeState => storeState.userModule.user)
     const orders = useSelector(storeState => storeState.orderModule.orders)
-    const navigate = useNavigate()
+
+
 
 
     useEffect(() => {
@@ -21,6 +22,7 @@ export function DashboardHome() {
     async function onSaveOrder(order) {
         try {
             await saveOrder(order)
+            console.log("🚀 ~ DashboardHome ~ orders:", orders)
         } catch (err) {
             console.log('Had issues adding order', err);
         }

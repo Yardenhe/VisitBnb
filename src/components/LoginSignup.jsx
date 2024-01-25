@@ -3,7 +3,7 @@ import { userService } from '../services/user.service'
 import { ReserveBtn } from './UI/ReserveBtn'
 import { login, signup } from '../store/actions/user.actions'
 
-export function LoginSignup({ payload }) {
+export function LoginSignup({ payload, onCloseModal }) {
     const { isLogin } = payload
     const [userLoginForm, setUserLoginForm] = useState({})
     const [credentials, setCredentials] = useState({})
@@ -27,12 +27,14 @@ export function LoginSignup({ payload }) {
             if (!credentials.email || !credentials.password || !credentials.fullname) return
             console.log('signup');
             await signup(credentials)
-        } 
+            onCloseModal()
+        }
         // login flow
         else {
             if (!credentials.email || !credentials.password) return
             console.log('login');
             await login(credentials)
+            onCloseModal()
         }
         clearState()
     }

@@ -101,9 +101,11 @@ export function AppHeader() {
         if (loggedinUser) {
             // logging out from store
             await logout()
+            onToggleUserModal()
             navigate("/")
         } else {
             onToggleModal({ type: 'loginSignup', payload: { isLogin: true } })
+            onToggleUserModal()
         }
     }
 
@@ -116,7 +118,7 @@ export function AppHeader() {
                         {isOpenFilter && <div className="overlay" onClick={onToggleEffect}></div>}
                         <header className={'app-header'} >
                             <Link to="/" onClick={handleReloadClick}>
-                                <img className="app-header-logo" src="img/airbnb-logoo.PNG" />
+                                <img className="app-header-logo" src="public/img/airbnb-logoo.PNG" />
                             </Link>
                             <section className={`date-picker left${isOpenEffect ? ' enlarge' : ' '}`} onClick={onToggleEffect}>
                                 <section className='btn-datepicker bold '>{country ? country : 'Anywhere'} <span className="vl"></span> </section>
@@ -141,7 +143,7 @@ export function AppHeader() {
                         <header className={`app-header-filter${isOpenFilter ? ' show-explore' : ' slideOut'}`}>
                             <section className="app-header grid-app-header">
                                 <Link to="/" onClick={handleReloadClick}>
-                                    <img className="app-header-logo" src="img/airbnb-logoo.PNG" />
+                                    <img className="app-header-logo" src="public/img/airbnb-logoo.PNG" />
                                 </Link>
                                 <section className='app-mini-menu'>
                                     <section >Stays</section>
@@ -188,11 +190,11 @@ export function AppHeader() {
                         </header >
                         {isOpenUserModal && <section className='user-modal'>
                             {loggedinUser && <>
-                            <Link to="/order">
-                                <div className='user-modal-item' onClick={() => onToggleUserModal()}>Trips</div>
-                            </Link>
-                            <div className='user-modal-item'>Wishlists</div>
-                            <Link to='/hosting/dashboard'><div className='user-modal-item'>Dashboard</div></Link>
+                                <Link to="/order">
+                                    <div className='user-modal-item' onClick={() => onToggleUserModal()}>Trips</div>
+                                </Link>
+                                <div className='user-modal-item'>Wishlists</div>
+                                <Link to='/hosting/dashboard'><div onClick={() => onToggleUserModal()} className='user-modal-item'>Dashboard</div></Link>
                             </>
                             }
                             <div className='user-modal-item' onClick={handleLoginSignup}>{loggedinUser ? 'Logout' : 'Login / Signup'}</div>

@@ -19,11 +19,12 @@ export const utilService = {
 	calculateTimeAgo,
 	calculateNightsBetweenDates,
 	convertMillisecondsToNights,
+	checkClassNameByTitle
 	// pluralizeLabel,
 }
-export function pluralizeLabel(num,label){
-    return `${num} ${label}${(+num<=1)?'':'s'}`
-  }
+export function pluralizeLabel(num, label) {
+	return `${num} ${label}${(+num <= 1) ? '' : 's'}`
+}
 
 function makeId(length = 6) {
 	var txt = ''
@@ -136,17 +137,17 @@ function formatMailDate(timeStamp) {
 }
 
 function formatDate(date) {
-	if(!date) return ''
+	if (!date) return ''
 
 	date = new Date(date)
 	const day = String(date.getDate()).padStart(2, '0');
 	const month = String(date.getMonth() + 1).padStart(2, '0'); // Months are zero-based
 	const year = date.getFullYear();
-  
+
 	return `${day}/${month}/${year}`;
-  }
-  
-  
+}
+
+
 
 /* receives a month number (0-11) and returns short month name*/
 function getMonthShortName(monthNum) {
@@ -206,37 +207,49 @@ function getSymbolCurrency(currency) {
 function calculateTimeAgo(timestamp) {
 	const currentDate = new Date();
 	const pastDate = new Date(timestamp);
-  
+
 	const timeDifference = currentDate - pastDate;
 	// changing units to days
 	const daysDifference = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
-  
+
 	if (daysDifference <= 30) {
-	  return `${daysDifference} days ago`;
+		return `${daysDifference} days ago`;
 	} else {
-	  const monthNames = [
-		'January', 'February', 'March', 'April', 'May', 'June',
-		'July', 'August', 'September', 'October', 'November', 'December'
-	  ];
-  
-	  const year = pastDate.getFullYear();
-	  const month = pastDate.getMonth();
-  
-	  return `${monthNames[month]} ${year}`;
+		const monthNames = [
+			'January', 'February', 'March', 'April', 'May', 'June',
+			'July', 'August', 'September', 'October', 'November', 'December'
+		];
+
+		const year = pastDate.getFullYear();
+		const month = pastDate.getMonth();
+
+		return `${monthNames[month]} ${year}`;
 	}
-  }
-  
+}
+
 function calculateNightsBetweenDates(startDate, endDate) {
 	const start = new Date(startDate);
 	const end = new Date(endDate);
 	const oneDay = 24 * 60 * 60 * 1000; // hours*minutes*seconds*milliseconds
 	const nights = Math.round(Math.abs((start - end) / oneDay));
-  
+
 	return nights;
-  }
+}
 
 function convertMillisecondsToNights(milliseconds) {
 	const oneDay = 24 * 60 * 60 * 1000; // hours*minutes*seconds*milliseconds
 	const nights = Math.round(milliseconds / oneDay);
 	return nights;
-  }
+}
+function checkClassNameByTitle(title) {
+	switch (title) {
+		case 'Approved':
+			return 'approved-green'
+		case 'Canceled':
+			return 'canceled-red'
+		case 'Pending':
+			return 'pending-orange'
+		default:
+			break;
+	}
+}

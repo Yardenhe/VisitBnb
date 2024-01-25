@@ -29,9 +29,15 @@ export function StayPreview({ stay }) {
     return (
         <section className='stay-preview'>
 
-            <Suspense>
-                <img src="/public/img/general-icons/heart.svg" className='heart-svg'></img>
-                <LazyLoadedImage className='img-preview' src={stay.imgUrls[currentImageIndex]} alt='img' />
+            <section className="image-container">
+                <Suspense >
+                    <img src="/public/img/general-icons/heart.svg" className='heart-svg'>
+                    </img>
+                    <LazyLoadedImage className='img-preview' src={stay.imgUrls[currentImageIndex]} alt='img' >
+
+                    </LazyLoadedImage >
+
+                </Suspense>
                 <div className='image-points'>
                     {stay.imgUrls.map((_, index) => (
                         <div
@@ -41,14 +47,14 @@ export function StayPreview({ stay }) {
                         />
                     ))}
                 </div>
-            </Suspense>
+            </section>
 
             <div className='space-between'>
                 <div className='preview-loc'>{stay.loc.city},{stay.loc.country}</div>
                 <div className="rating-peek black center">
                     {/* map from data [!missing]*/}
                     <StarIcon />
-                    <span>4.8</span>
+                    <span>{stay.reviews ? stay.reviews[0].rate : '4.8'}</span>
                 </div>
             </div>
             <div className='preview-name'>{stay.name}</div>

@@ -2,23 +2,24 @@ import React, { useState } from 'react'
 import { utilService } from '../../services/util.service'
 import { useEffectUpdate } from '../../customHooks/useEffectUpdate'
 
-export function ApproveRejectOrderModal({ payload }) {
+export function ApproveRejectOrderModal({ payload, onCloseModal }) {
     const { order, onSaveOrder } = payload
     const [orderToUpdate, setOrderToUpdate] = useState(order)
     useEffectUpdate(() => {
         try {
             onSaveOrder(orderToUpdate)
+            onCloseModal()
         } catch (err) {
             console.log('Had issues adding order', err);
         }
     }, [orderToUpdate])
 
     function onSetApprove() {
-        setOrderToUpdate({ ...orderToUpdate, "status": 'approved' })
+        setOrderToUpdate({ ...orderToUpdate, status: 'approved' })
 
     }
     function onSetReject() {
-        setOrderToUpdate({ ...orderToUpdate, "status": 'rejected' })
+        setOrderToUpdate({ ...orderToUpdate, status: 'rejected' })
     }
 
     return (
