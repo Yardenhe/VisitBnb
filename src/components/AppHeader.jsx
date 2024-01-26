@@ -123,7 +123,7 @@ export function AppHeader() {
                             <section className={`date-picker left${isOpenEffect ? ' enlarge' : ' '}`} onClick={onToggleEffect}>
                                 <section className='btn-datepicker bold '>{country ? country : 'Anywhere'} <span className="vl"></span> </section>
 
-                                <section className='btn-datepicker bold'>{startDate && endDate ? (utilService.formatMailDate(startDate) + " - " + utilService.formatMailDate(endDate)) : 'Any week'}<span className="vl"></span></section>
+                                <section className='btn-datepicker bold'>{startDate && endDate ? (utilService.formatOrderDate(startDate) + " - " + utilService.formatOrderDate(endDate)) : 'Any week'}<span className="vl"></span></section>
                                 <section className={`btn-datepicker add-guests-label ${guests.adults && 'bold-choose-guests'}`}>
                                     <>{guests.adults ? guests.adults + " guests" : 'Add guests'}</>
                                     <IoSearch className='search-btn' />

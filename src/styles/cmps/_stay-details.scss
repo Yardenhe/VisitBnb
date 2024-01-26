@@ -21,34 +21,41 @@ $section-top: 32px;
     margin: 0 $child-margin 0;
   }
 }
+
 .details-header {
   @include section-padding(2.3);
+
   // padding-top: 24px;
   // max-height: 65.23px;
-  h3{
+  h3 {
     @include medium-bold(35.75px);
-    
+
   }
+
   width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
   max-height: 100px;
   min-height: 82px;
+
   .btn-header-container {
     display: flex;
     align-items: flex-end;
     position: relative;
     top: 12px;
-    .action-btn{
+
+    .action-btn {
       justify-content: space-around;
       margin: 0;
     }
   }
 }
-.share-save-btn{
+
+.share-save-btn {
   @include medium-bold(19.25px)
 }
+
 .mini-user {
   display: flex;
   // gap: 24px;
@@ -63,6 +70,7 @@ $section-top: 32px;
     @include medium-bold(22px);
   }
 }
+
 .user-card {
   // border: 1px solid blueviolet;
   margin-left: 24px;
@@ -78,7 +86,7 @@ $section-top: 32px;
 .user-img {
   align-items: center;
   justify-content: center;
-  border-radius:100% ;
+  border-radius: 100%;
   width: 40px;
   height: 40px;
 }
@@ -108,7 +116,7 @@ $section-top: 32px;
   // text-align: center;
   // justify-content: center;
   align-items: center;
-  
+
 }
 
 .details-top {
@@ -218,26 +226,30 @@ $section-top: 32px;
 
 }
 
-.checkout-container {
+.checkout-container,
+.checkout-payment-container {
   margin-top: 0;
   display: flex;
   min-width: 100%;
   position: relative;
   justify-content: space-between;
 
-  .details-short {
+  .details-short,
+  .payment-details {
     flex-grow: 1;
   }
 
-  .checkout-card-container {
+  .checkout-card-container,
+  .stay-payment-details-container {
     display: flex;
     flex-direction: column;
     width: 50%;
     height: 100%;
     position: relative;
-    .date-picker-modal{
-     position: absolute;
-     z-index: 2; 
+
+    .date-picker-modal {
+      position: absolute;
+      z-index: 2;
     }
   }
 }
@@ -269,7 +281,7 @@ $section-top: 32px;
   top: 32px;
   min-width: 33.33333333333333% !important;
   max-width: 40.33333333333333% !important;
-  min-height: 479px;
+  min-height: 555px;
   height: 479px;
   max-height: 520px;
   line-height: 1.25rem;
@@ -281,9 +293,36 @@ $section-top: 32px;
   border: 1px solid $clr2;
   z-index: 1;
 
-  // > :not( :first-child){
-  //     margin-top: 8px;
-  // }
+  &-info {
+    font-weight: 400 !important;
+    font-size: 0.875rem !important;
+    line-height: 1.125rem !important;
+    align-items: center !important;
+    display: flex !important;
+    flex-direction: column !important;
+    list-style-type: none !important;
+    margin: 8px 0px 0px !important;
+    padding: 0px !important;
+    text-align: center !important;
+
+    span {
+      font-size: 19.25px;
+      margin-top: 8px !important;
+      white-space: normal !important;
+    }
+  }
+
+  .booking-costs {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 100%;
+
+    .checkout-total {
+      @include medium-bold(22px)
+    }
+  }
+
   .price-container {
     display: flex;
     align-items: baseline;
@@ -302,15 +341,15 @@ $section-top: 32px;
   }
 
   .btn-continue {
-    margin-top: 5px;
+    margin-top: 16px;
     min-height: 56px;
   }
 }
 
 .btn-continue {
   padding: 12px;
-  // background: radial-gradient(circle at center,#FF385C 0%,#E61E4D 27.5%,#E31C5F 40%,#D70466 57.5%,#BD1E59 75%,#BD1E59 100%);
-
+  font-size: 1em;
+  border-radius: 10px;
 }
 
 .date-btn-container,
@@ -370,11 +409,21 @@ $section-top: 32px;
   display: flex;
   justify-content: space-between;
   font-size: small;
+  align-items: center;
 
   button {
     text-decoration: underline;
     border: none;
     background: transparent;
+  }
+}
+
+.price-break-down {
+  padding-top: 16px;
+
+  .btn-desc-modal {
+    font-size: 22px;
+
   }
 }
 
@@ -405,11 +454,13 @@ $section-top: 32px;
     display: flex;
     padding: 8px 0;
     align-items: center;
-    &> img{
+
+    &>img {
       padding: 0;
       width: 45px;
       height: 45px;
     }
+
     // padding-left: 0.5em;
   }
 
@@ -424,7 +475,7 @@ $section-top: 32px;
 }
 
 //stay-dates
-.date-picker-modal{
+.date-picker-modal {
   position: absolute;
   background: white;
   border-radius: 32px;
@@ -443,9 +494,8 @@ $section-top: 32px;
   border: 1px solid $clr2;
 
 }
-.stay-dates {
-  
-}
+
+.stay-dates {}
 
 .date-picker-large {
   // background-color: rgba(107, 196, 196, 0.239);
@@ -504,4 +554,68 @@ $section-top: 32px;
   padding: 13px 23px;
   border: 0.95px solid #000;
   font-weight: 600;
+}
+
+// Booking / Payment page specifications
+.payment-layout{
+  margin: 0 auto;
+  padding: 0 80px;
+  max-width: 1280px;
+  width: 70vw;
+  justify-content: center;
+}
+.checkout-payment-container{
+  .checkout-card{
+    width: 100%;
+    // max-width: 500px;
+  }
+  .details-top-head{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    .payment-order-info{
+      margin-top: 32px;
+    }
+  }
+}
+.mini-order-preview {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  .order-preview{
+    width: 100%;
+  }
+  article{
+    display: flex;
+  }
+  img {
+    max-width: 150px !important;
+    max-height: 150px !important;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-right: 10px;
+  }
+}
+.host-mini-section{
+  .login-signup{
+    display: flex;
+    flex-direction: column;
+    &-btn-container{
+      position: static;
+    }
+    button{
+      // width: 53%;
+    }
+    >*{
+      margin: 12px 0 0 0;
+      padding: 0;
+
+    }
+  }
+}
+.tiny-li{
+  margin-top: 16px;
+  gap:20px;
+  display: flex;
+  align-items: center;
 }

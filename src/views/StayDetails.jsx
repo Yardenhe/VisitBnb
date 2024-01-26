@@ -26,14 +26,13 @@ import {
 
 export function StayDetails() {
   // TODO: get the stay from the store
-  const { stayId } = useOutletContext(); //
+  // const { stayId } = useOutletContext(); //
+  const { stayId } = useParams(); //
   const [stay, setStay] = useState(null);
   const navigate = useNavigate();
+  const currOrder = useSelector((storeState) => storeState.orderModule.currOrder)
 
 
-  const currOrder = useSelector(
-    (storeState) => storeState.orderModule.currOrder
-  );
   const orders = useSelector(
     (storeState) => storeState.orderModule.orders
   );
@@ -70,24 +69,10 @@ export function StayDetails() {
   // destructure after loading
   const { name, imgUrls, price, host, loc, capacity } = stay
 
-  async function onSaveOrder() {
-    try {
 
-      const orderToSave = currOrder;
-      await saveOrder(orderToSave)
-      navigate('/')
-    } catch (err) {
-      console.log('Had issues adding order', err);
-    }
-  }
 
   return (
     <div className="details-layout">
-      {/* <div className="dev-action-element">
-        <button>
-          <Link to={"/orders"}>Orders Page (dev-btn)</Link>
-        </button>
-      </div> */}
       {/* HEADER */}
       <section className="details-header ">
         <h3>{name}</h3>
@@ -103,7 +88,7 @@ export function StayDetails() {
       {/* DESCRIPTION */}
       <section className="checkout-container ">
         <StayDescription stay={stay} />
-        <StayCheckout price={price} startDate={startDate} onSaveOrder={onSaveOrder} endDate={endDate} />
+        <StayCheckout price={price} startDate={startDate} endDate={endDate} currOrder={currOrder} />
       </section>
 
       {/* All details */}

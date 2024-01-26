@@ -18,7 +18,7 @@ export function ReserveBtn({ text ,cb}) {
     <button
         onMouseMove={handleMouseMove}
         onClick={cb}
-        className='btn-continue bnb-color'
+        className='btn-continue bnb-color bold'
         style={{background:dynamicGradient}}
     >
       {text}

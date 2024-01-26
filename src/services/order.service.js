@@ -12,7 +12,7 @@ export const orderService = {
   remove,
   getEmptyOrder,
   getOrderFromParams,
-
+  getTotalguests,
   getOverviewInsights,
   getOrdersInsights
 
@@ -48,7 +48,7 @@ async function remove(orderId) {
 
 function getEmptyOrder() {
   return {
-    _id: "",
+    // _id: "",
     hostId: "",
     buyer: {
       _id: "",
@@ -67,8 +67,8 @@ function getEmptyOrder() {
       name: "",
       price: 0,
     },
-    msgs: [],
-    status: "pending",
+    // msgs: [],
+    // status: "pending",
   };
 }
 
@@ -89,6 +89,9 @@ function getOrderFromParams(searchParams) {
   return order
 }
 
+function getTotalguests(guests) {
+  return Object.values(guests).reduce((totalGuests , value) => totalGuests+value,0)
+}
 // FOR HOST INSIGHTS 
 
 function getOrdersInsights(orders) {
@@ -99,11 +102,22 @@ function getOrdersInsights(orders) {
     averageDuration: _getAverageBookingDuration(orders)
   }
 }
+function getOverviewInsights(orders) {
+  const overviewStats = {}
+  const { pending, approved, rejected } = _getOrderStatusBreakdown(orders)
+  overviewStats["Total Orders"] = orders.length
+  // overviewStats["Average revenue"] = 
+  overviewStats["Approved"] = approved || 0
+  overviewStats["Pending"] = pending || 0
+  overviewStats["Rejected"] = rejected || 0
+  return overviewStats
+}
+
+
 function _getRevenueInsight(orders) {
   let result = orders.reduce((total, order) => total + order.totalPrice, 0);
   return result
 }
-
 function _getGuestsInsight(orders) {
   return orders.reduce((totalGuests, order) => totalGuests + (+order.guests.adults || 0) + (+order.guests.kids || 0) + (+order.guests.infants || 0), 0);
 }
@@ -127,13 +141,28 @@ function _getOrderStatusBreakdown(orders) {
   return statusCounts;
 }
 
-function getOverviewInsights(orders) {
-  const overviewStats = {}
-  const { pending, approved, canceled } = _getOrderStatusBreakdown(orders)
-  overviewStats["Total Orders"] = orders.length
-  // overviewStats["Average revenue"] = 
-  overviewStats["Approved"] = approved || 0
-  overviewStats["Pending"] = pending || 0
-  overviewStats["Canceled"] = canceled || 0
-  return overviewStats
-}
+
+////// Not - loggedin
+// productId=578700489517829279&
+// checkin=2024-02-02&
+// checkout=2024-02-07&
+// numberOfGuests=1&
+// numberOfAdults=1&
+// numberOfChildren=0&
+// numberOfInfants=0&
+// numberOfPets=0&
+// guestCurrency=ILS&isWorkTrip=false
+
+///// loggedin
+//www.airbnb.com/book/stays/50191282?
+// numberOfAdults=1&
+// numberOfChildren=0&
+// numberOfInfants=0&
+// numberOfPets=0&
+// checkin=2024-02-01&
+// checkout=2024-02-06&
+// guestCurrency=ILS&
+// productId=50191282&
+// numberOfGuests=1&
+// photoId=1191521399&
+// orderId=1077300159274466394

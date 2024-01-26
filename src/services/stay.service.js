@@ -13,7 +13,8 @@ export const stayService = {
   getFilterFromParams,
   // getStayFromSearchParams,
   // getSortFromParams,
-  getStayCount
+  getStayCount,
+  calculateBookingCost
 }
 
 const BASE_URL = 'stay/'
@@ -156,6 +157,23 @@ function getDefaultFilter() {
 // //   }
 // }
 
+function calculateBookingCost(pricePerNight,numberOfNights) {
+console.log("🚀 ~ calculateBookingCost ~ pricePerNight:", pricePerNight)
 
+  const nightsCost = pricePerNight * numberOfNights
+  const serviceFeeMultiplier = 0.15
+  const taxesMultiplier = 0.17
+
+  const serviceFee = nightsCost * serviceFeeMultiplier
+  const taxes = nightsCost * taxesMultiplier
+  const totalPrice = nightsCost + serviceFee + taxes
+
+  return {
+    nightsCost,
+    serviceFee:(serviceFee % 1 === 0) ? serviceFee :serviceFee.toFixed(2),
+    taxes:(taxes % 1 === 0) ? serviceFee :taxes.toFixed(2),
+    totalPrice:(totalPrice % 1 === 0) ? totalPrice :totalPrice.toFixed(2),
+  };
+}
 
 

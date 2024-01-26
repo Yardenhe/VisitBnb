@@ -6,7 +6,7 @@ import { setCurrOrder } from '../../store/actions/order.actions';
 
 export function DatePicker() {
   const currOrder = useSelector(storeState => storeState.orderModule.currOrder)
-  console.log('currOrder', currOrder);
+  // console.log('currOrder', currOrder);
   const { endDate, startDate } = currOrder
   const [selected, setSelected] = useState({ endDate, startDate });
 
@@ -17,14 +17,11 @@ export function DatePicker() {
 
 
   function onChangeDates(newDates) {
-    console.log('newDates', newDates);
+    // console.log('newDates', newDates);
     if (newDates === undefined) return
-    // if (!!newDates.from && !!newDates.to){
     const { from: startDate, to: endDate } = newDates
-    // console.log('startDate',startDate);
-    // console.log('endDate',endDate);
+
     setCurrOrder({ startDate, endDate })
-    // }
     setSelected(newDates)
   }
   return (
