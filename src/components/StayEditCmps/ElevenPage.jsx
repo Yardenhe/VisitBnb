@@ -16,13 +16,14 @@ export function ElevenPage({ onSetStay, stay }) {
 
                 <section className='stay-submit-preview' >
                     <section>
-                        <img src="https://a0.muscache.com/im/pictures/3ecf9b60-50a1-4a8b-9aa5-7f7c9bd2defa.jpg?im_w:480" alt='img' />
+                        <img src={stay.imgUrls[0]} alt='img' />
 
                     </section>
                     <section className='stay-submit-text' >
                         <h3>{stay.name}</h3>
                         <h4>{stay.summary}</h4>
-                        <h4>Location</h4>
+                        <h4>{stay.loc.city} {" "}{stay.loc.country}</h4>
+                        <h4>{stay.loc.street} {" "}{stay.loc.streetNum}</h4>
                         <h4>{stay.price}₪</h4>
 
                     </section>

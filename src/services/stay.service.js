@@ -72,7 +72,7 @@ function getEmptyStay(
   loc = {
     country: "",
     countryCode: "",
-    cit: "",
+    city: "",
     address: "",
     lat: 0,
     lng: 0
