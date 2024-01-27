@@ -50,16 +50,18 @@ function getEmptyOrder() {
   return {
     // _id: "",
     hostId: "",
-    buyer: {
-      _id: "",
-      fullname: "",
-    },
+    // buyer: {
+    //   _id: "",
+    //   fullname: "",
+    // },
     totalPrice: 0,
     startDate: "",
     endDate: "",
     guests: {
-      adults: 0,
-      kids: 0,
+      adults: 1,
+      children: 0,
+      infants: 0,
+      pets: 0
     }
     ,
     stay: {
@@ -90,7 +92,7 @@ function getOrderFromParams(searchParams) {
 }
 
 function getTotalguests(guests) {
-  return Object.values(guests).reduce((totalGuests , value) => totalGuests+value,0)
+  return Object.values(guests).reduce((totalGuests, value) => totalGuests + value, 0)
 }
 // FOR HOST INSIGHTS 
 

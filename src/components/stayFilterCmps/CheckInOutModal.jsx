@@ -3,7 +3,7 @@ import { DatePicker } from "../UI/DatePicker"
 export function CheckInOutModal() {
     return (
         <div className='location-modal hight-datepicker-checkin' >
-            <DatePicker />
+            <DatePicker isModal={true}/>
         </div>
     )
 }

@@ -7,7 +7,9 @@
   // background-color: #242424;
 
 
-  font-synthesis: none;
+  font-synthesis: weight;
+  // font-synthesis: none;
+  
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -51,7 +53,8 @@ button:hover {
 
 button:focus,
 button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+  // outline: 1px auto -webkit-focus-ring-color;
+  outline: none;
 }
 
 

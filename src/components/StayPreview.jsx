@@ -3,6 +3,7 @@ import React, { lazy, useState } from 'react';
 import { Suspense } from 'react';
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { IoIosStar as StarIcon } from "react-icons/io";
+import { stayService } from '../services/stay.service';
 const LazyLoadedImage = lazy(() => import('./LazyLoadedImg'))
 
 
@@ -52,9 +53,11 @@ export function StayPreview({ stay }) {
             <div className='space-between'>
                 <div className='preview-loc'>{stay.loc.city},{stay.loc.country}</div>
                 <div className="rating-peek black center">
-                    {/* map from data [!missing]*/}
                     <StarIcon />
-                    <span>{stay.reviews ? stay.reviews[0].rate : '4.8'}</span>
+                    {/* <span>{stay.reviews ? stay.reviews[0].rate : '4.8'}</span> */}
+
+                    {/* TEMPORARY AVG RATING SOLUTION */}
+                    <span>{stayService.calculateAverageRating(stay.reviews)}</span>
                 </div>
             </div>
             <div className='preview-name'>{stay.name}</div>

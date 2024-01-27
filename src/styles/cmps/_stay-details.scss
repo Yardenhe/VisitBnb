@@ -68,6 +68,7 @@ $section-top: 32px;
 
   h4 {
     @include medium-bold(22px);
+    // font-size: 22px;
   }
 }
 
@@ -274,23 +275,26 @@ $section-top: 32px;
   display: flex;
   flex-direction: column;
   border-radius: 12px;
+  border: 1px solid $clr2;
   align-content: flex-start;
-  padding: 24px;
   box-shadow: rgba(0, 0, 0, 0.12) 0px 6px 16px;
+  
+  padding: 24px;
   position: sticky !important;
   top: 32px;
-  min-width: 33.33333333333333% !important;
-  max-width: 40.33333333333333% !important;
-  min-height: 555px;
-  height: 479px;
-  max-height: 520px;
-  line-height: 1.25rem;
-  // flex-flow: wrap;
   margin-left: 8.333333333333332% !important;
   margin-right: 0% !important;
   margin-top: 32px;
   margin-bottom: 48px;
-  border: 1px solid $clr2;
+
+  min-width: 33.33333333333333% !important;
+  max-width: 40.33333333333333% !important;
+  max-height: 555px;
+  // min-height: 300px;
+  height: 30%;
+
+  line-height: 1.25rem;
+  
   z-index: 1;
 
   &-info {
@@ -316,7 +320,7 @@ $section-top: 32px;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    height: 100%;
+    height: auto;
 
     .checkout-total {
       @include medium-bold(22px)
@@ -350,6 +354,10 @@ $section-top: 32px;
   padding: 12px;
   font-size: 1em;
   border-radius: 10px;
+  transition: transform 0.1s;
+  &:focus-visible,&:active{
+    transform: scale(0.95);
+  }
 }
 
 .date-btn-container,
@@ -395,7 +403,8 @@ $section-top: 32px;
 
   &-label {
     font-weight: 400;
-    font-size: smaller;
+    @include medium-bold(18px);
+
   }
 
   &-detail {
@@ -410,6 +419,9 @@ $section-top: 32px;
   justify-content: space-between;
   font-size: small;
   align-items: center;
+  >*{
+    font-family: 'cereal';
+  }
 
   button {
     text-decoration: underline;
@@ -423,7 +435,7 @@ $section-top: 32px;
 
   .btn-desc-modal {
     font-size: 22px;
-
+    font-weight: 400;
   }
 }
 
@@ -482,7 +494,7 @@ $section-top: 32px;
   box-shadow: 0 0 0 1px #0000000a, 0 8px 16px #00000026;
   padding: 16px 32px;
   z-index: 10;
-  right: -5px;
+  right: 0;
   width: auto;
   height: 50vh;
   top: 32px;
@@ -499,6 +511,9 @@ $section-top: 32px;
 
 .date-picker-large {
   // background-color: rgba(107, 196, 196, 0.239);
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 100%;
   height: 500px;
   // &:not(:first-child),&:not(:last-child){
@@ -506,6 +521,9 @@ $section-top: 32px;
   // }
 }
 
+.date-middle-range{
+  background: blue;
+}
 .rdp {
   --rdp-accent-color: rgb(247, 247, 247);
   --rdp-background-color: #fff;
@@ -524,7 +542,30 @@ $section-top: 32px;
   // }
   .rdp-day_range_middle {
     border-radius: 0px;
+    width: 100%;
   }
+  // .rdp-day_range_middle  {
+  //   position: relative;
+  //   &::before, 
+  //   &::after{
+  //     content: "";
+  //     position: absolute;
+  //     top: 0;
+  //     bottom: 0;
+  //     width: 100%;
+  //     height: 80%;
+  //     background-color: rgb(247, 247, 247);
+  //     z-index: -1;
+  //   }
+  //   &::after{
+  //     right: -20px;
+  //   }
+  //   &::before{
+  //     left: -20px;
+  //   }
+  // }
+  
+
 
   .rdp-day_range_end,
   .rdp-day_range_start {
@@ -589,8 +630,12 @@ $section-top: 32px;
     display: flex;
   }
   img {
+    flex-grow: 1;
     max-width: 150px !important;
     max-height: 150px !important;
+    min-width: 120px !important;
+    min-height: 120px !important;
+
     object-fit: cover;
     border-radius: 8px;
     margin-right: 10px;
@@ -618,4 +663,43 @@ $section-top: 32px;
   gap:20px;
   display: flex;
   align-items: center;
+}
+
+// guest picker modal
+.guest-picker-modal{
+  position: relative;
+  .location-modal.list-gusets{
+    border-radius: 10px;
+    position: absolute;
+    // width: auto;
+    min-width: 321px;
+    // max-height: 3000px;
+    min-height: 290px;
+    // top:10.44rem;
+    top:-227px;
+    left: -158px;
+  }
+}
+
+// maps
+.stay-location{
+ @include section-padding(4);
+ @include border-top();
+
+}
+.stay-map-container{
+  width: 100%;
+  height: 500px;
+}
+.marker-circle{
+  position: absolute;
+  background-color: $clr1;
+  width: 150px;
+  height: 150px;
+  opacity: 0.8;
+  border-radius: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: translate(-50%, -50%);
 }
