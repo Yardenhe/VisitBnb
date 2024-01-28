@@ -13,7 +13,9 @@ export const stayService = {
   getFilterFromParams,
   // getStayFromSearchParams,
   // getSortFromParams,
-  getStayCount
+  getStayCount,
+  calculateBookingCost,
+  calculateAverageRating
 }
 
 const BASE_URL = 'stay/'
@@ -156,6 +158,37 @@ function getDefaultFilter() {
 // //   }
 // }
 
+function calculateBookingCost(pricePerNight,numberOfNights) {
+
+  const nightsCost = pricePerNight * numberOfNights
+  const serviceFeeMultiplier = 0.15
+  const taxesMultiplier = 0.17
+
+  const serviceFee = nightsCost * serviceFeeMultiplier
+  const taxes = nightsCost * taxesMultiplier
+  const totalPrice = nightsCost + serviceFee + taxes
+
+  return {
+    nightsCost,
+    serviceFee:(serviceFee % 1 === 0) ? serviceFee :serviceFee.toFixed(2),
+    taxes:(taxes % 1 === 0) ? serviceFee :taxes.toFixed(2),
+    totalPrice:(totalPrice % 1 === 0) ? totalPrice :totalPrice.toFixed(2),
+  };
+}
+
+function calculateAverageRating(reviews) {
+  if (!reviews || reviews.length === 0) {
+    return 0
+  }
+
+  const totalRatings = reviews.reduce((sum, review) => sum + review.rate, 0)
+  const averageRating = totalRatings / reviews.length
+
+  // round to a specific number of decimal
+  const roundedAverage = Math.round(averageRating * 10) / 10
+
+  return roundedAverage
+}
 
 
 

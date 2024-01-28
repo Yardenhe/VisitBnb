@@ -1,26 +1,14 @@
 import { orderService } from "../../services/order.service"
+import { utilService } from "../../services/util.service"
 
 export function DashboardInsights({ orders }) {
   console.log("🚀 ~ DashboardInsights ~ orders:", orders)
 
-  const revenue = orderService.getRevenueInsight(orders)
-  const totalGuests = orderService.getGuestsInsight(orders)
-  const averageDuration = orderService.getAverageBookingDuration(orders)
+  const {revenue,totalGuests,averageDuration} = orderService.getOrdersInsights(orders)
   const overview = orderService.getOverviewInsights(orders)
+  
   console.log("🚀 ~ DashboardInsights ~ overview:", overview)
 
-  function checkClassNameByTitle(title){
-   switch (title) {
-    case 'Approved':
-      return 'approved-green'
-    case 'Canceled':
-      return 'canceled-red'
-    case 'Pending':
-      return 'pending-orange'
-    default:
-      break;
-   }
-  }
 
   return (
     <div className="insights-container">
@@ -67,7 +55,7 @@ export function DashboardInsights({ orders }) {
             {Object.entries(overview).map(([title, stats], i) =>
               <li key={i} className="overview-list-item">
                 <div className={`overview-list-item-title `}>{title}</div>
-                <div className={`overview-list-item-stats ${checkClassNameByTitle(title)}`}>{stats}</div>
+                <div className={`overview-list-item-stats ${utilService.checkClassNameByTitle(title)}`}>{stats}</div>
               </li>)}
           </ul>
         </div>

@@ -21,8 +21,8 @@ export function OrderPreview({ order }) {
             <section>
                 <div className='sub-text bold'>{stayOrder.loc.city}</div>
                 <div className='sub-text'>Hosted by {stayOrder.host.fullname}</div>
-                <span className='sub-text'>{utilService.formatMailDate(order.endDate) + " - "}</span>
-                <span className='sub-text'>{utilService.formatMailDate(order.startDate)}</span>
+                <span className='sub-text'>{utilService.formatOrderDate(order.startDate) + " - "}</span>
+                <span className='sub-text'>{utilService.formatOrderDate(order.endDate)}</span>
             </section>
 
         </article>

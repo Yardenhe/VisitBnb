@@ -22,6 +22,9 @@ export function StayDescription({ stay }) {
     beds,
     bathrooms,
   } = stay;
+
+
+
   return (
     <article className="details-top">
       <section className="details-top-head">

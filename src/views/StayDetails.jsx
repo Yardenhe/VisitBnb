@@ -1,9 +1,7 @@
 import {
   Link,
   useNavigate,
-  useOutletContext,
   useParams,
-  useSearchParams,
 } from "react-router-dom";
 import { ImageShortGalery } from "../components/stayDetailsCmps/ImageShortGalery";
 import { StayDescription } from "../components//stayDetailsCmps/StayDescription";
@@ -16,36 +14,26 @@ import { useEffectUpdate } from '../customHooks/useEffectUpdate'
 import { stayService } from "../services/stay.service";
 import { useEffect, useState } from "react";
 import { StayReviews } from "../components/stayDetailsCmps/StayReviews";
-import { orderService } from "../services/order.service";
+
 import { useSelector } from "react-redux";
 import {
-  loadOrders,
-  saveOrder,
   setCurrOrder,
 } from "../store/actions/order.actions";
+import GoogleMapReact from 'google-map-react';
 
 export function StayDetails() {
-  // TODO: get the stay from the store
-  const { stayId } = useOutletContext(); //
+
+  const { stayId } = useParams(); //
   const [stay, setStay] = useState(null);
   const navigate = useNavigate();
+  const currOrder = useSelector((storeState) => storeState.orderModule.currOrder)
 
 
-  const currOrder = useSelector(
-    (storeState) => storeState.orderModule.currOrder
-  );
-  const orders = useSelector(
-    (storeState) => storeState.orderModule.orders
-  );
-  console.log("🚀 ~ StayDetails ~ orders:", orders)
   let { startDate, endDate } = currOrder
-
-
 
 
   useEffect(() => {
     loadStay()
-    loadOrders()
   }, [stayId]);
 
   async function loadStay() {
@@ -60,6 +48,7 @@ export function StayDetails() {
   useEffectUpdate(() => {
     onPickStay()
   }, [stay])
+
   async function onPickStay() {
     const { _id, price, name } = stay;
     const stayToSave = { _id, price, name };
@@ -70,24 +59,18 @@ export function StayDetails() {
   // destructure after loading
   const { name, imgUrls, price, host, loc, capacity } = stay
 
-  async function onSaveOrder() {
-    try {
-
-      const orderToSave = currOrder;
-      await saveOrder(orderToSave)
-      navigate('/')
-    } catch (err) {
-      console.log('Had issues adding order', err);
-    }
+  // googleMap handeling
+  const mapProps = {
+    center: {
+        lat: loc.lat,
+        lng: loc.lng
+    },
+    zoom: 15
   }
+  const AnyReactComponent = ({ text,className }) => <div className={className || ''}>{text}</div>;
 
   return (
     <div className="details-layout">
-      {/* <div className="dev-action-element">
-        <button>
-          <Link to={"/orders"}>Orders Page (dev-btn)</Link>
-        </button>
-      </div> */}
       {/* HEADER */}
       <section className="details-header ">
         <h3>{name}</h3>
@@ -103,12 +86,32 @@ export function StayDetails() {
       {/* DESCRIPTION */}
       <section className="checkout-container ">
         <StayDescription stay={stay} />
-        <StayCheckout price={price} startDate={startDate} onSaveOrder={onSaveOrder} endDate={endDate} />
+        <StayCheckout price={price} startDate={startDate} endDate={endDate} currOrder={currOrder} />
       </section>
 
       {/* All details */}
       <section className="stay-reviews">
         <StayReviews reviews={stay.reviews} />
+      </section>
+
+      <section className="stay-location">
+        <h4>Where you'll stay</h4>
+        <div className='stay-map-container' >
+          <GoogleMapReact
+            bootstrapURLKeys={{ key: "" }}
+            defaultCenter={mapProps.center}
+            defaultZoom={mapProps.zoom}
+            options={{maxZoom:16}}
+            >
+
+            <AnyReactComponent
+              lat={loc.lat}
+              lng={loc.lng}
+              className={'marker-circle'}
+              // text={name}/>
+              text={''}/>
+          </GoogleMapReact>
+        </div>
       </section>
     </div>
   );

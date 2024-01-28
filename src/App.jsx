@@ -14,6 +14,7 @@ import { DashboardHome } from './views/DashboardHome'
 import { ReservationManager } from './components/dashboard/ReservationManager'
 import { Dashboard } from './components/dashboard/Dashboard'
 import { Listings } from './components/dashboard/Listings'
+import PaymentPage from './views/PaymentPage'
 
 function App() {
   return (
@@ -25,14 +26,13 @@ function App() {
             path='/'
             element={<StayIndex />}
           >
-            <Route
-              path='/details/:stayId'
-              element={<StayDetails />}
-            />
             <Route path="/edit/:stayId?"
               element={<StayEdit />} />
           </Route>
 
+          <Route path='/details/:stayId' element={<StayDetails />}/>
+          <Route path='/book/:stayId' element={<PaymentPage />} />
+          
           <Route path='/order' element={<OrderIndex />} />
           <Route path='/hosting' element={<DashboardHome />} >
 

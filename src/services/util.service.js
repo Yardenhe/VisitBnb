@@ -13,7 +13,7 @@ export const utilService = {
 	debounce,
 	debouncePromise,
 	validateMail,
-	formatMailDate,
+	formatOrderDate,
 	getSymbolCurrency,
 	formatDate,
 	calculateTimeAgo,
@@ -122,7 +122,7 @@ function getMonthName(date) {
 	return monthNames[date.getMonth()]
 }
 
-function formatMailDate(timeStamp) {
+function formatOrderDate(timeStamp) {
 	const date = new Date(timeStamp)
 	const year = date.getFullYear()
 	const today = new Date().getFullYear()
@@ -245,8 +245,8 @@ function checkClassNameByTitle(title) {
 	switch (title) {
 		case 'Approved':
 			return 'approved-green'
-		case 'Canceled':
-			return 'canceled-red'
+		case 'Rejected':
+			return 'rejected-red'
 		case 'Pending':
 			return 'pending-orange'
 		default:

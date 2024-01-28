@@ -16,6 +16,8 @@ export function AmenityList({amenities}) {
               {amenity}
             </div>
         </div>)}
+    </div>
+    <div className="amenity-list">
         <button onClick={()=>onToggleModal({type:'ameintyModal',payload:{amenities}})} className="commun-btn">Show all {totalAmenities} amenities</button>
     </div>
     </>  

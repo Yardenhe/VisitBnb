@@ -118,12 +118,12 @@ export function AppHeader() {
                         {isOpenFilter && <div className="overlay" onClick={onToggleEffect}></div>}
                         <header className={'app-header'} >
                             <Link to="/" onClick={handleReloadClick}>
-                                <img className="app-header-logo" src="public/img/airbnb-logoo.PNG" />
+                                <img className="app-header-logo" src="../img/airbnb-logoo.PNG" />
                             </Link>
                             <section className={`date-picker left${isOpenEffect ? ' enlarge' : ' '}`} onClick={onToggleEffect}>
                                 <section className='btn-datepicker bold '>{country ? country : 'Anywhere'} <span className="vl"></span> </section>
 
-                                <section className='btn-datepicker bold'>{startDate && endDate ? (utilService.formatMailDate(startDate) + " - " + utilService.formatMailDate(endDate)) : 'Any week'}<span className="vl"></span></section>
+                                <section className='btn-datepicker bold'>{startDate && endDate ? (utilService.formatOrderDate(startDate) + " - " + utilService.formatOrderDate(endDate)) : 'Any week'}<span className="vl"></span></section>
                                 <section className={`btn-datepicker add-guests-label ${guests.adults && 'bold-choose-guests'}`}>
                                     <>{guests.adults ? guests.adults + " guests" : 'Add guests'}</>
                                     <IoSearch className='search-btn' />
@@ -143,7 +143,7 @@ export function AppHeader() {
                         <header className={`app-header-filter${isOpenFilter ? ' show-explore' : ' slideOut'}`}>
                             <section className="app-header grid-app-header">
                                 <Link to="/" onClick={handleReloadClick}>
-                                    <img className="app-header-logo" src="public/img/airbnb-logoo.PNG" />
+                                    <img className="app-header-logo" src="../img/airbnb-logoo.PNG" />
                                 </Link>
                                 <section className='app-mini-menu'>
                                     <section >Stays</section>

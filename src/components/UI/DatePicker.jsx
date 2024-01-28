@@ -4,34 +4,38 @@ import 'react-day-picker/dist/style.css';
 import { useSelector } from 'react-redux';
 import { setCurrOrder } from '../../store/actions/order.actions';
 
-export function DatePicker() {
+export function DatePicker({ isModal = false }) {
   const currOrder = useSelector(storeState => storeState.orderModule.currOrder)
-  console.log('currOrder', currOrder);
-  const { endDate, startDate } = currOrder
-  const [selected, setSelected] = useState({ endDate, startDate });
-
+  const {  startDate:from, endDate:to } = currOrder
+  const [selected, setSelected] = useState({ to, from });
 
   const today = new Date()
-  // IMPROVEMENT - GET UNAVAILABLE DATES 
   const disabledDays = { before: today }
+
+  useEffect(() => {
+    console.log('startDate dependency');
+    setSelected({to,from })
+  }, [to,from])
 
 
   function onChangeDates(newDates) {
     console.log('newDates', newDates);
     if (newDates === undefined) return
-    // if (!!newDates.from && !!newDates.to){
     const { from: startDate, to: endDate } = newDates
-    // console.log('startDate',startDate);
-    // console.log('endDate',endDate);
-    setCurrOrder({ startDate, endDate })
-    // }
-    setSelected(newDates)
-  }
-  return (
-    <div>
-      <h4>nights in { } </h4>
-      <p>dates here</p>
 
+    setCurrOrder({ startDate, endDate })
+    // setSelected(newDates)
+  }
+
+  
+  return (
+    <>
+      {(!isModal) &&
+        (<div className="date-picker-head">
+          <h4>nights in {currOrder.city} </h4>
+          <p>dates here</p>
+        </div>)
+      }
       <div className="date-picker-large">
         <DayPicker
           mode="range"
@@ -46,14 +50,29 @@ export function DatePicker() {
           fixedWeeks
           disabled={disabledDays}
           fromMonth={today}
+          modifiers = {{
+            start:selected.from,
+            end:selected.to,
+            selectedStart:selected.from,
+            selectedEnd:selected.to,
+            disabled:disabledDays
+          }}
           modifiersStyles={{
             disabled: { textDecoration: 'line-through' },
-            // selectedStart:{backgroundColor:'#222',color:'white'},
-            // selectedEnd:{backgroundColor:'#222',color:'white'},
-            selected: { color: '#222' }//,borderBlockStyle:'outset'}
+            selected: { color: '#222' },//,borderBlockStyle:'outset'}
+            // range_middle:{backgroundColor:'grey'}
+
           }}
+         
         />
       </div>
-    </div>
+    </>
   )
+}
+
+function DateHeadJsx({city , nights , duration = 'getDuration'}){
+  return <>
+    <h4>{nights} {pluralizeLabel(nights,'night')} in {city}</h4>
+    <p>{duration}</p>
+  </>
 }

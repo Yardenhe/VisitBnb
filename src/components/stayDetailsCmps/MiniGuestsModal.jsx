@@ -1,20 +1,17 @@
 import React from 'react'
 import { useState } from 'react';
-import { Counter } from './Counter';
 import { setCurrOrder } from '../../store/actions/order.actions';
 import { useEffectUpdate } from '../../customHooks/useEffectUpdate';
+import { Counter } from '../stayFilterCmps/Counter';
+import { stayService } from '../../services/stay.service';
 
 
-export function GuestsModal() {
-    const [guests, setSelectedGuests] = useState({
-        adults: 1,
-        children: 0,
-        infants: 0,
-        pets: 0,
-    });
+export function MiniGuestsModal({guests}) {
+    const [selectedGuests, setSelectedGuests] = useState({...guests})
+    
     useEffectUpdate(() => {
-        setCurrOrder({ guests })
-    }, [guests])
+        setCurrOrder({ guests:selectedGuests })
+    }, [selectedGuests])
 
 
 
@@ -40,12 +37,12 @@ export function GuestsModal() {
             <div className='who-items'>
                 <div>
                     <h5>Adults</h5>
-                    <p>Ages 13 or above</p>
+                    {/* <p>Ages 13 or above</p> */}
 
                 </div>
                 <Counter
                     label="Adults"
-                    count={guests.adults}
+                    count={selectedGuests.adults}
                     onIncrement={() => handleIncrement('adults')}
                     onDecrement={() => handleDecrement('adults')}
                 />
@@ -54,11 +51,11 @@ export function GuestsModal() {
             <div className='who-items'>
                 <div>
                     <h5>Children</h5>
-                    <p>Ages 2–12</p>
+                    {/* <p>Ages 2–12</p> */}
                 </div>
                 <Counter
                     label="Children"
-                    count={guests.children}
+                    count={selectedGuests.children}
                     onIncrement={() => handleIncrement('children')}
                     onDecrement={() => handleDecrement('children')}
                 />
@@ -66,12 +63,12 @@ export function GuestsModal() {
             <div className='who-items'>
                 <div>
                     <h5>Infants</h5>
-                    <p>Under 2</p>
+                    {/* <p>Under 2</p> */}
 
                 </div>
                 <Counter
                     label="Infants"
-                    count={guests.infants}
+                    count={selectedGuests.infants}
                     onIncrement={() => handleIncrement('infants')}
                     onDecrement={() => handleDecrement('infants')}
                 />
@@ -79,12 +76,12 @@ export function GuestsModal() {
             <div className='who-items'>
                 <div>
                     <h5>Pets</h5>
-                    <p>Bringing a service animal?</p>
+                    {/* <p>Bringing a service animal?</p> */}
                 </div>
 
                 <Counter
                     label="Pets"
-                    count={guests.pets}
+                    count={selectedGuests.pets}
                     onIncrement={() => handleIncrement('pets')}
                     onDecrement={() => handleDecrement('pets')}
                 />
