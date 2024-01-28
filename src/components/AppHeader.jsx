@@ -121,9 +121,11 @@ export function AppHeader() {
                                 <img className="app-header-logo" src="../img/airbnb-logoo.PNG" />
                             </Link>
                             <section className={`date-picker left${isOpenEffect ? ' enlarge' : ' '}`} onClick={onToggleEffect}>
-                                <section className='btn-datepicker bold '>{country ? country : 'Anywhere'} <span className="vl"></span> </section>
+                                <section className='btn-datepicker bold anywhere-label '>{country ? country : 'Anywhere'}  </section>
+                                <span className={`vl-left`}></span>
 
-                                <section className='btn-datepicker bold'>{startDate && endDate ? (utilService.formatOrderDate(startDate) + " - " + utilService.formatOrderDate(endDate)) : 'Any week'}<span className="vl"></span></section>
+                                <section className='btn-datepicker bold any-week-label'>{startDate && endDate ? (utilService.formatOrderDate(startDate) + " - " + utilService.formatOrderDate(endDate)) : 'Any week'}</section>
+                                <span className={`vl-right`}></span>
                                 <section className={`btn-datepicker add-guests-label ${guests.adults && 'bold-choose-guests'}`}>
                                     <>{guests.adults ? guests.adults + " guests" : 'Add guests'}</>
                                     <IoSearch className='search-btn' />

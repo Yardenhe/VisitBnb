@@ -249,6 +249,12 @@ function checkClassNameByTitle(title) {
 			return 'rejected-red'
 		case 'Pending':
 			return 'pending-orange'
+		case 'approved':
+			return 'approved-green'
+		case 'rejected':
+			return 'rejected-red'
+		case 'pending':
+			return 'pending-orange'
 		default:
 			break;
 	}
