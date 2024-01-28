@@ -59,6 +59,7 @@ export function FourthPage({ onSetStay, stay }) {
                     bootstrapURLKeys={{ key: "AIzaSyCfwC_mk9Fxgszcr2eArRS4PTdQQYy1Si8", libraries: 'places' }}
                     center={center}
                     defaultZoom={zoom}
+                    options={{ language: 'en' }}
                 >
                     <Marker
                         lat={stayLocation.lat}

@@ -4,3 +4,30 @@
     justify-content: center;
 
 }
+
+.user-msg {
+    color: rgb(216, 3, 3);
+    padding: 10px;
+    font-size: 1.4em;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: grey;
+    z-index: 1005;
+}
+
+.user-msg button {
+    float: right;
+    border: 0;
+    border-radius: 50%;
+    margin: 5px;
+    background-color: #222;
+}
+
+.user-msg.success {
+    background-color: rgb(41, 189, 73);
+}
+
+.user-msg.error {
+    background-color: rgb(216, 59, 59);
+}

@@ -21,9 +21,9 @@ export function ElevenPage({ onSetStay, stay }) {
                     </section>
                     <section className='stay-submit-text' >
                         <h3>{stay.name}</h3>
-                        <h4>{stay.summary}</h4>
-                        <h4>{stay.loc.city} {" "}{stay.loc.country}</h4>
-                        <h4>{stay.loc.street} {" "}{stay.loc.streetNum}</h4>
+                        <div className='elpsis'> <h4 >{stay.summary}</h4></div>
+                        <h5>{stay.loc.city} {","}{stay.loc.country}</h5>
+                        <h5>{stay.loc.street} {" "}{stay.loc.streetNum}</h5>
                         <h4>{stay.price}₪</h4>
 
                     </section>

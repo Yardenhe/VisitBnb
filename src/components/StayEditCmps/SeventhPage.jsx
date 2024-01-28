@@ -22,7 +22,7 @@ export function SeventhPage({ onSetStay, stay }) {
                     selectedImg.map((image) => (
 
 
-                        <img src={image} className='upload-image' />
+                        <img key={image} src={image} className='upload-image' />
 
 
                     ))

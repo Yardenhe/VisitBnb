@@ -249,6 +249,7 @@
         flex-direction: column;
         margin: auto;
 
+
         h3 {
             font-size: 32px;
             font-family: 'cereal-medium';
@@ -345,7 +346,7 @@
         .stay-submit-preview {
             display: flex;
             flex-direction: row;
-            width: 600px;
+            // width: 600px;
 
 
             img {
@@ -356,6 +357,12 @@
 
             .stay-submit-text {
                 margin-inline: 40px;
+
+                h5 {
+                    color: $clr5;
+                    font-family: 'cereal-medium';
+                }
+
             }
         }
 
@@ -476,4 +483,10 @@
         margin: 0;
     }
 
+    .elpsis {
+        text-overflow: ellipsis;
+        max-height: 150px;
+        // white-space: nowrap;
+        overflow: hidden;
+    }
 }

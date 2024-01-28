@@ -50,6 +50,7 @@ export function StayIndex() {
         try {
             await saveStay(stay)
             navigate('/')
+            showSuccessMsg("add stay!", 'success')
         } catch (err) {
             console.log('Had issues adding stay', err);
         }
