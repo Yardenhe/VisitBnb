@@ -126,8 +126,8 @@ export function AppHeader() {
 
                                 <section className='btn-datepicker bold any-week-label'>{startDate && endDate ? (utilService.formatOrderDate(startDate) + " - " + utilService.formatOrderDate(endDate)) : 'Any week'}</section>
                                 <span className={`vl-right`}></span>
-                                <section className={`btn-datepicker add-guests-label ${guests.adults && 'bold-choose-guests'}`}>
-                                    <>{guests.adults ? guests.adults + " guests" : 'Add guests'}</>
+                                <section className={`btn-datepicker add-guests-label ${guests.adults > 1 ? ' bold-choose-guests' : ''}`}>
+                                    <>{guests.adults > 1 ? guests.adults + " guests" : 'Add guests'}</>
                                     <IoSearch className='search-btn' />
                                 </section>
 

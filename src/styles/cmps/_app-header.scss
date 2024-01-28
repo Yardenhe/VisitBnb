@@ -172,7 +172,7 @@
             display: inline-flex;
             align-items: center;
             min-width: 110px;
-            flex: 0.6;
+            flex: 0.7;
 
 
             justify-content: space-between;
@@ -204,12 +204,12 @@
         &.bold-choose-guests {
 
 
-            p {
-                padding-right: 12px;
-                font-family: 'cereal-bold';
-                color: #484848 !important;
 
-            }
+
+            font-family: 'cereal-bold';
+            color: #484848 !important;
+            flex: 0.6;
+
         }
 
 
@@ -226,7 +226,7 @@
         border-radius: 0px;
         // border-left: 1px solid $clr2;
         min-width: 103px;
-        flex: 0.2;
+        flex: 0.1;
 
     }
 

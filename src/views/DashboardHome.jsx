@@ -5,6 +5,9 @@ import { useSelector } from "react-redux"
 import { DashboardInsights } from "../components/dashboard/DashboardInsights"
 import { NavLink, Navigate, Outlet, useNavigate } from "react-router-dom"
 import { saveOrder } from "../store/actions/order.actions"
+import { SOCKET_EVENT_ORDER_UPDATED, socketService } from "../services/socket.service"
+import { store } from "../store/store"
+import { UPDATE_ORDER } from "../store/reducers/order.reducer"
 
 export function DashboardHome() {
     const loggedInUser = useSelector(storeState => storeState.userModule.user)
@@ -16,6 +19,14 @@ export function DashboardHome() {
     useEffect(() => {
         const userToGetOrdersBy = { hostId: loggedInUser?._id }
         loadOrders(userToGetOrdersBy)
+
+        socketService.on(SOCKET_EVENT_ORDER_UPDATED, (order) => {
+            console.log("🚀 ~ socketService.on ~ order:", order)
+            store.dispatch({ type: UPDATE_ORDER, order: order })
+        })
+        return () => {
+            socketService.off(SOCKET_EVENT_ORDER_UPDATED)
+        }
     }, [])
 
 

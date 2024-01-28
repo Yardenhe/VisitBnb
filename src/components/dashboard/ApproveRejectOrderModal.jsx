@@ -7,6 +7,7 @@ export function ApproveRejectOrderModal({ payload, onCloseModal }) {
     const { order, onSaveOrder } = payload
     const [orderToUpdate, setOrderToUpdate] = useState(order)
     const [stayOrder, setStayOrder] = useState();
+
     useEffectUpdate(() => {
         try {
             onSaveOrder(orderToUpdate)

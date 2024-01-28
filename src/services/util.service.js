@@ -19,7 +19,8 @@ export const utilService = {
 	calculateTimeAgo,
 	calculateNightsBetweenDates,
 	convertMillisecondsToNights,
-	checkClassNameByTitle
+	checkClassNameByTitle,
+
 	// pluralizeLabel,
 }
 export function pluralizeLabel(num, label) {
@@ -259,3 +260,4 @@ function checkClassNameByTitle(title) {
 			break;
 	}
 }
+
