@@ -3,6 +3,7 @@ import { utilService } from "../../services/util.service"
 import { BsMoonStarsFill as MoonIcon } from "react-icons/bs";
 import { FaPeopleRoof as GuestsIcon } from "react-icons/fa6";
 import { TbReportMoney as RevenueIcon } from "react-icons/tb";
+import { PieCharts } from "./PieCharts";
 
 export function DashboardInsights({ orders }) {
   console.log("🚀 ~ DashboardInsights ~ orders:", orders)
@@ -74,9 +75,10 @@ export function DashboardInsights({ orders }) {
       {/* large-insight */}
       <div className="insight-card insight-large">
         <div className="insight-card-header">
-          Sales statistics
+          Your statistics
         </div>
         <div className="insight-card-graph">
+          <PieCharts orders={orders}/>
         </div>
       </div>
 

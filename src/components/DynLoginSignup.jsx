@@ -19,9 +19,7 @@ export function LoginSignup({ payload }) {
     }
 
     async function onLoginSignup() {
-        console.log("🚀 ~ LoginSignup ~ userData:", userData)
         const LoggedInUser = await userService.login(userData)
-        console.log("🚀 ~ onLoginSignup ~ LoggedInUser:", LoggedInUser)
         return
     }
 

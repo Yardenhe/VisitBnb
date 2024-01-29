@@ -8,6 +8,7 @@ import { orderService } from "../services/order.service"
 import { ReserveBtn } from "../components/UI/ReserveBtn"
 import { saveOrder } from "../store/actions/order.actions"
 import { useNavigate } from "react-router-dom"
+import { showSuccessMsg } from "../services/event-bus.service"
 
 export default function PaymentPage() {
     const currOrder = useSelector((storeState) => storeState.orderModule.currOrder)

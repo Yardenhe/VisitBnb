@@ -13,7 +13,7 @@ html {
     line-height: lh(26px);
 
     @media (max-width: 1300px) {
-        font-size: 14px;
+        // font-size: 14px;
     }
 }
 
@@ -120,6 +120,10 @@ p {
     min-width: 25px;
     max-width: 100px;
     max-height: 100px;
+    // display: flex;
+    // justify-content: center;
+    // align-items: center;
+    
 }
 
 @media (max-width:1300px){

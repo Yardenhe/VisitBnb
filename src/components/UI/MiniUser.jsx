@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 export function MiniUser({ user, type = 'user', isReview = false }) {
-  // console.log("🚀 ~ MiniUser ~ user:", user)
+  console.log("🚀 ~ MiniUser ~ user:", user)
 
 
   const { fullname, isSuperhost, [isReview ? 'thumbnailUrl' : 'imgUrl']: img } = user
@@ -9,14 +9,14 @@ export function MiniUser({ user, type = 'user', isReview = false }) {
 
   // console.log("MiniUser",user);
   const [userImg, setUserImg] = useState(img)
-  const tempImg = '/public/img/general-icons/user-circle.svg'
+  // const tempImg = '/public/img/general-icons/user-circle.svg'
+  const tempImg = 'https://thispersondoesnotexist.com/'
   const superhostTag = '/public/img/general-icons/superhost-tag.svg'
 
   function handleImgError({ src }) {
     console.log('error in src: ', src);
     setUserImg(tempImg)
   }
-
   return (
     <div className="mini-user">
       <div className="mini-user-img">
@@ -33,7 +33,7 @@ export function MiniUser({ user, type = 'user', isReview = false }) {
         <div className="host-card">
 
           <h4>Hosted by {`${fullname}`}</h4>
-          <span className="sub-text">{isSuperhost && <span><b>Superhost</b></span>} -years of experience</span>
+          <span className="sub-text">{isSuperhost && <span><b>Superhost</b></span>} - Experienced host</span>
         </div>
         :
         <div className="user-card">

@@ -14,7 +14,8 @@ export const orderService = {
   getOrderFromParams,
   getTotalguests,
   getOverviewInsights,
-  getOrdersInsights
+  getOrdersInsights,
+  getOrdersInsightsPie,
 
 }
 
@@ -116,6 +117,38 @@ function getOverviewInsights(orders) {
   return overviewStats
 }
 
+function getOrdersInsightsPie(orders){
+  return {
+    guestPieData: _calculateGuestsSum(orders),
+    otherPieData: _calculateOtherPieData(orders),
+  }
+}
+function _calculateOtherPieData(orders){
+  
+  return [{id:0,value:5,label:'completions'},{id:1,value:2,label:'not-completed'}]
+}
+function _calculateGuestsSum(orders) {
+  const guestSum = {
+    adults: 0,
+    children: 0,
+    infants: 0,
+    pets: 0,
+  }
+
+  orders.forEach((order) => {
+    const { guests } = order;
+    
+    guestSum.adults += guests.adults || 0;
+    guestSum.children += guests.children || 0;
+    guestSum.infants += guests.infants || 0;
+    guestSum.pets += guests.pets || 0;
+  })
+
+  const resultArray = Object.entries(guestSum).map(([label, value], id) => ({ id, value, label }));
+
+  return resultArray;
+}
+
 
 function _getRevenueInsight(orders) {
   let result = orders.reduce((total, order) => total + order.totalPrice, 0);
@@ -143,29 +176,3 @@ function _getOrderStatusBreakdown(orders) {
   })
   return statusCounts;
 }
-
-
-////// Not - loggedin
-// productId=578700489517829279&
-// checkin=2024-02-02&
-// checkout=2024-02-07&
-// numberOfGuests=1&
-// numberOfAdults=1&
-// numberOfChildren=0&
-// numberOfInfants=0&
-// numberOfPets=0&
-// guestCurrency=ILS&isWorkTrip=false
-
-///// loggedin
-//www.airbnb.com/book/stays/50191282?
-// numberOfAdults=1&
-// numberOfChildren=0&
-// numberOfInfants=0&
-// numberOfPets=0&
-// checkin=2024-02-01&
-// checkout=2024-02-06&
-// guestCurrency=ILS&
-// productId=50191282&
-// numberOfGuests=1&
-// photoId=1191521399&
-// orderId=1077300159274466394

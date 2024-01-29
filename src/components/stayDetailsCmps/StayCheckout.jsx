@@ -10,14 +10,18 @@ import { useNavigate } from "react-router-dom";
 import { setCurrOrder } from "../../store/actions/order.actions";
 import { orderService } from "../../services/order.service";
 import { MiniGuestsModal } from "./MiniGuestsModal";
+import useClickOutside from "../../customHooks/useClickOutside";
 
 export function StayCheckout({ price, startDate, endDate, currOrder }) {
   console.log("🚀 ~ StayCheckout ~ currOrder:", currOrder)
   const formattedStartDate = utilService.formatDate(startDate)
   const formattedEndDate = utilService.formatDate(endDate)
   const [bookingCosts, setBookingCosts] = useState({})
-  const [isOpenDatePickerModal, setIsOpenDatePickerModal] = useState(false)
-  const [isOpenGuestPicker, setIsOpenGuestPicker] = useState(false)
+  // const [isOpenDatePickerModal, setIsOpenDatePickerModal] = useState(false)
+  // const [isOpenGuestPicker, setIsOpenGuestPicker] = useState(false)
+  const { isOpen:isOpenDatePickerModal, ref:datePickerRef, setIsOpen:setIsOpenDatePickerModal } = useClickOutside(false)
+  const { isOpen:isOpenGuestPicker, ref:guestPickerRef, setIsOpen:setIsOpenGuestPicker } = useClickOutside(false)
+
 
 
   const navigate = useNavigate()
@@ -53,7 +57,7 @@ export function StayCheckout({ price, startDate, endDate, currOrder }) {
     //<div className="checkout-card-container">
     <>
       <div className="checkout-card">
-        <div className={`date-picker-modal ${!isOpenDatePickerModal ? 'hidden' : ''}`}>
+        <div ref={datePickerRef} className={`date-picker-modal ${!isOpenDatePickerModal ? 'hidden' : ''}`}>
           {/* <DatePicker headContentJsx={<DateHeadJsx city={currOrder.city}  nights={nightsInStay} />}/> */}
           <DatePicker isModal={true} />
         </div>
@@ -85,7 +89,7 @@ export function StayCheckout({ price, startDate, endDate, currOrder }) {
           <div className="btn-info down-arrow" onClick={onOpenGuestPicker} >
             {!isOpenGuestPicker ? <DownArrow /> : <UpArrow />}
           </div>
-          <div className={`guest-picker-modal ${!isOpenGuestPicker ? 'hidden' : ''}`}>
+          <div ref={guestPickerRef} className={`guest-picker-modal ${!isOpenGuestPicker ? 'hidden' : ''}`}>
             <MiniGuestsModal guests={currOrder.guests} />
           </div>
         </button>
