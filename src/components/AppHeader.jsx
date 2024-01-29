@@ -32,6 +32,8 @@ export function AppHeader() {
     const [searchParams, setSearchParams] = useSearchParams()
 
     const user = useSelector(storeState => storeState.userModule.user)
+    console.log("🚀 ~ AppHeader ~ user:", user)
+
 
     const { country } = filterBy || ''
     const currOrder = useSelector(storeState => storeState.orderModule.currOrder)
@@ -140,7 +142,14 @@ export function AppHeader() {
                                 </div>
                                 <div className='menu-bar' onClick={() => { onToggleUserModal(), showSuccessMsg("add stay!") }}>
                                     <IoMdMenu className='menu-icon' />
-                                    <div className='circle'>י</div></div>
+                                    <div className='circle'>
+                                        {user && user.pictureUrl ?
+                                            <img src={user.pictureUrl}
+                                                className="user-img"
+
+                                            /> : ''}
+                                    </div>
+                                </div>
                             </section>
                         </header>
                         <header className={`app-header-filter${isOpenFilter ? ' show-explore' : ' slideOut'}`}>
@@ -161,7 +170,16 @@ export function AppHeader() {
                                         <Link to="/edit"> <button>Airbnb your home</button></Link>
                                         <LuGlobe className='global-btn' />
                                     </div>
-                                    <div className='menu-bar' onClick={() => onToggleUserModal()}> <IoMdMenu className='menu-icon' /><div className='circle'>י</div></div>
+                                    <div className='menu-bar' onClick={() => onToggleUserModal()}> <IoMdMenu className='menu-icon' />
+                                        <div className='circle'>
+                                            {user && user.pictureUrl ?
+                                                <img src={user.pictureUrl}
+                                                    className="user-img"
+
+                                                /> : ''}
+                                        </div>
+
+                                    </div>
 
                                 </section>
                             </section>
