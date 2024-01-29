@@ -7,18 +7,21 @@ import { utilService } from "../services/util.service"
 import { orderService } from "../services/order.service"
 import { ReserveBtn } from "../components/UI/ReserveBtn"
 import { saveOrder } from "../store/actions/order.actions"
+import { useNavigate } from "react-router-dom"
 
 export default function PaymentPage() {
     const currOrder = useSelector((storeState) => storeState.orderModule.currOrder)
     console.log("🚀 ~ PaymentPage ~ currOrder:", currOrder)
     const loggedinUser = useSelector((storeState) => storeState.userModule.user)
     const [isLoggedin, setIsLoggedin] = useState()
+    const navigate = useNavigate()
 
     async function onSaveOrder() {
         try {
             const orderToSave = currOrder;
             await saveOrder(orderToSave)
-            //   navigate('/')
+            navigate('/')
+            showSuccessMsg("your order Successfully sent !")
         } catch (err) {
             console.log('Had issues adding order', err);
         }

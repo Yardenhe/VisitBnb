@@ -52,13 +52,13 @@ export function OrderPreview({ order }) {
                 <span className='sub-text'>{utilService.formatOrderDate(order.endDate)}</span>
 
                 <div className={`status-label ${utilService.checkClassNameByTitle(order.status)}`}>
-                    <span className='order-icon'>{checkIconByTitle(order.status)}</span>
-                    {"   " + order.status}
+                    {checkIconByTitle(order.status)}
+                    <span>{"   " + order.status}</span>
                 </div>
 
 
             </section>
 
-        </article>
+        </article >
     )
 }

@@ -50,9 +50,9 @@ export function StayDetails() {
   }, [stay])
 
   async function onPickStay() {
-    const { _id, price, name } = stay;
+    const { _id, price, name, host } = stay;
     const stayToSave = { _id, price, name };
-    return await setCurrOrder({ stay: stayToSave });
+    return await setCurrOrder({ stay: stayToSave, hostId: host.id });
   }
 
   if (!stay) return <div>Loading..</div>
@@ -62,12 +62,12 @@ export function StayDetails() {
   // googleMap handeling
   const mapProps = {
     center: {
-        lat: loc.lat,
-        lng: loc.lng
+      lat: loc.lat,
+      lng: loc.lng
     },
     zoom: 15
   }
-  const AnyReactComponent = ({ text,className }) => <div className={className || ''}>{text}</div>;
+  const AnyReactComponent = ({ text, className }) => <div className={className || ''}>{text}</div>;
 
   return (
     <div className="details-layout">
@@ -101,15 +101,15 @@ export function StayDetails() {
             bootstrapURLKeys={{ key: "" }}
             defaultCenter={mapProps.center}
             defaultZoom={mapProps.zoom}
-            options={{maxZoom:16}}
-            >
+            options={{ maxZoom: 16 }}
+          >
 
             <AnyReactComponent
               lat={loc.lat}
               lng={loc.lng}
               className={'marker-circle'}
               // text={name}/>
-              text={''}/>
+              text={''} />
           </GoogleMapReact>
         </div>
       </section>

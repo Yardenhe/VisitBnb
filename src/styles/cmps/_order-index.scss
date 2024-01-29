@@ -58,12 +58,12 @@
         }
 
         .status-label {
+            display: inline-flex;
             font-size: 20px;
             font-family: 'cereal-bold';
             align-items: center;
             align-content: center;
-
-
+            gap: 10px
         }
     }
 }

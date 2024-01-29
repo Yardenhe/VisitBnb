@@ -14,7 +14,7 @@ import { DynamicCmp } from './stayFilterCmps/DynamicCmp';
 import { onToggleModal } from '../store/actions/app.actions';
 import { userService } from '../services/user.service';
 import { utilService } from '../services/util.service';
-import { showSuccessMsg } from '../services/event-bus.service';
+
 
 
 export function AppHeader() {
@@ -140,7 +140,7 @@ export function AppHeader() {
                                     <Link to="/edit"> <button>Airbnb your home</button></Link>
                                     <LuGlobe className='global-btn' />
                                 </div>
-                                <div className='menu-bar' onClick={() => { onToggleUserModal(), showSuccessMsg("add stay!") }}>
+                                <div className='menu-bar' onClick={() => { onToggleUserModal() }}>
                                     <IoMdMenu className='menu-icon' />
                                     <div className='circle'>
                                         {user && user.pictureUrl ?

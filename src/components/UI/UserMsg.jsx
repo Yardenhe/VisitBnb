@@ -1,22 +1,23 @@
+import { GiConfirmed } from "react-icons/gi"
 import { eventBus, showSuccessMsg } from "../../services/event-bus.service.js"
 import { useState, useEffect, useRef } from 'react'
-import { socketService, SOCKET_EVENT_REVIEW_ABOUT_YOU } from "../services/socket.service.js"
+//import { socketService, SOCKET_EVENT_REVIEW_ABOUT_YOU } from "../services/socket.service.js"
 
 export function UserMsg() {
 
     const [msg, setMsg] = useState(null)
-    console.log("🚀 ~ UserMsg ~ msg:", msg)
     const timeoutIdRef = useRef()
 
     useEffect(() => {
         const unsubscribe = eventBus.on('show-msg', (msg) => {
+
             setMsg(msg)
             window.scrollTo({ top: 0, behavior: 'smooth' });
             if (timeoutIdRef.current) {
                 timeoutIdRef.current = null
                 clearTimeout(timeoutIdRef.current)
             }
-            timeoutIdRef.current = setTimeout(closeMsg, 3000)
+            timeoutIdRef.current = setTimeout(closeMsg, 10000)
         })
 
         // socketService.on(SOCKET_EVENT_REVIEW_ABOUT_YOU, (review) => {
@@ -36,8 +37,11 @@ export function UserMsg() {
     if (!msg) return <span></span>
     return (
         <section className={`user-msg ${msg.type}`}>
+            <div className="flex center">
+                {msg.type == 'success' && <GiConfirmed />}
+                {msg.txt}
+            </div>
             <button onClick={closeMsg}>x</button>
-            {msg.txt}
         </section>
     )
 }

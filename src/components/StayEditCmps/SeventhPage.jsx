@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import { ImgUploader } from '../ImgUploader'
+import { ImageShortGalery } from '../stayDetailsCmps/ImageShortGalery';
 
 
 export function SeventhPage({ onSetStay, stay }) {
     const [selectedImg, setSelectedImg] = useState(stay.imgUrls);
+    console.log("🚀 ~ SeventhPage ~ selectedImg:", selectedImg)
     useEffect(() => {
         onSetStay({ "imgUrls": selectedImg })
     }, [selectedImg])
@@ -17,7 +19,8 @@ export function SeventhPage({ onSetStay, stay }) {
                 <h5>You'll need 5 photos to get started. You can add more or make changes later.</h5>
 
             </div>
-            <div className='image-grid'>
+            {selectedImg.length ? <ImageShortGalery imgUrls={selectedImg} /> : null}
+            {/* <div className='image-grid'>
                 {
                     selectedImg.map((image) => (
 
@@ -28,7 +31,7 @@ export function SeventhPage({ onSetStay, stay }) {
                     ))
 
                 }
-            </div >
+            </div > */}
 
             < section className='roomtype-list' >
                 <ImgUploader onUploaded={onUploaded} />

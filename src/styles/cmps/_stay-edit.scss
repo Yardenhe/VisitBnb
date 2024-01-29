@@ -1,7 +1,9 @@
 .stay-edit {
     display: grid;
-    grid-template-rows: 80px 1fr 80px;
+    grid-template-rows: 80px auto 100px;
     overflow: hidden;
+    height: 100%;
+    align-items: center;
 
     .edit-header {
         display: flex;
@@ -21,6 +23,7 @@
         align-items: center;
         overflow: hidden;
         //margin-top: 88px !important;
+        //justify-content: center;
         border-top: none !important;
 
         height: calc(100vh - 180px) !important;
@@ -86,7 +89,8 @@
     .footer-btns {
         display: flex;
         justify-content: space-between;
-        padding: 16px 48px;
+        padding: 0px 48px;
+        align-self: center;
 
         .back-btn {
             text-decoration: underline;
@@ -309,6 +313,7 @@
         .price-box {
             display: flex;
             align-items: center;
+            margin-left: 100px;
 
             input {
                 width: 50vh;
@@ -443,6 +448,10 @@
 
     .sevenPage-edit {
         overflow: auto;
+    }
+
+    .tenthPage-edit {
+        justify-content: center;
     }
 
     .photo-uploader {

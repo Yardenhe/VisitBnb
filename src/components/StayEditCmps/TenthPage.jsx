@@ -9,7 +9,7 @@ export function TenthPage({ onSetStay, stay }) {
     }, [selectedPrice])
     return (
         <section className='center'>
-            <section className="firstpage-edit fourthPage-edit eighth-page">
+            <section className="firstpage-edit fourthPage-edit eighth-page tenthPage-edit">
                 <div>
                     <h3>Now, set your price</h3>
                     <h4>You can change it anytime.</h4>

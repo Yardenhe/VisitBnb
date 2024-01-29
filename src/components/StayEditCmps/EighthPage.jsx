@@ -9,7 +9,7 @@ export function EighthPage({ onSetStay, stay }) {
     }, [selectedTitle])
     return (
         <section className='center'>
-            <section className="firstpage-edit fourthPage-edit eighth-page">
+            <section className="firstpage-edit fourthPage-edit eighth-page tenthPage-edit">
                 <div>
                     <h3>Now, let's give your apartment a title</h3>
                     <h4>Short titles work best. Have fun with it—you can always change it later.</h4>

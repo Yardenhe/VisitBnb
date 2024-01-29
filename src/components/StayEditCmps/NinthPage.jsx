@@ -7,7 +7,7 @@ export function NinthPage({ onSetStay, stay }) {
     }, [selectedSummary])
     return (
         <section className='center'>
-            <section className="firstpage-edit fourthPage-edit eighth-page">
+            <section className="firstpage-edit fourthPage-edit eighth-page tenthPage-edit">
                 <div className='des-title'>
                     <h3>Create your description</h3>
                     <h5>Share what makes your place special.</h5>
