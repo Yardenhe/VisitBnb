@@ -21,7 +21,6 @@ export function LoginSignup({ payload, onCloseModal }) {
     }
 
     async function onLoginSignup() {
-        console.log("🚀 ~ onLoginSignup ~ credentials:", credentials)
         // signup flow
         if (!isLoginForm) {
             if (!credentials.email || !credentials.password || !credentials.fullname) return

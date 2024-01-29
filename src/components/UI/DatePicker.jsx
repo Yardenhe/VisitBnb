@@ -3,10 +3,11 @@ import { DayPicker } from 'react-day-picker';
 import 'react-day-picker/dist/style.css';
 import { useSelector } from 'react-redux';
 import { setCurrOrder } from '../../store/actions/order.actions';
+import { utilService } from '../../services/util.service';
 
 export function DatePicker({ isModal = false }) {
   const currOrder = useSelector(storeState => storeState.orderModule.currOrder)
-  const {  startDate:from, endDate:to } = currOrder
+  const { startDate: from, endDate: to } = currOrder
   const [selected, setSelected] = useState({ to, from });
 
   const today = new Date()
@@ -14,8 +15,8 @@ export function DatePicker({ isModal = false }) {
 
   useEffect(() => {
     console.log('startDate dependency');
-    setSelected({to,from })
-  }, [to,from])
+    setSelected({ to, from })
+  }, [to, from])
 
 
   function onChangeDates(newDates) {
@@ -27,13 +28,18 @@ export function DatePicker({ isModal = false }) {
     // setSelected(newDates)
   }
 
-  
+
   return (
     <>
       {(!isModal) &&
         (<div className="date-picker-head">
           <h4>nights in {currOrder.city} </h4>
-          <p>dates here</p>
+          <p>
+            {currOrder.startDate && (
+              <span>{utilService.formatOrderDate(currOrder.startDate)}-</span>
+            )}
+            {currOrder.endDate && utilService.formatOrderDate(currOrder.endDate)}
+          </p>
         </div>)
       }
       <div className="date-picker-large">
@@ -50,12 +56,12 @@ export function DatePicker({ isModal = false }) {
           fixedWeeks
           disabled={disabledDays}
           fromMonth={today}
-          modifiers = {{
-            start:selected.from,
-            end:selected.to,
-            selectedStart:selected.from,
-            selectedEnd:selected.to,
-            disabled:disabledDays
+          modifiers={{
+            start: selected.from,
+            end: selected.to,
+            selectedStart: selected.from,
+            selectedEnd: selected.to,
+            disabled: disabledDays
           }}
           modifiersStyles={{
             disabled: { textDecoration: 'line-through' },
@@ -63,16 +69,20 @@ export function DatePicker({ isModal = false }) {
             // range_middle:{backgroundColor:'grey'}
 
           }}
-         
         />
+        <div className="date-picker-bottom">
+          {/* TODO - CLEAR DATES! */}
+          <button className='btn-clear-dates'>Clear dates</button>
+
+        </div>
       </div>
     </>
   )
 }
 
-function DateHeadJsx({city , nights , duration = 'getDuration'}){
+function DateHeadJsx({ city, nights, duration = 'getDuration' }) {
   return <>
-    <h4>{nights} {pluralizeLabel(nights,'night')} in {city}</h4>
+    <h4>{nights} {pluralizeLabel(nights, 'night')} in {city}</h4>
     <p>{duration}</p>
   </>
 }

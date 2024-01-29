@@ -6,6 +6,7 @@ import { LoginSignup } from '../LoginSignUp';
 import { DatePicker } from '../UI/DatePicker';
 import { AmeintyModal } from '../stayDetailsCmps/AmeintyModal';
 import { ApproveRejectOrderModal } from '../dashboard/approveRejectOrderModal';
+import { ReviewsModal } from '../stayDetailsCmps/ReviewsModal';
 
 
 export function DynamicCmp(props) {
@@ -33,7 +34,8 @@ export function StoreDynamicCmp({ type, payload, onCloseModal }) {
 
         loginSignup: <LoginSignup payload={payload} onCloseModal={onCloseModal} />,
         ameintyModal: <AmeintyModal payload={payload} onCloseModal={onCloseModal} />,
-        approveRejectOrder: <ApproveRejectOrderModal payload={payload} onCloseModal={onCloseModal} />
+        approveRejectOrder: <ApproveRejectOrderModal payload={payload} onCloseModal={onCloseModal} />,
+        reviewsModal: <ReviewsModal payload={payload} onCloseModal={onCloseModal}/>
         // datePicker: <DatePicker payload={payload} />
 
     }

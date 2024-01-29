@@ -278,7 +278,7 @@ $section-top: 32px;
   border: 1px solid $clr2;
   align-content: flex-start;
   box-shadow: rgba(0, 0, 0, 0.12) 0px 6px 16px;
-  
+
   padding: 24px;
   position: sticky !important;
   top: 32px;
@@ -294,7 +294,7 @@ $section-top: 32px;
   height: 30%;
 
   line-height: 1.25rem;
-  
+
   z-index: 1;
 
   &-info {
@@ -355,13 +355,18 @@ $section-top: 32px;
   font-size: 1em;
   border-radius: 10px;
   transition: transform 0.1s;
-  &:focus-visible,&:active{
+
+  &:focus-visible,
+  &:active {
     transform: scale(0.95);
   }
 }
 
 .date-btn-container,
 .guest-btn-container {
+  width: 100%;
+  border-bottom: none;
+  border-radius: 8px;
   display: flex;
   flex-direction: row;
   margin: 0 auto;
@@ -370,6 +375,9 @@ $section-top: 32px;
 }
 
 .date-btn-container {
+
+
+
   &> :nth-child(2) {
     border-left: 1px solid $clr2;
   }
@@ -419,7 +427,8 @@ $section-top: 32px;
   justify-content: space-between;
   font-size: small;
   align-items: center;
-  >*{
+
+  >* {
     font-family: 'cereal';
   }
 
@@ -513,17 +522,30 @@ $section-top: 32px;
   // background-color: rgba(107, 196, 196, 0.239);
   display: flex;
   justify-content: center;
+  flex-direction: column;
   align-items: center;
   width: 100%;
   height: 500px;
+  position: relative;
+  .date-picker-bottom{
+    display: flex;
+    justify-content: flex-end;
+    width: 92%;
+    .btn-clear-dates{
+      padding: 0.5em;
+      background: rgb(247, 247, 247);
+      text-decoration: underline;
+    }
+  }
   // &:not(:first-child),&:not(:last-child){
   //   border-top-color: #222; 
   // }
 }
 
-.date-middle-range{
+.date-middle-range {
   background: blue;
 }
+
 .rdp {
   --rdp-accent-color: rgb(247, 247, 247);
   --rdp-background-color: #fff;
@@ -542,8 +564,10 @@ $section-top: 32px;
   // }
   .rdp-day_range_middle {
     border-radius: 0px;
-    width: 100%;
+    // width: 100%;
+    border: none;
   }
+
   // .rdp-day_range_middle  {
   //   position: relative;
   //   &::before, 
@@ -564,7 +588,7 @@ $section-top: 32px;
   //     left: -20px;
   //   }
   // }
-  
+
 
 
   .rdp-day_range_end,
@@ -578,6 +602,9 @@ $section-top: 32px;
 
 // reviews
 
+.review-list-item{
+  
+}
 .stay-reviews {
   @include section-padding(4);
   @include border-top();
@@ -585,8 +612,40 @@ $section-top: 32px;
   .review-stats {
     width: 100%;
     padding: 0 12px;
-    border: 1px saddlebrown solid;
+    // border: 1px saddlebrown solid;
     height: 150px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    .reviews-average-container {
+      display: flex;
+      align-items: center;
+
+      h4 {
+        font-size: 137px;
+        font-weight: 800;
+      }
+
+      img {
+        height: 119.995px;
+        overflow-x: clip;
+        overflow-y: clip;
+        position: static;
+        width: 84.9702px;
+        object-fit: cover;
+      }
+
+      .rate-flag-container {
+
+        width: auto;
+        height: 120px;
+      }
+    }
+
+    &-header {}
+
+    &-rating {}
   }
 }
 
@@ -598,37 +657,44 @@ $section-top: 32px;
 }
 
 // Booking / Payment page specifications
-.payment-layout{
+.payment-layout {
   margin: 0 auto;
   padding: 0 80px;
   max-width: 1280px;
   width: 70vw;
   justify-content: center;
 }
-.checkout-payment-container{
-  .checkout-card{
+
+.checkout-payment-container {
+  .checkout-card {
     width: 100%;
     // max-width: 500px;
   }
-  .details-top-head{
+
+  .details-top-head {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    .payment-order-info{
+
+    .payment-order-info {
       margin-top: 32px;
     }
   }
 }
+
 .mini-order-preview {
   display: flex;
   width: 100%;
   height: 100%;
-  .order-preview{
+
+  .order-preview {
     width: 100%;
   }
-  article{
+
+  article {
     display: flex;
   }
+
   img {
     flex-grow: 1;
     max-width: 150px !important;
@@ -641,34 +707,40 @@ $section-top: 32px;
     margin-right: 10px;
   }
 }
-.host-mini-section{
-  .login-signup{
+
+.host-mini-section {
+  .login-signup {
     display: flex;
     flex-direction: column;
-    &-btn-container{
+
+    &-btn-container {
       position: static;
     }
-    button{
+
+    button {
       // width: 53%;
     }
-    >*{
+
+    >* {
       margin: 12px 0 0 0;
       padding: 0;
 
     }
   }
 }
-.tiny-li{
+
+.tiny-li {
   margin-top: 16px;
-  gap:20px;
+  gap: 20px;
   display: flex;
   align-items: center;
 }
 
 // guest picker modal
-.guest-picker-modal{
+.guest-picker-modal {
   position: relative;
-  .location-modal.list-gusets{
+
+  .location-modal.list-gusets {
     border-radius: 10px;
     position: absolute;
     // width: auto;
@@ -676,22 +748,24 @@ $section-top: 32px;
     // max-height: 3000px;
     min-height: 290px;
     // top:10.44rem;
-    top:-227px;
+    top: -227px;
     left: -158px;
   }
 }
 
 // maps
-.stay-location{
- @include section-padding(4);
- @include border-top();
+.stay-location {
+  @include section-padding(4);
+  @include border-top();
 
 }
-.stay-map-container{
+
+.stay-map-container {
   width: 100%;
   height: 500px;
 }
-.marker-circle{
+
+.marker-circle {
   position: absolute;
   background-color: $clr1;
   width: 150px;
