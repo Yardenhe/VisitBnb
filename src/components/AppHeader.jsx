@@ -16,6 +16,7 @@ import { userService } from '../services/user.service';
 import { utilService } from '../services/util.service';
 
 
+
 export function AppHeader() {
     // const [loggedinUser, setLoggedinUser] = useState(userService.getLoggedinUser())
     const loggedinUser = useSelector(store => store.userModule.user)
@@ -31,6 +32,8 @@ export function AppHeader() {
     const [searchParams, setSearchParams] = useSearchParams()
 
     const user = useSelector(storeState => storeState.userModule.user)
+    console.log("🚀 ~ AppHeader ~ user:", user)
+
 
     const { country } = filterBy || ''
     const currOrder = useSelector(storeState => storeState.orderModule.currOrder)
@@ -121,11 +124,13 @@ export function AppHeader() {
                                 <img className="app-header-logo" src="../img/airbnb-logoo.PNG" />
                             </Link>
                             <section className={`date-picker left${isOpenEffect ? ' enlarge' : ' '}`} onClick={onToggleEffect}>
-                                <section className='btn-datepicker bold '>{country ? country : 'Anywhere'} <span className="vl"></span> </section>
+                                <section className='btn-datepicker bold anywhere-label '>{country ? country : 'Anywhere'}  </section>
+                                <span className={`vl-left`}></span>
 
-                                <section className='btn-datepicker bold'>{startDate && endDate ? (utilService.formatOrderDate(startDate) + " - " + utilService.formatOrderDate(endDate)) : 'Any week'}<span className="vl"></span></section>
-                                <section className={`btn-datepicker add-guests-label ${guests.adults && 'bold-choose-guests'}`}>
-                                    <>{guests.adults ? guests.adults + " guests" : 'Add guests'}</>
+                                <section className='btn-datepicker bold any-week-label'>{startDate && endDate ? (utilService.formatOrderDate(startDate) + " - " + utilService.formatOrderDate(endDate)) : 'Any week'}</section>
+                                <span className={`vl-right`}></span>
+                                <section className={`btn-datepicker add-guests-label ${guests.adults > 1 ? ' bold-choose-guests' : ''}`}>
+                                    <>{guests.adults > 1 ? guests.adults + " guests" : 'Add guests'}</>
                                     <IoSearch className='search-btn' />
                                 </section>
 
@@ -135,9 +140,16 @@ export function AppHeader() {
                                     <Link to="/edit"> <button>Airbnb your home</button></Link>
                                     <LuGlobe className='global-btn' />
                                 </div>
-                                <div className='menu-bar' onClick={() => onToggleUserModal()}>
+                                <div className='menu-bar' onClick={() => { onToggleUserModal() }}>
                                     <IoMdMenu className='menu-icon' />
-                                    <div className='circle'>י</div></div>
+                                    <div className='circle'>
+                                        {user && user.pictureUrl ?
+                                            <img src={user.pictureUrl}
+                                                className="user-img"
+
+                                            /> : ''}
+                                    </div>
+                                </div>
                             </section>
                         </header>
                         <header className={`app-header-filter${isOpenFilter ? ' show-explore' : ' slideOut'}`}>
@@ -158,7 +170,16 @@ export function AppHeader() {
                                         <Link to="/edit"> <button>Airbnb your home</button></Link>
                                         <LuGlobe className='global-btn' />
                                     </div>
-                                    <div className='menu-bar' onClick={() => onToggleUserModal()}> <IoMdMenu className='menu-icon' /><div className='circle'>י</div></div>
+                                    <div className='menu-bar' onClick={() => onToggleUserModal()}> <IoMdMenu className='menu-icon' />
+                                        <div className='circle'>
+                                            {user && user.pictureUrl ?
+                                                <img src={user.pictureUrl}
+                                                    className="user-img"
+
+                                                /> : ''}
+                                        </div>
+
+                                    </div>
 
                                 </section>
                             </section>

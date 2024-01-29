@@ -52,7 +52,7 @@ async function login(credentials) {
 }
 
 async function signup(credentials) {
-console.log("🚀 ~ signup ~ credentials:", credentials)
+    console.log("🚀 ~ signup ~ credentials:", credentials)
 
     const user = await httpService.post(BASE_AUTH_URL + 'signup', credentials)
     return saveLocalUser(user)
@@ -66,14 +66,14 @@ async function logout() {
 function getEmptyUser() {
     return {
         fullname: '',
-        email:'',
+        email: '',
         password: '',
-        imgUrl: '',
+        pictureUrl: '',
     }
 }
 
 function saveLocalUser(user) {
-    user = { _id: user._id, fullname: user.fullname}
+    user = { _id: user._id, fullname: user.fullname, pictureUrl: user.pictureUrl }
     sessionStorage.setItem(STORAGE_KEY_LOGGEDIN_USER, JSON.stringify(user))
     return user
 }
@@ -82,21 +82,21 @@ function getLoggedinUser() {
     return JSON.parse(sessionStorage.getItem(STORAGE_KEY_LOGGEDIN_USER))
 }
 
-function getSignupForm(){
+function getSignupForm() {
     return {
         // firstName:'First name',
         // lastName:'Last name',
-        fullname:'Full name',
+        fullname: 'Full name',
         // dateOfBirth:'Birthdate',
-        email:'Email',
-        password:'Password'
+        email: 'Email',
+        password: 'Password'
     }
 }
 
-function getLoginForm(){
+function getLoginForm() {
     return {
-        email:'Email',
-        password:'Password'
+        email: 'Email',
+        password: 'Password'
     }
 }
 // ;(async ()=>{

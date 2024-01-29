@@ -25,8 +25,11 @@ export function ReservationManager() {
         </thead>
         <tbody>
           {orders.map((order) => (
-            <tr key={order._id} onClick={() => openMiniModal(order)}>
-              <td>{order.status}</td>
+            <tr key={order._id} onClick={() => openMiniModal(order)} className="tr-order">
+              <td className={`td-status ${utilService.checkClassNameByTitle(order.status)}`}>
+                <span className={`status-circle  ${utilService.checkClassNameByTitle(order.status)}`}></span>
+                {order.status}
+              </td>
               <td>
                 <h4>{`${order.buyer.fullname}`}</h4>
                 <h5>{`${order.guests.adults} Adults  ${order.guests.kids ? order.guests.kids + ' Kids' : ''} `}</h5>

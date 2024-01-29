@@ -14,13 +14,14 @@ import { EighthPage } from "../components/StayEditCmps/EighthPage";
 import { NinthPage } from "../components/StayEditCmps/NinthPage"
 import { TenthPage } from "../components/StayEditCmps/TenthPage"
 import { ElevenPage } from "../components/StayEditCmps/ElevenPage";
+import { useSelector } from "react-redux";
 
 
 
 
 
 export function StayEdit() {
-
+    // const loggedInUser = useSelector(storeState => storeState.userModule.user)
     const [stay, setStay] = useState(stayService.getEmptyStay())
     console.log("🚀 ~ StayEdit ~ stay:", stay)
     const { onSaveStay } = useOutletContext()
@@ -52,6 +53,9 @@ export function StayEdit() {
             const stay = await stayService.getById(stayId)
             setStay(stay)
         }
+        // else {
+        //     onSetStay({ "host": loggedInUser })
+        // }
     }
 
     function onSetStay(fieldsToUpdate) {
@@ -65,18 +69,6 @@ export function StayEdit() {
             console.log('Had issues adding stay', err);
         }
     }
-    async function handleEmptyInputs(elEmptyInputs) {
-        // elEmptyInputs.forEach(async elEmptyInput => {
-        //     await utilService.animateCSS(elEmptyInput, 'shakeX')
-        // })
-        elEmptyInputs[0].focus()
-        for (const elEmptyInput of elEmptyInputs) {
-            await utilService.animateCSS(elEmptyInput, 'shakeX')
-        }
-
-    }
-
-    const { name, type, price } = stay
     return (
         <section className="stay-edit">
             <section className="edit-header">

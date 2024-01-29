@@ -65,6 +65,8 @@ function getEmptyStay(
   bathrooms = 0,
   amenities = [],
   labels = [],
+  reviews = [],
+  likedByUsers = [],
 
   host = {
     _id: "",
@@ -74,7 +76,7 @@ function getEmptyStay(
   loc = {
     country: "",
     countryCode: "",
-    cit: "",
+    city: "",
     address: "",
     lat: 0,
     lng: 0
@@ -96,8 +98,8 @@ function getEmptyStay(
     labels,
     host,
     loc,
-    // reviews,
-    // likedByUsers
+    reviews,
+    likedByUsers
   }
 }
 
@@ -158,7 +160,7 @@ function getDefaultFilter() {
 // //   }
 // }
 
-function calculateBookingCost(pricePerNight,numberOfNights) {
+function calculateBookingCost(pricePerNight, numberOfNights) {
 
   const nightsCost = pricePerNight * numberOfNights
   const serviceFeeMultiplier = 0.15
@@ -170,9 +172,9 @@ function calculateBookingCost(pricePerNight,numberOfNights) {
 
   return {
     nightsCost,
-    serviceFee:(serviceFee % 1 === 0) ? serviceFee :serviceFee.toFixed(2),
-    taxes:(taxes % 1 === 0) ? serviceFee :taxes.toFixed(2),
-    totalPrice:(totalPrice % 1 === 0) ? totalPrice :totalPrice.toFixed(2),
+    serviceFee: (serviceFee % 1 === 0) ? serviceFee : serviceFee.toFixed(2),
+    taxes: (taxes % 1 === 0) ? serviceFee : taxes.toFixed(2),
+    totalPrice: (totalPrice % 1 === 0) ? totalPrice : totalPrice.toFixed(2),
   };
 }
 

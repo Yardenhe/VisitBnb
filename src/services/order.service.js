@@ -69,6 +69,7 @@ function getEmptyOrder() {
       name: "",
       price: 0,
     },
+    hostId: ""
     // msgs: [],
     // status: "pending",
   };

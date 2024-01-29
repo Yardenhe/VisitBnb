@@ -4,26 +4,28 @@ import { loadOrders, saveOrder } from '../store/actions/order.actions'
 import { OrderList } from '../components/OrderList'
 
 export function OrderIndex() {
-  const loggedInUser = useSelector(storeState=>storeState.userModule.user)
+  const loggedInUser = useSelector(storeState => storeState.userModule.user)
   const orders = useSelector(storeState => storeState.orderModule.orders)
   console.log("🚀 ~ OrderIndex ~ orders:", orders)
   // const [orderToUpdate, setOrderToUpdate] = useState()
 
-  const userToGetOrdersBy = {buyer:loggedInUser._id}
-  
+  const userToGetOrdersBy = { buyer: loggedInUser._id }
+
   useEffect(() => {
     loadOrders(userToGetOrdersBy)
   }, [])
 
   const elLoader = <p>loading orders.. or am i loading orders?</p>
   if (!orders) return elLoader
-  return (<>
-    <div className='order-index'>
-    <h3 className='order-title bold'>Trips</h3>
+  return (
+    <div className='index-layout'>
+      <div className='order-index'>
+        <h3 className='order-title bold'>Trips</h3>
 
-      <OrderList orders={orders} />
+        <OrderList orders={orders} />
+
+      </div>
     </div>
-  </>
 
   )
 }

@@ -4,3 +4,44 @@
     justify-content: center;
 
 }
+
+.user-msg {
+    color: white;
+    padding: 10px 5px;
+    font-size: 1.4em;
+    position: fixed;
+    bottom: 50px;
+    left: 100px;
+    background-color: grey;
+    z-index: 1005;
+    border-radius: 20px;
+    min-width: 10em;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    svg {
+        margin-inline: 5px;
+        color: #03C03C;
+    }
+}
+
+.user-msg button {
+    float: right;
+    border: 0;
+    border-radius: 50%;
+    margin: 10px;
+    background-color: $clr1;
+    color: $clr2;
+    width: 20px;
+    height: 20px;
+}
+
+.user-msg.success {
+    background-color: rgb(255, 255, 255);
+    color: $clr5;
+}
+
+.user-msg.error {
+    background-color: rgb(216, 59, 59);
+}
