@@ -2,7 +2,7 @@ import { utilService } from "../../services/util.service";
 import { MiniUser } from "./MiniUser";
 import { IoIosStar as StarIcon } from "react-icons/io";
 
-export function MiniUserReview({ review }) {
+export function MiniUserReview({ review ,isList = false}) {
 
   return (
     <div className="mini-user-review">
@@ -18,16 +18,24 @@ export function MiniUserReview({ review }) {
                 {utilService.calculateTimeAgo(review.at)}
             </div>
         </div>
-        
+        {isList ? 
+        <div className="review-content-text-list">
+            {review.txt}
+        </div> :
+
+        <>
         <div className="review-content-text">
             {review.txt}
         </div>
-
+        
         {review.txt.length > 258 && (
           <div className="review-action">
             <button className="action-btn underline">Show more</button>
           </div>
         )}
+        </>
+      }
+
       </div>
       
     </div>

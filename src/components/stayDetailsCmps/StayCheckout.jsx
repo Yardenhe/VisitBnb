@@ -46,7 +46,6 @@ export function StayCheckout({ price, startDate, endDate, currOrder }) {
   }
   function onOpenGuestPicker() {
     setIsOpenGuestPicker(prev => !prev)
-
   }
 
 
@@ -56,44 +55,41 @@ export function StayCheckout({ price, startDate, endDate, currOrder }) {
       <div className="checkout-card">
         <div className={`date-picker-modal ${!isOpenDatePickerModal ? 'hidden' : ''}`}>
           {/* <DatePicker headContentJsx={<DateHeadJsx city={currOrder.city}  nights={nightsInStay} />}/> */}
-          <DatePicker isModal={true}/>
+          <DatePicker isModal={true} />
         </div>
         <div className="price-container">
           <div className="price"> ${price}</div>
           <span className="btn-info-detail">night</span>
         </div>
         {/* actions */}
-        <button onClick={onOpenDatePicker}>
+        <button className="date-btn-container" onClick={onOpenDatePicker}>
 
-          <div className="date-btn-container">
-            <div className="btn-info">
-              <div className="btn-info-label">check-in</div>
-              <div className="btn-info-detail sub-text">{formattedStartDate ? formattedStartDate : 'Add date'}</div>
-            </div>
+          <div className="btn-info">
+            <div className="btn-info-label">check-in</div>
+            <div className="btn-info-detail sub-text">{formattedStartDate ? formattedStartDate : 'Add date'}</div>
+          </div>
 
-            <div className="btn-info">
-              <div className="btn-info-label">check-out</div>
-              <div className="btn-info-detail sub-text">{formattedEndDate ? formattedEndDate : 'Add date'}</div>
-            </div>
+          <div className="btn-info">
+            <div className="btn-info-label">check-out</div>
+            <div className="btn-info-detail sub-text">{formattedEndDate ? formattedEndDate : 'Add date'}</div>
           </div>
 
         </button>
-        <button>
-          <div className="guest-btn-container">
 
-            <div className="btn-info">
-              <div className="btn-info-label">guests</div>
-              <div className="btn-info-detail">{pluralizeLabel(orderService.getTotalguests(currOrder.guests),'guest')}</div>
-            </div>
-            <div className="btn-info down-arrow" onClick={onOpenGuestPicker}>
-              {!isOpenGuestPicker ? <DownArrow /> : <UpArrow/> }
-            </div>
-            <div className={`guest-picker-modal ${!isOpenGuestPicker ? 'hidden' : ''}`}>
-              <MiniGuestsModal guests={currOrder.guests}/>
+        <button className="guest-btn-container" >
 
-            </div>
+          <div className="btn-info" onClick={onOpenGuestPicker}>
+            <div className="btn-info-label">guests</div>
+            <div className="btn-info-detail">{pluralizeLabel(orderService.getTotalguests(currOrder.guests), 'guest')}</div>
+          </div>
+          <div className="btn-info down-arrow" onClick={onOpenGuestPicker} >
+            {!isOpenGuestPicker ? <DownArrow /> : <UpArrow />}
+          </div>
+          <div className={`guest-picker-modal ${!isOpenGuestPicker ? 'hidden' : ''}`}>
+            <MiniGuestsModal guests={currOrder.guests} />
           </div>
         </button>
+
         {nightsInStay ? <ReserveBtn cb={handleReserve} text={'Reserve'} />
           :
           <ReserveBtn cb={onOpenDatePicker} text={'Check availability'} />

@@ -1,12 +1,15 @@
 import { orderService } from "../../services/order.service"
 import { utilService } from "../../services/util.service"
+import { BsMoonStarsFill as MoonIcon } from "react-icons/bs";
+import { FaPeopleRoof as GuestsIcon } from "react-icons/fa6";
+import { TbReportMoney as RevenueIcon } from "react-icons/tb";
 
 export function DashboardInsights({ orders }) {
   console.log("🚀 ~ DashboardInsights ~ orders:", orders)
 
-  const {revenue,totalGuests,averageDuration} = orderService.getOrdersInsights(orders)
+  const { revenue, totalGuests, averageDuration } = orderService.getOrdersInsights(orders)
   const overview = orderService.getOverviewInsights(orders)
-  
+
   console.log("🚀 ~ DashboardInsights ~ overview:", overview)
 
 
@@ -20,6 +23,9 @@ export function DashboardInsights({ orders }) {
           <div className="insight-number">
             {revenue}
           </div>
+          <div className="insight-icon">
+            <RevenueIcon />
+          </div>
         </div>
       </div>
 
@@ -30,6 +36,9 @@ export function DashboardInsights({ orders }) {
         <div className="insight-card-data">
           <div className="insight-number">
             {totalGuests}
+          </div>
+          <div className="insight-icon">
+            <GuestsIcon />
           </div>
         </div>
       </div>
@@ -42,7 +51,9 @@ export function DashboardInsights({ orders }) {
           <div className="insight-number">
             {averageDuration}
           </div>
-          Nights
+          <div className="insight-icon">
+            <MoonIcon />
+          </div>
         </div>
       </div>
 
@@ -51,14 +62,14 @@ export function DashboardInsights({ orders }) {
         <div className="insight-card-header">
           Overview
         </div>
-          <ul className="clean-list">
-            {Object.entries(overview).map(([title, stats], i) =>
-              <li key={i} className="overview-list-item">
-                <div className={`overview-list-item-title `}>{title}</div>
-                <div className={`overview-list-item-stats ${utilService.checkClassNameByTitle(title)}`}>{stats}</div>
-              </li>)}
-          </ul>
-        </div>
+        <ul className="clean-list">
+          {Object.entries(overview).map(([title, stats], i) =>
+            <li key={i} className="overview-list-item">
+              <div className={`overview-list-item-title `}>{title}</div>
+              <div className={`overview-list-item-stats ${utilService.checkClassNameByTitle(title)}`}>{stats}</div>
+            </li>)}
+        </ul>
+      </div>
 
       {/* large-insight */}
       <div className="insight-card insight-large">

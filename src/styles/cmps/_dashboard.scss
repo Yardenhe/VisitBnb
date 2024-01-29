@@ -62,7 +62,7 @@
         border: 1px solid #dddddd;
         display: flex;
         flex-direction: column;
-        transition: transform 0.23s ease;
+        transition: transform 0.35s ease;
         background-color: white;
 
         &-header {
@@ -71,6 +71,7 @@
 
         &-data {
             padding: 10px;
+            height: 100%;
             display: flex;
             align-items: center;
             justify-content: space-around;
@@ -78,11 +79,24 @@
 
         .insight-number {
             @include bold(56px);
+            transition: all 0.4s ease;
+
         }
     }
 
     .insight-card:hover {
-        transform: translate3d(6px, 5%, 3em);
+        transform: translate3d(4px, 3%, 3em);
+
+        .insight-card-data {
+            .insight-number{
+                transform: translate3d(-5px, -10%, 3em);
+                // font-size: 58px;
+                text-shadow: 2px 2px 2px rgba(57, 55, 55, 0.2), 3px 3px 3px rgba(0, 0, 0, 0.3);
+            }
+            svg{
+                text-shadow: 10px 2px 2px rgba(57, 55, 55, 0.2), 3px 3px 3px rgba(0, 0, 0, 0.3);
+            }
+        }
     }
 
     .insight-long {
@@ -97,6 +111,21 @@
 .insight-card-graph {
     height: 100%;
     border: 1px solid $clr1;
+}
+
+.insight-card-data {
+    .insight-icon {
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    svg {
+        width: 2.5rem;
+        height: 2.5rem;
+        color: $clr1;
+    }
 }
 
 .overview-list-item {
