@@ -123,18 +123,21 @@ export function AppHeader() {
                             <Link to="/" onClick={handleReloadClick}>
                                 <img className="app-header-logo" src="../img/airbnb-logoo.PNG" />
                             </Link>
-                            <section className={`date-picker left${isOpenEffect ? ' enlarge' : ' '}`} onClick={onToggleEffect}>
-                                <section className='btn-datepicker bold anywhere-label '>{country ? country : 'Anywhere'}  </section>
-                                <span className={`vl-left`}></span>
+                            {!location.pathname.includes('book') ?
+                                <section className={`date-picker left${isOpenEffect ? ' enlarge' : ' '}`} onClick={onToggleEffect}>
+                                    <section className='btn-datepicker bold anywhere-label '>{country ? country : 'Anywhere'}  </section>
+                                    <span className={`vl-left`}></span>
 
-                                <section className='btn-datepicker bold any-week-label'>{startDate && endDate ? (utilService.formatOrderDate(startDate) + " - " + utilService.formatOrderDate(endDate)) : 'Any week'}</section>
-                                <span className={`vl-right`}></span>
-                                <section className={`btn-datepicker add-guests-label ${guests.adults > 1 ? ' bold-choose-guests' : ''}`}>
-                                    <>{guests.adults > 1 ? guests.adults + " guests" : 'Add guests'}</>
-                                    <IoSearch className='search-btn' />
-                                </section>
+                                    <section className='btn-datepicker bold any-week-label'>{startDate && endDate ? (utilService.formatOrderDate(startDate) + " - " + utilService.formatOrderDate(endDate)) : 'Any week'}</section>
+                                    <span className={`vl-right`}></span>
+                                    <section className={`btn-datepicker add-guests-label ${guests.adults > 1 ? ' bold-choose-guests' : ''}`}>
+                                        <div>{guests.adults > 1 ? guests.adults + " guests" : 'Add guests'}</div>
+                                        <IoSearch className='search-btn' />
+                                    </section>
 
-                            </section>
+                                </section> :
+                                <section className={`date-picker left opacity`}></section>
+                            }
                             <section className='right-header-menu'>
                                 <div className='switchlen-menu'>
                                     <Link to="/edit"> <button>Airbnb your home</button></Link>

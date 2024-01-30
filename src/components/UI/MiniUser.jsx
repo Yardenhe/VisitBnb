@@ -4,7 +4,7 @@ export function MiniUser({ user, type = 'user', isReview = false }) {
   console.log("🚀 ~ MiniUser ~ user:", user)
 
 
-  const { fullname, isSuperhost, [isReview ? 'thumbnailUrl' : 'imgUrl']: img } = user
+  const { fullname, isSuperhost, [isReview ? 'thumbnailUrl' : 'pictureUrl']: img } = user
 
 
   // console.log("MiniUser",user);

@@ -60,7 +60,7 @@ export function LoginSignup({ payload, onCloseModal }) {
             <div className="login-signup-btn-container">
 
                 <ReserveBtn text={isLoginForm ? 'Login' : 'Signup'} cb={onLoginSignup} />
-                <div onClick={() => { setisLoginForm(prev => !prev) }} className="underline clickable">{isLoginForm ? 'SignUp instead' : 'I already have an account'}</div>
+                <div onClick={() => { setisLoginForm(prev => !prev) }} className="underline clickable">{isLoginForm ? 'Signup instead' : 'I already have an account'}</div>
             </div>
 
         </div>

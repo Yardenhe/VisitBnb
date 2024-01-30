@@ -18,14 +18,14 @@ export function OrderIndex() {
   const elLoader = <p>loading orders.. or am i loading orders?</p>
   if (!orders) return elLoader
   return (
-    <div className='index-layout'>
-      <div className='order-index'>
-        <h3 className='order-title bold'>Trips</h3>
 
-        <OrderList orders={orders} />
+    <div className='order-index'>
+      <h3 className='order-title bold'>Trips</h3>
 
-      </div>
+      <OrderList orders={orders} />
+
     </div>
+
 
   )
 }

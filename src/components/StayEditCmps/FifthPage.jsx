@@ -35,11 +35,11 @@ export function FifthPage({ onSetStay, stay }) {
             <section className='counter-list' >
 
                 <div className='who-items'>
-                    <div>
-                        <h5>Guests</h5>
+
+                    <h5>Guests</h5>
 
 
-                    </div>
+
                     <Counter
                         label="Guests"
                         count={guests.capacity}
@@ -62,7 +62,7 @@ export function FifthPage({ onSetStay, stay }) {
                 </div>
                 <div className='who-items'>
                     <div>
-                        <h5>beds</h5>
+                        <h5>Beds</h5>
 
 
                     </div>

@@ -10,6 +10,7 @@ export function SeventhPage({ onSetStay, stay }) {
         onSetStay({ "imgUrls": selectedImg })
     }, [selectedImg])
     function onUploaded(imgUrl) {
+        console.log("🚀 ~ onUploaded ~ imgUrl:", imgUrl)
         setSelectedImg([...selectedImg, imgUrl])
     }
     return (

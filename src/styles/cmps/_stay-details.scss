@@ -142,6 +142,7 @@ $section-top: 32px;
     display: flex;
     gap: 6px;
     align-items: center;
+    margin-top: 5px;
   }
 
   .rating-peek {
@@ -258,6 +259,11 @@ $section-top: 32px;
 .rating-peek-stars {
   display: flex;
   align-items: center;
+  gap: 5px;
+
+  svg {
+    padding: 0.5px;
+  }
 }
 
 .total-rating {}
@@ -495,14 +501,14 @@ $section-top: 32px;
   padding-left: 1em;
 }
 
-.amenity-modal-list{
+.amenity-modal-list {
   .amenity {
     width: 100%;
     // border: solid 0.8px rgb(223, 229, 223);
     display: flex;
     padding: 8px 0;
     align-items: center;
-    
+
     &>img {
       padding: 0;
       width: 45px;
@@ -510,6 +516,7 @@ $section-top: 32px;
     }
   }
 }
+
 //stay-dates
 .date-picker-modal {
   position: absolute;
@@ -542,16 +549,19 @@ $section-top: 32px;
   width: 100%;
   height: 500px;
   position: relative;
-  .date-picker-bottom{
+
+  .date-picker-bottom {
     display: flex;
     justify-content: flex-end;
     width: 92%;
-    .btn-clear-dates{
+
+    .btn-clear-dates {
       padding: 0.5em;
       background: rgb(247, 247, 247);
       text-decoration: underline;
     }
   }
+
   // &:not(:first-child),&:not(:last-child){
   //   border-top-color: #222; 
   // }
@@ -617,9 +627,8 @@ $section-top: 32px;
 
 // reviews
 
-.review-list-item{
-  
-}
+.review-list-item {}
+
 .stay-reviews {
   @include section-padding(4);
   @include border-top();
@@ -693,6 +702,11 @@ $section-top: 32px;
 
     .payment-order-info {
       margin-top: 32px;
+
+      h3 {
+        @include section-padding(2);
+
+      }
     }
   }
 }
@@ -773,6 +787,9 @@ $section-top: 32px;
   @include section-padding(4);
   @include border-top();
 
+  h4 {
+    margin-bottom: 5px;
+  }
 }
 
 .stay-map-container {

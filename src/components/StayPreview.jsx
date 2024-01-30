@@ -51,7 +51,7 @@ export function StayPreview({ stay }) {
             </section>
 
             <div className='space-between'>
-                <div className='preview-loc'>{stay.loc.city},{stay.loc.country}</div>
+                <div className='preview-loc'>{stay.loc.city}, {stay.loc.country}</div>
                 <div className="rating-peek black center">
                     <StarIcon />
                     {/* <span>{stay.reviews ? stay.reviews[0].rate : '4.8'}</span> */}

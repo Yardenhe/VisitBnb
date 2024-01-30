@@ -98,7 +98,7 @@ export function StayDetails() {
         <h4>Where you'll stay</h4>
         <div className='stay-map-container' >
           <GoogleMapReact
-            bootstrapURLKeys={{ key: "AIzaSyDqoKHwW0Y0qlUEw_4O2r5ruKCkhUmWFlQ" }}
+            bootstrapURLKeys={{ key: "AIzaSyCfwC_mk9Fxgszcr2eArRS4PTdQQYy1Si8" }}
             defaultCenter={mapProps.center}
             defaultZoom={mapProps.zoom}
             options={{ maxZoom: 16 }}

@@ -78,7 +78,7 @@ export function StayDescription({ stay }) {
         </div>
         <div className="stay-facts-row">
           <div className="stay-facts-icon">
-            <TagToIcon tag={'calendar'}/>
+            <TagToIcon tag={'calendar'} />
           </div>
           <div className="list-item-nest">
             <li>Free cancelation before..</li>
@@ -89,7 +89,7 @@ export function StayDescription({ stay }) {
 
       <section className="stay-description">
         <p>{summary}</p>
-        <button className="btn-info">show more</button>
+        {/* <button className="btn-info">show more</button> */}
       </section>
 
       <section className="stay-amenities">

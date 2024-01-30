@@ -29,16 +29,21 @@
 // }
 
 .order-index {
-    padding: 0 0 2rem 0;
+    padding: 0 2rem;
+    width: 100%;
+    min-width: 412px;
+
 
     .order-title {
         padding-block: 30px;
     }
 
     .order-list {
-        display: grid;
-        grid-template-columns: repeat(3, minmax(100px, 1fr));
+        display: flex; //grid
+        grid-template-columns: repeat(3, minmax(200px, 1fr));
         gap: 15px;
+        flex-wrap: wrap;
+        width: 100vw;
         list-style: none;
         padding: 0;
         margin: 0;
@@ -47,23 +52,42 @@
 
     .order-preview {
         display: flex;
-        max-width: 360px;
+        //max-width: 360px;
+        border: 1px solid $clr2;
+        box-shadow: rgba(0, 0, 0, 0.12) 0px 6px 16px;
+        width: 100%;
+        border-radius: 12px;
+
+
+
+        .order-preview-detiels {
+            display: flex;
+            flex-direction: column;
+            width: 15rem;
+            font-size: rem(30px);
+            justify-content: space-around;
+
+            &.sub-text {
+                width: 100%;
+            }
+        }
 
         .img-preview-orders {
-            width: 200px;
-            height: 200px;
+            width: 250px;
+            height: 270px;
             object-fit: cover;
             border-radius: 8px;
-            margin-right: 10px;
+            margin-right: 30px;
         }
 
         .status-label {
             display: inline-flex;
-            font-size: 20px;
+            width: 100%;
             font-family: 'cereal-bold';
             align-items: center;
             align-content: center;
-            gap: 10px
+            gap: 10px;
+
         }
     }
 }

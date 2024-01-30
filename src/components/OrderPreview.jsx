@@ -45,12 +45,14 @@ export function OrderPreview({ order }) {
     return (
         <article className='order-preview'>
             <img className='img-preview-orders' alt='img' src={stayOrder.imgUrls[0]} />
-            <section>
-                <div className='sub-text bold'>{stayOrder.loc.city}</div>
-                <div className='sub-text'>Hosted by {stayOrder.host.fullname}</div>
-                <span className='sub-text'>{utilService.formatOrderDate(order.startDate) + " - "}</span>
-                <span className='sub-text'>{utilService.formatOrderDate(order.endDate)}</span>
-
+            <section className='order-preview-detiels'>
+                <div>
+                    <div className='sub-text bold'>{stayOrder.loc.city}</div>
+                    <div className='sub-text'>Hosted by {stayOrder.host.fullname}</div>
+                    <span className='sub-text'>
+                        {utilService.formatOrderDate(order.startDate) + " - " + utilService.formatOrderDate(order.endDate)}
+                    </span>
+                </div>
                 <div className={`status-label ${utilService.checkClassNameByTitle(order.status)}`}>
                     {checkIconByTitle(order.status)}
                     <span>{"   " + order.status}</span>

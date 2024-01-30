@@ -11,6 +11,17 @@
 
 }
 
+@media (max-width:450px) {
+    .app-header {
+        width: 100%;
+        grid-template-columns: 1fr 200px 1fr;
+    }
+
+    .date-picker.left {
+        display: none;
+    }
+}
+
 
 .sticky-header {
     position: fixed;

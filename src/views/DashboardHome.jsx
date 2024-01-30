@@ -1,6 +1,5 @@
 import { useEffect } from "react"
 import { loadOrders } from "../store/actions/order.actions"
-import { OrderList } from "../components/OrderList"
 import { useSelector } from "react-redux"
 import { DashboardInsights } from "../components/dashboard/DashboardInsights"
 import { NavLink, Navigate, Outlet, useNavigate } from "react-router-dom"
