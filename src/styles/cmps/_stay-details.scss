@@ -488,6 +488,11 @@ $section-top: 32px;
       height: 45px;
     }
 
+    // &>svg {
+    //   width: 24px;
+    //   height: 24px;
+    // }
+
     // padding-left: 0.5em;
   }
 
@@ -547,7 +552,7 @@ $section-top: 32px;
   flex-direction: column;
   align-items: center;
   width: 100%;
-  height: 500px;
+  height: auto;
   position: relative;
 
   .date-picker-bottom {

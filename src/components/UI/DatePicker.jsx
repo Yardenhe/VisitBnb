@@ -28,6 +28,10 @@ export function DatePicker({ isModal = false }) {
     // setSelected(newDates)
   }
 
+  function onClearDates(){
+    setCurrOrder({startDate:'',endDate:''})
+  }
+
 
   return (
     <>
@@ -72,7 +76,7 @@ export function DatePicker({ isModal = false }) {
         />
         <div className="date-picker-bottom">
           {/* TODO - CLEAR DATES! */}
-          <button className='btn-clear-dates'>Clear dates</button>
+          <button className='btn-clear-dates' onClick={onClearDates} >Clear dates</button>
 
         </div>
       </div>

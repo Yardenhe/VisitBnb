@@ -13,7 +13,7 @@ export function Dashboard() {
 
         <section className="dashboard-section">
             <div className="dashboard-title">
-                <h3>Some insights</h3>
+                <h3>Your Listings insights</h3>
             </div>
             <DashboardInsights orders={orders} />
         </section>
