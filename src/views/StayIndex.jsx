@@ -6,7 +6,7 @@ import { stayService } from '../services/stay.service'
 import { showErrorMsg, showSuccessMsg } from "../services/event-bus.service";
 import { loadStays, removeStay, saveStay, setFilterBy } from '../store/actions/stay.actions';
 import { StayList } from '../components/StayList';
-import { UserMsg } from '../components/UI/UserMsg';
+
 
 
 export function StayIndex() {
@@ -77,7 +77,7 @@ export function StayIndex() {
                     <StayList stays={stays} onRemove={onRemoveStay} />
                 </section>
             }
-            <UserMsg />
+
         </section>
 
     )

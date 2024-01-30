@@ -1,7 +1,8 @@
 import { GiConfirmed } from "react-icons/gi"
 import { eventBus, showSuccessMsg } from "../../services/event-bus.service.js"
 import { useState, useEffect, useRef } from 'react'
-//import { socketService, SOCKET_EVENT_REVIEW_ABOUT_YOU } from "../services/socket.service.js"
+import { SOCKET_EVENT_ORDER_FROM_YOU, socketService } from "../../services/socket.service.js"
+
 
 export function UserMsg() {
 
@@ -20,13 +21,13 @@ export function UserMsg() {
             timeoutIdRef.current = setTimeout(closeMsg, 10000)
         })
 
-        // socketService.on(SOCKET_EVENT_REVIEW_ABOUT_YOU, (review) => {
-        //     showSuccessMsg(`New review about me ${review.txt}`)
-        // })
+        socketService.on(SOCKET_EVENT_ORDER_FROM_YOU, (order) => {
+            showSuccessMsg(`New order waiting for you! `)
+        })
 
         return () => {
             unsubscribe()
-            // socketService.off(SOCKET_EVENT_REVIEW_ABOUT_YOU)
+            socketService.off(SOCKET_EVENT_ORDER_FROM_YOU)
         }
     }, [])
 
@@ -41,7 +42,7 @@ export function UserMsg() {
                 {msg.type == 'success' && <GiConfirmed />}
                 {msg.txt}
             </div>
-            <button onClick={closeMsg}>x</button>
+            {/* <button onClick={closeMsg}>x</button> */}
         </section>
     )
 }

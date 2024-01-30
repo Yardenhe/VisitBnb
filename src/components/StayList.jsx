@@ -72,7 +72,7 @@ export const StayList = memo(({ stays, onRemove }) => {
             </ul>
             {isLoading && <p>Loading more items...</p>}
             <div id="loading" style={{ height: '0px' }} ref={loadingRef}></div>
-            <div>no result</div>
+            {/* <div>no result</div> */}
         </section>
     )
 

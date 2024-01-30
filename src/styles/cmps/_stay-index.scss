@@ -7,7 +7,7 @@
 
 .user-msg {
     color: white;
-    padding: 10px 5px;
+    padding: 20px 10px;
     font-size: 1.4em;
     position: fixed;
     bottom: 50px;
@@ -19,9 +19,11 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    height: 5rem;
+    box-shadow: 1px 5px 5px 2px #03C03C;
 
     svg {
-        margin-inline: 5px;
+        margin-inline: 10px;
         color: #03C03C;
     }
 }
@@ -32,7 +34,7 @@
     border-radius: 50%;
     margin: 10px;
     background-color: $clr1;
-    color: $clr2;
+    color: black;
     width: 20px;
     height: 20px;
 }

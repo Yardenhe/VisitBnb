@@ -2,6 +2,9 @@ import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { loadOrders, saveOrder } from '../store/actions/order.actions'
 import { OrderList } from '../components/OrderList'
+import { SOCKET_EVENT_ORDER_ADDED, SOCKET_EVENT_ORDER_UPDATED, socketService } from '../services/socket.service'
+import { store } from '../store/store'
+import { ADD_ORDER, UPDATE_ORDER } from '../store/reducers/order.reducer'
 
 export function OrderIndex() {
   const loggedInUser = useSelector(storeState => storeState.userModule.user)
@@ -13,6 +16,23 @@ export function OrderIndex() {
 
   useEffect(() => {
     loadOrders(userToGetOrdersBy)
+  }, [])
+
+
+  useEffect(() => {
+
+    socketService.on(SOCKET_EVENT_ORDER_UPDATED, (order) => {
+      console.log("🚀 ~ socketService.on ~ order:", order)
+      store.dispatch({ type: UPDATE_ORDER, order: order })
+    })
+    socketService.on(SOCKET_EVENT_ORDER_ADDED, (order) => {
+      console.log("🚀 ~ socketService.on ~ order:", order)
+      store.dispatch({ type: ADD_ORDER, order: order })
+    })
+    return () => {
+      socketService.off(SOCKET_EVENT_ORDER_UPDATED)
+      socketService.off(SOCKET_EVENT_ORDER_ADDED)
+    }
   }, [])
 
   const elLoader = <p>loading orders.. or am i loading orders?</p>

@@ -2,6 +2,8 @@ import { useSelector } from "react-redux";
 import { orderService } from "../../services/order.service";
 import { ADD_ORDER, REMOVE_ORDER, SET_CURR_ORDER, SET_ORDERS, UPDATE_ORDER } from "../reducers/order.reducer";
 import { store } from "../store";
+import { showSuccessMsg } from "../../services/event-bus.service";
+import { Navigate } from "react-router-dom";
 
 
 // SET_ORDERS
@@ -25,7 +27,8 @@ export async function saveOrder(order) {
     try {
         const type = order._id ? UPDATE_ORDER : ADD_ORDER
         const savedOrder = await orderService.save(order)
-        console.log("🚀 savedOrder:", savedOrder)
+
+
         store.dispatch({ type, order: savedOrder })
     } catch (err) {
         console.error(err);

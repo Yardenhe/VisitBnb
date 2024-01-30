@@ -4,9 +4,9 @@ import { utilService } from '../services/util.service';
 import { GiConfirmed } from "react-icons/gi";
 import { FaRegClock } from "react-icons/fa6";
 import { MdCancel } from "react-icons/md";
-import { SOCKET_EVENT_ORDER_UPDATED, socketService } from '../services/socket.service';
-import { UPDATE_ORDER } from '../store/reducers/order.reducer';
-import { store } from '../store/store';
+// import { SOCKET_EVENT_ORDER_ADDED, SOCKET_EVENT_ORDER_UPDATED, socketService } from '../services/socket.service';
+// import { ADD_ORDER, UPDATE_ORDER } from '../store/reducers/order.reducer';
+// import { store } from '../store/store';
 
 export function OrderPreview({ order }) {
     const [stayOrder, setStayOrder] = useState();
@@ -15,13 +15,7 @@ export function OrderPreview({ order }) {
 
     useEffect(() => {
         loadStay()
-        socketService.on(SOCKET_EVENT_ORDER_UPDATED, (order) => {
-            console.log("🚀 ~ socketService.on ~ order:", order)
-            store.dispatch({ type: UPDATE_ORDER, order: order })
-        })
-        return () => {
-            socketService.off(SOCKET_EVENT_ORDER_UPDATED)
-        }
+
     }, [])
 
     async function loadStay() {

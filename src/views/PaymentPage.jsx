@@ -10,6 +10,7 @@ import { saveOrder } from "../store/actions/order.actions"
 import { useNavigate } from "react-router-dom"
 import { showSuccessMsg } from "../services/event-bus.service"
 
+
 export default function PaymentPage() {
     const currOrder = useSelector((storeState) => storeState.orderModule.currOrder)
     console.log("🚀 ~ PaymentPage ~ currOrder:", currOrder)
@@ -21,8 +22,9 @@ export default function PaymentPage() {
         try {
             const orderToSave = currOrder;
             await saveOrder(orderToSave)
+
             navigate('/')
-            showSuccessMsg("your order Successfully sent !")
+            showSuccessMsg("Your order successfully sent !")
         } catch (err) {
             console.log('Had issues adding order', err);
         }
@@ -107,6 +109,7 @@ export default function PaymentPage() {
                 </div>
 
             </section>
+
         </div>
 
     )
