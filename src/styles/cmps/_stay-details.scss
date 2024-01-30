@@ -495,6 +495,21 @@ $section-top: 32px;
   padding-left: 1em;
 }
 
+.amenity-modal-list{
+  .amenity {
+    width: 100%;
+    // border: solid 0.8px rgb(223, 229, 223);
+    display: flex;
+    padding: 8px 0;
+    align-items: center;
+    
+    &>img {
+      padding: 0;
+      width: 45px;
+      height: 45px;
+    }
+  }
+}
 //stay-dates
 .date-picker-modal {
   position: absolute;

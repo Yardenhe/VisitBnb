@@ -22,12 +22,11 @@ export async function setCurrOrder(currOrder) {
 
 // ADD_ORDER / UPDATE_ORDER
 export async function saveOrder(order) {
-    console.log("🚀 ~ saveOrder ~ order:", order)
     try {
         const type = order._id ? UPDATE_ORDER : ADD_ORDER
         const savedOrder = await orderService.save(order)
-        console.log("🚀 ~ saveOrder ~ savedOrder:", savedOrder)
-        store.dispatch({ type, order: savedOrder })
+        console.log("🚀 savedOrder:", savedOrder)
+        // store.dispatch({ type, order: savedOrder })
     } catch (err) {
         console.error(err);
     }

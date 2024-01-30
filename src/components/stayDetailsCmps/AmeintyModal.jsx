@@ -12,7 +12,7 @@ export function AmeintyModal({ payload }) {
             <div className="amenity-modal-list">
                 {amenities.map(a => (
                     <li key={a} className="amenity clean-list">
-                        <TagToIcon tag={a}/>
+                        <TagToIcon tag={a} className='amenity-icon'/>
                         <div className="amenity-name">{a}</div>
                     </li>))}
             </div>
