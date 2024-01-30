@@ -4,7 +4,10 @@
 }
 
 * {
-    box-sizing: border-box;
+    &:not(#root) {
+        box-sizing: border-box;
+
+    }
 }
 
 html {

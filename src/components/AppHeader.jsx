@@ -123,7 +123,7 @@ export function AppHeader() {
                             <Link to="/" onClick={handleReloadClick}>
                                 <img className="app-header-logo" src="../img/airbnb-logoo.PNG" />
                             </Link>
-                            {!location.pathname.includes('book') ?
+                            {(!location.pathname.includes('book') && !location.pathname.includes('order'))  ?
                                 <section className={`date-picker left${isOpenEffect ? ' enlarge' : ' '}`} onClick={onToggleEffect}>
                                     <section className='btn-datepicker bold anywhere-label '>{country ? country : 'Anywhere'}  </section>
                                     <span className={`vl-left`}></span>

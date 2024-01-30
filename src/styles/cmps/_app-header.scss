@@ -11,10 +11,11 @@
 
 }
 
-@media (max-width:450px) {
+@media (max-width:720) {
     .app-header {
         width: 100%;
         grid-template-columns: 1fr 200px 1fr;
+        padding-left: rem(20px) ;
     }
 
     .date-picker.left {

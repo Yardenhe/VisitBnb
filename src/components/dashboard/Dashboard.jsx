@@ -21,10 +21,12 @@ export function Dashboard() {
             <div className="dashboard-title">
                 <h3>Your reservations</h3>
             </div>
-            <OrderList orders={orders} />
+            <div className="order-index">
+                <OrderList orders={orders} />
+            </div>
         </section>
     </>)
 }
-// add svg 
+// add svg
 // numbesr in bold and text in thin
 // check why blue text
