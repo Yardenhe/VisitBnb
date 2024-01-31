@@ -7,7 +7,7 @@ export function ElevenPage({ onSetStay, stay }) {
     }, [selectedPrice])
     return (
         <section className='center'>
-            <section className="firstpage-edit fourthPage-edit eighth-page">
+            <section className="firstpage-edit fourthPage-edit eighth-page page-margin">
                 <div>
                     <h3>Review your listing</h3>
                     <h4>Here's what we'll show to guests. Make sure everything looks good.</h4>

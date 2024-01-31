@@ -22,6 +22,7 @@
     height: 5rem;
     box-shadow: 1px 5px 5px 2px #03C03C;
 
+
     svg {
         margin-inline: 10px;
         color: #03C03C;
@@ -46,4 +47,11 @@
 
 .user-msg.error {
     background-color: rgb(216, 59, 59);
+}
+
+@media (max-width:470px) {
+    .user-msg {
+        top: 10px;
+        left: 15px;
+    }
 }

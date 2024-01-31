@@ -171,7 +171,7 @@
 
                 .property-title {
                     font-family: 'cereal-medium';
-                    font-size:16px;
+                    font-size: 16px;
                 }
             }
 
@@ -498,5 +498,9 @@
         max-height: 150px;
         // white-space: nowrap;
         overflow: hidden;
+    }
+
+    .page-margin {
+        margin-inline: 300px
     }
 }

@@ -39,7 +39,7 @@ export function ReservationManager() {
                 <h5>{utilService.calculateNightsBetweenDates(order.startDate, order.endDate)} night</h5>
               </td>
               <td>{order.stay.name}</td>
-              <td>{`${order.totalPrice} ₪`}</td>
+              <td>{`${order.totalPrice} $`}</td>
             </tr>
           ))}
 
