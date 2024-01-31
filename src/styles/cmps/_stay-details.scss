@@ -207,6 +207,10 @@ $section-top: 32px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+
+    sub {
+      font-size: rem(18px);
+    }
   }
 
   li {
@@ -426,7 +430,7 @@ $section-top: 32px;
   }
 
   &-detail {
-    font-size: small;
+    font-size: 18px;
   }
 }
 
@@ -435,7 +439,7 @@ $section-top: 32px;
   padding: 2px;
   display: flex;
   justify-content: space-between;
-  font-size: small;
+  font-size: 22px;
   align-items: center;
 
   >* {

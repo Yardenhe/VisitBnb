@@ -32,7 +32,7 @@ export function StayPreview({ stay }) {
 
             <section className="image-container">
                 <Suspense >
-                    <img src="/public/img/general-icons/heart.svg" className='heart-svg'>
+                    <img src="../img/general-icons/heart.svg" className='heart-svg'>
                     </img>
                     <LazyLoadedImage className='img-preview' src={stay.imgUrls[currentImageIndex]} alt='img' >
 

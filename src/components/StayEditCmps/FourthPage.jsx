@@ -5,7 +5,7 @@ import { SearchBoxMap } from './SearchBoxMap';
 
 
 export function FourthPage({ onSetStay, stay }) {
-
+    const keyApi = "AIzaSyCfwC_mk9Fxgszcr2eArRS4PTdQQYy1Si8"
 
     const [searchBox, setSearchBox] = useState('');
     const [stayLocation, setStayLocation] = useState({
@@ -53,10 +53,10 @@ export function FourthPage({ onSetStay, stay }) {
 
             <section className='map-container' >
                 <div className='search-box'>
-                    <SearchBoxMap setStayLocation={setStayLocation} stayLocation={stayLocation} />
+                    <SearchBoxMap setStayLocation={setStayLocation} stayLocation={stayLocation} keyApi={keyApi} />
                 </div>
                 <GoogleMapReact
-                    bootstrapURLKeys={{ key: "AIzaSyCfwC_mk9Fxgszcr2eArRS4PTdQQYy1Si8", libraries: 'places' }}
+                    bootstrapURLKeys={{ key: keyApi, libraries: 'places' }}
                     center={center}
                     defaultZoom={zoom}
                     options={{ language: 'en' }}

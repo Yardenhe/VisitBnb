@@ -7,11 +7,11 @@ export function MiniUser({ user, type = 'user', isReview = false }) {
 
   const { fullname, isSuperhost, [isReview ? 'thumbnailUrl' : 'pictureUrl']: img } = user
 
-  const [userImg, setUserImg] = useState(img) 
+  const [userImg, setUserImg] = useState(img)
   const tempImg = 'https://thispersondoesnotexist.com/'
-  const superhostTag = '/public/img/general-icons/superhost-tag.svg'
+  const superhostTag = '../img/general-icons/superhost-tag.svg'
 
- 
+
 
   function handleImgError({ src }) {
     console.log('error in src: ', src);
@@ -35,9 +35,9 @@ export function MiniUser({ user, type = 'user', isReview = false }) {
         <div className="host-card">
 
           <h4>Hosted by {`${fullname}`}</h4>
-          {isSuperhost ? 
-          <span className="sub-text">{isSuperhost && <span>Superhost</span>}</span>:
-          <span className="sub-text">Experienced host</span>
+          {isSuperhost ?
+            <span className="sub-text">{isSuperhost && <span>Superhost</span>}</span> :
+            <span className="sub-text">Experienced host</span>
           }
         </div>
         :
