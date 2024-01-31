@@ -1,7 +1,31 @@
 import React, { useEffect, useState } from 'react'
-const iconNames = ['Air conditioning', 'BBQ grill', 'Fire extinguisher', 'First aid kit', 'Gym', 'Hot tub', 'Kitchen', 'Outdoor dining', 'Paid parking', 'Parking', 'Patio'
-    , 'Smoke alarm', 'TV', 'Washing machine', 'Wifi', 'Workspace', 'Shower', 'Pool', 'Pool table', 'Patio'];
-
+// const iconNames = ['Air conditioning', 'BBQ grill', 'Fire extinguisher', 'First aid kit', 'Gym', 'Hot tub', 'Kitchen', 'Outdoor dining', 'Paid parking', 'Parking', 'Patio'
+//     , 'Smoke alarm', 'TV', 'Washing machine', 'Wifi', 'Workspace', 'Shower', 'Pool', 'Pool table', 'Patio'];
+const iconNames =[
+    'TV',
+    'Wifi',
+    'Air conditioning',
+    'Kitchen',
+    'Smoking allowed',
+    'Heating',
+    'Washer',
+    'Dryer',
+    'Essentials',
+    'Shampoo',
+    'Hangers',
+    'Hair dryer',
+    'Iron',
+    'Bathtub',
+    'Bed linens',
+    'Microwave',
+    'Coffee maker',
+    'Refrigerator',
+    'Dishwasher',
+    'Dishes',
+    'Oven',
+    'Patio or balcony'
+  ]
+  
 
 export function SixthPage({ onSetStay, stay }) {
     const [selectedamenities, setSelectedamenities] = useState(stay.amenities);
