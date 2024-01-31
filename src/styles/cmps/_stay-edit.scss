@@ -449,6 +449,8 @@
 
     .sevenPage-edit {
         overflow: auto;
+        padding-bottom: 10vh;
+
     }
 
     .tenthPage-edit {
@@ -460,8 +462,9 @@
         align-items: center;
         justify-content: center;
         border: $clr4 solid 1px;
-        height: 20vh;
-        width: 40vh;
+        height: 40vh;
+        width: 60vh;
+        cursor: pointer;
 
         .svg-upload {
             height: 50px;

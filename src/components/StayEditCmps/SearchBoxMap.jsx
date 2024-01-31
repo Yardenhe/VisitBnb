@@ -4,7 +4,7 @@ import GooglePlacesAutocomplete from "react-google-places-autocomplete";
 import { geocodeByPlaceId } from "react-google-places-autocomplete";
 import { showErrorMsg, showSuccessMsg } from "../../services/event-bus.service";
 
-export function SearchBoxMap({ setStayLocation, stayLocation, key }) {
+export function SearchBoxMap({ setStayLocation, stayLocation, keyApi }) {
     const [address, setAddress] = useState("");
 
     useEffect(() => {
@@ -79,7 +79,7 @@ export function SearchBoxMap({ setStayLocation, stayLocation, key }) {
             </button> */}
             <div>
                 <GooglePlacesAutocomplete
-                    apiKey={key}
+                    apiKey={keyApi}
                     debounce={300}
                     selectProps={{
                         placeholder: stayLocation?.address ?? "Where are you going?",

@@ -11,7 +11,7 @@ export function SeventhPage({ onSetStay, stay }) {
     }, [selectedImg])
     function onUploaded(imgUrl) {
         console.log("🚀 ~ onUploaded ~ imgUrl:", imgUrl)
-        setSelectedImg([...selectedImg, imgUrl])
+        setSelectedImg(...selectedImg, imgUrl)
     }
     return (
         <section className="firstpage-edit fourthPage-edit sevenPage-edit">
@@ -20,24 +20,13 @@ export function SeventhPage({ onSetStay, stay }) {
                 <h5>You'll need 5 photos to get started. You can add more or make changes later.</h5>
 
             </div>
-            {selectedImg.length ? <ImageShortGalery imgUrls={selectedImg} /> : null}
-            {/* <div className='image-grid'>
-                {
-                    selectedImg.map((image) => (
+            {selectedImg.length ? <ImageShortGalery imgUrls={selectedImg} /> :
 
 
-                        <img key={image} src={image} className='upload-image' />
+                < section className='roomtype-list' >
+                    <ImgUploader onUploaded={onUploaded} />
 
-
-                    ))
-
-                }
-            </div > */}
-
-            < section className='roomtype-list' >
-                <ImgUploader onUploaded={onUploaded} />
-
-            </section>
+                </section>}
         </section >
     )
 }
