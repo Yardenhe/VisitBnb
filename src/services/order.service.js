@@ -164,9 +164,10 @@ function _getAverageBookingDuration(orders) {
     return endDate - startDate; // Duration in milliseconds
   });
 
+  if (durations.length === 0) return 0
   const averageDuration = durations.reduce((total, duration) => total + duration, 0) / durations.length;
 
-  return utilService.convertMillisecondsToNights(averageDuration) // Result in milliseconds
+  return utilService.convertMillisecondsToNights(averageDuration)// Result in milliseconds
 }
 function _getOrderStatusBreakdown(orders) {
   const statusCounts = {}

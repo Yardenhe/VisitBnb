@@ -19,6 +19,8 @@ export function StayReviews({ reviews }) {
   return (
     <>
       {/* TODO: stats cmp  */}
+      <h3>Reviews</h3>
+
       <div className="review-stats">
         {/* <h3 className="review-stats-header">Average Rating</h3> */}
         <div className="reviews-average-container">
@@ -34,7 +36,6 @@ export function StayReviews({ reviews }) {
 
         </div>
       </div>
-      <h4>Reviews</h4>
       <div className="review-list-short">
         {reviewsToShow.map((review, i) => (
           <article key={i} className="review-item-container">

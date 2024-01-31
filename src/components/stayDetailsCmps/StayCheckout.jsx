@@ -1,6 +1,6 @@
 import { RiArrowDropDownLine as DownArrow, RiArrowDropUpLine as UpArrow } from "react-icons/ri";
 import { onToggleModal } from "../../store/actions/app.actions";
-import { pluralizeLabel, utilService } from "../../services/util.service";
+import { addCommasNumeric, pluralizeLabel, utilService } from "../../services/util.service";
 import { ReserveBtn } from "../UI/ReserveBtn";
 import { DatePicker } from "../UI/DatePicker";
 import { useEffect, useState } from "react";
@@ -106,20 +106,20 @@ export function StayCheckout({ price, startDate, endDate, currOrder }) {
           </div>
           <div className="booking-costs">
             <div className="price-break-down">
-              <button className="btn-desc-modal">{`${price} x ${nightsInStay} nights`}</button>
-              <span>${bookingCosts.nightsCost}</span>
+              <button className="btn-desc-modal">{`${addCommasNumeric(+price)} x ${nightsInStay} nights`}</button>
+              <span>${addCommasNumeric(+bookingCosts.nightsCost)}</span>
             </div>
             <div className="price-break-down">
               <button className="btn-desc-modal">Visit service fee</button>
-              <span>${bookingCosts.serviceFee}</span>
+              <span>${addCommasNumeric(+bookingCosts.serviceFee)}</span>
             </div>
             <div className="price-break-down">
               <button className="btn-desc-modal">Taxes</button>
-              <span>${bookingCosts.taxes}</span>
+              <span>${addCommasNumeric(+bookingCosts.taxes)}</span>
             </div>
             <div className="checkout-total">
               <span>Total</span>
-              <span>${`${bookingCosts.totalPrice}`}</span>
+              <span>${`${addCommasNumeric(+bookingCosts.totalPrice)}`}</span>
             </div>
           </div>
         </>

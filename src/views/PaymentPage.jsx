@@ -3,7 +3,7 @@ import { OrderPreview } from "../components/OrderPreview"
 import { stayService } from "../services/stay.service"
 import { LoginSignup } from "../components/LoginSignUp"
 import { useEffect, useState } from "react"
-import { utilService } from "../services/util.service"
+import { addCommasNumeric, pluralizeLabel, utilService } from "../services/util.service"
 import { orderService } from "../services/order.service"
 import { ReserveBtn } from "../components/UI/ReserveBtn"
 import { saveOrder } from "../store/actions/order.actions"
@@ -47,11 +47,11 @@ export default function PaymentPage() {
                         </div>
                         <div className="payment-order-info">
                             <h3>Guests</h3>
-                            <div className="sub-text"> {orderService.getTotalguests(currOrder.guests)}</div>
+                            <div className="sub-text"> {pluralizeLabel(orderService.getTotalguests(currOrder.guests),'guest')}</div>
                         </div>
                         <div className="payment-order-info">
                             <h3>Total price</h3>
-                            <div className="sub-text"> {currOrder.totalPrice}</div>
+                            <div className="sub-text"> {`$${addCommasNumeric(+currOrder.totalPrice)}`}</div>
                         </div>
                     </section>
 
@@ -62,26 +62,29 @@ export default function PaymentPage() {
                     {isLoggedin &&
                         <div className="">
                             <section className="stay-facts">
-                                <div className="payment-order-info">
+                                <div className="payment-order-info ">
                                     <h3>Ground rules</h3>
-                                    <div className="sub-text">
+                                    <div className="sub-text payment-details-p">
                                         <h4>We ask every guest to remember a few simple things about what makes a great guest.
                                             Follow the house rules
                                             Treat your Host's h
                                             ome like your own.</h4>
-                                        <div className="tiny-li">
-                                            <span className="dot"></span><li>Follow the house rules</li>
-                                        </div>
-                                        <div className="tiny-li">
-                                            <span className="dot"></span><li>Treat your Host’s home like your own</li>
+                                        <div className="payment-details-p">
+
+                                            <div className="tiny-li">
+                                                <span className="dot"></span><li>Follow the house rules</li>
+                                            </div>
+                                            <div className="tiny-li">
+                                                <span className="dot"></span><li>Treat your Host’s home like your own</li>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </section>
                             <section className="stay-description">
-                                <div className="payment-order-info">
+                                <div className="payment-order-info payment-details-p">
                                     <h4 className=""> Your reservation won’t be confirmed until the Host accepts your request (within 24 hours).</h4>
-                                    <h4 className="sub-text">You won’t be charged until then.</h4>
+                                    <h4 className="sub-text payment-details-p">You won’t be charged until then.</h4>
 
                                 </div>
                             </section>
@@ -95,7 +98,7 @@ export default function PaymentPage() {
                     }
                 </article>
 
-                <div className="checkout-card">
+                <div className="checkout-card stay-details-card">
                     <h3>Order details</h3>
 
                     <div className="mini-order-preview">
@@ -104,7 +107,7 @@ export default function PaymentPage() {
 
                     <div className="checkout-total">
                         <span>Total price</span>
-                        <span>${`${currOrder.totalPrice}`}</span>
+                        <span>${`${addCommasNumeric(+currOrder.totalPrice)}`}</span>
                     </div>
                 </div>
 

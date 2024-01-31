@@ -4,7 +4,10 @@
 }
 
 * {
-    box-sizing: border-box;
+    &:not(#root) {
+        box-sizing: border-box;
+
+    }
 }
 
 html {
@@ -119,8 +122,8 @@ p {
 
 .generic-icon {
     min-width: 25px;
-    max-width: 100px;
-    max-height: 100px;
+    max-width: 32px;
+    max-height: 32px;
     // display: flex;
     // justify-content: center;
     // align-items: center;

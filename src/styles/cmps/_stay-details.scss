@@ -63,7 +63,7 @@ $section-top: 32px;
 
 .host-card {
   // border: 1px solid blueviolet;
-  margin-left: 24px;
+  // margin-left: 24px;
   line-height: 1;
 
   h4 {
@@ -92,9 +92,13 @@ $section-top: 32px;
   height: 40px;
 }
 
+.mini-user-img {
+  min-width: 57px;
+}
+
 .super-host-tag {
   position: relative;
-  bottom: 0;
+  bottom: -2px;
   right: 15px;
 
   & img {
@@ -484,8 +488,6 @@ $section-top: 32px;
 
     &>img {
       padding: 0;
-      width: 45px;
-      height: 45px;
     }
 
     // &>svg {
@@ -507,17 +509,17 @@ $section-top: 32px;
 }
 
 .amenity-modal-list {
+  gap: 0px !important;
+
   .amenity {
     width: 100%;
-    // border: solid 0.8px rgb(223, 229, 223);
+    border-bottom: solid 0.8px rgb(223, 229, 223);
     display: flex;
-    padding: 8px 0;
+    padding: 15px 0;
     align-items: center;
 
     &>img {
       padding: 0;
-      width: 45px;
-      height: 45px;
     }
   }
 }
@@ -646,6 +648,7 @@ $section-top: 32px;
     display: flex;
     justify-content: space-around;
     align-items: center;
+    margin-bottom: 48px;
 
     .reviews-average-container {
       display: flex;
@@ -690,11 +693,14 @@ $section-top: 32px;
   margin: 0 auto;
   padding: 0 80px;
   max-width: 1280px;
-  width: 70vw;
+  width: 85vw;
   justify-content: center;
 }
 
 .checkout-payment-container {
+  width: 100%;
+  margin: 0 auto;
+
   .checkout-card {
     width: 100%;
     // max-width: 500px;
@@ -707,11 +713,6 @@ $section-top: 32px;
 
     .payment-order-info {
       margin-top: 32px;
-
-      h3 {
-        @include section-padding(2);
-
-      }
     }
   }
 }
@@ -731,9 +732,9 @@ $section-top: 32px;
 
   img {
     flex-grow: 1;
-    max-width: 150px !important;
-    max-height: 150px !important;
-    min-width: 120px !important;
+    max-width: 80% !important;
+    max-height: 175px !important;
+    min-width: 175px !important;
     min-height: 120px !important;
 
     object-fit: cover;
@@ -764,7 +765,7 @@ $section-top: 32px;
 }
 
 .tiny-li {
-  margin-top: 16px;
+  margin-top: 22px;
   gap: 20px;
   display: flex;
   align-items: center;
@@ -813,4 +814,16 @@ $section-top: 32px;
   align-items: center;
   justify-content: center;
   transform: translate(-50%, -50%);
+}
+
+// payment
+.payment-details-p {
+  @include section-padding(2);
+
+  padding-bottom: 0;
+
+}
+
+.checkout-card.stay-details-card {
+  margin-left: 2rem !important;
 }
