@@ -91,9 +91,11 @@ $section-top: 32px;
   width: 40px;
   height: 40px;
 }
-.mini-user-img{
-  gap:5px
+
+.mini-user-img {
+  min-width: 57px;
 }
+
 .super-host-tag {
   position: relative;
   bottom: -2px;
@@ -486,8 +488,6 @@ $section-top: 32px;
 
     &>img {
       padding: 0;
-      width: 45px;
-      height: 45px;
     }
 
     // &>svg {
@@ -509,17 +509,17 @@ $section-top: 32px;
 }
 
 .amenity-modal-list {
+  gap: 0px !important;
+
   .amenity {
     width: 100%;
-    // border: solid 0.8px rgb(223, 229, 223);
+    border-bottom: solid 0.8px rgb(223, 229, 223);
     display: flex;
-    padding: 8px 0;
+    padding: 15px 0;
     align-items: center;
 
     &>img {
       padding: 0;
-      width: 45px;
-      height: 45px;
     }
   }
 }
@@ -648,6 +648,7 @@ $section-top: 32px;
     display: flex;
     justify-content: space-around;
     align-items: center;
+    margin-bottom: 48px;
 
     .reviews-average-container {
       display: flex;
@@ -697,8 +698,9 @@ $section-top: 32px;
 }
 
 .checkout-payment-container {
-  width:100%;
+  width: 100%;
   margin: 0 auto;
+
   .checkout-card {
     width: 100%;
     // max-width: 500px;
@@ -815,13 +817,13 @@ $section-top: 32px;
 }
 
 // payment
-.payment-details-p{
+.payment-details-p {
   @include section-padding(2);
 
   padding-bottom: 0;
 
 }
 
-.checkout-card.stay-details-card{
+.checkout-card.stay-details-card {
   margin-left: 2rem !important;
 }

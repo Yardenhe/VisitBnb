@@ -3,7 +3,7 @@ import { OrderPreview } from "../components/OrderPreview"
 import { stayService } from "../services/stay.service"
 import { LoginSignup } from "../components/LoginSignUp"
 import { useEffect, useState } from "react"
-import { utilService } from "../services/util.service"
+import { addCommasNumeric, pluralizeLabel, utilService } from "../services/util.service"
 import { orderService } from "../services/order.service"
 import { ReserveBtn } from "../components/UI/ReserveBtn"
 import { saveOrder } from "../store/actions/order.actions"
@@ -45,11 +45,11 @@ export default function PaymentPage() {
                         </div>
                         <div className="payment-order-info">
                             <h3>Guests</h3>
-                            <div className="sub-text"> {orderService.getTotalguests(currOrder.guests)}</div>
+                            <div className="sub-text"> {pluralizeLabel(orderService.getTotalguests(currOrder.guests),'guest')}</div>
                         </div>
                         <div className="payment-order-info">
                             <h3>Total price</h3>
-                            <div className="sub-text"> {`${currOrder.totalPrice} $`}</div>
+                            <div className="sub-text"> {`$${addCommasNumeric(+currOrder.totalPrice)}`}</div>
                         </div>
                     </section>
 
@@ -105,7 +105,7 @@ export default function PaymentPage() {
 
                     <div className="checkout-total">
                         <span>Total price</span>
-                        <span>${`${currOrder.totalPrice}`}</span>
+                        <span>${`${addCommasNumeric(+currOrder.totalPrice)}`}</span>
                     </div>
                 </div>
 

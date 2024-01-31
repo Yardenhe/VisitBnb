@@ -20,6 +20,7 @@ export const utilService = {
 	calculateNightsBetweenDates,
 	convertMillisecondsToNights,
 	checkClassNameByTitle,
+	
 
 	// pluralizeLabel,
 }
@@ -261,3 +262,13 @@ function checkClassNameByTitle(title) {
 	}
 }
 
+export function addCommasNumeric(number) {
+	if (typeof number !== 'number' || isNaN(number)) {
+	  return number
+	}
+	if (number === undefined || number === null) {
+	  return number
+	}
+  
+	return parseFloat(number).toLocaleString('en-US');
+  }

@@ -33,7 +33,10 @@ export function MiniUser({ user, type = 'user', isReview = false }) {
         <div className="host-card">
 
           <h4>Hosted by {`${fullname}`}</h4>
-          <span className="sub-text">{isSuperhost && <span><b>Superhost</b></span>} - Experienced host</span>
+          {isSuperhost ? 
+          <span className="sub-text">{isSuperhost && <span>Superhost</span>}</span>:
+          <span className="sub-text">Experienced host</span>
+          }
         </div>
         :
         <div className="user-card">
