@@ -272,3 +272,20 @@ export function addCommasNumeric(number) {
   
 	return parseFloat(number).toLocaleString('en-US');
   }
+
+export function getRandomUserPhoto(){
+	const photos = [
+		"https://res.cloudinary.com/dafkc3w9n/image/upload/v1706701279/wnnr2f9uksarkhwik8jl.jpg",
+		"https://res.cloudinary.com/dafkc3w9n/image/upload/v1706701283/eprnyfavhpbd7gocqcrh.jpg",
+		"https://res.cloudinary.com/dafkc3w9n/image/upload/v1706701288/wjmedaea3xze3fh7njfj.jpg",
+		"https://res.cloudinary.com/dafkc3w9n/image/upload/v1706701294/cc5mxxofwcrenwlwkie9.jpg",
+		"https://res.cloudinary.com/dafkc3w9n/image/upload/v1706701339/lajucg614cbh0irkcksd.jpg",
+		"https://res.cloudinary.com/dafkc3w9n/image/upload/v1706701433/h1faanf8cvrvhwmr0fzo.jpg",
+		"https://res.cloudinary.com/dafkc3w9n/image/upload/v1706701440/ac7pvioeejekawpalu2l.jpg",
+		"https://res.cloudinary.com/dafkc3w9n/image/upload/v1706701449/my1d92gxn1ca6ompyhxi.jpg",
+		"https://res.cloudinary.com/dafkc3w9n/image/upload/v1706701458/vmj1kxvbwoegjnps8mmh.jpg",
+		"https://res.cloudinary.com/dafkc3w9n/image/upload/v1706701464/idrq0lwvxu6r1e48le3b.jpg"
+	]
+
+	return photos[Math.floor((Math.random()*10))]
+}

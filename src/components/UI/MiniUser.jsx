@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { getRandomUserPhoto } from "../../services/util.service";
 
 export function MiniUser({ user, type = 'user', isReview = false }) {
   console.log("🚀 ~ MiniUser ~ user:", user)
@@ -6,24 +7,25 @@ export function MiniUser({ user, type = 'user', isReview = false }) {
 
   const { fullname, isSuperhost, [isReview ? 'thumbnailUrl' : 'pictureUrl']: img } = user
 
-
-  // console.log("MiniUser",user);
-  const [userImg, setUserImg] = useState(img)
-  // const tempImg = '/public/img/general-icons/user-circle.svg'
+  const [userImg, setUserImg] = useState(img) 
   const tempImg = 'https://thispersondoesnotexist.com/'
   const superhostTag = '/public/img/general-icons/superhost-tag.svg'
 
+ 
+
   function handleImgError({ src }) {
     console.log('error in src: ', src);
-    setUserImg(tempImg)
+    setUserImg(getRandomUserPhoto())
   }
+
   return (
     <div className="mini-user">
       <div className="mini-user-img">
         <img
           className="user-img"
           onError={(ev) => handleImgError(ev.target)}
-          src={`${userImg}`}
+          // src={`${userImg}`}
+          src={`${(userImg === tempImg) ? getRandomUserPhoto() : userImg}`}
           alt="user"
         />
         {isSuperhost && <span className="super-host-tag"><img src={superhostTag} alt="" /></span>}
@@ -47,3 +49,6 @@ export function MiniUser({ user, type = 'user', isReview = false }) {
     </div>
   )
 }
+
+
+

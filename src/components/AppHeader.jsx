@@ -121,7 +121,7 @@ export function AppHeader() {
                         {isOpenFilter && <div className="overlay" onClick={onToggleEffect}></div>}
                         <header className={'app-header'} >
                             <Link to="/" onClick={handleReloadClick}>
-                                <img className="app-header-logo" src="../img/airbnb-logoo.PNG" />
+                                <img className="app-header-logo" src="../img/VisitBnbByDazen2.jpg" />
                             </Link>
                             {(!location.pathname.includes('book') && !location.pathname.includes('order'))  ?
                                 <section className={`date-picker left${isOpenEffect ? ' enlarge' : ' '}`} onClick={onToggleEffect}>
@@ -158,7 +158,7 @@ export function AppHeader() {
                         <header className={`app-header-filter${isOpenFilter ? ' show-explore' : ' slideOut'}`}>
                             <section className="app-header grid-app-header">
                                 <Link to="/" onClick={handleReloadClick}>
-                                    <img className="app-header-logo" src="../img/airbnb-logoo.PNG" />
+                                    <img className="app-header-logo" src="../img/VisitBnbByDazen2.jpg" />
                                 </Link>
                                 <section className='app-mini-menu'>
                                     <section >Stays</section>
