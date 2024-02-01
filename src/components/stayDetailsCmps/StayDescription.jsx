@@ -81,7 +81,7 @@ export function StayDescription({ stay }) {
             <TagToIcon tag={'calendar'} />
           </div>
           <div className="list-item-nest">
-            <li>Free cancelation before..</li>
+            <li>Free cancelation 24 hours before</li>
             <sub>Check yourself in with the smartlock.</sub>
           </div>
         </div>

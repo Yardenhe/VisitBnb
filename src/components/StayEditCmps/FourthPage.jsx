@@ -9,12 +9,12 @@ export function FourthPage({ onSetStay, stay }) {
 
     const [searchBox, setSearchBox] = useState('');
     const [stayLocation, setStayLocation] = useState({
-        "country": "United States",
-        "countryCode": "US",
-        "city": "Maui",
-        "address": "Lahaina, HI, United States",
-        "lng": -156.6917,
-        "lat": 20.93792
+        "country": "Israel",
+        "countryCode": "IL",
+        "city": "Tel Aviv",
+        "address": "Alenby St 5, Tel Aviv-Yafo",
+        "lng": 34.7681,
+        "lat": 32.0678
     })
 
 
