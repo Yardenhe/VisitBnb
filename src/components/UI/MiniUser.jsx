@@ -5,17 +5,17 @@ export function MiniUser({ user, type = 'user', isReview = false }) {
   console.log("🚀 ~ MiniUser ~ user:", user)
 
 
-  const { fullname, isSuperhost, [isReview ? 'thumbnailUrl' : 'pictureUrl']: img } = user
+  const { fullname, isSuperhost, [isReview ? 'imgUrl' : 'pictureUrl']: img } = user
+  // console.log("🚀 ~ MiniUser ~ img:", img)
 
   const [userImg, setUserImg] = useState(img) 
-  const tempImg = 'https://thispersondoesnotexist.com/'
-  const superhostTag = '/public/img/general-icons/superhost-tag.svg'
+  const tempImg = getRandomUserPhoto()
+  const superhostTag = '../img/general-icons/superhost-tag.svg'
 
- 
 
   function handleImgError({ src }) {
     console.log('error in src: ', src);
-    setUserImg(getRandomUserPhoto())
+    setUserImg(tempImg)
   }
 
   return (

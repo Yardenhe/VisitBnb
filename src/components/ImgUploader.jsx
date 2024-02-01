@@ -31,7 +31,7 @@ export function ImgUploader({ onUploaded = null }) {
             <div className='photo-uploader'>
 
                 <div className='image-content' >
-                    <img src="/public/img/general-icons/photos-icon.svg" className='svg-upload' />
+                    <img src="../img/general-icons/photos-icon.svg" className='svg-upload' />
                     <h5 htmlFor="imgUpload">{getUploadLabel()}</h5>
                 </div>
             </div>

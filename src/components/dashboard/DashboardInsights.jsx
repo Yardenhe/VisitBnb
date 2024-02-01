@@ -1,5 +1,5 @@
 import { orderService } from "../../services/order.service"
-import { utilService } from "../../services/util.service"
+import { addCommasNumeric, utilService } from "../../services/util.service"
 import { BsMoonStarsFill as MoonIcon } from "react-icons/bs";
 import { FaPeopleRoof as GuestsIcon } from "react-icons/fa6";
 import { TbReportMoney as RevenueIcon } from "react-icons/tb";
@@ -22,7 +22,7 @@ export function DashboardInsights({ orders }) {
         </div>
         <div className="insight-card-data">
           <div className="insight-number">
-            {revenue}
+            {addCommasNumeric(revenue)}
           </div>
           <div className="insight-icon">
             <RevenueIcon />

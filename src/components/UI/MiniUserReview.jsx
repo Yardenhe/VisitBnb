@@ -28,7 +28,7 @@ export function MiniUserReview({ review ,isList = false}) {
             {review.txt}
         </div>
         
-        {review.txt.length > 258 && (
+        {review.txt.length > 129 && (
           <div className="review-action">
             <button className="action-btn underline">Show more</button>
           </div>

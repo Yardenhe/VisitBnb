@@ -15,7 +15,8 @@ $img-radius:4%;
   height: 100%;
   grid-template-columns: repeat($gallery-columns, 1fr);
   grid-template-rows: repeat($gallery-rows, 1fr);
-  position: relative;  
+  position: relative;
+  // aspect-ratio: 2.5;  
   img {
     object-fit: cover;
     min-width: 100%;
