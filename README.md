@@ -1,10 +1,11 @@
-# VisitBnb
 
 # [VisitBnb](https://visitbnb-0pty.onrender.com/)
 
 [![VisitBnb](https://github.com/Yardenhe/VisitBnb/assets/97617146/624e686b-e284-41c5-a052-a9a00c1311ef)](https://visitbnb-0pty.onrender.com/)
 
 **VisitBnb**, a pixel-perfect Single Page Application (SPA) inspired by the website Airbnb – a marketplace for hiring and hosting a place to sleep.
+
+**Link to Demo Website: [VisitBnb Demo](https://visitbnb-0pty.onrender.com/)**
 
 
 ## Features
