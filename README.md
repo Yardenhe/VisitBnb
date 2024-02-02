@@ -1,12 +1,11 @@
 # VisitBnb
 
-[![VisitBnb](<link to your logo/image>)](https://visitbnb-0pty.onrender.com/)
+[![VisitBnb](<https://res.cloudinary.com/dafkc3w9n/image/upload/v1706869163/ms1wcmwhwzwwvla5faoq.jpg/image>)](https://visitbnb-0pty.onrender.com/)
 
 VisitBnb, a pixel-perfect Single Page Application (SPA) inspired by the website Airbnb – a marketplace for hiring and hosting a place to sleep.
 
 ## Features
 
-- **Responsive Design:** Enjoy a seamless experience on various devices, ensuring accessibility for all users.
 
 - **Intuitive User Interface:** User-friendly interface designed for easy navigation and interaction.
 
@@ -17,8 +16,9 @@ VisitBnb, a pixel-perfect Single Page Application (SPA) inspired by the website 
 - **Booking System:** Streamlined booking process for a hassle-free user experience.
 
 - **Image Galleries:** Visualize accommodations with stunning image galleries.
+  
+- **Full CRUDL Operations:** Perform Create, Read, Update, Delete, and List operations seamlessly.
 
-- **Map Integration:** Explore accommodations with an interactive map view.
 
 ## Built With
 
@@ -30,22 +30,19 @@ VisitBnb, a pixel-perfect Single Page Application (SPA) inspired by the website 
 
 - **Axios:** Make HTTP requests to your server effortlessly.
 
-- **Leaflet:** An open-source JavaScript library for interactive maps.
+- **MongoDB Integration:** Leverage MongoDB for efficient and scalable data storage.
+  
+- **WebSockets:** Utilize WebSockets for real-time communication and updates.
+
+
+
 
 ## Screenshots
 
-![Screenshot 1](<link to your screenshot/image1>)
-![Screenshot 2](<link to your screenshot/image2>)
-![Screenshot 3](<link to your screenshot/image3>)
+![Home Page](![image](https://github.com/Yardenhe/VisitBnb/assets/97617146/870fbfb2-e959-4af4-9c5d-1eb82983c71e)
+>)
+![Detail Page](![image](https://github.com/Yardenhe/VisitBnb/assets/97617146/2c708f3d-76b5-4a50-973d-9456036a8e89)
+)
+![Stay Edit Page](![image](https://github.com/Yardenhe/VisitBnb/assets/97617146/e5f8fc72-5dd9-437a-8b9e-88716aa95bda)
+)
 
-## Getting Started
-
-[Include any necessary instructions for getting started with the frontend]
-
-## Contributing
-
-[Include guidelines for contributing to your project]
-
-## License
-
-[Specify the license under which your project is distributed]
