@@ -39,10 +39,12 @@ VisitBnb, a pixel-perfect Single Page Application (SPA) inspired by the website 
 
 ## Screenshots
 
-![Home Page](![image](https://github.com/Yardenhe/VisitBnb/assets/97617146/870fbfb2-e959-4af4-9c5d-1eb82983c71e)
->)
-![Detail Page](![image](https://github.com/Yardenhe/VisitBnb/assets/97617146/2c708f3d-76b5-4a50-973d-9456036a8e89)
+![Home Page](https://github.com/Yardenhe/VisitBnb/assets/97617146/cc4f166f-f600-49bd-ae24-6d94d254d219)
+
+![Detail Page](https://github.com/Yardenhe/VisitBnb/assets/97617146/a412ce87-4066-4aea-9a4a-d54d4187da76)
+
+![Stay Edit Page](https://github.com/Yardenhe/VisitBnb/assets/97617146/36fca75a-98cb-4fac-b9d6-84756b4e6e52)
+
 )
-![Stay Edit Page](![image](https://github.com/Yardenhe/VisitBnb/assets/97617146/e5f8fc72-5dd9-437a-8b9e-88716aa95bda)
 )
 
