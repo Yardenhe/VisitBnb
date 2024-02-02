@@ -1,8 +1,5 @@
 # VisitBnb
 
-![VisitBnb](https://github.com/Yardenhe/VisitBnb/assets/97617146/624e686b-e284-41c5-a052-a9a00c1311ef)
-
-
 # [VisitBnb](https://visitbnb-0pty.onrender.com/)
 
 [![VisitBnb](https://github.com/Yardenhe/VisitBnb/assets/97617146/624e686b-e284-41c5-a052-a9a00c1311ef)](https://visitbnb-0pty.onrender.com/)
