@@ -1,6 +1,7 @@
 # VisitBnb
 
-[![VisitBnb](<https://res.cloudinary.com/dafkc3w9n/image/upload/v1706869163/ms1wcmwhwzwwvla5faoq.jpg/image>)](https://visitbnb-0pty.onrender.com/)
+![VisitBnb](https://github.com/Yardenhe/VisitBnb/assets/97617146/624e686b-e284-41c5-a052-a9a00c1311ef)
+
 
 VisitBnb, a pixel-perfect Single Page Application (SPA) inspired by the website Airbnb – a marketplace for hiring and hosting a place to sleep.
 
