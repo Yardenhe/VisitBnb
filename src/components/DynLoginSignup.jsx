@@ -12,7 +12,7 @@ export function LoginSignup({ payload }) {
         const formFields = isLoginForm ? userService.getLoginForm() : userService.getSignupForm()
         setUserLoginForm(formFields)
         setUserData({})
-    },[isLoginForm])
+    }, [isLoginForm])
 
     const handleChange = (fieldName, value) => {
         setUserData((prevData) => ({ ...prevData, [fieldName]: value }))
