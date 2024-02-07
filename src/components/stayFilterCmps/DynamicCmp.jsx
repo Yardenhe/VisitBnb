@@ -27,7 +27,6 @@ export function DynamicCmp(props) {
 // change into object mapping
 
 export function StoreDynamicCmp({ type, payload, onCloseModal }) {
-    console.log("🚀 ~ StoreDynamicCmp ~ type:", type)
 
 
     const cmpMap = {
@@ -35,8 +34,8 @@ export function StoreDynamicCmp({ type, payload, onCloseModal }) {
         loginSignup: <LoginSignup payload={payload} onCloseModal={onCloseModal} />,
         ameintyModal: <AmeintyModal payload={payload} onCloseModal={onCloseModal} />,
         approveRejectOrder: <ApproveRejectOrderModal payload={payload} onCloseModal={onCloseModal} />,
-        reviewsModal: <ReviewsModal payload={payload} onCloseModal={onCloseModal}/>
-        // datePicker: <DatePicker payload={payload} />
+        reviewsModal: <ReviewsModal payload={payload} onCloseModal={onCloseModal} />
+
 
     }
 

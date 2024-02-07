@@ -5,19 +5,18 @@ import { geocodeByPlaceId } from "react-google-places-autocomplete";
 import { showErrorMsg, showSuccessMsg } from "../../services/event-bus.service";
 
 export function SearchBoxMap({ setStayLocation, stayLocation, keyApi }) {
+
     const [address, setAddress] = useState("");
 
     useEffect(() => {
         if (stayLocation) {
             setAddress(stayLocation.address);
         }
-
     }, [stayLocation]);
 
     async function getPlaceDetails(placeId) {
         try {
             const location = await geocodeByPlaceId(placeId);
-            console.log("🚀 ~ getPlaceDetails ~ location:", location)
 
             const locationDetails = location[0].address_components.reduce(
                 (acc, curr) => {
@@ -66,17 +65,6 @@ export function SearchBoxMap({ setStayLocation, stayLocation, keyApi }) {
 
     return (
         <section className="google-autocomplete">
-            {/* <button
-                className="btn location-clear"
-                hidden={!address}
-                aria-label="Clear address"
-                title="Clear address"
-                name="Clear address"
-                onClick={clearAddress}
-                type="button"
-            >
-                <AiOutlineClear />
-            </button> */}
             <div>
                 <GooglePlacesAutocomplete
                     apiKey={keyApi}
@@ -88,7 +76,6 @@ export function SearchBoxMap({ setStayLocation, stayLocation, keyApi }) {
                             setAddress(address);
                             getPlaceDetails(address.value.place_id);
                         },
-                        // value: address.value.structured_formatting.main_text,
                     }}
                     onLoadFailed={(error) =>
                         console.error("Could not inject Google script", error)

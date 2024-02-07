@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { loadOrders, saveOrder } from '../store/actions/order.actions'
 import { OrderList } from '../components/OrderList'
@@ -9,9 +9,6 @@ import { ADD_ORDER, UPDATE_ORDER } from '../store/reducers/order.reducer'
 export function OrderIndex() {
   const loggedInUser = useSelector(storeState => storeState.userModule.user)
   const orders = useSelector(storeState => storeState.orderModule.orders)
-  console.log("🚀 ~ OrderIndex ~ orders:", orders)
-  // const [orderToUpdate, setOrderToUpdate] = useState()
-
   const userToGetOrdersBy = { buyer: loggedInUser._id }
 
   useEffect(() => {
@@ -22,11 +19,9 @@ export function OrderIndex() {
   useEffect(() => {
 
     socketService.on(SOCKET_EVENT_ORDER_UPDATED, (order) => {
-      console.log("🚀 ~ socketService.on ~ order:", order)
       store.dispatch({ type: UPDATE_ORDER, order: order })
     })
     socketService.on(SOCKET_EVENT_ORDER_ADDED, (order) => {
-      console.log("🚀 ~ socketService.on ~ order:", order)
       store.dispatch({ type: ADD_ORDER, order: order })
     })
     return () => {

@@ -30,17 +30,13 @@ function App() {
             <Route path="/edit/:stayId?"
               element={<StayEdit />} />
           </Route>
-
           <Route path='/details/:stayId' element={<StayDetails />} />
           <Route path='/book/:stayId' element={<PaymentPage />} />
-
           <Route path='/order' element={<OrderIndex />} />
           <Route path='/hosting' element={<DashboardHome />} >
-
             <Route path='/hosting/dashboard' element={<Dashboard />} />
             <Route path='/hosting/reservations' element={<ReservationManager />} />
             <Route path='/hosting/listings' element={<Listings />} />
-
           </Route>
         </Routes>
         <DynamicModal />

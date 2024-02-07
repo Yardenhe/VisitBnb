@@ -29,7 +29,7 @@ export function ImgUploader({ onUploaded = null }) {
 
             onUploaded && onUploaded(uploadedImages.map((img) => img.imgUrl));
         } catch (err) {
-            console.error('Failed to upload', err);
+            console.error('Failed to upload', err)
             setIsUploading(false);
         }
     }

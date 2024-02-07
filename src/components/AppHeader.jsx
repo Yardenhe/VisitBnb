@@ -33,7 +33,7 @@ export function AppHeader() {
     const [searchParams, setSearchParams] = useSearchParams()
 
     const user = useSelector(storeState => storeState.userModule.user)
-    console.log("🚀 ~ AppHeader ~ user:", user)
+
 
 
     const { country } = filterBy || ''
@@ -97,7 +97,7 @@ export function AppHeader() {
     function onSetFilter(fieldsToUpdate) {
 
         fieldsToUpdate = { ...filterBy, ...fieldsToUpdate }
-        console.log("🚀 ~ onSetFilter ~ fieldsToUpdate:", fieldsToUpdate)
+        console.log(" ~ onSetFilter ~ fieldsToUpdate:", fieldsToUpdate)
         setFilterBy(fieldsToUpdate)
     }
 

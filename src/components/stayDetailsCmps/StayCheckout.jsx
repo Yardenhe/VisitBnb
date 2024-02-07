@@ -13,14 +13,13 @@ import { MiniGuestsModal } from "./MiniGuestsModal";
 import useClickOutside from "../../customHooks/useClickOutside";
 
 export function StayCheckout({ price, startDate, endDate, currOrder }) {
-  console.log("🚀 ~ StayCheckout ~ currOrder:", currOrder)
   const formattedStartDate = utilService.formatDate(startDate)
   const formattedEndDate = utilService.formatDate(endDate)
   const [bookingCosts, setBookingCosts] = useState({})
   // const [isOpenDatePickerModal, setIsOpenDatePickerModal] = useState(false)
   // const [isOpenGuestPicker, setIsOpenGuestPicker] = useState(false)
-  const { isOpen:isOpenDatePickerModal, ref:datePickerRef, setIsOpen:setIsOpenDatePickerModal } = useClickOutside(false)
-  const { isOpen:isOpenGuestPicker, ref:guestPickerRef, setIsOpen:setIsOpenGuestPicker } = useClickOutside(false)
+  const { isOpen: isOpenDatePickerModal, ref: datePickerRef, setIsOpen: setIsOpenDatePickerModal } = useClickOutside(false)
+  const { isOpen: isOpenGuestPicker, ref: guestPickerRef, setIsOpen: setIsOpenGuestPicker } = useClickOutside(false)
 
 
 

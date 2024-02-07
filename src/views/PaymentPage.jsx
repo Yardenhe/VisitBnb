@@ -13,7 +13,6 @@ import { showSuccessMsg } from "../services/event-bus.service"
 
 export default function PaymentPage() {
     const currOrder = useSelector((storeState) => storeState.orderModule.currOrder)
-    console.log("🚀 ~ PaymentPage ~ currOrder:", currOrder)
     const loggedinUser = useSelector((storeState) => storeState.userModule.user)
     const [isLoggedin, setIsLoggedin] = useState()
     const navigate = useNavigate()
@@ -47,7 +46,7 @@ export default function PaymentPage() {
                         </div>
                         <div className="payment-order-info">
                             <h3>Guests</h3>
-                            <div className="sub-text"> {pluralizeLabel(orderService.getTotalguests(currOrder.guests),'guest')}</div>
+                            <div className="sub-text"> {pluralizeLabel(orderService.getTotalguests(currOrder.guests), 'guest')}</div>
                         </div>
                         <div className="payment-order-info">
                             <h3>Total price</h3>

@@ -4,9 +4,7 @@ const initialState = {
     modalData: null
 }
 
-// type:''
-// payload: {}
-// CB func : () => {}
+
 
 export function appReducer(state = initialState, action = {}) {
     switch (action.type) {

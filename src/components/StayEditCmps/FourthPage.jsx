@@ -4,10 +4,10 @@ import { SearchBoxMap } from './SearchBoxMap';
 
 
 
-export function FourthPage({ onSetStay, stay }) {
-    const keyApi = "AIzaSyCfwC_mk9Fxgszcr2eArRS4PTdQQYy1Si8"
+export function FourthPage({ onSetStay }) {
 
-    const [searchBox, setSearchBox] = useState('');
+
+    const keyApi = "AIzaSyCfwC_mk9Fxgszcr2eArRS4PTdQQYy1Si8"
     const [stayLocation, setStayLocation] = useState({
         "country": "Israel",
         "countryCode": "IL",
@@ -48,9 +48,7 @@ export function FourthPage({ onSetStay, stay }) {
             <div>
                 <h3>Where's your place located?</h3>
                 <h4>Your address is only shared with guests after they’ve made a reservation.</h4>
-
             </div>
-
             <section className='map-container' >
                 <div className='search-box'>
                     <SearchBoxMap setStayLocation={setStayLocation} stayLocation={stayLocation} keyApi={keyApi} />
@@ -59,8 +57,7 @@ export function FourthPage({ onSetStay, stay }) {
                     bootstrapURLKeys={{ key: keyApi, libraries: 'places' }}
                     center={center}
                     defaultZoom={zoom}
-                    options={{ language: 'en' }}
-                >
+                    options={{ language: 'en' }}>
                     <Marker
                         lat={stayLocation.lat}
                         lng={stayLocation.lng}
@@ -68,7 +65,6 @@ export function FourthPage({ onSetStay, stay }) {
                     />
                 </GoogleMapReact>
             </section>
-
         </section >
     )
 }

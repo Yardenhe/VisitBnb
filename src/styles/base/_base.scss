@@ -15,9 +15,7 @@ html {
     line-height: 1.8;
     line-height: lh(26px);
 
-    @media (max-width: 1300px) {
-        // font-size: 14px;
-    }
+    @media (max-width: 1300px) {}
 }
 
 body {
@@ -40,7 +38,7 @@ h6 {
     font-weight: 400;
     margin: 0;
     color: $clr5;
-    // line-height: lh(40px, 29px);
+
 }
 
 h1 {
@@ -68,11 +66,6 @@ h4 {
     line-height: 30px;
 }
 
-// img {
-//     width: 100%;
-//     overflow: ;
-// }
-
 p {
     margin: 0 0 1em;
     max-width: 60ch;
@@ -95,39 +88,20 @@ p {
             height: 100%;
             max-height: 42px;
             background-color: $clr1;
-
-            // @include for-wide-layout {
-            //     width: 10px;
-            // }
         }
 
-        // @include for-wide-layout {
-        //     grid-column: 3 / 5;
-        //     // font-size: rem(26px);
-        // }
+
     }
 }
 
 .btn {
     @include btn();
-
-    // &-dark {
-    //     @include btn($type: dark);
-    // }
-
-    // &-light {
-    //     @include btn($type: light);
-    // }
 }
 
 .generic-icon {
     min-width: 25px;
     max-width: 32px;
     max-height: 32px;
-    // display: flex;
-    // justify-content: center;
-    // align-items: center;
-
 }
 
 @media (max-width:1300px) {

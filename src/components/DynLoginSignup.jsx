@@ -30,7 +30,6 @@ export function LoginSignup({ payload }) {
                 <div key={fieldName} className={`form-field ${fieldName.includes('Name') ? 'joined' : ''}`}>
                     <input
                         type={fieldName === 'password' ? 'password' : 'text'}
-                        // value={fieldName === 'password' ? 'password':userLoginForm[fieldName] || ''}
                         placeholder={userLoginForm[fieldName]}
                         onChange={(e) => handleChange(fieldName, e.target.value)}
                     />

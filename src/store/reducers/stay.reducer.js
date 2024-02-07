@@ -9,7 +9,6 @@ export const UNDO_CHANGES = 'UNDO_CHANGES'
 
 const initialState = {
     stays: null,
-    // filterBy: stayService.getDefaultFilter(),
     lastStays: []
 }
 

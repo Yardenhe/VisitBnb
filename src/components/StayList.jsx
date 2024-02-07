@@ -21,12 +21,10 @@ export const StayList = memo(({ stays, onRemove }) => {
             }
         }, { root: null, margin: '0px' })
 
-
         // Observe the "loading" element to trigger loading more items
         if (observer) {
             observer.observe(loadingRef.current);
         }
-
         return () => {
             if (observer) {
                 observer.disconnect();
@@ -56,23 +54,17 @@ export const StayList = memo(({ stays, onRemove }) => {
 
     return (
         <section>
-
             <ul className="stay-list">
                 {
                     stays.map(stay => <li key={stay._id}>
                         <Link to={`/details/${stay._id}`}>
                             <StayPreview stay={stay} />
                         </Link>
-                        {/* <div className="stay-actions">
-                            <button onClick={() => onRemove(`${stay._id}`)}>X</button>
-                            <Link to={`/edit/${stay._id}`}><button>Edit</button></Link>
-                        </div> */}
                     </li>)
                 }
             </ul>
             {isLoading && <p>Loading more items...</p>}
             <div id="loading" style={{ height: '0px' }} ref={loadingRef}></div>
-            {/* <div>no result</div> */}
         </section>
     )
 

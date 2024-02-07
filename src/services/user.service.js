@@ -35,8 +35,7 @@ async function remove(userId) {
 }
 
 async function update(userToUpdate) {
-    // const user = await getById(userToUpdate.id)
-    // console.log('user', user)
+
 
     const updatedUser = await httpService.put(BASE_USER_URL, userToUpdate)
     if (getLoggedinUser()._id === updatedUser._id) saveLocalUser(updatedUser)
@@ -52,7 +51,6 @@ async function login(credentials) {
 }
 
 async function signup(credentials) {
-    console.log("🚀 ~ signup ~ credentials:", credentials)
 
     const user = await httpService.post(BASE_AUTH_URL + 'signup', credentials)
     return saveLocalUser(user)
@@ -84,10 +82,7 @@ function getLoggedinUser() {
 
 function getSignupForm() {
     return {
-        // firstName:'First name',
-        // lastName:'Last name',
         fullname: 'Full name',
-        // dateOfBirth:'Birthdate',
         email: 'Email',
         password: 'Password'
     }
@@ -99,8 +94,3 @@ function getLoginForm() {
         password: 'Password'
     }
 }
-// ;(async ()=>{
-//     await userService.signup({fullname: 'Puki Norma', username: 'puki', password:'123', isAdmin: false})
-//     await userService.signup({fullname: 'Master Adminov', username: 'admin', password:'123',  isAdmin: true})
-//     await userService.signup({fullname: 'Muki G', username: 'muki', password:'123'})
-// })()

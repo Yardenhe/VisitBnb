@@ -8,11 +8,12 @@ import { ModalFilter } from './stayFilterCmps/ModalFilter';
 const iconBasePath = 'img/labels/';
 const iconNames = ['amazingpools', 'amazingviews', 'arctics', 'beachfront', 'cabins', 'boats', 'camping', 'castles', 'desert', 'design', 'Countryside'
     , 'cycladichomes', 'iconiccities', 'islands', 'luxe', 'mansions', 'minsus', 'nationalparks', 'omg!', 'towers', 'topoftheworld', 'treehouses', 'tropical', 'trending'];
+
+
 export function StayFilter({ filterBy, onSetFilter }) {
 
     const scrollContainerRef = useRef(null);
     const [filterByToEdit, setFilterByToEdit] = useState(filterBy)
-
     const [arrowVisibility, setArrowVisibility] = useState({ left: false, right: true });
     const [clickedIconIndex, setClickedIconIndex] = useState(null);
     const [isSticky, setIsSticky] = useState(false);
@@ -20,14 +21,11 @@ export function StayFilter({ filterBy, onSetFilter }) {
 
 
     useEffect(() => {
-
         const handleScroll = () => {
             const scrollY = window.scrollY;
             setIsSticky(scrollY > 0); // Adjust the value based on when you want it to become sticky
         };
-
         window.addEventListener('scroll', handleScroll);
-
         return () => {
             window.removeEventListener('scroll', handleScroll);
         };
@@ -35,11 +33,12 @@ export function StayFilter({ filterBy, onSetFilter }) {
 
     useEffectUpdate(() => {
         onSetFilter(filterByToEdit)
-        console.log("🚀 ~ StayFilter ~ filterByToEdit:", filterByToEdit)
     }, [filterByToEdit])
+
     function onTypeChange(iconName) {
         setFilterByToEdit((prevFilter) => ({ ...prevFilter, "type": iconName }))
     }
+
     const handleScroll = (direction) => {
         if (scrollContainerRef.current) {
             const scrollAmount = 500;
@@ -64,11 +63,12 @@ export function StayFilter({ filterBy, onSetFilter }) {
             });
         }
 
-    };
-    const onToggleIcon = (index) => {
+    }
 
+    const onToggleIcon = (index) => {
         setClickedIconIndex(index);
-    };
+    }
+
     return (
         <section className={`stay-filter ${isSticky && ' sticky'}${!isOpenFilterModal && ' low-z-index'}`}>
             <IoIosArrowBack className={`arrow arrow-left  ${!arrowVisibility.left && ' hidden'}`} onClick={() => handleScroll('left')} />
@@ -82,14 +82,19 @@ export function StayFilter({ filterBy, onSetFilter }) {
                         <div className="overlay-icon"></div>
                     </section>
                 ))}
-
             </div>
-            <IoIosArrowForward className={`arrow arrow-right ${!arrowVisibility.right && 'hidden'}`} onClick={() => handleScroll('right')} />
+            <IoIosArrowForward
+                className={`arrow arrow-right ${!arrowVisibility.right && 'hidden'}`}
+                onClick={() => handleScroll('right')} />
             <div className='filter-button' onClick={() => onToggleFilterModal()}>
                 <BsSliders className='bold-icon' />
                 <p>Filters</p>
             </div>
-            {isOpenFilterModal && <ModalFilter isOpen={isOpenFilterModal} filterByToEdit={filterByToEdit} onClose={() => onToggleFilterModal()} setFilterByToEdit={setFilterByToEdit} />}
+            {isOpenFilterModal && <ModalFilter
+                isOpen={isOpenFilterModal}
+                filterByToEdit={filterByToEdit}
+                onClose={() => onToggleFilterModal()}
+                setFilterByToEdit={setFilterByToEdit} />}
         </section>
-    );
+    )
 }

@@ -44,7 +44,7 @@ export function StayReviews({ reviews }) {
         ))}
       </div>
       {hasMoreReviews &&
-        <button className="commun-btn" onClick={()=>onToggleModal({type:'reviewsModal',payload:{reviews}})}>Show all {totalReviews} reviews</button>
+        <button className="commun-btn" onClick={() => onToggleModal({ type: 'reviewsModal', payload: { reviews } })}>Show all {totalReviews} reviews</button>
       }
     </>
   )

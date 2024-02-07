@@ -20,9 +20,7 @@ export const utilService = {
 	calculateNightsBetweenDates,
 	convertMillisecondsToNights,
 	checkClassNameByTitle,
-	
 
-	// pluralizeLabel,
 }
 export function pluralizeLabel(num, label) {
 	return `${num} ${label}${(+num <= 1) ? '' : 's'}`
@@ -264,16 +262,16 @@ function checkClassNameByTitle(title) {
 
 export function addCommasNumeric(number) {
 	if (typeof number !== 'number' || isNaN(number)) {
-	  return number
+		return number
 	}
 	if (number === undefined || number === null) {
-	  return number
+		return number
 	}
-  
-	return parseFloat(number).toLocaleString('en-US');
-  }
 
-export function getRandomUserPhoto(){
+	return parseFloat(number).toLocaleString('en-US');
+}
+
+export function getRandomUserPhoto() {
 	const photos = [
 		"https://res.cloudinary.com/dafkc3w9n/image/upload/v1706701279/wnnr2f9uksarkhwik8jl.jpg",
 		"https://res.cloudinary.com/dafkc3w9n/image/upload/v1706701283/eprnyfavhpbd7gocqcrh.jpg",
@@ -287,5 +285,5 @@ export function getRandomUserPhoto(){
 		"https://res.cloudinary.com/dafkc3w9n/image/upload/v1706701464/idrq0lwvxu6r1e48le3b.jpg"
 	]
 
-	return photos[Math.floor((Math.random()*10))]
+	return photos[Math.floor((Math.random() * 10))]
 }

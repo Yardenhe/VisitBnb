@@ -25,11 +25,10 @@ export function DatePicker({ isModal = false }) {
     const { from: startDate, to: endDate } = newDates
 
     setCurrOrder({ startDate, endDate })
-    // setSelected(newDates)
   }
 
-  function onClearDates(){
-    setCurrOrder({startDate:'',endDate:''})
+  function onClearDates() {
+    setCurrOrder({ startDate: '', endDate: '' })
   }
 
 
@@ -55,8 +54,6 @@ export function DatePicker({ isModal = false }) {
           selected={selected}
           onSelect={onChangeDates}
           pagedNavigation
-          // footer={footer}
-          // showOutsideDays
           fixedWeeks
           disabled={disabledDays}
           fromMonth={today}
@@ -69,13 +66,10 @@ export function DatePicker({ isModal = false }) {
           }}
           modifiersStyles={{
             disabled: { textDecoration: 'line-through' },
-            selected: { color: '#222' },//,borderBlockStyle:'outset'}
-            // range_middle:{backgroundColor:'grey'}
-
+            selected: { color: '#222' },
           }}
         />
         <div className="date-picker-bottom">
-          {/* TODO - CLEAR DATES! */}
           <button className='btn-clear-dates' onClick={onClearDates} >Clear dates</button>
 
         </div>

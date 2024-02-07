@@ -16,8 +16,6 @@ export function DynamicModal() {
             modalData: null
         })
     }
-
-    // {type: 'goodbye', payload: {style, stay}}
     if (!modalData) return <></>
     return (
         <div className="overlayModal" onClick={modalData.cb}>
@@ -29,7 +27,6 @@ export function DynamicModal() {
 
                 <StoreDynamicCmp type={modalData.type} payload={modalData.payload} onCloseModal={onCloseModal} />
             </div>
-            {/* {modalData.cmp} */}
         </div>
     )
 }
