@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Counter } from '../stayFilterCmps/Counter';
+
+
 export function FifthPage({ onSetStay, stay }) {
     const [guests, setSelectedGuests] = useState({
         capacity: stay.capacity,
@@ -7,6 +9,8 @@ export function FifthPage({ onSetStay, stay }) {
         beds: stay.beds,
         bathrooms: stay.bathrooms,
     });
+
+
     useEffect(() => {
         onSetStay(guests)
     }, [guests])
@@ -25,33 +29,27 @@ export function FifthPage({ onSetStay, stay }) {
             }));
         }
     };
+
+
     return (
         <section className="firstpage-edit fourthPage-edit">
             <div>
                 <h3>Share some basics about your place</h3>
                 <h4>You'll add more details later, like bed types.</h4>
-
             </div>
             <section className='counter-list' >
-
                 <div className='who-items'>
-
                     <h5>Guests</h5>
-
-
-
                     <Counter
                         label="Guests"
                         count={guests.capacity}
                         onIncrement={() => handleIncrement('capacity')}
                         onDecrement={() => handleDecrement('capacity')}
                     />
-
                 </div>
                 <div className='who-items'>
                     <div>
                         <h5>Bedrooms</h5>
-
                     </div>
                     <Counter
                         label="Bedrooms"
@@ -63,8 +61,6 @@ export function FifthPage({ onSetStay, stay }) {
                 <div className='who-items'>
                     <div>
                         <h5>Beds</h5>
-
-
                     </div>
                     <Counter
                         label="Beds"
@@ -76,9 +72,7 @@ export function FifthPage({ onSetStay, stay }) {
                 <div className='who-items'>
                     <div>
                         <h5>Bathrooms</h5>
-
                     </div>
-
                     <Counter
                         label="Bathrooms"
                         count={guests.bathrooms}
@@ -86,9 +80,7 @@ export function FifthPage({ onSetStay, stay }) {
                         onDecrement={() => handleDecrement('bathrooms')}
                     />
                 </div>
-
             </section>
-
         </section >
     )
 }

@@ -1,11 +1,8 @@
-import { useSelector } from "react-redux"
 import { OrderList } from "../OrderList"
 import { DashboardInsights } from "./DashboardInsights"
 import { useOutletContext } from "react-router"
 
 export function Dashboard() {
-    // const orders = useSelector(storeState => storeState.orderModule.orders)
-    // const loggedInUser = useSelector(storeState => storeState.userModule.user)
     const { orders, loggedInUser } = useOutletContext()
 
     return (<>
@@ -27,6 +24,3 @@ export function Dashboard() {
         </section>
     </>)
 }
-// add svg
-// numbesr in bold and text in thin
-// check why blue text

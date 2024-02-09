@@ -92,7 +92,6 @@ export function ModalFilter({ isOpen, onClose, setFilterByToEdit, filterByToEdit
         const length = await stayService.getStayCount(filterby)
         setResultLength(length)
     }
-
     const handlePriceChange = (event, newValue) => {
         setMinPrice(newValue[0])
         setMaxPrice(newValue[1])

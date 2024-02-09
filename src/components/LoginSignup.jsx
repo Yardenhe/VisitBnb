@@ -37,9 +37,21 @@ export function LoginSignup({ payload, onCloseModal }) {
         }
         clearState()
     }
+
     function clearState() {
         setCredentials(userService.getEmptyUser())
     }
+
+    async function onLoginAsGuest() {
+        credentials.email = "yardenhendri1@gmail.com"
+        credentials.password = "asd"
+        console.log('login');
+        await login(credentials)
+        onCloseModal()
+        clearState()
+    }
+
+
 
 
     return (
@@ -60,6 +72,7 @@ export function LoginSignup({ payload, onCloseModal }) {
             <div className="login-signup-btn-container">
 
                 <ReserveBtn text={isLoginForm ? 'Login' : 'Signup'} cb={onLoginSignup} />
+                {isLoginForm && <ReserveBtn text={'Login as guest'} cb={onLoginAsGuest} />}
                 <div onClick={() => { setisLoginForm(prev => !prev) }} className="underline clickable">{isLoginForm ? 'Signup instead' : 'I already have an account'}</div>
             </div>
 

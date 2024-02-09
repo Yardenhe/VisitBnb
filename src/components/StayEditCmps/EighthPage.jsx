@@ -21,7 +21,6 @@ export function EighthPage({ onSetStay, stay }) {
                         onChange={(e) => setSelectedTitle(e.target.value)}
                     />
                 </section>
-
             </section >
         </section>
     )

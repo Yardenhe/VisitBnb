@@ -2,9 +2,11 @@ import React, { useState, useEffect } from 'react'
 
 export function ElevenPage({ onSetStay, stay }) {
     const [selectedPrice, setSelectedPrice] = useState(stay.price);
+
     useEffect(() => {
         onSetStay({ "price": selectedPrice })
     }, [selectedPrice])
+
     return (
         <section className='center'>
             <section className="firstpage-edit fourthPage-edit eighth-page page-margin">
@@ -27,10 +29,7 @@ export function ElevenPage({ onSetStay, stay }) {
                         <h4>{stay.price}₪</h4>
 
                     </section>
-
-
                 </section>
-
             </section >
         </section>
     )

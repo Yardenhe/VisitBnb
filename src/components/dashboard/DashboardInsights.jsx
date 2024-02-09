@@ -6,12 +6,10 @@ import { TbReportMoney as RevenueIcon } from "react-icons/tb";
 import { PieCharts } from "./PieCharts";
 
 export function DashboardInsights({ orders }) {
-  console.log("🚀 ~ DashboardInsights ~ orders:", orders)
 
   const { revenue, totalGuests, averageDuration } = orderService.getOrdersInsights(orders)
   const overview = orderService.getOverviewInsights(orders)
 
-  console.log("🚀 ~ DashboardInsights ~ overview:", overview)
 
 
   return (

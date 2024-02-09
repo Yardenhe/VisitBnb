@@ -20,7 +20,6 @@ export function OrderPreview({ order }) {
 
     async function loadStay() {
         const stay = await stayService.getById(order.stay._id)
-        console.log("🚀 ~ OrderPreview ~ stayOrder:", stay)
         setStayOrder(stay)
     }
     function checkIconByTitle(title) {
@@ -48,10 +47,10 @@ export function OrderPreview({ order }) {
                     </span>
                 </div>
                 {order.status &&
-                <div className={`status-label ${utilService.checkClassNameByTitle(order.status)}`}>
-                    {checkIconByTitle(order.status)}
-                    <span>{"   " + order.status}</span>
-                </div>
+                    <div className={`status-label ${utilService.checkClassNameByTitle(order.status)}`}>
+                        {checkIconByTitle(order.status)}
+                        <span>{"   " + order.status}</span>
+                    </div>
                 }
 
 

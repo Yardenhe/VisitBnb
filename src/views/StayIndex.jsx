@@ -13,9 +13,6 @@ export function StayIndex() {
 
     const stays = useSelector(storeState => storeState.stayModule.stays)
     const filterBy = useSelector(storeState => storeState.stayModule.filterBy)
-
-
-
     const navigate = useNavigate()
     const params = useParams()
     const { stayId } = params
@@ -32,12 +29,6 @@ export function StayIndex() {
         setSearchParams(filterBy)
     }, [filterBy])
 
-    // useEffect(() => {
-    //     document.body.classList.add('no-overflow');
-    //     return () => {
-    //         document.body.classList.remove('no-overflow');
-    //     };
-    // }, []);
     const onRemoveStay = useCallback(async (stayId) => {
         try {
             await removeStay(stayId)
@@ -64,12 +55,8 @@ export function StayIndex() {
     if (!stays) return <div>Loading..</div>
     const { type, price } = filterBy
     return (
-
         <section className={isSpecificPage && 'stay-index'}>
-
-            {/* ↓ will be mapped with each result */}
             {params.stayId || location.pathname.includes('edit') ?
-
                 <Outlet context={{ stayId, onSaveStay }} />
                 :
                 <section className='index-layout'>
@@ -77,7 +64,6 @@ export function StayIndex() {
                     <StayList stays={stays} onRemove={onRemoveStay} />
                 </section>
             }
-
         </section>
 
     )

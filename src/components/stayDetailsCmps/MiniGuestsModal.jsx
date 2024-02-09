@@ -6,15 +6,12 @@ import { Counter } from '../stayFilterCmps/Counter';
 import { stayService } from '../../services/stay.service';
 
 
-export function MiniGuestsModal({guests}) {
-    const [selectedGuests, setSelectedGuests] = useState({...guests})
-    
+export function MiniGuestsModal({ guests }) {
+    const [selectedGuests, setSelectedGuests] = useState({ ...guests })
+
     useEffectUpdate(() => {
-        setCurrOrder({ guests:selectedGuests })
+        setCurrOrder({ guests: selectedGuests })
     }, [selectedGuests])
-
-
-
 
 
     const handleIncrement = (type) => {
@@ -37,8 +34,6 @@ export function MiniGuestsModal({guests}) {
             <div className='who-items'>
                 <div>
                     <h5>Adults</h5>
-                    {/* <p>Ages 13 or above</p> */}
-
                 </div>
                 <Counter
                     label="Adults"
@@ -51,7 +46,6 @@ export function MiniGuestsModal({guests}) {
             <div className='who-items'>
                 <div>
                     <h5>Children</h5>
-                    {/* <p>Ages 2–12</p> */}
                 </div>
                 <Counter
                     label="Children"
@@ -63,8 +57,6 @@ export function MiniGuestsModal({guests}) {
             <div className='who-items'>
                 <div>
                     <h5>Infants</h5>
-                    {/* <p>Under 2</p> */}
-
                 </div>
                 <Counter
                     label="Infants"
@@ -76,9 +68,7 @@ export function MiniGuestsModal({guests}) {
             <div className='who-items'>
                 <div>
                     <h5>Pets</h5>
-                    {/* <p>Bringing a service animal?</p> */}
                 </div>
-
                 <Counter
                     label="Pets"
                     count={selectedGuests.pets}

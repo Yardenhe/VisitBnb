@@ -33,7 +33,7 @@ export function AppHeader() {
     const [searchParams, setSearchParams] = useSearchParams()
 
     const user = useSelector(storeState => storeState.userModule.user)
-    console.log("🚀 ~ AppHeader ~ user:", user)
+
 
 
     const { country } = filterBy || ''
@@ -97,7 +97,7 @@ export function AppHeader() {
     function onSetFilter(fieldsToUpdate) {
 
         fieldsToUpdate = { ...filterBy, ...fieldsToUpdate }
-        console.log("🚀 ~ onSetFilter ~ fieldsToUpdate:", fieldsToUpdate)
+        console.log(" ~ onSetFilter ~ fieldsToUpdate:", fieldsToUpdate)
         setFilterBy(fieldsToUpdate)
     }
 
@@ -124,7 +124,7 @@ export function AppHeader() {
                             <Link to="/" onClick={handleReloadClick}>
                                 <img className="app-header-logo" src="../img/VisitBnbByDazen2.jpg" />
                             </Link>
-                            {(!location.pathname.includes('book') && !location.pathname.includes('order'))  ?
+                            {(!location.pathname.includes('book') && !location.pathname.includes('order')) ?
                                 <section className={`date-picker left${isOpenEffect ? ' enlarge' : ' '}`} onClick={onToggleEffect}>
                                     <section className='btn-datepicker bold anywhere-label '>{country ? country : 'Anywhere'}  </section>
                                     <span className={`vl-left`}></span>

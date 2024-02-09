@@ -26,15 +26,12 @@ export function ApproveRejectOrderModal({ payload, onCloseModal }) {
     }
     async function loadStay() {
         const stay = await stayService.getById(order.stay._id)
-        console.log("🚀 ~ OrderPreview ~ stayOrder:", stay)
         setStayOrder(stay)
     }
     if (!stayOrder) return <div className="">Loading...</div>
     return (
         <section className='approve-reject-order-modal' >
             <h3 className='title'>Order details</h3>
-
-
             <section className='stay-submit-preview' >
                 <section className='flex'>
                     <img className='img-preview-orders' alt='img' src={stayOrder.imgUrls[0]} />

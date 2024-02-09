@@ -11,11 +11,9 @@ $section-top: 32px;
   padding: 0 $details-padding;
   margin: 0 auto;
   align-items: center;
-  // justify-content: space-between;
   justify-content: center;
 
   >section {
-    // margin-top: $section-top;
     width: 100%;
     margin: 0 $child-margin 0;
   }
@@ -24,8 +22,6 @@ $section-top: 32px;
 .details-header {
   @include section-padding(2.3);
 
-  // padding-top: 24px;
-  // max-height: 65.23px;
   h3 {
     @include medium-bold(35.75px);
 
@@ -57,22 +53,17 @@ $section-top: 32px;
 
 .mini-user {
   display: flex;
-  // gap: 24px;
 }
 
 .host-card {
-  // border: 1px solid blueviolet;
-  // margin-left: 24px;
   line-height: 1;
 
   h4 {
     @include medium-bold(22px);
-    // font-size: 22px;
   }
 }
 
 .user-card {
-  // border: 1px solid blueviolet;
   margin-left: 24px;
   margin-bottom: 4px;
   line-height: 1;
@@ -107,18 +98,13 @@ $section-top: 32px;
   }
 }
 
-// top part (dual:static & slide)
 .dot {
   display: inline-flex;
   width: 3px;
   height: 3px;
   border-radius: 50%;
-  /* Creates a circular shape */
   background-color: black;
-  /* Dot color */
   vertical-align: middle;
-  // text-align: center;
-  // justify-content: center;
   align-items: center;
 
 }
@@ -139,9 +125,6 @@ $section-top: 32px;
 
   .stay-capacity-details {
     list-style: none;
-
-    > :first-child {}
-
     display: flex;
     gap: 6px;
     align-items: center;
@@ -156,7 +139,6 @@ $section-top: 32px;
   }
 
   .host-mini-section {
-    // border: 1px saddlebrown solid;
     @include section-padding(2);
     @include border-top();
 
@@ -189,14 +171,12 @@ $section-top: 32px;
 
 .stay-facts {
   &-row {
-    // border: 1px solid black;
     height: 60px;
     margin: -5px 0 1.3rem 0;
     display: flex;
 
     &:nth-of-type(3) {
       margin-bottom: 0;
-      // background: #757;
 
     }
   }
@@ -269,7 +249,6 @@ $section-top: 32px;
   }
 }
 
-.total-rating {}
 
 .total-reviews {
   a {
@@ -299,7 +278,6 @@ $section-top: 32px;
   min-width: 33.33333333333333% !important;
   max-width: 40.33333333333333% !important;
   max-height: 555px;
-  // min-height: 300px;
   height: 30%;
 
   line-height: 1.25rem;
@@ -480,7 +458,6 @@ $section-top: 32px;
 
   .amenity {
     width: 50%;
-    // border: solid 0.8px rgb(223, 229, 223);
     display: flex;
     padding: 8px 0;
     align-items: center;
@@ -488,13 +465,6 @@ $section-top: 32px;
     &>img {
       padding: 0;
     }
-
-    // &>svg {
-    //   width: 24px;
-    //   height: 24px;
-    // }
-
-    // padding-left: 0.5em;
   }
 
   button {
@@ -544,8 +514,6 @@ $section-top: 32px;
 
 }
 
-.stay-dates {}
-
 .date-picker-large {
   // background-color: rgba(107, 196, 196, 0.239);
   display: flex;
@@ -567,10 +535,6 @@ $section-top: 32px;
       text-decoration: underline;
     }
   }
-
-  // &:not(:first-child),&:not(:last-child){
-  //   border-top-color: #222; 
-  // }
 }
 
 .date-middle-range {
@@ -599,29 +563,6 @@ $section-top: 32px;
     border: none;
   }
 
-  // .rdp-day_range_middle  {
-  //   position: relative;
-  //   &::before, 
-  //   &::after{
-  //     content: "";
-  //     position: absolute;
-  //     top: 0;
-  //     bottom: 0;
-  //     width: 100%;
-  //     height: 80%;
-  //     background-color: rgb(247, 247, 247);
-  //     z-index: -1;
-  //   }
-  //   &::after{
-  //     right: -20px;
-  //   }
-  //   &::before{
-  //     left: -20px;
-  //   }
-  // }
-
-
-
   .rdp-day_range_end,
   .rdp-day_range_start {
     border-radius: 100% !important;
@@ -632,8 +573,6 @@ $section-top: 32px;
 }
 
 // reviews
-
-.review-list-item {}
 
 .stay-reviews {
   @include section-padding(4);
@@ -673,10 +612,6 @@ $section-top: 32px;
         height: 120px;
       }
     }
-
-    &-header {}
-
-    &-rating {}
   }
 }
 
@@ -751,10 +686,6 @@ $section-top: 32px;
       position: static;
     }
 
-    button {
-      // width: 53%;
-    }
-
     >* {
       margin: 12px 0 0 0;
       padding: 0;
@@ -777,11 +708,8 @@ $section-top: 32px;
   .location-modal.list-gusets {
     border-radius: 10px;
     position: absolute;
-    // width: auto;
     min-width: 321px;
-    // max-height: 3000px;
     min-height: 290px;
-    // top:10.44rem;
     top: -227px;
     left: -158px;
   }

@@ -12,7 +12,7 @@ export function LoginSignup({ payload }) {
         const formFields = isLoginForm ? userService.getLoginForm() : userService.getSignupForm()
         setUserLoginForm(formFields)
         setUserData({})
-    },[isLoginForm])
+    }, [isLoginForm])
 
     const handleChange = (fieldName, value) => {
         setUserData((prevData) => ({ ...prevData, [fieldName]: value }))
@@ -30,7 +30,6 @@ export function LoginSignup({ payload }) {
                 <div key={fieldName} className={`form-field ${fieldName.includes('Name') ? 'joined' : ''}`}>
                     <input
                         type={fieldName === 'password' ? 'password' : 'text'}
-                        // value={fieldName === 'password' ? 'password':userLoginForm[fieldName] || ''}
                         placeholder={userLoginForm[fieldName]}
                         onChange={(e) => handleChange(fieldName, e.target.value)}
                     />

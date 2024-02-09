@@ -2,7 +2,6 @@ import { useState } from "react";
 import { getRandomUserPhoto } from "../../services/util.service";
 
 export function MiniUser({ user, type = 'user', isReview = false }) {
-  console.log("🚀 ~ MiniUser ~ user:", user)
 
 
   const { fullname, isSuperhost, [isReview ? 'imgUrl' : 'pictureUrl']: img } = user
@@ -24,7 +23,7 @@ export function MiniUser({ user, type = 'user', isReview = false }) {
         <img
           className="user-img"
           onError={(ev) => handleImgError(ev.target)}
-          // src={`${userImg}`}
+
           src={`${(userImg === tempImg) ? getRandomUserPhoto() : userImg}`}
           alt="user"
         />

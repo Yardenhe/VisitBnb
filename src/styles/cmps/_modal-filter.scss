@@ -14,7 +14,6 @@
     box-shadow: 0 0 0 1px #0000000a, 0 8px 16px #00000026;
     padding: 16px 20px;
     cursor: auto;
-    //  min-width: 100%;
     min-height: 400px;
     display: flex;
     width: max-content;
@@ -34,20 +33,20 @@
         overflow-x: hidden;
 
         &::-webkit-scrollbar {
-            width: 12px; // Set the width of the scrollbar
+            width: 12px;
         }
 
         &::-webkit-scrollbar-track {
-            background: #f1f1f1; // Background color of the track
+            background: #f1f1f1;
         }
 
         &::-webkit-scrollbar-thumb {
-            background: #888; // Color of the scrollbar handle
-            border-radius: 6px; // Add rounded corners to the handle
+            background: #888;
+            border-radius: 6px;
         }
 
         &::-webkit-scrollbar-thumb:hover {
-            background: #555; // Change color on hover
+            background: #555;
         }
 
     }
@@ -75,7 +74,6 @@
     .loc-list {
         cursor: pointer;
         display: flex;
-        // flex-direction: column;
         align-items: center;
         min-width: 200px;
         padding: 10px;
@@ -84,9 +82,7 @@
 
         img {
             width: 32px;
-            /* Adjust the width as needed */
             height: 32px;
-            /* Adjust the height as needed */
             background-color: $clr2;
             border-radius: 5px;
             padding: 5px;
@@ -94,17 +90,14 @@
 
         div {
             margin-top: 8px;
-            /* Adjust the margin as needed */
         }
 
         &.selected {
             border-bottom: 2px solid blue;
-            /* Highlight the selected item */
         }
 
         &:hover {
             background-color: $clr2;
-            /* Add a background color on hover */
         }
 
     }
@@ -199,8 +192,6 @@
     border-radius: 10px;
 
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-
-    // overflow-y: auto;
     height: 88vh;
     width: 110vh;
 
@@ -433,9 +424,7 @@
                     max-width: 90%;
                     flex-wrap: nowrap;
                     overflow-x: scroll;
-                    // padding: 0 0 0 24px;
 
-                    // hide the scrollbar
                     &::-webkit-scrollbar {
                         display: none;
                     }
@@ -584,7 +573,6 @@
                             text-align: center;
                             border-radius: 4px;
                             border-color: #b0b0b0;
-                            // transition: border-color 0.2s ease-in-out;
 
                             svg {
                                 // white fill
@@ -635,7 +623,6 @@
             align-items: center;
             width: 100%;
             padding: 16px 24px;
-            //  border-top: 1px solid #e0e0e0;
             position: fixed;
             bottom: 0;
 
@@ -720,11 +707,4 @@
     height: 100%;
     background: rgba(32, 32, 32, 0.5);
     z-index: 1005;
-
-
-
-
-
-
-
 }

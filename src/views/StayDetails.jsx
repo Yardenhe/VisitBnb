@@ -1,36 +1,24 @@
-import {
-  Link,
-  useNavigate,
-  useParams,
-} from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { ImageShortGalery } from "../components/stayDetailsCmps/ImageShortGalery";
 import { StayDescription } from "../components//stayDetailsCmps/StayDescription";
 import { StayCheckout } from "../components//stayDetailsCmps/StayCheckout";
 import { IoIosHeartEmpty as Heart } from "react-icons/io";
 import { MdIosShare as ShareIcon } from "react-icons/md";
-
 import { Button } from "../components/UI/Button";
 import { useEffectUpdate } from '../customHooks/useEffectUpdate'
 import { stayService } from "../services/stay.service";
 import { useEffect, useState } from "react";
 import { StayReviews } from "../components/stayDetailsCmps/StayReviews";
-
 import { useSelector } from "react-redux";
-import {
-  setCurrOrder,
-} from "../store/actions/order.actions";
+import { setCurrOrder } from "../store/actions/order.actions";
 import GoogleMapReact from 'google-map-react';
 
 export function StayDetails() {
-
   const { stayId } = useParams(); //
   const [stay, setStay] = useState(null);
   const navigate = useNavigate();
   const currOrder = useSelector((storeState) => storeState.orderModule.currOrder)
-
-
   let { startDate, endDate } = currOrder
-
 
   useEffect(() => {
     loadStay()
@@ -45,6 +33,7 @@ export function StayDetails() {
       console.log(err);
     }
   }
+
   useEffectUpdate(() => {
     onPickStay()
   }, [stay])

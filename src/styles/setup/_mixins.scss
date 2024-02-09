@@ -67,38 +67,42 @@
 }
 
 // UI mixins
-@mixin bold($font-size:24px){
+@mixin bold($font-size: 24px) {
   font-family: 'cereal-bold';
   font-size: $font-size;
 }
-@mixin medium-bold($font-size:24px){
+
+@mixin medium-bold($font-size: 24px) {
   font-family: 'cereal-medium';
   font-size: $font-size;
 }
-@mixin btn(){
 
-    border: none;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
-    text-align: center;
-    position: relative;
-    
-    min-width: 100px;
-    min-height: 30px;
-    max-width: 250px;
-    max-height: 50px;
-  
-    cursor: pointer;
-    background-color: $clr3;
-    // padding: 13px 23px;
-    margin: -1px;
-  }
-@mixin section-padding($duplicates:1){
-  padding: 12px*$duplicates  0  12px*$duplicates
+@mixin btn() {
+
+  border: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  text-align: center;
+  position: relative;
+
+  min-width: 100px;
+  min-height: 30px;
+  max-width: 250px;
+  max-height: 50px;
+
+  cursor: pointer;
+  background-color: $clr3;
+  // padding: 13px 23px;
+  margin: -1px;
 }
-@mixin border-top(){
+
+@mixin section-padding($duplicates: 1) {
+  padding: 12px*$duplicates 0 12px*$duplicates
+}
+
+@mixin border-top() {
   border-top: 0.87px solid $clr2;
 }
 
@@ -128,48 +132,3 @@
     font-variation-settings: "wght" 200;
   }
 }
-
-// Buttons
-// @mixin btn($type: regular, $bg: $clr1, $clr: $clr3, $padding: em(24px) em(44px), $hover: darken($bg, 8%)) {
-//   display: inline-flex;
-//   align-items: center;
-//   text-decoration: none;
-//   text-transform: uppercase;
-//   padding: $padding;
-//   line-height: 1.25;
-//   font-size: em(14px);
-//   font-variation-settings: "wght" 430;
-//   border: none;
-//   cursor: pointer;
-
-//   transition: background-color 0.2s;
-
-//   @if $type ==regular {
-//     background-color: $bg;
-//     color: $clr;
-
-//     &:hover {
-//       background-color: $hover;
-//     }
-//   }
-
-//   @else if $type ==dark {
-//     background-color: #fff;
-//     color: $clr5;
-
-//     &:hover {
-//       background-color: $clr1;
-//       color: $clr5;
-//     }
-//   }
-
-//   @else if $type ==light {
-//     background-color: $clr1;
-//     color: $clr2;
-
-//     &:hover {
-//       background-color: $clr1;
-//       color: $clr5;
-//     }
-//   }
-// }

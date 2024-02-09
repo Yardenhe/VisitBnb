@@ -22,7 +22,7 @@ const BASE_URL = 'stay/'
 const STAY_KEY = 'stayDB'
 const loggedInUser = {
 }
-// _createStays()
+
 
 // READ
 async function query(filterBy = {}) {   //, sortBy = getDefaultSort()) {

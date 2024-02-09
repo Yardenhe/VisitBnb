@@ -1,82 +1,76 @@
-// .dynamic-modal {
-//     position: fixed;
-//     inset: 0;
-//     margin: 100px;
-//     text-align: center;
-//     background: lightblue;
-//     button {
-//         position: absolute;
-//         left: 20px;
-//         top: 20px;
-//     }
-// }
-.dynamic-modal{
-        z-index: 1005;
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        background-color: #fff;
-        padding: 10px 0px 20px 0px;
-        border-radius: 10px;
-    
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-    
-        // overflow-y: auto;
-        height: 74vh;
-        width: 65vh;
-        &-close{
-            position: absolute ;
-            left:10px;
-            display: flex;
-            svg{
-                margin: 0;
-                font-size: 30px;
+.dynamic-modal {
+    z-index: 1005;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 10px 0px 20px 0px;
+    border-radius: 10px;
 
-            }
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+
+    // overflow-y: auto;
+    height: 74vh;
+    width: 65vh;
+
+    &-close {
+        position: absolute;
+        left: 10px;
+        display: flex;
+
+        svg {
+            margin: 0;
+            font-size: 30px;
+
         }
-    
+    }
+
 }
+
 // AMENITIES-MODAL
 .amenity-modal,
-.reviews-modal{
+.reviews-modal {
     display: flex;
     flex-direction: column;
     max-height: 100%;
     margin: 0.2em auto;
     align-items: center;
     overflow-y: auto;
-    
-    &-list{
-        display:inherit;
+
+    &-list {
+        display: inherit;
         padding: 0;
         gap: 10px;
         width: 80%;
         flex-direction: column;
         align-items: flex-start;
     }
+
     .review-item-container {
         border-bottom: solid 0.8px rgb(223, 229, 223);
-      
-      }
-      
-    .amenity{
+
+    }
+
+    .amenity {
         display: flex;
         align-items: center;
     }
 }
+
 // LOGIN-SIGNUP
-.login-signup{
+.login-signup {
     display: flex;
     flex-direction: column;
     margin: 0.5em auto;
     align-items: center;
     width: 100%;
-    & h3{
-        margin: 20px 0;
-    }   
 
-    &-btn-container{
+    & h3 {
+        margin: 20px 0;
+    }
+
+    &-btn-container {
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -87,33 +81,33 @@
     }
 
 
-    .form-field{
+    .form-field {
         // height: 5rem;
         margin: 20px 0;
         width: 90%;
 
-        &.joined{
+        &.joined {
             margin: 0;
         }
 
     }
-    .btn-continue{
+
+    .btn-continue {
         width: 90%;
     }
 }
 
-.form-field{
-    input{
+.form-field {
+    input {
         border-radius: 0.5em;
         border: 0;
         outline: 1px solid;
-        // border: none;
         width: 100%;
         height: 50px;
         padding: 5px 10px;
-        // transition: all 0.15s;
-        &:focus{
-            // outline-color: $clr1;
+
+        &:focus {
+
             outline-width: 2px;
         }
     }

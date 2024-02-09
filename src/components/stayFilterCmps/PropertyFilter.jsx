@@ -4,26 +4,26 @@ import { BsHouses } from 'react-icons/bs';
 import { MdApartment } from 'react-icons/md';
 
 const defaultProperties = [
-    {
-      value: 'house',
-      icon: HiOutlineHome,
-    },
-    {
-      value: 'apartment',
-      icon: MdApartment,
-    },
-    {
-      value: 'guesthouse',
-      icon: BsHouses,
-    },
-    {
-      value: 'hotel',
-      icon: LuHotel,
-    },
-  ];
+  {
+    value: 'house',
+    icon: HiOutlineHome,
+  },
+  {
+    value: 'apartment',
+    icon: MdApartment,
+  },
+  {
+    value: 'guesthouse',
+    icon: BsHouses,
+  },
+  {
+    value: 'hotel',
+    icon: LuHotel,
+  },
+];
 
 export function PropertyFilter({ selectedProperty, onPropertyChange }) {
-    
+
   const handleInputChange = (property) => {
     if (selectedProperty.includes(property)) {
       const selectedProperties = selectedProperty.filter((a) => a != property);
@@ -36,8 +36,8 @@ export function PropertyFilter({ selectedProperty, onPropertyChange }) {
   if (!defaultProperties) return;
   return (
     <section
-    className='property-filter'
-     style={{ display: 'flex', gap: 10 }}>
+      className='property-filter'
+      style={{ display: 'flex', gap: 10 }}>
       {defaultProperties.map((property, i) => {
         const isChecked = selectedProperty.includes(property.value);
         return (

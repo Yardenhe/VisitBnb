@@ -16,10 +16,6 @@ export function GuestsModal() {
         setCurrOrder({ guests })
     }, [guests])
 
-
-
-
-
     const handleIncrement = (type) => {
         setSelectedGuests(prevState => ({
             ...prevState,

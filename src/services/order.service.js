@@ -76,13 +76,6 @@ function getEmptyOrder() {
   };
 }
 
-// function _createOrders() {
-//   let orders = utilService.loadFromStorage(STORAGE_KEY)
-//   if (!orders || !orders.length) {
-//     orders = orderData
-//     utilService.saveToStorage(STORAGE_KEY, orders)
-//   }
-// }
 
 function getOrderFromParams(searchParams) {
   const defaultOrder = getEmptyOrder()
@@ -117,15 +110,15 @@ function getOverviewInsights(orders) {
   return overviewStats
 }
 
-function getOrdersInsightsPie(orders){
+function getOrdersInsightsPie(orders) {
   return {
     guestPieData: _calculateGuestsSum(orders),
     otherPieData: _calculateOtherPieData(orders),
   }
 }
-function _calculateOtherPieData(orders){
-  
-  return [{id:0,value:5,label:'completions'},{id:1,value:2,label:'not-completed'}]
+function _calculateOtherPieData(orders) {
+
+  return [{ id: 0, value: 5, label: 'completions' }, { id: 1, value: 2, label: 'not-completed' }]
 }
 function _calculateGuestsSum(orders) {
   const guestSum = {
@@ -137,7 +130,7 @@ function _calculateGuestsSum(orders) {
 
   orders.forEach((order) => {
     const { guests } = order;
-    
+
     guestSum.adults += guests.adults || 0;
     guestSum.children += guests.children || 0;
     guestSum.infants += guests.infants || 0;

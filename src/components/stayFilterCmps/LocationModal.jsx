@@ -38,9 +38,7 @@ export function LocationModal({ onSetFilter }) {
                         </div>
                     ))}
                 </div>
-
             </div>
-
             <div className='loc-right'>
                 <div className='loc-title-map'>Search by region</div>
                 <div className='loc-map-list'>

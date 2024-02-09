@@ -24,7 +24,7 @@ const propertyTypes = [
 ];
 
 export function ThirdPage({ onSetStay, stay }) {
-    const iconBasePath = 'img/labels/';
+
     const [selectedPropertyType, setSelectedPropertyType] = useState(stay.propertyType);
     useEffect(() => {
         onSetStay({ "propertyType": selectedPropertyType })
@@ -33,7 +33,6 @@ export function ThirdPage({ onSetStay, stay }) {
         <section className="firstpage-edit thirdpage-edit">
             <div>
                 <h3>What type of place will guests have?</h3>
-
             </div>
             <section className='roomtype-list' >
                 {propertyTypes.map((propertyType, index) => (
@@ -48,10 +47,8 @@ export function ThirdPage({ onSetStay, stay }) {
                         <div className='property-logo'>
                             <img src={propertyType.icon} alt=""></img>
                         </div>
-
                     </section>
                 ))}
-
             </section>
 
         </section >

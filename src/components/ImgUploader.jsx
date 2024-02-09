@@ -10,11 +10,27 @@ export function ImgUploader({ onUploaded = null }) {
     const [isUploading, setIsUploading] = useState(false)
 
     async function uploadImg(ev) {
-        setIsUploading(true)
-        const { secure_url, height, width } = await uploadService.uploadImg(ev)
-        setImgData({ imgUrl: secure_url, width, height })
-        setIsUploading(false)
-        onUploaded && onUploaded(secure_url)
+        setIsUploading(true);
+        const files = Array.from(ev.target.files);
+
+        try {
+            const uploadPromises = files.map(async (file) => {
+                const { secure_url, height, width } = await uploadService.uploadImg(file);
+                return { imgUrl: secure_url, width, height };
+            });
+
+            const uploadedImages = await Promise.all(uploadPromises);
+            setImgData((prevImgData) => ({
+                ...prevImgData,
+                imgUrl: [...prevImgData.imgUrl, ...uploadedImages.map((img) => img.imgUrl)],
+            }));
+            setIsUploading(false);
+
+            onUploaded && onUploaded(uploadedImages.map((img) => img.imgUrl));
+        } catch (err) {
+            console.error('Failed to upload', err)
+            setIsUploading(false);
+        }
     }
 
     function getUploadLabel() {

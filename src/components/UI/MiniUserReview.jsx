@@ -41,15 +41,4 @@ export function MiniUserReview({ review, isList = false }) {
     </div>
   );
 }
-// reviews: [
-//     {
-//       at: "2016-08-23T04:00:00.000Z",
-//       by: {
-//         _id: "622f3406e36c59e6164fbbe5",
-//         fullname: "Liz",
-//         imgUrl: "https://thispersondoesnotexist.com/",
-//         id: "40447686",
-//       },
-//       txt: "This place was amazing\nKandy was so quick to respond and so accommodating -even when I was a little needy a couple of times (I needed a wine opener and I had one within the hour)\nIt's a hidden gem and just what we needed to reset life\nIt had every modern luxury while being tucked away in the jungle and right next to the bay\nThank you Kandy so much for having us\nWe thoroughly enjoyed our stay \n",
-//       rate: 5,
-//     },
+

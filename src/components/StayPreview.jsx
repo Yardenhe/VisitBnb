@@ -6,11 +6,8 @@ import { IoIosStar as StarIcon } from "react-icons/io";
 import { stayService } from '../services/stay.service';
 const LazyLoadedImage = lazy(() => import('./LazyLoadedImg'))
 
-
-
 export function StayPreview({ stay }) {
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
-
 
     const nextImage = (e) => {
         e.preventDefault()
@@ -29,15 +26,12 @@ export function StayPreview({ stay }) {
 
     return (
         <section className='stay-preview'>
-
             <section className="image-container">
                 <Suspense >
                     <img src="../img/general-icons/heart.svg" className='heart-svg'>
                     </img>
                     <LazyLoadedImage className='img-preview' src={stay.imgUrls[currentImageIndex]} alt='img' >
-
                     </LazyLoadedImage >
-
                 </Suspense>
                 <div className='image-points'>
                     {stay.imgUrls.map((_, index) => (
@@ -54,9 +48,6 @@ export function StayPreview({ stay }) {
                 <div className='preview-loc'>{stay.loc.city}, {stay.loc.country}</div>
                 <div className="rating-peek black center">
                     <StarIcon />
-                    {/* <span>{stay.reviews ? stay.reviews[0].rate : '4.8'}</span> */}
-
-                    {/* TEMPORARY AVG RATING SOLUTION */}
                     <span>{stayService.calculateAverageRating(stay.reviews)}</span>
                 </div>
             </div>
@@ -67,7 +58,6 @@ export function StayPreview({ stay }) {
                 <IoIosArrowBack className='arrow arrow-left' onClick={prevImage} />
                 <IoIosArrowForward className='arrow arrow-right' onClick={nextImage} />
             </div>
-
         </section>
 
     )
