@@ -23,7 +23,7 @@ export function stayReducer(state = initialState, action = {}) {
         case ADD_STAY:
             return {
                 ...state,
-                stays: [...state.stays, action.stay]
+                stays: [action.stay, ...state.stays]
             }
 
         case REMOVE_STAY:

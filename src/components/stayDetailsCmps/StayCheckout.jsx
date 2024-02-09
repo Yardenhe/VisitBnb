@@ -45,11 +45,10 @@ export function StayCheckout({ price, startDate, endDate, currOrder }) {
   }
 
   function onOpenDatePicker() {
-    setIsOpenDatePickerModal(prev => !prev)
-
+    setIsOpenDatePickerModal(!isOpenDatePickerModal)
   }
   function onOpenGuestPicker() {
-    setIsOpenGuestPicker(prev => !prev)
+    setIsOpenGuestPicker(!isOpenGuestPicker)
   }
 
 
@@ -80,16 +79,16 @@ export function StayCheckout({ price, startDate, endDate, currOrder }) {
 
         </button>
 
-        <button className="guest-btn-container" >
+        <button ref={guestPickerRef} className="guest-btn-container" onClick={onOpenGuestPicker}>
 
-          <div className="btn-info" onClick={onOpenGuestPicker}>
+          <div className="btn-info" >
             <div className="btn-info-label">guests</div>
             <div className="btn-info-detail">{pluralizeLabel(orderService.getTotalguests(currOrder.guests), 'guest')}</div>
           </div>
-          <div className="btn-info down-arrow" onClick={onOpenGuestPicker} >
+          <div className="btn-info down-arrow" >
             {!isOpenGuestPicker ? <DownArrow /> : <UpArrow />}
           </div>
-          <div ref={guestPickerRef} className={`guest-picker-modal ${!isOpenGuestPicker ? 'hidden' : ''}`}>
+          <div  className={`guest-picker-modal ${!isOpenGuestPicker ? 'hidden' : ''}`}>
             <MiniGuestsModal guests={currOrder.guests} />
           </div>
         </button>
