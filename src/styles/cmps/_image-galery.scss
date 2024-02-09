@@ -1,9 +1,9 @@
 $gallery-columns: 4;
 $gallery-rows: 2;
-$slot-width: 10.3rem;//220px;
+$slot-width: 10.3rem; //220px;
 $slot-height: $slot-width*1.03; //* 0.83163214285;
 $img-gap: 8px;
-$img-radius:4%;
+$img-radius: 4%;
 
 
 
@@ -12,19 +12,23 @@ $img-radius:4%;
   gap: $img-gap;
   max-width: 100%;
   min-width: 80%;
+  aspect-ratio: 2.5;
   height: 100%;
   grid-template-columns: repeat($gallery-columns, 1fr);
   grid-template-rows: repeat($gallery-rows, 1fr);
   position: relative;
-  // aspect-ratio: 2.5;  
+
   img {
     object-fit: cover;
     min-width: 100%;
     min-height: 100%;
+
+
     &:hover {
       cursor: pointer;
       opacity: 0.8;
     }
+
     &:first-child {
       border-top-left-radius: $img-radius;
       border-bottom-left-radius: $img-radius;
@@ -33,17 +37,21 @@ $img-radius:4%;
       width: $slot-width * 2;
       height: $slot-height * 2;
     }
-    &:nth-child(3){
+
+    &:nth-child(3) {
       border-top-right-radius: $img-radius;
     }
-    &:nth-child(5){
+
+    &:nth-child(5) {
       border-bottom-right-radius: $img-radius;
     }
+
     &:not(:first-child) {
       width: $slot-width;
       height: $slot-height;
     }
   }
+
   .button-overlay {
     position: absolute;
     bottom: 1.3rem;
@@ -51,7 +59,7 @@ $img-radius:4%;
   }
 }
 
-.galery-btn{
+.galery-btn {
   font-weight: 500;
   outline: 0.5px solid black;
   max-height: 10px;

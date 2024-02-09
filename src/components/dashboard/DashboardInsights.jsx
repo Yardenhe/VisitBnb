@@ -78,7 +78,7 @@ export function DashboardInsights({ orders }) {
           Your statistics
         </div>
         <div className="insight-card-graph">
-          <PieCharts orders={orders}/>
+          <PieCharts orders={orders} />
         </div>
       </div>
 
