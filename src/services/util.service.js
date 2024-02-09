@@ -13,6 +13,7 @@ export const utilService = {
 	debounce,
 	debouncePromise,
 	validateMail,
+	validatePassword,
 	formatOrderDate,
 	getSymbolCurrency,
 	formatDate,
@@ -188,6 +189,10 @@ function debouncePromise(func, timeout = 500) {
 
 function validateMail(mail) {
 	return /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(mail)
+}
+function validatePassword(password) {
+	return /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()\-_=+{};:,<.>]).{8,}$/.test(password);
+
 }
 
 function getSymbolCurrency(currency) {

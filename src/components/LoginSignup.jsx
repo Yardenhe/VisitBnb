@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react'
 import { userService } from '../services/user.service'
 import { ReserveBtn } from './UI/ReserveBtn'
 import { login, signup } from '../store/actions/user.actions'
+import { showErrorMsg } from '../services/event-bus.service'
+import { utilService } from '../services/util.service'
 
 export function LoginSignup({ payload, onCloseModal }) {
     const { isLogin } = payload
@@ -23,16 +25,38 @@ export function LoginSignup({ payload, onCloseModal }) {
     async function onLoginSignup() {
         // signup flow
         if (!isLoginForm) {
-            if (!credentials.email || !credentials.password || !credentials.fullname) return
+            if (!credentials.email || !credentials.password || !credentials.fullname)
+                return showErrorMsg("empty inputs")
+
+            if (!utilService.validateMail(credentials.email))
+                return showErrorMsg("Invalid email")
+
+            if (!utilService.validatePassword(credentials.password))
+                return showErrorMsg("Password requires at least 8 characters, at least an uppercase letter, a lowercase letter, a number, and a special character")
+
+
             console.log('signup');
-            await signup(credentials)
+            try {
+                await signup(credentials)
+            } catch (error) {
+                return
+            }
+
             onCloseModal()
         }
         // login flow
         else {
-            if (!credentials.email || !credentials.password) return
+            if (!credentials.email || !credentials.password)
+                return showErrorMsg("empty inputs")
             console.log('login');
-            await login(credentials)
+            try {
+                await login(credentials)
+
+            } catch (err) {
+                showErrorMsg("Invalid email or password")
+                return
+            }
+
             onCloseModal()
         }
         clearState()
